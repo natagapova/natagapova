@@ -267,24 +267,25 @@ header {
 /* Mobile styles */
 @media (max-width: 768px) {
   .banner {
-    margin-top: 70px;
-    padding: 10px 0;
+    margin-top: 40px;
+    padding: 0 10px;
+    text-align: center;
   }
 
   .banner h1 {
-    display: flex;
-    flex-direction: column;
-    font-size: clamp(40px, 16vw, 120px); /* Меньше чем desktop */
-    letter-spacing: -0.2vw;
-    padding-top: 30px;
+    display: block;
+    font-size: clamp(36px, 12vw, 100px);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    line-height: 1;
+    white-space: normal; /* ❗ Обязательно */
   }
 
   .first-name,
   .last-name {
     display: block;
-    width: 100%;
   }
 
   .header-extra {
