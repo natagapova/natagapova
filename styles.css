@@ -278,11 +278,11 @@ header {
   #store-name {
     font-family: 'Theater Bold', sans-serif;
     font-weight: 700;
-    font-size: clamp(40px, 17vw, 800px);
+    font-size: clamp(40px, 17vw, 100px);
     color: #4C6F57;
     text-align: center;
     line-height: 1.1;
-    margin-top: 500px;
+    margin-top: 70px;
     padding: 0;
     display: flex;
     flex-direction: column;
