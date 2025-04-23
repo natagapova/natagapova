@@ -278,7 +278,7 @@ header {
   #store-name {
     font-family: 'Theater Bold', sans-serif;
     font-weight: 700;
-    font-size: clamp(40px, 90%, 80px);
+    font-size: clamp(40px, 15vw, 80px);
     color: #4C6F57;
     text-align: center;
     line-height: 1.1;
