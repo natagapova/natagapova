@@ -273,6 +273,7 @@ header {
   }
 
   .banner h1 {
+    transform: scale(1.1);
     display: block;
     font-size: clamp(36px, 12vw, 100px);
     letter-spacing: -1px;

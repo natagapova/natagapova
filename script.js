@@ -11,7 +11,7 @@ const translations = {
     contactExtra: "CONTACT ME",
     year: "© 2025",
     experienceTitle: "experience & education",
-    experienceBlockTitle: "my other experience",
+    experienceBlockTitle: "experience",
     educationBlockTitle: "education",
 
     expCroissan: "croissan studio — ai art studio (ux/ui & product designer, apr 2025 - ...)",
@@ -45,7 +45,7 @@ const translations = {
     contactExtra: "СВЯЗАТЬСЯ СО МНОЙ",
     year: "© 2025",
     experienceTitle: "опыт и образование",
-    experienceBlockTitle: "мой опыт",
+    experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
 
     expCroissan: "croissan studio — студия цифрового ии-искусства (ux/ui и продуктовый дизайнер, апрель 2025 - ...)",
