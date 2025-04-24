@@ -2,7 +2,7 @@ let currentLang = "ru";
 
 const translations = {
   ru: {
-    firstName: "НАТАЛЬЯ АГАПОВА",
+    myName: "НАТАЛЬЯ АГАПОВА",
     languageSwitch: "switch to english",
     locationExtra: "иннополис, россия",
     contactExtra: "связаться со мной",
@@ -27,7 +27,7 @@ const translations = {
     footerContact: "связаться со мной"
   },
   en: {
-    firstName: "NATALIA AGAPOVA",
+    myName: "NATALIA AGAPOVA",
     languageSwitch: "русская версия",
     locationExtra: "innopolis, russia",
     contactExtra: "contact me",
@@ -79,8 +79,7 @@ function switchLanguage() {
     expClearmind: "exp-clearmind",
     eduInnopolis: "edu-innopolis",
     footerContact: "footer-contact",
-    firstName: "my-first-name",
-    lastName: "my-last-name"
+    myName: "store-name"
   };
 
   for (const key in map) {

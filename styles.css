@@ -199,6 +199,7 @@ header {
   padding: 20px;
   border-radius: 8px;
   scroll-snap-align: start;
+  text-align: left;
 }
 
 .project-description h3 {
