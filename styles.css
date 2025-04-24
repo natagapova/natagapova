@@ -300,8 +300,8 @@ header {
     width: 100%;
   }
   
-  .first-name,
-  .last-name {
+  .my-first-name,
+  .my-last-name {
     display: block;
     width: 100%;
   }
