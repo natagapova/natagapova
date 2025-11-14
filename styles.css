@@ -65,12 +65,11 @@ header {
   font-size: clamp(80px, 18vw, 300px);
   letter-spacing: -0.5vw;
   white-space: nowrap;
-  width: 100%;
+  width: 95%;
   text-align: center;
 }
 
 #store-name {
-  width: 95%;
   white-space: nowrap;
   font-size: clamp(80px, 18vw, 300px);
 }
