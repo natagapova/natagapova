@@ -71,7 +71,7 @@ header {
 
 #store-name {
   white-space: nowrap;
-  font-size: clamp(80px, 14vw, 300px);
+  font-size: clamp(80px, 10vw, 300px);
 }
 
 .header-extra {
@@ -299,7 +299,7 @@ header {
 
     flex-direction: column;
     align-items: center;
-    font-size: clamp(40px, 15vw, 160px);
+    font-size: clamp(40px, 16vw, 160px);
     line-height: 0.9;
     letter-spacing: -0.5vw;
     text-align: center;
