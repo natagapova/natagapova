@@ -70,9 +70,9 @@ header {
 }
 
 #store-name {
-  width: 90%;
+  width: 95%;
   white-space: nowrap;
-  font-size: clamp(80px, 16vw, 300px);
+  font-size: clamp(80px, 18vw, 300px);
 }
 
 .header-extra {
