@@ -71,7 +71,7 @@ header {
 
 #store-name {
   white-space: nowrap;
-  font-size: clamp(80px, 13vw, 300px);
+  font-size: clamp(80px, 14vw, 300px);
 }
 
 .header-extra {
