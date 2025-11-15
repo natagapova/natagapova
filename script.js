@@ -24,11 +24,13 @@ const translations = {
     CroissanStudioDesc: "продукты, разработанные мной для нейрохудожника - продукта croissan studio: лого, мерч, концепты",
     experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
+    volunteeringBlockTitle: "волонтёрство",
     expCroissan: "croissan studio — студия разработки полного цикла для ии-продуктов (ux/ui и продуктовый дизайнер, фронтенд-разработчик, ai-креатор на проектной занятости, апрель 2025 - ...)",
-    expTrenirovochnaya: "trenirovochnaya.kzn — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – ...)",
     expAzimov: "azimovlab — ии-сервис генерации тестов (фронтенд разработчик, февраль – сентябрь 2024)",
     expClearmind: "фриланс — дизайн афиш, сайтов; вёрстка сайтов на заказ (2022 - ...)",
     eduInnopolis: "университет иннополис — бакалавриат: прикладной искусственный интеллект (2026)",
+    volTrenirovochnaya: "trenirovochnaya.kzn — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – ...)",
+    volInnostreetdance: "innostreetdance — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – ...)",
     footerContact: "связаться со мной"
   },
   en: {
@@ -54,11 +56,13 @@ const translations = {
     CroissanStudioDesc: "products developed by me for neuroartist - a project by croissan studio: logos, merch, concepts",
     experienceBlockTitle: "experience",
     educationBlockTitle: "education",
+    volunteeringBlockTitle: "volunteering",
     expCroissan: "croissan studio — ai products studio (ux/ui & product designer, frontend developer, ai-creator on project duty, apr 2025 - ...)",
-    expTrenirovochnaya: "trenirovochnaya.kzn — organization of dance events in kazan (brand-designer, marketing person, mar 2025 – ...)",
     expAzimov: "azimovlab — ai service for generating tests (frontend developer, feb – sep 2024)",
     expClearmind: "freelance — design posters, websites; web development on order (2022 - ...)",
     eduInnopolis: "innopolis university — bsc in applied artificial intelligence (2026)",
+    volTrenirovochnaya: "trenirovochnaya.kzn — organization of dance events in kazan (brand-designer, marketing person, mar 2025 – ...)",
+    volInnostreetdance: "innostreetdance — student dance club of innopolis university (brand-designer, marketing person, dec 2022 – ...)",
     footerContact: "contact me"
   }
 };
@@ -89,12 +93,15 @@ function switchLanguage() {
     project1Desc: "project1-desc",
     experienceBlockTitle: "experience-block-title",
     educationBlockTitle: "education-block-title",
+    volunteeringBlockTitle: "volunteering-block-title",
     expCroissan: "exp-croissan",
     expAzimov: "exp-azimov",
     expClearmind: "exp-clearmind",
     eduInnopolis: "edu-innopolis",
     footerContact: "footer-contact",
-    myName: "store-name"
+    myName: "store-name",
+    volTrenirovochnaya: "vol-trenirovochnaya",
+    volInnostreetdance: "vol-innostreetdance",
   };
 
   for (const key in map) {
