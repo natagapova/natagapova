@@ -1,0 +1,1066 @@
+@font-face {
+  font-family: "Theater Bold";
+  src: url("./fonts/Theater_Bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  color-scheme: light;
+  /* San Francisco на iPhone / Mac (Safari, Chrome); на Windows — Segoe UI */
+  --font-system: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-name: "Theater Bold", sans-serif;
+  --color-bg: #f5f5f5;
+  --color-text: #333333;
+  --color-text-muted: #444444;
+  --color-text-strong: #000000;
+  --color-link: #000000;
+  --color-focus: #2d2824;
+  --color-divider: #aeb6b1;
+  --color-footer-muted: #888888;
+  --hero-surface: var(--color-bg);
+  --hero-title: #000000;
+  --color-about-bg: #4c6f57;
+  --color-about-text: #f5f5f5;
+  --lang-ink: #1c1916;
+  --lang-ink-soft: rgba(28, 25, 22, 0.42);
+  --lang-line: rgba(28, 25, 22, 0.2);
+  --lang-anchor: #000000;
+  --lang-anchor-inactive-opacity: 0.5;
+  --role-card-border: rgba(255, 255, 255, 0.65);
+  --role-chip-border: rgba(0, 0, 0, 0.06);
+  --editorial-shadow: 0 10px 28px rgba(38, 32, 28, 0.08);
+  --editorial-shadow-hover: 0 18px 40px rgba(38, 32, 28, 0.14);
+  --editorial-radius-lg: 26px;
+  --editorial-radius-md: 22px;
+  --editorial-radius-sm: 18px;
+  --editorial-transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  --editorial-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-system);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 15px;
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  text-transform: lowercase;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+/* Top Navigation Menu */
+.top-navbar {
+  width: 100%;
+  background-color: var(--color-bg);
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  min-height: 55px;
+  box-sizing: border-box;
+  z-index: 100;
+  position: relative;
+  font-size: 15px;
+  transition: background-color 0.35s ease;
+}
+
+.navbar-left {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+#nav-brand {
+  margin-right: 0.35em;
+  font-style: normal;
+}
+
+.navbar-copy {
+  font-style: italic;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#languageSwitch {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+#contact-extra {
+  color: var(--color-link);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: normal;
+  font-size: 15px;
+  padding-left: 0;
+}
+
+/* Hero + роли: фиксированный первый экран, скролл = анимация карточек */
+.hero-experience {
+  --nav-h: 55px;
+  --hero-viewport: calc(100svh - var(--nav-h));
+  --hero-scroll-track: clamp(630px, 87vh, 900px);
+  position: relative;
+  height: calc(100svh + var(--hero-scroll-track));
+  background-color: var(--hero-surface);
+  transition: background-color 0.35s ease;
+}
+
+.hero-experience__pin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow: visible;
+  background-color: var(--hero-surface);
+  transition: background-color 0.35s ease;
+}
+
+.hero-experience__pin .top-navbar--hero {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-experience.is-released .hero-experience__pin {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.hero-experience__track {
+  position: absolute;
+  width: 0;
+  height: var(--hero-scroll-track);
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Hero — первый экран */
+.hero-experience__pin .hero-intro {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.hero-intro {
+  --nav-h: 55px;
+  --hero-overlap: 0.52;
+  --hero-photo-lift: clamp(0.5rem, 1.2vw, 1rem);
+  min-height: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(8px, 2vw, 20px) clamp(16px, 4vw, 48px) clamp(20px, 4vh, 40px);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.hero-intro__stage {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.hero-intro .hero-intro__name {
+  --hero-word-gap-tracking: -0.04em;
+  --hero-word-inner-tracking: -0.05em;
+  --hero-kt-letter-gap: 0.015em;
+  margin: 0;
+  padding: 0.06em 0 0;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  font-family: var(--font-name);
+  font-weight: normal;
+  line-height: 1.05;
+  letter-spacing: normal;
+  color: var(--hero-title);
+  font-synthesis: none;
+  transform: translateY(-6vh);
+  transition: color 0.35s ease;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.hero-intro .hero-intro__title-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.05;
+  letter-spacing: var(--hero-word-gap-tracking);
+  padding-block: 0.04em;
+}
+
+.hero-intro .hero-word {
+  letter-spacing: var(--hero-word-inner-tracking);
+}
+
+.hero-intro .hero-letter-gap-kt {
+  margin-left: var(--hero-kt-letter-gap);
+}
+
+.hero-intro__photo-wrap {
+  --hero-blink-photo-scale: 0.987;
+  --hero-blink-photo-offset-y: 1%;
+  --hero-photo-width: auto;
+  --hero-photo-max-height: none;
+  flex: 1 1 0;
+  min-height: 0;
+  position: relative;
+  width: var(--hero-photo-width);
+  max-width: 100%;
+  max-height: var(--hero-photo-max-height);
+  margin-top: calc(
+    var(--hero-title-size, 4rem) * var(--hero-overlap) * -1 - 12px - var(--hero-photo-lift)
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0;
+  overflow: visible;
+}
+
+.hero-intro__photo-stack {
+  position: relative;
+  line-height: 0;
+  max-width: 100%;
+  max-height: var(--hero-photo-max-height);
+}
+
+.hero-intro__photo {
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-intro__photo--open {
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: auto;
+  max-width: 100%;
+  max-height: var(--hero-photo-max-height);
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.hero-intro__photo--closed {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(var(--hero-blink-photo-offset-y)) scale(var(--hero-blink-photo-scale, 1));
+  transform-origin: center bottom;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-intro__photo-wrap.is-blinking .hero-intro__photo--closed {
+  opacity: 1;
+}
+
+/* ——— Роли на первом экране ——— */
+.roles-nav--hero {
+  --hero-card-stack-base: clamp(10px, 2.6vh, 24px);
+  --hero-card-stack-touch: clamp(148px, 22vh, 248px);
+  --hero-thought-title-lap: clamp(32px, 6vh, 56px);
+  --hero-thought-upper-lift: clamp(28px, 5vh, 48px);
+  /* ~30% высоты верхних облаков — опускаем дизайнер / ML */
+  --hero-thought-upper-drop: clamp(52px, 11vw, 80px);
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  margin: 0;
+  pointer-events: none;
+}
+
+.roles-nav--hero .role-card {
+  position: absolute;
+  pointer-events: auto;
+  width: clamp(212px, 54vw, 348px);
+  min-height: clamp(96px, 13vh, 122px);
+  padding: clamp(18px, 3.2vw, 24px) clamp(22px, 4.5vw, 34px);
+  gap: 14px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.roles-nav--hero .role-card--scroll-settled {
+  opacity: 1;
+}
+
+.roles-nav--hero .role-card__label {
+  font-size: clamp(1.12rem, 3.2vw, 1.48rem);
+  line-height: 1.08;
+  max-width: 20ch;
+}
+
+html[lang="en"] .roles-nav--hero .role-card__label {
+  max-width: 24ch;
+  font-size: clamp(1.05rem, 2.9vw, 1.38rem);
+}
+
+.roles-nav--hero .role-card__chip {
+  width: 2.55rem;
+  height: 2.55rem;
+  font-size: 1.1rem;
+}
+
+.roles-nav--hero .role-card:hover {
+  z-index: 10;
+}
+
+/* Облачко-кнопки (thought1–4) */
+.roles-nav--hero .role-card--thought {
+  --thought-bubble-scale: 0.9;
+  --thought-pad-top: 25%;
+  --thought-pad-bottom: 32%;
+  --thought-pad-tail: 23%;
+  --thought-pad-side: 12%;
+  --thought-pad-text-left: 18%;
+  --thought-chip-size: clamp(
+    calc(2.5rem * var(--thought-bubble-scale)),
+    calc(6.8vw * var(--thought-bubble-scale)),
+    calc(2.85rem * var(--thought-bubble-scale))
+  );
+  --thought-gap: clamp(
+    calc(10px * var(--thought-bubble-scale)),
+    calc(2.4vw * var(--thought-bubble-scale)),
+    calc(14px * var(--thought-bubble-scale))
+  );
+  position: absolute;
+  display: block;
+  width: clamp(
+    calc(228px * var(--thought-bubble-scale)),
+    calc(52vw * var(--thought-bubble-scale)),
+    calc(368px * var(--thought-bubble-scale))
+  );
+  min-height: 0;
+  height: auto;
+  padding: 0;
+  gap: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  --thought-nudge-x: 0%;
+  --thought-nudge-y: 0%;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.roles-nav--hero .role-card--thought:not(.role-card--scroll-anim) {
+  transform: translate(var(--thought-nudge-x), var(--thought-nudge-y))
+    translateY(var(--role-lift)) rotate(var(--role-rotate));
+}
+
+.roles-nav--hero .role-card__thought-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.roles-nav--hero .role-card__thought-body {
+  position: absolute;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--thought-chip-size);
+  align-items: center;
+  column-gap: var(--thought-gap);
+  justify-items: stretch;
+  pointer-events: none;
+}
+
+.roles-nav--hero .role-card--designer.role-card--thought .role-card__thought-body,
+.roles-nav--hero .role-card--ml.role-card--thought .role-card__thought-body {
+  inset: var(--thought-pad-top) var(--thought-pad-side) var(--thought-pad-bottom)
+    var(--thought-pad-text-left);
+}
+
+.roles-nav--hero .role-card--frontend.role-card--thought .role-card__thought-body,
+.roles-nav--hero .role-card--person.role-card--thought .role-card__thought-body {
+  inset: var(--thought-pad-top) var(--thought-pad-tail) var(--thought-pad-bottom)
+    var(--thought-pad-text-left);
+}
+
+.roles-nav--hero .role-card--thought .role-card__label,
+.roles-nav--hero .role-card--thought .role-card__chip {
+  pointer-events: none;
+}
+
+.roles-nav--hero .role-card--thought:hover {
+  box-shadow: none;
+  --role-lift: 0px;
+  color: inherit;
+  filter: brightness(0.94);
+}
+
+.roles-nav--hero .role-card--thought:hover .role-card__chip {
+  transform: none;
+}
+
+.roles-nav--hero .role-card--thought .role-card__label {
+  justify-self: start;
+  width: auto;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.1;
+  font-size: clamp(1.28rem, 3.85vw, 1.78rem);
+  color: #000000;
+  text-shadow: none;
+}
+
+.roles-nav--hero .role-card--ml.role-card--thought .role-card__label,
+.roles-nav--hero .role-card--frontend.role-card--thought .role-card__label {
+  max-width: 15ch;
+}
+
+html[lang="en"] .roles-nav--hero .role-card--ml.role-card--thought .role-card__label,
+html[lang="en"] .roles-nav--hero .role-card--frontend.role-card--thought .role-card__label {
+  max-width: 19ch;
+}
+
+html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
+  font-size: clamp(1.14rem, 3.35vw, 1.58rem);
+}
+
+.roles-nav--hero .role-card--thought .role-card__chip {
+  justify-self: end;
+  width: var(--thought-chip-size);
+  height: var(--thought-chip-size);
+  min-width: var(--thought-chip-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 1.15rem;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+
+.roles-nav--hero .role-card--designer {
+  --thought-nudge-x: 10%;
+  --thought-nudge-y: -5%;
+  left: clamp(-20px, calc(-3.5vw - 10%), -10px);
+  right: auto;
+  top: auto;
+  bottom: calc(
+    var(--hero-card-stack-base) + var(--hero-card-stack-touch) - 4px +
+      var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
+      var(--hero-thought-upper-drop)
+  );
+  z-index: 2;
+  transform-origin: left bottom;
+}
+
+.roles-nav--hero .role-card--frontend {
+  --thought-nudge-x: -10%;
+  --thought-nudge-y: -5%;
+  right: clamp(-20px, calc(-3.5vw - 10%), -10px);
+  left: auto;
+  top: auto;
+  bottom: calc(
+    var(--hero-card-stack-base) + var(--hero-card-stack-touch) - 4px +
+      var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
+      var(--hero-thought-upper-drop)
+  );
+  z-index: 3;
+  transform-origin: right bottom;
+}
+
+.roles-nav--hero .role-card--ml {
+  --thought-nudge-x: -10%;
+  left: clamp(4px, 2vw, 16px);
+  top: auto;
+  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+  z-index: 4;
+  transform-origin: left bottom;
+}
+
+.roles-nav--hero .role-card--person {
+  --thought-nudge-x: 10%;
+  --thought-nudge-y: 0%;
+  right: clamp(4px, 2vw, 16px);
+  left: auto;
+  top: auto;
+  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+  z-index: 5;
+  transform-origin: right bottom;
+}
+
+.roles-nav {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 0;
+}
+
+.role-card {
+  --role-rotate: 0deg;
+  --role-lift: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 96px;
+  padding: clamp(16px, 3vw, 22px) clamp(18px, 3.5vw, 26px);
+  border-radius: var(--editorial-radius-lg);
+  border: 1px solid var(--role-card-border);
+  box-shadow: var(--editorial-shadow);
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(var(--role-lift)) rotate(var(--role-rotate));
+  transition:
+    transform var(--editorial-transition),
+    box-shadow var(--editorial-transition),
+    color var(--editorial-transition),
+    opacity 0.2s ease;
+}
+
+.role-card--scroll-anim {
+  transition: none;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.roles-nav--hero .role-card--scroll-anim:not(.role-card--scroll-settled) {
+  z-index: 2 !important;
+  transform-origin: center center;
+}
+
+.role-card--scroll-settled {
+  will-change: auto;
+}
+
+.roles-nav--hero .role-card--scroll-settled {
+  will-change: auto;
+}
+
+.role-card:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.role-card:hover {
+  --role-lift: -5px;
+  box-shadow: var(--editorial-shadow-hover);
+  color: var(--color-text-strong);
+}
+
+.roles-nav--hero .role-card--scroll-anim:hover {
+  --role-lift: 0px;
+}
+
+.role-card--designer {
+  --role-rotate: -2.6deg;
+  background: linear-gradient(145deg, #fff9f2 0%, #f5e8dc 100%);
+  color: #2a221c;
+}
+
+.role-card--ml.role-card--thought,
+.role-card--person.role-card--thought,
+.role-card--designer.role-card--thought,
+.role-card--frontend.role-card--thought {
+  background: transparent;
+}
+
+.role-card--frontend {
+  --role-rotate: 2.4deg;
+  background: linear-gradient(145deg, #f6faf2 0%, #e4eddf 100%);
+  color: #1e261e;
+}
+
+.role-card--ml {
+  --role-rotate: -1.9deg;
+  background: linear-gradient(145deg, #faf7fc 0%, #ebe4f0 100%);
+  color: #242028;
+}
+
+.role-card--person {
+  --role-rotate: 2.2deg;
+  background: linear-gradient(145deg, #fff6f3 0%, #f0e6e1 100%);
+  color: #2c2220;
+}
+
+.role-card__label {
+  font-size: clamp(1.2rem, 3.4vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  text-align: left;
+  text-transform: lowercase;
+  text-decoration: none;
+  max-width: 16ch;
+}
+
+/* --- Теги для скиллов: дизайнер, фронтенд, тэгов, и оверлея проектов --- */
+
+.designer-skills__item {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgb(120 120 128 / 12%);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #222;
+  white-space: nowrap;
+}
+
+/* Теги в frontend-странице */
+.frontend-page__skill {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgb(120 120 128 / 12%);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #222;
+  white-space: nowrap;
+}
+
+/* Теги в карточках frontend */
+.frontend-card__tool {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(120 120 128 / 12%);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #222;
+  white-space: nowrap;
+}
+
+/* Теги в оверлее проекта */
+.project-overlay__tool {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgb(120 120 128 / 12%);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  color: #222;
+}
+
+/* Мобильная версия — фон для тегов */
+@media (max-width: 640px) {
+  .designer-skills__item {
+    padding: 4px 9px;
+    font-size: 11px;
+    background: rgb(120 120 128 / 12%);
+    color: #222;
+  }
+}
+
+/* --- END: теги для скиллов --- */
+
+.role-card__chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid var(--role-chip-border);
+  transition: transform var(--editorial-transition);
+}
+
+.role-card--designer .role-card__chip {
+  background: #2a221c;
+  color: #fff8f2;
+}
+
+.role-card--frontend .role-card__chip {
+  background: #3d5340;
+  color: #f4faf2;
+}
+
+.role-card--ml .role-card__chip {
+  background: rgba(36, 32, 40, 0.12);
+  color: #342c3a;
+}
+
+.role-card--person .role-card__chip {
+  background: #3d3230;
+  color: #fff7f4;
+}
+
+.role-card:hover .role-card__chip {
+  transform: translateX(3px);
+}
+
+@media (min-width: 720px) {
+  .roles-nav--hero {
+    --hero-card-stack-base: clamp(14px, 3.2vh, 30px);
+    --hero-card-stack-touch: clamp(168px, 23.5vh, 272px);
+    --hero-thought-title-lap: clamp(40px, 6.5vh, 68px);
+    --hero-thought-upper-lift: clamp(32px, 5.5vh, 56px);
+    --hero-thought-upper-drop: clamp(64px, 9vw, 88px);
+  }
+
+  .roles-nav--hero .role-card {
+    width: clamp(248px, 34vw, 400px);
+    min-height: clamp(104px, 14vh, 132px);
+    padding: clamp(20px, 2.4vw, 26px) clamp(26px, 3vw, 38px);
+    gap: 16px;
+  }
+
+  .roles-nav--hero .role-card__label {
+    font-size: clamp(1.22rem, 1.75vw, 1.58rem);
+    max-width: 22ch;
+  }
+
+  html[lang="en"] .roles-nav--hero .role-card__label {
+    max-width: 26ch;
+    font-size: clamp(1.14rem, 1.6vw, 1.48rem);
+  }
+
+  .roles-nav--hero .role-card__chip {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.15rem;
+  }
+
+  .roles-nav--hero .role-card--thought {
+    --thought-pad-top: 24%;
+    --thought-pad-bottom: 31%;
+    --thought-pad-tail: 22%;
+    --thought-pad-side: 11%;
+    --thought-pad-text-left: 17%;
+    --thought-chip-size: calc(2.85rem * var(--thought-bubble-scale));
+    width: clamp(
+      calc(268px * var(--thought-bubble-scale)),
+      calc(34vw * var(--thought-bubble-scale)),
+      calc(408px * var(--thought-bubble-scale))
+    );
+    min-height: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(1.34rem, 1.95vw, 1.82rem);
+  }
+
+  html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(1.26rem, 1.8vw, 1.72rem);
+  }
+
+  .roles-nav--hero .role-card--thought .role-card__chip {
+    font-size: 1.25rem;
+  }
+
+  .roles-nav--hero .role-card--designer {
+    left: clamp(-32px, calc(-2.5vw - 10%), -14px);
+    bottom: calc(
+      var(--hero-card-stack-base) + var(--hero-card-stack-touch) + 2px +
+        var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
+        var(--hero-thought-upper-drop)
+    );
+    z-index: 2;
+  }
+
+  .roles-nav--hero .role-card--frontend {
+    right: clamp(-32px, calc(-2.5vw - 10%), -14px);
+    bottom: calc(
+      var(--hero-card-stack-base) + var(--hero-card-stack-touch) + 2px +
+        var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
+        var(--hero-thought-upper-drop)
+    );
+    z-index: 3;
+  }
+
+  .roles-nav--hero .role-card--ml {
+    left: clamp(12px, 4vw, 52px);
+    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+    z-index: 4;
+  }
+
+  .roles-nav--hero .role-card--person {
+    right: clamp(12px, 4vw, 52px);
+    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+    z-index: 5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-experience {
+    height: auto;
+  }
+
+  .hero-experience__pin {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    display: block;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hero-experience__pin .hero-intro {
+    flex: none;
+    min-height: var(--hero-viewport);
+  }
+
+  .hero-experience__track {
+    display: none;
+  }
+
+  .roles-nav--hero .role-card,
+  .roles-nav--hero .role-card--scroll-settled {
+    opacity: 1;
+  }
+
+  .role-card {
+    transition: box-shadow 0.15s ease;
+  }
+
+  .role-card:hover {
+    --role-lift: 0px;
+    transform: rotate(var(--role-rotate));
+  }
+
+  .role-card:hover .role-card__chip {
+    transform: none;
+  }
+
+  .roles-nav--hero .role-card--thought:hover {
+    filter: none;
+  }
+}
+
+.navbar-home {
+  color: inherit;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.navbar-home:hover {
+  text-decoration: underline;
+}
+
+.navbar-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+  min-width: 2rem;
+  min-height: 2rem;
+  margin-left: -4px;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-back__icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  transform: translateY(-0.04em);
+}
+
+.navbar-back:hover {
+  opacity: 0.55;
+}
+
+.navbar-back:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.subpage-main {
+  padding-top: 8px;
+}
+
+body:has(.top-navbar--subpage):not(.page-designer):not(.page-person) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+body:has(.top-navbar--subpage):not(.page-designer):not(.page-person) .subpage-main {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+body:has(.top-navbar--subpage):not(.page-designer):not(.page-person) .footer {
+  flex-shrink: 0;
+}
+
+.subpage-main--designer {
+  --designer-nav-h: 55px;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.designer-skills {
+  position: absolute;
+  top: clamp(10px, 1.8vh, 18px);
+  left: clamp(16px, 3vw, 32px);
+  z-index: 6;
+  max-width: min(460px, 72vw);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.designer-skills__list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: clamp(18px, 3.2vw, 32px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.designer-skills__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.designer-skills__tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.designer-skills__group {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-transform: lowercase;
+  color: rgb(0 0 0 / 44%);
+  list-style: none;
+}
+
+/* ——— Designer page: Apple-style chrome (не карточки) ——— */
+/* ... остальной код без изменений ... */
+
+/* Mobile styles */
+@media (max-width: 900px) {
+  .hero-intro {
+    padding: clamp(6px, 1.5vw, 14px) clamp(16px, 4vw, 32px) clamp(10px, 2vw, 20px);
+  }
+
+  .hero-intro .hero-intro__name {
+    --hero-word-gap-tracking: -0.03em;
+    --hero-word-inner-tracking: -0.038em;
+  }
+
+  .project-img {
+    height: min(70vh, 420px);
+  }
+
+  .project-description {
+    width: min(280px, 85vw);
+  }
+
+  .role-card__label {
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+  }
+
+  .languages-section {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+
+  .languages-section__title {
+    margin-bottom: 28px;
+  }
+}

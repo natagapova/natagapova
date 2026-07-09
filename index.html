@@ -3,181 +3,225 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портфолио Натальи Агаповой — UX/UI и продуктовый дизайн, вёрстка, проекты для Яндекса, Innopolis и др.">
   <title>natalia's portfolio</title>
-  <link rel="icon" type="image/png" href="images/favicon.webp">
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-images">
-          <img src="images/header-1.webp" alt="Фото 1" />
-          <img src="images/header-2.webp" alt="Фото 2" />
+  <section class="hero-experience" id="hero-experience" aria-label="Направления">
+    <div class="hero-experience__pin" id="hero-experience-pin">
+      <nav class="top-navbar top-navbar--hero">
+        <div class="navbar-left">
+          <span id="nav-brand">наталья агапова</span> <span class="navbar-copy">© 2026</span>
         </div>
-        <div class="banner">
-            <h1 id="store-name"><span>НАТАЛЬЯ АГАПОВА</span></h1>
+        <div class="navbar-right">
+          <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
+          <a id="contact-extra" href="https://t.me/nhefy">связаться</a>
+        </div>
+      </nav>
+      <header class="hero-intro">
+    <div class="hero-intro__stage">
+      <h1 class="hero-intro__name" id="store-name">
+        <span class="hero-intro__title-line"
+          ><span class="hero-word">к<span class="hero-letter-gap-kt">т</span>о</span>
+          <span class="hero-word">она?</span></span
+        >
+      </h1>
+      <div class="hero-intro__photo-wrap" id="hero-photo-wrap">
+        <div class="hero-intro__photo-stack">
+          <img
+            class="hero-intro__photo hero-intro__photo--open"
+            src="images/my-head.png"
+            alt=""
+            width="2392"
+            height="3503"
+            decoding="async"
+          />
+          <img
+            class="hero-intro__photo hero-intro__photo--closed"
+            src="images/my-head-eyesclosed.png"
+            alt=""
+            width="832"
+            height="1248"
+            decoding="async"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+          <nav class="roles-nav roles-nav--hero" aria-label="Роли">
+            <a href="designer.html" class="role-card role-card--designer role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought2.png"
+                alt=""
+                width="1796"
+                height="1248"
+                decoding="async"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-designer">дизайнер</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="ml.html" class="role-card role-card--frontend role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought1.png"
+                alt=""
+                width="1833"
+                height="1190"
+                decoding="async"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-ml">ML разработчик</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="frontend.html" class="role-card role-card--ml role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought3.png"
+                alt=""
+                width="1742"
+                height="1176"
+                decoding="async"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-frontend">frontend разработчик</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="person.html" class="role-card role-card--person role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought4.png"
+                alt=""
+                width="1975"
+                height="1338"
+                decoding="async"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-person">человек</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+          </nav>
         </div>
       </header>
-      
-      <!-- ⬇️ Теперь отдельно -->
-      <div class="header-extra">
-        <span id="languageSwitch" onclick="switchLanguage()">switch to english</span>
-        <p id="location-extra">иннополис, россия</p>
-        <a id="contact-extra" href="https://t.me/nhefy">связаться со мной</a>
-        <p id="year">© 2025</p>
-      </div>
-      
-      
-
-  <section class="about">
-    <h2 id="about-title">обо мне</h2>
-    <p id="about-text">моя цель — сделать дизайн простым, приятным и креативным</p>
+    </div>
+    <div class="hero-experience__track" id="hero-experience-track" aria-hidden="true"></div>
   </section>
 
-  <section class="portfolio-section">
-    <h2 id="featuredTitle">мои проекты</h2>
-
-
-    <div class="projects-slider">
-
-      <hr class="divider" />
-      <!-- Проект 4 -->
-      <div class="project-track">
-        <img src="images/croissan/page2.webp" class="project-img" />
-        <img src="images/croissan/page13.webp" class="project-img" />
-        <img src="images/croissan/page4.webp" class="project-img" />
-        <img src="images/croissan/page9.webp" class="project-img" />
-        <img src="images/croissan/page12.webp" class="project-img" />
-        <img src="images/croissan/page5.webp" class="project-img" />
-        <img src="images/croissan/page8.webp" class="project-img" />
-        <img src="images/croissan/page14.webp" class="project-img" />
-        <img src="images/croissan/page1.webp" class="project-img" />
-        <img src="images/croissan/page7.webp" class="project-img" />
-        <img src="images/croissan/page15.webp" class="project-img" />
-        <img src="images/croissan/page10.webp" class="project-img" />
-        <img src="images/croissan/page11.webp" class="project-img" />
-        <img src="images/croissan/page6.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="CroissanStudioTitle">CROISSAN STUDIO</h3>
-          <p id="CroissanStudioDesc">продукты, разработанные мной для нейрохудожника - продукта croissan studio: лого, мерч, концепты</p>
+  <section class="languages-section" aria-labelledby="languages-section-title">
+    <div class="languages-section__inner">
+      <h2 class="languages-section__title" id="languages-section-title">
+        <span id="languages-block-title">языки</span>
+      </h2>
+      <div class="lang-map" id="lang-map" role="group" aria-describedby="lang-map-desc">
+        <p class="visually-hidden" id="lang-map-desc">
+          Карта владения языками по шкале от A1 до C2.
+        </p>
+        <div class="lang-map__glow" id="lang-map-glow" aria-hidden="true">
+          <canvas class="lang-map__canvas" id="lang-map-canvas"></canvas>
+        </div>
+        <div class="lang-map__rows">
+          <div class="lang-map__row lang-map__row--ru">
+            <span class="lang-map__label lang-map__label--left" id="lang-ru-name">русский</span>
+            <div class="lang-map__track">
+              <div class="lang-map__rail">
+                <span class="lang-map__line" aria-hidden="true"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 0"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 1"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 2"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 3"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 4"></span>
+                <span class="lang-map__anchor lang-map__anchor--active" style="--anchor-i: 5"><span class="lang-map__anchor-core" aria-hidden="true"></span></span>
+              </div>
+            </div>
+            <span class="lang-map__label lang-map__label--right">C2</span>
+          </div>
+          <div class="lang-map__row lang-map__row--en">
+            <span class="lang-map__label lang-map__label--left" id="lang-en-name">английский</span>
+            <div class="lang-map__track">
+              <div class="lang-map__rail">
+                <span class="lang-map__line" aria-hidden="true"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 0"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 1"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 2"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 3"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 4"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 5"></span>
+                <span class="lang-map__anchor lang-map__anchor--active" style="--anchor-i: 4.5"><span class="lang-map__anchor-core" aria-hidden="true"></span></span>
+              </div>
+            </div>
+            <span class="lang-map__label lang-map__label--right" id="lang-en-level">C1+</span>
+          </div>
+          <div class="lang-map__row lang-map__row--fr">
+            <span class="lang-map__label lang-map__label--left" id="lang-fr-name">французский</span>
+            <div class="lang-map__track">
+              <div class="lang-map__rail">
+                <span class="lang-map__line" aria-hidden="true"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 0"></span>
+                <span class="lang-map__anchor lang-map__anchor--active" style="--anchor-i: 1"><span class="lang-map__anchor-core" aria-hidden="true"></span></span>
+                <span class="lang-map__anchor" style="--anchor-i: 2"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 3"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 4"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 5"></span>
+              </div>
+            </div>
+            <span class="lang-map__label lang-map__label--right">A2</span>
+          </div>
+          <div class="lang-map__row lang-map__row--ko">
+            <span class="lang-map__label lang-map__label--left" id="lang-ko-name">корейский</span>
+            <div class="lang-map__track">
+              <div class="lang-map__rail">
+                <span class="lang-map__line" aria-hidden="true"></span>
+                <span class="lang-map__anchor lang-map__anchor--active" style="--anchor-i: 0"><span class="lang-map__anchor-core" aria-hidden="true"></span></span>
+                <span class="lang-map__anchor" style="--anchor-i: 1"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 2"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 3"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 4"></span>
+                <span class="lang-map__anchor" style="--anchor-i: 5"></span>
+              </div>
+            </div>
+            <span class="lang-map__label lang-map__label--right">A1</span>
+          </div>
         </div>
       </div>
-
-      <hr class="divider" />
-      <!-- Проект 3 -->
-      <div class="project-track">
-        <img src="images/posters/page4.webp" class="project-img" />
-        <img src="images/posters/page3.webp" class="project-img" />
-        <img src="images/posters/page8.webp" class="project-img" />
-        <img src="images/posters/page2.webp" class="project-img" />
-        <img src="images/posters/page1.webp" class="project-img" />
-        <img src="images/posters/page6.webp" class="project-img" />
-        <img src="images/posters/page7.webp" class="project-img" />
-        <img src="images/posters/page5.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="PostersTitle">ПОСТЕРЫ</h3>
-          <p id="PostersDesc">у меня есть опыт дизайна афиш для мероприятий в казани и иннополисе. мое видение в том, чтобы плакаты были удобочитаемыми и эстетичными</p>
-        </div>
-      </div>
-
-      <hr class="divider" />
-      <!-- Проект 4 -->
-      <div class="project-track">
-        <img src="images/concepts/page8.webp" class="project-img" />
-        <img src="images/concepts/page2.webp" class="project-img" />
-        <img src="images/concepts/page4.webp" class="project-img" />
-        <img src="images/concepts/page1.webp" class="project-img" />
-        <img src="images/concepts/page5.webp" class="project-img" />
-        <img src="images/concepts/page7.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="ConceptsTitle">КОНЦЕПТЫ</h3>
-          <p id="ConceptsDesc">экспериментальные макеты, сделанные для себя</p>
-        </div>
-      </div>
-
-      <hr class="divider" />
-      <!-- Проект 1 -->
-      <div class="project-track">
-        <img src="images/tsarevbarilova/page1.webp" class="project-img" />
-        <img src="images/tsarevbarilova/page2.webp" class="project-img" />
-        <img src="images/tsarevbarilova/page3.webp" class="project-img" />
-        <img src="images/tsarevbarilova/page4.webp" class="project-img" />
-        <img src="images/tsarevbarilova/page5.webp" class="project-img" />
-        <img src="images/tsarevbarilova/page6.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="TsarevBarilovaTitle">ЦАРЁВ & БАРИЛОВА</h3>
-          <p id="TsarevBarilovaDesc">дизайн сайта для продажи онлайн курсов по танцам</p>
-        </div>
-      </div>
-
-      <hr class="divider" />
-      <!-- Проект 1 -->
-      <div class="project-track">
-        <img src="images/innobooklovers/page1.webp" class="project-img" />
-        <img src="images/innobooklovers/page2.webp" class="project-img" />
-        <img src="images/innobooklovers/page3.webp" class="project-img" />
-        <img src="images/innobooklovers/page4.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="InnoBookLoversTitle">INNОBOOKLOVERS</h3>
-          <p id="InnoBookLoversDesc">дизайн сайта для курса по фронтенд разработке в университете иннополис. отвечала за ux/ui интерфейс в проекте</p>
-        </div>
-      </div>
-
-      <hr class="divider" />
-      <!-- Проект 2 -->
-      <div class="project-track">
-        <img src="images/innomed/page6.webp" class="project-img" />
-        <img src="images/innomed/page1.webp" class="project-img" />
-        <img src="images/innomed/page2.webp" class="project-img" />
-        <img src="images/innomed/page3.webp" class="project-img" />
-        <img src="images/innomed/page4.webp" class="project-img" />
-        <img src="images/innomed/page5.webp" class="project-img" />
-        <img src="images/innomed/page7.webp" class="project-img" />
-        <div class="project-description">
-          <h3 id="InnoMedTitle">INNOMED</h3>
-          <p id="InnoMedDesc">прототип приложения innomed был разработан для университета иннополис на курсе по продакт менеджменту. я была в роли владельца продукта и также отвечала за разработку прототипа</p>
-        </div>
-      </div>
-
     </div>
   </section>
-
   <section class="about-section">
-
     <div class="about-columns">
-      <!-- Experience -->
       <div class="about-block">
         <h3 id="experience-block-title">опыт</h3>
         <ul>
-            <li><span id="exp-croissan"><strong>croissan studio</strong> — студия разработки полного цикла для ии-продуктов (ux/ui и продуктовый дизайнер, фронтенд-разработчик, ai-креатор на проектной занятости, апрель 2025 - ...)</span></li>
-            <li><span id="exp-azimov"><strong>azimovlab</strong> — ии-сервис генерации тестов (фронтенд разработчик, февраль – сентябрь 2024)</span></li>
-            <li><span id="exp-clearmind"><strong>фриланс</strong> — дизайн афиш, сайтов; вёрстка сайтов на заказ (2022 - ...)</span></li>
-          </ul>
+          <li><span id="exp-croissan"></span></li>
+          <li><span id="exp-azimov"></span></li>
+          <li><span id="exp-clearmind"></span></li>
+        </ul>
       </div>
-
-      <!-- Volunteering -->
       <div class="about-block">
         <h3 id="volunteering-block-title">волонтёрство</h3>
         <ul>
-          <li><span id="vol-trenirovochnaya"><strong>trenirovochnaya.kzn</strong> — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – ...)</span></li>
-          <li><span id="vol-innostreetdance"><strong>innostreetdance</strong> — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – ...)</span></li>
+          <li><span id="vol-trenirovochnaya"></span></li>
+          <li><span id="vol-innostreetdance"></span></li>
         </ul>
       </div>
-
-      <!-- Education -->
       <div class="about-block">
         <h3 id="education-block-title">образование</h3>
         <ul>
-            <li><span id="edu-innopolis"><strong>университет иннополис</strong> — бакалавриат: прикладной искусственный  интеллект (2026)</span></li>
-          </ul>
+          <li><span id="edu-innopolis"></span></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <a id="footer-contact" href="https://t.me/nhefy" class="footer-link">связаться со мной</a>
-    <span class="footer-copy">© 2025</span>
+    <a class="footer-link" id="footer-contact" href="https://t.me/nhefy">связаться</a>
+    <span class="footer-copy">natalia agapova</span>
   </footer>
 
 </body>

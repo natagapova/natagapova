@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Кейсы Натальи Агаповой: UX/UI, веб, бренд Croissan Studio, Яндекс Директ, InnoMed и др.">
+  <title>дизайнер — natalia's portfolio</title>
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="page-designer">
+
+  <h1 style="background:red;color:white">
+    THIS IS THE REAL DESIGNER.HTML
+    </h1>
+
+  <nav class="top-navbar top-navbar--subpage top-navbar--designer">
+    <div class="navbar-left">
+      <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
+        <span class="navbar-back__icon" aria-hidden="true">←</span>
+      </a>
+    </div>
+    <div class="navbar-center">
+      <span class="navbar-page-title" id="designer-page-title">дизайн кейсы</span>
+    </div>
+    <div class="navbar-right">
+      <button type="button" id="languageSwitch" aria-label="switch interface language to english">eng</button>
+      <a id="contact-extra" href="https://t.me/nhefy">связаться</a>
+    </div>
+  </nav>
+
+  <main class="subpage-main subpage-main--designer">
+    <section class="projects-section" id="projects-section">
+      <aside class="designer-skills" id="designer-intro">
+        <ul class="designer-skills__list" id="designer-intro-skills"></ul>
+      </aside>
+      <div class="projects-scene" id="projects-scene"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-link" id="footer-contact" href="https://t.me/nhefy">связаться</a>
+    <span class="footer-copy">natalia agapova</span>
+  </footer>
+
+  <div id="project-overlay" class="project-overlay" hidden>
+    <button type="button" class="project-overlay__backdrop" aria-label="закрыть"></button>
+    <div
+      class="project-overlay__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-overlay-title"
+    >
+      <button type="button" class="project-overlay__close" id="project-overlay-close" aria-label="закрыть">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="project-overlay__scroll" id="project-overlay-scroll">
+        <div class="project-overlay__intro">
+          <div class="project-overlay__copy">
+            <div class="project-overlay__head">
+              <h2 class="project-overlay__title" id="project-overlay-title"></h2>
+              <div class="project-overlay__meta-row" id="project-overlay-meta-row" hidden>
+                <p class="project-overlay__meta" id="project-overlay-meta" hidden></p>
+                <span class="project-overlay__meta-sep" id="project-overlay-meta-sep" aria-hidden="true" hidden> · </span>
+                <div class="project-overlay__tools" id="project-overlay-tools" hidden></div>
+              </div>
+            </div>
+            <p class="project-overlay__desc" id="project-overlay-desc"></p>
+            <p class="project-overlay__detail" id="project-overlay-detail" hidden></p>
+            <ul class="project-overlay__highlights" id="project-overlay-highlights" hidden></ul>
+          </div>
+        </div>
+        <div
+          class="project-overlay__gallery"
+          id="project-overlay-gallery"
+          role="region"
+          aria-label="галерея проекта"
+          tabindex="0"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="project-lightbox" class="project-lightbox" hidden>
+    <button type="button" class="project-lightbox__backdrop" id="project-lightbox-backdrop" aria-label="закрыть"></button>
+    <div
+      class="project-lightbox__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-label="просмотр изображения"
+    >
+      <button type="button" class="project-lightbox__close" id="project-lightbox-close" aria-label="закрыть">
+        <span aria-hidden="true">×</span>
+      </button>
+      <button type="button" class="project-lightbox__nav project-lightbox__nav--prev" id="project-lightbox-prev" aria-label="предыдущее">
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button type="button" class="project-lightbox__nav project-lightbox__nav--next" id="project-lightbox-next" aria-label="следующее">
+        <span aria-hidden="true">›</span>
+      </button>
+      <figure class="project-lightbox__frame">
+        <img class="project-lightbox__image" id="project-lightbox-image" alt="" decoding="async" />
+        <figcaption class="project-lightbox__counter" id="project-lightbox-counter"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "live-server --port=5501 --no-browser --watch=index.html,styles.css,script.js,images,fonts,designer.html,frontend.html,ml.html,person.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

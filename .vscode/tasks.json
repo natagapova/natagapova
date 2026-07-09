@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Сайт с автообновлением",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "live-server",
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Serving",
+          "endsPattern": "Ready for changes"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Превью в Cursor (Simple Browser)",
+      "type": "vscode",
+      "command": "simpleBrowser.show",
+      "args": ["http://127.0.0.1:5501/"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Портфолио: сервер + превью",
+      "dependsOn": ["Сайт с автообновлением", "Превью в Cursor (Simple Browser)"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+  ]
+}

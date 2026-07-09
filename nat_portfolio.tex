@@ -1,0 +1,267 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\IfFontExistsTF{DejaVu Serif}{\setmainfont{DejaVu Serif}}{\setmainfont{Times New Roman}}
+\IfFontExistsTF{DejaVu Sans}{\setsansfont{DejaVu Sans}}{\setsansfont{Arial}}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=[HTML]{2563EB},
+  linkcolor=[HTML]{2563EB}
+}
+
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{textgray}{HTML}{4B5563}
+\definecolor{dategray}{HTML}{9CA3AF}
+\definecolor{lightgray}{HTML}{E5E7EB}
+
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\titleformat{\section}
+  {\Large\bfseries\color{accent}}
+  {}
+  {0pt}
+  {}
+  [\vspace{0.2em}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+
+\newcommand{\roleline}[2]{
+  \textbf{#1}\hfill\textcolor{dategray}{\normalfont #2}
+}
+
+\newcommand{\project}[5]{
+  \subsection*{#1}
+  \textit{#2}
+
+  #3
+
+  \textbf{Стек:} #4
+
+  #5
+}
+
+\begin{document}
+
+{\fontsize{24}{28}\selectfont\textbf{Наталья Агапова}}\\[0.2em]
+{\large Портфолио · Frontend Developer / Web Designer}
+
+\vspace{0.4em}
+
+\href{mailto:agapnatalya004@mail.ru}{agapnatalya004@mail.ru}
+\quad|\quad
+\href{https://t.me/nhefy}{@nhefy}
+\quad|\quad
+\href{https://github.com/natagapova}{github.com/natagapova}
+
+\vspace{0.8em}
+
+\textcolor{textgray}{
+Frontend-разработчик и дизайнер с 3+ годами опыта на стыке визуала, интерфейсов и AI-инструментов. Собираю лендинги, промо-сайты и продуктовые интерфейсы с фокусом на адаптивность, визуальную подачу и аккуратную реализацию. Умею работать от структуры и референсов до живого интерфейса: продумывать экран, собирать его в Tilda или коде и доводить до понятного результата.
+}
+
+\section*{Ключевые навыки}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item HTML, CSS, JavaScript, TypeScript
+  \item React
+  \item Tilda, Zero Block
+  \item Figma, FigJam
+  \item Adobe Illustrator, Photoshop
+  \item Адаптивная верстка, mobile-first
+  \item UI для MVP и промо-сайтов
+  \item Перевод дизайна из Figma в интерфейс
+  \item Формы, интерактивные блоки, базовые анимации
+  \item GitHub, GitLab
+  \item AI-инструменты в продуктовых процессах
+  \item Английский C1+, русский носитель
+\end{itemize}
+\end{multicols}
+
+\section*{О себе}
+
+Мне интересно собирать цифровые продукты, в которых важны не только код и структура, но и ощущение от взаимодействия. Сильнее всего чувствую себя в задачах, где нужно совместить визуальный вкус, быструю сборку и аккуратный фронтенд. Работаю как в командных проектах, так и самостоятельно: от концепции и экранов до верстки, адаптива и публикации.
+
+\section*{Опыт}
+
+\roleline{Croissan Studio — frontend, design, AI}{апрель 2025 --- настоящее время}
+
+Работаю на стыке дизайна, фронтенда и AI-продакшена. Участвую в клиентских и внутренних проектах студии: от визуальной концепции и экранов до сборки интерфейсов, брендовых материалов и цифровых креативов.
+
+\begin{itemize}
+  \item Участвую в UX/UI и визуальной переработке проектов студии.
+  \item Работаю с фронтенд-реализацией интерфейсных блоков и промо-страниц.
+  \item Подключаюсь к AI-креативу: генерация изображений, видео и аудио для студийных задач.
+  \item Сочетаю дизайнерские и технические роли в зависимости от формата проекта.
+\end{itemize}
+
+\roleline{AzimovLab — Frontend Team Lead}{февраль 2024 --- сентябрь 2024}
+
+Стартап, разрабатывающий AI-сервис генерации тестов. Руководила фронтенд-командой и участвовала в сборке MVP-интерфейса.
+
+\begin{itemize}
+  \item Планировала работу фронтенд-команды и ставила задачи.
+  \item Проводила code review и координировала разработку.
+  \item Собирала пользовательский интерфейс для MVP.
+  \item Интегрировала фронтенд с API и продуктовой логикой.
+\end{itemize}
+
+\roleline{Фриланс — frontend / web design}{осень 2022 --- настоящее время}
+
+\begin{itemize}
+  \item Верстка лендингов и промо-сайтов на заказ.
+  \item Работа с Tilda, статической версткой и визуальными концепциями.
+  \item Проекты в сферах культуры, персональных сайтов и образовательных продуктов.
+\end{itemize}
+
+\section*{Избранные проекты}
+
+\project
+{Croissan Studio}
+{\href{https://croissanstudio.ru}{croissanstudio.ru}}
+{
+Участвую во фронтенд-разработке студийного сайта для AI- и цифровых проектов. Работаю в команде над интерфейсными блоками, адаптивностью и общей визуальной целостностью страницы. Сайт собран как современная студийная витрина с акцентом на кейсы, экспертизу и понятную презентацию услуг.
+}
+{фронтенд-реализация, адаптивная верстка, работа с контентными блоками, командная разработка}
+{
+\begin{itemize}
+  \item Командная работа над публичным сайтом студии.
+  \item Реализация визуально насыщенных секций и кейсовой подачи.
+  \item Внимание к типографике, структуре и пользовательскому восприятию страницы.
+\end{itemize}
+}
+
+\project
+{Nina's Space}
+{\href{https://ninas-space.vercel.app/}{Сайт} \quad|\quad \href{https://github.com/natagapova/ninas-space}{GitHub}}
+{
+Некоммерческий персональный сайт, который я сделала по собственной инициативе для близкой подруги — как камерный цифровой проект и творческую практику вне клиентских задач. Внутри — медитации, аффирмации, мини-игры, дыхательный виджет и мультиязычность. Полностью самостоятельная разработка: от идеи и структуры до реализации интерфейса и интерактивных сценариев.
+}
+{HTML, CSS, JavaScript}
+{
+\begin{itemize}
+  \item Самостоятельная реализация проекта с нуля.
+  \item Интерактивность без фреймворков и без сборщика.
+  \item Мультиязычность и дополнительные пользовательские сценарии.
+  \item Работа с атмосферой, микроопытом и эмоциональным дизайном.
+\end{itemize}
+}
+
+\project
+{Cruel Games}
+{\href{https://cruelgames-website.vercel.app/}{Сайт} \quad|\quad \href{https://github.com/natagapova/cruelgames-website}{GitHub}}
+{
+Промо-сайт театральной постановки, разработанный как статичный, визуально цельный лендинг с акцентом на атмосферу, информацию о спектакле и удобную мобильную подачу. Фриланс-проект, выполненный как отдельная фронтенд-разработка.
+}
+{HTML, CSS, JavaScript}
+{
+\begin{itemize}
+  \item Полноэкранный hero-блок и промо-подача проекта.
+  \item Адаптивная одностраничная верстка.
+  \item Кастомная галерея с переключением превью и свайпом на мобильных.
+  \item Оптимизация изображений и аккуратная работа со статикой.
+\end{itemize}
+}
+
+\project
+{AI-смена · Иннополис}
+{\href{https://aismena.ru}{aismena.ru}}
+{
+Лендинг летней смены по искусственному интеллекту для школьников 7--11 классов: одностраничник для родителей с фокусом на конверсию в заявки, доверие и полную информацию о программе без звонка менеджеру. Собрала структуру, визуальную подачу и весь сайт на Tilda в сжатые сроки --- от hero и расписания дня до блоков безопасности, стоимости, FAQ и формы записи.
+}
+{Tilda, Zero Block, адаптивная сборка, формы, подключение домена}
+{
+\begin{itemize}
+  \item Лендинг под заявки: hero, программа, проекты учеников, условия проживания, команда, цена, FAQ.
+  \item Таймлайн расписания дня и дифференциация по уровням подготовки.
+  \item Адаптивная вёрстка и типографика под все форматы экранов в Tilda.
+  \item Форма заявки, юридический футер и публикация на домене aismena.ru.
+\end{itemize}
+}
+
+\subsection*{Барилова \& Царёв}
+\textit{Kingstep Dance Studio · клиентский проект · запуск в 2026}
+
+Сайт для танцевальной студии Kingstep и хореографов Алины Бариловой и Александра Царёва: главная, каталог курсов и страницы занятий с акцентом на визуальную подачу, атмосферу бренда и понятную навигацию. Отвечала за структуру, визуальную концепцию и ключевые экраны; сейчас проект на финальной стадии сборки в Tilda.
+
+\textbf{Стек:} Figma, Tilda, Adobe Illustrator
+
+\begin{itemize}
+  \item Собрала логику сайта: главная, раздел курсов и карточки занятий.
+  \item Разработала визуальную концепцию в тёмной эстетике студии.
+  \item Подготовила макеты, промо-экраны и графику для сборки в Tilda.
+  \item Согласовала подачу с брендом Kingstep Dance Studio.
+\end{itemize}
+
+\vspace{0.4em}
+\begin{center}
+  \includegraphics[width=0.48\textwidth,height=0.42\textheight,keepaspectratio]{images/page1.png}%
+  \hfill
+  \includegraphics[width=0.48\textwidth,height=0.42\textheight,keepaspectratio]{images/page2.png}\\[0.5em]
+  \includegraphics[width=0.48\textwidth,height=0.42\textheight,keepaspectratio]{images/page3.png}%
+  \hfill
+  \includegraphics[width=0.48\textwidth,height=0.42\textheight,keepaspectratio]{images/page4.png}
+\end{center}
+\begin{center}
+  \textcolor{textgray}{\small Ключевые экраны сайта}
+\end{center}
+
+\section*{Как я работаю}
+
+\begin{enumerate}
+  \item Бриф и понимание задачи: аудитория, цель страницы, ограничения по срокам и формату.
+  \item Структура: собираю логику блоков, приоритеты контента и CTA.
+  \item Дизайн и сборка: перевожу решение в экран, верстку или Tilda.
+  \item Адаптив: отдельно проверяю мобильную версию и ритм страницы.
+  \item Полировка: типографика, визуальная целостность, интерактивные элементы, финальные правки.
+\end{enumerate}
+
+\section*{Дополнительный опыт}
+
+\begin{itemize}
+  \item Продуктовый и бренд-дизайн: интерфейсы, веб-экраны, мобильные экраны, айдентика, базовые бренд-гайды.
+  \item AI-инструменты в продакшене: генерация изображений, видео и аудио для клиентских и студийных задач.
+  \item Технический бэкграунд: Python, Java, C, C++, TensorFlow, PyTorch, работа с генеративными и CV-моделями.
+\end{itemize}
+
+\section*{Образование}
+
+Университет Иннополис, бакалавриат «Прикладной искусственный интеллект», 2026.
+
+\section*{Публикации}
+
+Холодов Я.~А.; Саллум Х.; Агапова Н.~А. «Подходы квантового отжига к взлому шифрования RSA». \textit{Вопросы кибербезопасности}, 2025, №~4, с.~127--133. DOI: \href{https://doi.org/10.21681/2311-3456-2025-4-127-133}{10.21681/2311-3456-2025-4-127-133}.
+
+\vspace{0.4em}
+
+\textcolor{textgray}{\small
+(EN) Kholodov, Y.; Salloum, H.; Agapova, N. ``Quantum Annealing Approaches to Breaking RSA Encryption.'' \textit{Voprosy kiberbezopasnosti}, 2025, vol.~4, pp.~127--133.
+}
+
+\vfill
+
+\begin{center}
+\textcolor{textgray}{Последнее обновление: май 2026}
+\end{center}
+
+\end{document}
