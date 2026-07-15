@@ -9,25 +9,27 @@
   <link rel="icon" type="image/webp" href="images/favicon.webp">
 
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="person.css">
 
   <script defer src="script.js"></script>
   <script defer src="person.js"></script>
 </head>
 
-<body>
+<body class="page-person">
 
-<nav class="top-navbar top-navbar--subpage">
+<nav class="top-navbar top-navbar--subpage top-navbar--person">
   <div class="navbar-left">
     <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
       <span class="navbar-back__icon" aria-hidden="true">←</span>
     </a>
   </div>
 
-  <div class="navbar-right">
-    <span class="navbar-who">
+  <div class="navbar-center">
+    <span class="navbar-who" id="person-navbar-who">
       вот кто делает вам сайты кстати
     </span>
+  </div>
+
+  <div class="navbar-right">
     <button
       type="button"
       id="languageSwitch"
@@ -42,11 +44,6 @@
 </nav>
 
 <main class="person-page">
-
-  <!-- "мл разработчик" (junior developer) heading removed as requested -->
-  <h1 class="role-page__title" id="role-page-title">
-    человек
-  </h1>
 
   <div id="gallery" class="gallery">
 

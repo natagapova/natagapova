@@ -17,70 +17,55 @@ let personGalleryObserver = null;
 /**
  * Reads the gap between .gallery-item elements as defined in styles.css by
  * creating dummy elements in memory and reading the computed style.
+ * Updated to match DOM nesting: .gallery > .gallery-column > .gallery-item
  */
 function getGalleryItemGap() {
-  // Create a temporary .gallery and two .gallery-item children
-  const gallery = document.createElement("div");
-  gallery.className = "gallery gallery-temp";
-  gallery.style.visibility = "hidden";
-  gallery.style.position = "absolute";
-  gallery.style.pointerEvents = "none";
-  document.body.appendChild(gallery);
+  const probe = document.createElement("div");
+  probe.className = "gallery gallery-temp";
+  probe.style.visibility = "hidden";
+  probe.style.position = "absolute";
+  probe.style.pointerEvents = "none";
+  document.body.appendChild(probe);
+
+  const galleryColumn = document.createElement("div");
+  galleryColumn.className = "gallery-column";
+  probe.appendChild(galleryColumn);
 
   for (let i = 0; i < 2; i++) {
     const item = document.createElement("div");
     item.className = "gallery-item";
     item.style.height = "10px";
     item.style.width = "10px";
-    gallery.appendChild(item);
+    galleryColumn.appendChild(item);
   }
 
   let gap = 0;
   try {
-    // try row gap first
-    let style = window.getComputedStyle(gallery);
-    let rawGap = style.rowGap || style.gap || "0px";
-    if (rawGap) {
-      gap = parseFloat(rawGap);
-    } else {
-      // fallback: measure actual rendered gap
-      const rects = Array.from(gallery.children).map(child => child.getBoundingClientRect());
-      gap = Math.round(Math.abs(rects[1].top - rects[0].bottom));
-      if (isNaN(gap)) gap = 0;
-    }
+    const style = window.getComputedStyle(galleryColumn);
+    const rawGap = style.rowGap || style.gap || "0px";
+    gap = parseFloat(rawGap) || 0;
   } catch (e) {
     gap = 0;
   } finally {
-    document.body.removeChild(gallery);
+    document.body.removeChild(probe);
   }
   return gap;
 }
-
-const PERSON_GALLERY_ITEM_GAP = getGalleryItemGap();
 
 function personGalleryMediaSrc(name) {
   return PERSON_GALLERY_BASE_PATH + encodeURIComponent(name);
 }
 
-// Revised logic for smoother, more tolerant breakpointing.
-// We let columns increase *sooner* and allow more screen sizes to get more columns.
 function getPersonGalleryColumnCount() {
   const width = window.innerWidth;
-
-  // If container exists, use its width for better granularity
   const gallery = document.getElementById("gallery");
   const galleryWidth = gallery
     ? gallery.getBoundingClientRect().width
     : width;
-
-  // Try to fit as many columns as possible, but not below min width per column
-  // We'll allow columns if their expected width is at least MIN_COLUMN_WIDTH px
+  const gap = getGalleryItemGap();
   const MIN_COLUMN_WIDTH = 260;
-
-  // Max 4 columns. Try to fit the most possible, given min col width
-  let columns = Math.floor((galleryWidth + PERSON_GALLERY_ITEM_GAP) / (MIN_COLUMN_WIDTH + PERSON_GALLERY_ITEM_GAP));
+  let columns = Math.floor((galleryWidth + gap) / (MIN_COLUMN_WIDTH + gap));
   columns = Math.max(1, Math.min(4, columns));
-
   return columns;
 }
 
@@ -169,18 +154,14 @@ async function loadPersonGalleryManifest() {
 }
 
 // Greedy bin-packing: assign each new item to column with smallest cumulative "real" height so far.
+// Returns { columns, heights } where columns: array of arrays of items, heights: array of total column heights.
 function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
-  // columnWidth is in px (gallery.clientWidth / columnCount)
-  // Returns array of arrays of items: [ [item, ...], ... ]
   const columns = Array.from({ length: columnCount }, () => []);
   const heights = Array.from({ length: columnCount }, () => 0);
-  
+
   for (const item of items) {
-    // Item's natural displayed height is columnWidth / aspectRatio, plus gap (except last in col).
     const aspectRatio = item.aspectRatio > 0 ? item.aspectRatio : 1;
     const height = columnWidth / aspectRatio;
-    // Assign to column with shortest pile so far
-    // (plus (columns[i].length > 0 ? gapPx : 0) to simulate margin between stacked items)
     let minIdx = 0;
     let minAccum = heights[0];
     for (let i = 1; i < columnCount; i++) {
@@ -189,12 +170,14 @@ function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
         minIdx = i;
       }
     }
-    columns[minIdx].push(item);
-    // only add gap if not first item in this column
+    columns[minIdx].push({
+      ...item,
+      _expectedHeight: height
+    });
     heights[minIdx] += (columns[minIdx].length > 1 ? gapPx : 0) + height;
   }
 
-  return columns;
+  return { columns, heights };
 }
 
 function createPersonGalleryElement(item) {
@@ -327,8 +310,10 @@ function initPersonGalleryLightboxHandlers() {
  * Render the gallery as a masonry grid with equal-length (flush) columns.
  * 
  * - Distribute items via bin-packing/balancing using estimated layouts.
- * - Compute the actual rendered column heights, and clip the last item in each col
- *   so all columns' bottoms end at exactly the same px, even if some overrun.
+ * - Compute the min rendered column height, and clip each column
+ *   by distributing reduction proportionally across the tallest items,
+ *   enforcing a minimum-item-height floor; log a warning if undershoot is forced.
+ * - All logic is synchronous & based on computed heights (no DOM race).
  */
 function renderPersonGallery() {
   const gallery = document.getElementById("gallery");
@@ -341,29 +326,112 @@ function renderPersonGallery() {
 
   gallery.innerHTML = "";
 
-  // Determine gallery width and column width minus gutters
   const galleryRect = gallery.getBoundingClientRect();
   const galleryWidth = galleryRect.width > 0 ? galleryRect.width : window.innerWidth;
-  // subtract total column gaps (not item gap!) for consistent sizing
-  const totalColGaps = (columnCount - 1) * PERSON_GALLERY_ITEM_GAP;
+  const itemGap = getGalleryItemGap();
+  const totalColGaps = (columnCount - 1) * itemGap;
   const columnWidth = (galleryWidth - totalColGaps) / columnCount;
 
-  // Distribute items via bin-packing using aspect ratios and gap estimates
-  const columns = distributePersonGalleryItems(
+  const { columns, heights } = distributePersonGalleryItems(
     personGalleryItems,
     columnCount,
     columnWidth,
-    PERSON_GALLERY_ITEM_GAP
+    itemGap
   );
 
-  // Now: render columns & gallery, then fix all columns to same pixel bottom by clipping last item
-  // We'll keep references to last wrapper per column for clipping after layout.
-  const colEls = [];
-  const lastItemEls = [];
+  const minHeight = Math.min(...heights);
 
-  gallery.style.display = "flex";
-  gallery.style.flexDirection = "row";
-  gallery.style.alignItems = "flex-start";
+  const colEls = [];
+
+  // Height ratio floor for regular reduction
+  const MIN_HEIGHT_RATIO = 0.7; // don't make any image <70% original height
+
+  /**
+   * For a column, adjust item heights so that column sums exactly to minHeight.
+   * First, do MIN_HEIGHT_RATIO-clipping as before (tallest-first distributed trim).
+   * Then, if any exact pixels remain (even < 1px), apply as final unrestricted correction
+   * to the tallest item after floor-limited crops.
+   */
+  function computeColumnAdjustedHeights(columnItems, colIdx, colHeight, minHeight, gapPx) {
+    // 1. Build: {origIdx, item, origHeight, minHeight}
+    let indexed = columnItems.map((item, idx) => ({
+      origIdx: idx,
+      item,
+      origHeight: item._expectedHeight,
+      minHeight: item._expectedHeight * MIN_HEIGHT_RATIO
+    }));
+
+    const itemCount = columnItems.length;
+    const numGaps = itemCount > 1 ? (itemCount - 1) : 0;
+    const overflow = colHeight - minHeight;
+    if (overflow <= 0) {
+      return indexed.map(x => x.origHeight);
+    }
+
+    let neededTrim = overflow;
+
+    // 2. Sort by origHeight descending for tallest-first trim
+    indexed.sort((a, b) => b.origHeight - a.origHeight);
+
+    let trimmed = new Array(indexed.length).fill(0);
+
+    // 3. Tallest-first distribute down to minHeight floor
+    for (let i = 0; i < indexed.length; i++) {
+      if (neededTrim <= 0) break;
+      let maxTrim = indexed[i].origHeight - indexed[i].minHeight;
+      if (maxTrim <= 0) continue;
+      let toTrim = Math.min(neededTrim, maxTrim);
+      trimmed[i] = toTrim;
+      neededTrim -= toTrim;
+    }
+
+    // 4. Map trims back to original order (by origIdx)
+    let resultTrimByOrigIdx = new Array(indexed.length);
+    let bySortedOrigIdx = indexed.map((x, idx) => ({ ...x, trim: trimmed[idx] }));
+    bySortedOrigIdx.forEach((obj, sortIdx) => {
+      resultTrimByOrigIdx[obj.origIdx] = obj.trim;
+    });
+
+    // 5. Compose candidate heights (floored by MIN_HEIGHT_RATIO)
+    let candidateHeights = columnItems.map((item, idx) =>
+      Math.max(item._expectedHeight - (resultTrimByOrigIdx[idx] || 0), item._expectedHeight * MIN_HEIGHT_RATIO)
+    );
+
+    // 6. Compute sum after floor-limited distribution
+    let sumCandidate = candidateHeights.reduce((a, b) => a + b, 0) + numGaps * gapPx;
+    // Compute the exact required correction (could be positive, negative, or zero)
+    let correction = sumCandidate - minHeight;
+
+    // 7. If any pixels remain (correction > 0), apply exactly to the tallest final item (now ignoring the min floor)
+    //    (If correction <= 0, no further crop is possible/needed; correction < 0 means we've undershot, only possible if rounding/numeric drift)
+    if (Math.abs(correction) > 1e-6) {
+      if (correction > 0) {
+        // Find tallest of the candidateHeights (after floor-limited correction)
+        let tallestIdx = 0;
+        let tallestHeight = candidateHeights[0];
+        for (let i = 1; i < candidateHeights.length; i++) {
+          if (candidateHeights[i] > tallestHeight) {
+            tallestHeight = candidateHeights[i];
+            tallestIdx = i;
+          }
+        }
+        candidateHeights[tallestIdx] -= correction;
+      }
+      // If correction is negative (should be extremely rare: floating-point undershoot), cannot add to heights (never "grow").
+      // Log only if the drift is actually meaningful
+    }
+
+    // 8. Final check
+    let sumFinal = candidateHeights.reduce((a, b) => a + b, 0) + numGaps * gapPx;
+    if (Math.abs(sumFinal - minHeight) > 1e-5) {
+      console.warn(
+        `[PersonGallery] Column ${colIdx + 1}: could not match minHeight. Wanted ${minHeight}, got ${sumFinal}. Missed by ${sumFinal - minHeight}.`,
+        {finalHeights: candidateHeights, target: minHeight, columnItems}
+      );
+    }
+
+    return candidateHeights;
+  }
 
   columns.forEach((columnItems, colIdx) => {
     const columnEl = document.createElement("div");
@@ -372,55 +440,38 @@ function renderPersonGallery() {
     columnEl.style.display = "flex";
     columnEl.style.flexDirection = "column";
     columnEl.style.justifyContent = "flex-start";
-    if (colIdx !== 0) columnEl.style.marginLeft = PERSON_GALLERY_ITEM_GAP + "px";
 
-    let lastWrapper = null;
+    // Compute original height for this column
+    const originalColHeight = columnItems.reduce((acc, item, i) =>
+      acc + item._expectedHeight + (i > 0 ? itemGap : 0), 0
+    );
+    const finalHeights = computeColumnAdjustedHeights(
+      columnItems,
+      colIdx,
+      originalColHeight,
+      minHeight,
+      itemGap
+    );
+
     columnItems.forEach((item, i) => {
-      const aspectRatio = item.aspectRatio > 0 ? item.aspectRatio : 1;
-      const height = columnWidth / aspectRatio;
+      const height = finalHeights[i];
       const wrapper = createPersonGalleryElement(item);
       wrapper.style.width = "100%";
       wrapper.style.height = `${height}px`;
+      wrapper.style.flexShrink = "0";
       wrapper.style.overflow = "hidden";
       wrapper.style.boxSizing = "border-box";
-      if (i !== 0) wrapper.style.marginTop = PERSON_GALLERY_ITEM_GAP + "px";
-
       wrapper.addEventListener("click", () => openPersonGalleryLightbox(item));
       personGalleryObserver.observe(wrapper);
-
       columnEl.appendChild(wrapper);
-      lastWrapper = wrapper;
     });
 
     colEls.push(columnEl);
-    if (lastWrapper) lastItemEls.push(lastWrapper);
     gallery.appendChild(columnEl);
   });
 
-  // After layout, measure all .gallery-column heights and find the max (tallest) one
-  // We want to clamp/clip all columns to this max so bottoms are even.
-  // (Use setTimeout 0 for Chrome style flush – not strictly required but safer for paint timing.)
-  setTimeout(() => {
-    const colHeights = colEls.map(colEl =>
-      colEl.getBoundingClientRect().height
-    );
-    const maxHeight = Math.max(...colHeights);
-
-    // If any column overflows, clip last item in that column to fit bottom flush
-    colEls.forEach((colEl, idx) => {
-      const lastItem = lastItemEls[idx];
-      if (!lastItem) return;
-      const colHeight = colEl.getBoundingClientRect().height;
-      const overflow = colHeight - maxHeight;
-      if (overflow > 0 && lastItem.offsetHeight > overflow + 5) {
-        lastItem.style.height = (lastItem.offsetHeight - overflow) + "px";
-        lastItem.style.overflow = "hidden";
-      }
-    });
-
-    // Set gallery height for consistent scroll space
-    gallery.style.height = maxHeight + "px";
-  }, 0);
+  // Set gallery height to minHeight so nothing overflows below it (use raw float, not rounded)
+  gallery.style.height = minHeight + "px";
 }
 
 function schedulePersonGalleryResize() {

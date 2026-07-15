@@ -14,6 +14,7 @@ const translations = {
     roleFrontend: "frontend разработчик",
     roleML: "ML разработчик",
     rolePerson: "человек",
+    personNavbarWho: "вот кто делает вам сайты кстати",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -72,6 +73,7 @@ const translations = {
     roleFrontend: "frontend developer",
     roleML: "ML developer",
     rolePerson: "person",
+    personNavbarWho: "this is who does your website btw",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -357,6 +359,7 @@ const translationKeyToId = {
   roleFrontend: "role-frontend",
   roleML: "role-ml",
   rolePerson: "role-person",
+  personNavbarWho: "person-navbar-who",
   rolePagePlaceholder: "role-page-placeholder",
   experienceBlockTitle: "experience-block-title",
   educationBlockTitle: "education-block-title",
@@ -806,6 +809,11 @@ function applyTranslations() {
     } else if (path.includes("person")) {
       rolePageTitle.textContent = t.rolePerson;
     }
+  }
+
+  const personNavbarWho = document.getElementById("person-navbar-who");
+  if (personNavbarWho && t.personNavbarWho) {
+    personNavbarWho.textContent = t.personNavbarWho;
   }
 
   renderDesignerProjects();
