@@ -10,6 +10,13 @@ const translations = {
     languageSwitch: "eng",
     contactExtra: "связаться",
     portfolioTitle: "проекты",
+    designerToolsLabel: "инструменты",
+    designerToolFigma: "Figma",
+    designerToolIllustrator: "Adobe Illustrator",
+    designerToolPhotoshop: "Adobe Photoshop",
+    designerToolTilda: "Tilda",
+    designerToolCanva: "Canva",
+    designerToolAi: "AI",
     roleDesigner: "дизайнер",
     roleFrontend: "frontend разработчик",
     roleML: "ML разработчик",
@@ -96,6 +103,13 @@ const translations = {
     languageSwitch: "рус",
     contactExtra: "hmu",
     portfolioTitle: "projects",
+    designerToolsLabel: "tools",
+    designerToolFigma: "Figma",
+    designerToolIllustrator: "Adobe Illustrator",
+    designerToolPhotoshop: "Adobe Photoshop",
+    designerToolTilda: "Tilda",
+    designerToolCanva: "Canva",
+    designerToolAi: "AI",
     roleDesigner: "designer",
     roleFrontend: "frontend developer",
     roleML: "ML developer",
@@ -183,6 +197,7 @@ const designerProjects = [
     id: "yandex-direct",
     titleKey: "YandexDirectTitle",
     descKey: "YandexDirectDesc",
+    toolKeys: ["designerToolFigma"],
     images: [
       "images/yandex/page1.webp",
       "images/yandex/page2.webp",
@@ -193,6 +208,7 @@ const designerProjects = [
     id: "yoko-matcha",
     titleKey: "YokoMatchaTitle",
     descKey: "YokoMatchaDesc",
+    toolKeys: ["designerToolFigma", "designerToolAi"],
     images: [
       "images/yokomatcha/page1.webp",
       "images/yokomatcha/page2.webp",
@@ -203,6 +219,7 @@ const designerProjects = [
     id: "tsarev-barilova",
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
+    toolKeys: ["designerToolTilda", "designerToolFigma"],
     images: [
       "images/tsarevbarilova/page1.webp",
       "images/tsarevbarilova/page2.webp",
@@ -216,6 +233,7 @@ const designerProjects = [
     id: "innobooklovers",
     titleKey: "InnoBookLoversTitle",
     descKey: "InnoBookLoversDesc",
+    toolKeys: ["designerToolFigma"],
     images: [
       "images/innobooklovers/page1.webp",
       "images/innobooklovers/page2.webp",
@@ -227,6 +245,7 @@ const designerProjects = [
     id: "innomed",
     titleKey: "InnoMedTitle",
     descKey: "InnoMedDesc",
+    toolKeys: ["designerToolFigma"],
     images: [
       "images/innomed/page6.webp",
       "images/innomed/page1.webp",
@@ -241,6 +260,7 @@ const designerProjects = [
     id: "croissan-studio",
     titleKey: "CroissanStudioTitle",
     descKey: "CroissanStudioDesc",
+    toolKeys: ["designerToolIllustrator", "designerToolAi", "designerToolFigma"],
     images: [
       "images/croissan/page2.webp",
       "images/croissan/page13.webp",
@@ -262,6 +282,7 @@ const designerProjects = [
     id: "posters",
     titleKey: "PostersTitle",
     descKey: "PostersDesc",
+    toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/posters/page4.webp",
       "images/posters/page3.webp",
@@ -277,6 +298,7 @@ const designerProjects = [
     id: "concepts",
     titleKey: "ConceptsTitle",
     descKey: "ConceptsDesc",
+    toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/concepts/page8.webp",
       "images/concepts/page2.webp",
@@ -286,6 +308,22 @@ const designerProjects = [
       "images/concepts/page7.webp",
     ],
   },
+];
+
+function getDesignerProjectPreview(project) {
+  if (project.preview) return project.preview;
+  const firstImage = project.images?.[0];
+  if (!firstImage) return "";
+  return firstImage.replace(/page\d+(\.\w+)$/, "page0$1");
+}
+
+const DESIGNER_PAGE_TOOL_KEYS = [
+  "designerToolFigma",
+  "designerToolIllustrator",
+  "designerToolPhotoshop",
+  "designerToolTilda",
+  "designerToolCanva",
+  "designerToolAi",
 ];
 
 const frontendProjects = [
@@ -342,9 +380,9 @@ const frontendProjects = [
 const PANEL_SCENE = {
   scenePad: 24,
   panelSkew: 5,
-  edgeInset: 24,
-  panelHeightRatio: 0.28,
-  diagonalScale: 0.68,
+  edgeInset: 12,
+  panelHeightRatio: 0.42,
+  diagonalScale: 0.58,
 };
 
 function getProjectStackBounds(stack, scene) {
@@ -352,9 +390,13 @@ function getProjectStackBounds(stack, scene) {
   let height = stack.clientHeight;
 
   if ((!width || !height) && scene) {
-    const pad = Number.parseFloat(getComputedStyle(stack).top) || 24;
-    width = Math.max(0, scene.clientWidth - pad * 2);
-    height = Math.max(0, scene.clientHeight - pad * 2);
+    const style = getComputedStyle(stack);
+    const top = Number.parseFloat(style.top) || 24;
+    const right = Number.parseFloat(style.right) || 24;
+    const bottom = Number.parseFloat(style.bottom) || 24;
+    const left = Number.parseFloat(style.left) || 24;
+    width = Math.max(0, scene.clientWidth - left - right);
+    height = Math.max(0, scene.clientHeight - top - bottom);
   }
 
   return { width, height };
@@ -460,6 +502,7 @@ const translationKeyToId = {
   languageSwitch: "languageSwitch",
   contactExtra: "contact-extra",
   portfolioTitle: "projects-title",
+  designerToolsLabel: "designer-tools-label",
   roleDesigner: "role-designer",
   roleFrontend: "role-frontend",
   roleML: "role-ml",
@@ -831,6 +874,36 @@ function applyFrontendPage(t) {
   renderFrontendProjects();
 }
 
+function applyDesignerPage(t) {
+  const toolsWrap = document.getElementById("designer-tools-wrap");
+  const toolsEl = document.getElementById("designer-tools");
+  const toolsLabel = document.getElementById("designer-tools-label");
+  if (!toolsEl) return;
+
+  if (toolsWrap && t.designerToolsLabel) {
+    toolsWrap.setAttribute("aria-label", t.designerToolsLabel);
+  }
+
+  if (toolsLabel && t.designerToolsLabel) {
+    toolsLabel.textContent = t.designerToolsLabel;
+  }
+
+  toolsEl.innerHTML = DESIGNER_PAGE_TOOL_KEYS.map((key) => {
+    const label = t[key];
+    if (!label) return "";
+    return `<li class="frontend-page__skill">${escapeHtml(label)}</li>`;
+  }).join("");
+}
+
+function renderDesignerOverlayTools(toolKeys, t) {
+  const tools = (toolKeys ?? []).map((key) => t[key]).filter(Boolean);
+  if (!tools.length) return "";
+
+  return tools
+    .map((label) => `<span class="frontend-page__skill">${escapeHtml(label)}</span>`)
+    .join("");
+}
+
 function renderDesignerProjects() {
   const scene = document.getElementById("projects-scene");
   if (!scene) return;
@@ -839,7 +912,7 @@ function renderDesignerProjects() {
 
   const panelsHtml = designerProjects
     .map((project) => {
-      const preview = project.images[0];
+      const preview = getDesignerProjectPreview(project);
       if (!preview) return "";
 
       const title = t[project.titleKey] ?? "";
@@ -852,15 +925,21 @@ function renderDesignerProjects() {
           data-project-id="${project.id}"
           aria-label="${escapeHtml(title)}"
         >
-          <div class="project-panel__card">
-            <span class="project-panel__bevel" aria-hidden="true"></span>
-            <img
-              class="project-panel__surface"
-              src="${preview}"
-              alt=""
-              loading="eager"
-              decoding="async"
-            />
+          <div class="project-panel__stack">
+            <div class="project-panel__caption" aria-hidden="true">
+              <p class="project-panel__caption-title">${escapeHtml(title)}</p>
+              <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
+            </div>
+            <div class="project-panel__card">
+              <span class="project-panel__bevel" aria-hidden="true"></span>
+              <img
+                class="project-panel__surface"
+                src="${preview}"
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </div>
           <span class="visually-hidden">${escapeHtml(title)}. ${escapeHtml(description)}</span>
         </article>
@@ -886,6 +965,7 @@ let openProjectId = null;
 function renderProjectOverlayContent(projectId) {
   const project = designerProjects.find((item) => item.id === projectId);
   const titleEl = document.getElementById("project-overlay-title");
+  const toolsEl = document.getElementById("project-overlay-tools");
   const descEl = document.getElementById("project-overlay-desc");
   const galleryEl = document.getElementById("project-overlay-gallery");
   if (!project || !titleEl || !descEl || !galleryEl) return;
@@ -895,6 +975,11 @@ function renderProjectOverlayContent(projectId) {
   const description = t[project.descKey] ?? "";
 
   titleEl.textContent = title;
+  if (toolsEl) {
+    const toolsHtml = renderDesignerOverlayTools(project.toolKeys, t);
+    toolsEl.innerHTML = toolsHtml;
+    toolsEl.hidden = !toolsHtml;
+  }
   descEl.textContent = description;
 
   galleryEl.innerHTML = project.images
@@ -1039,6 +1124,7 @@ function applyTranslations() {
     personPageTitle.textContent = t.rolePerson;
   }
 
+  applyDesignerPage(t);
   applyFrontendPage(t);
   renderDesignerProjects();
   scheduleHeroLayoutFit();

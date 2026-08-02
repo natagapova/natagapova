@@ -11,11 +11,14 @@
 </head>
 <body class="page-designer">
 
-  <nav class="top-navbar top-navbar--subpage">
+  <nav class="top-navbar top-navbar--subpage top-navbar--centered">
     <div class="navbar-left">
       <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
         <span class="navbar-back__icon" aria-hidden="true">←</span>
       </a>
+    </div>
+    <div class="navbar-center">
+      <span class="navbar-page-title" id="projects-title">проекты</span>
     </div>
     <div class="navbar-right">
       <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
@@ -24,8 +27,11 @@
   </nav>
 
   <main class="subpage-main subpage-main--designer">
-    <section class="projects-section" id="projects-section">
-      <h2 class="projects-section__title" id="projects-title">проекты</h2>
+    <section class="projects-section" id="projects-section" aria-labelledby="projects-title">
+      <div class="designer-tools-wrap" id="designer-tools-wrap">
+        <span class="designer-tools__label" id="designer-tools-label">инструменты</span>
+        <ul class="designer-tools" id="designer-tools" role="list"></ul>
+      </div>
       <div class="projects-scene" id="projects-scene"></div>
     </section>
   </main>
@@ -48,6 +54,7 @@
       </button>
       <div class="project-overlay__scroll" id="project-overlay-scroll">
         <h2 class="project-overlay__title" id="project-overlay-title"></h2>
+        <div class="project-overlay__tools" id="project-overlay-tools"></div>
         <p class="project-overlay__desc" id="project-overlay-desc"></p>
         <div class="project-overlay__gallery" id="project-overlay-gallery"></div>
       </div>
