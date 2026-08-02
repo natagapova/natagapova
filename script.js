@@ -14,7 +14,34 @@ const translations = {
     roleFrontend: "frontend разработчик",
     roleML: "ML разработчик",
     rolePerson: "человек",
-    personNavbarWho: "вот кто делает вам сайты кстати",
+    personTagline: "вот кто делает вам сайты кстати",
+    frontendPageTitle: "frontend кейсы",
+    frontendToolHtml: "HTML",
+    frontendToolCss: "CSS",
+    frontendToolJs: "JavaScript",
+    frontendToolTs: "TypeScript",
+    frontendToolReact: "React",
+    frontendToolNext: "Next.js",
+    frontendToolTailwind: "Tailwind",
+    frontendToolTilda: "Tilda",
+    frontendToolZeroBlock: "Zero Block",
+    frontendToolFigma: "Figma",
+    frontendToolIllustrator: "Illustrator",
+    FrontendCroissanTitle: "Croissan Studio",
+    FrontendCroissanDesc:
+      "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
+    FrontendNinaTitle: "Nina's Space",
+    FrontendNinaDesc:
+      "Камерный персональный сайт — медитации, аффирмации, мини-игры и дыхательный виджет. Полная разработка с нуля, без фреймворков: структура, вёрстка, мультиязычность и интерактив.",
+    FrontendCruelTitle: "Cruel Games",
+    FrontendCruelDesc:
+      "Промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
+    FrontendAismenaTitle: "AI-смена · Иннополис",
+    FrontendAismenaDesc:
+      "Лендинг летней AI-смены для школьников. Задача — за пару минут дать родителю полную картину программы и путь к заявке без звонка менеджеру. Сборка на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
+    FrontendKingstepTitle: "Барилова & Царёв",
+    FrontendKingstepDesc:
+      "Сайт танцевальной студии Kingstep — главная, каталог курсов и страницы занятий. Тёмная эстетика бренда: макеты в Figma, сборка в Tilda. Сейчас на финальном этапе.",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -73,7 +100,34 @@ const translations = {
     roleFrontend: "frontend developer",
     roleML: "ML developer",
     rolePerson: "person",
-    personNavbarWho: "this is who does your website btw",
+    personTagline: "this is who does your website btw",
+    frontendPageTitle: "frontend cases",
+    frontendToolHtml: "HTML",
+    frontendToolCss: "CSS",
+    frontendToolJs: "JavaScript",
+    frontendToolTs: "TypeScript",
+    frontendToolReact: "React",
+    frontendToolNext: "Next.js",
+    frontendToolTailwind: "Tailwind",
+    frontendToolTilda: "Tilda",
+    frontendToolZeroBlock: "Zero Block",
+    frontendToolFigma: "Figma",
+    frontendToolIllustrator: "Illustrator",
+    FrontendCroissanTitle: "Croissan Studio",
+    FrontendCroissanDesc:
+      "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
+    FrontendNinaTitle: "Nina's Space",
+    FrontendNinaDesc:
+      "A small personal site — meditations, affirmations, mini-games, and a breathing widget. Full build from scratch, no frameworks: structure, layout, multilingual UI, and interactivity.",
+    FrontendCruelTitle: "Cruel Games",
+    FrontendCruelDesc:
+      "A promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
+    FrontendAismenaTitle: "AI Camp · Innopolis",
+    FrontendAismenaDesc:
+      "A landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes — no call to a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
+    FrontendKingstepTitle: "Barilova & Tsarev",
+    FrontendKingstepDesc:
+      "A site for Kingstep dance studio — home, course catalog, and class pages. Dark brand aesthetic: layouts in Figma, build in Tilda. Currently in the final stretch.",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -234,6 +288,57 @@ const designerProjects = [
   },
 ];
 
+const frontendProjects = [
+  {
+    id: "croissan",
+    url: "https://croissanstudio.ru",
+    preview: "images/frontend/croissan.webp",
+    titleKey: "FrontendCroissanTitle",
+    descKey: "FrontendCroissanDesc",
+    toolKeys: [
+      "frontendToolHtml",
+      "frontendToolCss",
+      "frontendToolJs",
+      "frontendToolTs",
+      "frontendToolReact",
+      "frontendToolNext",
+      "frontendToolTailwind",
+    ],
+  },
+  {
+    id: "ninas-space",
+    url: "https://ninas-space.vercel.app/",
+    previewMode: "iframe",
+    titleKey: "FrontendNinaTitle",
+    descKey: "FrontendNinaDesc",
+    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
+  },
+  {
+    id: "cruelgames",
+    url: "https://cruelgames-website.vercel.app/",
+    previewMode: "iframe",
+    titleKey: "FrontendCruelTitle",
+    descKey: "FrontendCruelDesc",
+    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
+  },
+  {
+    id: "aismena",
+    url: "https://aismena.ru",
+    preview: "images/frontend/aismena.jpg",
+    titleKey: "FrontendAismenaTitle",
+    descKey: "FrontendAismenaDesc",
+    toolKeys: ["frontendToolTilda", "frontendToolZeroBlock"],
+  },
+  {
+    id: "kingstep",
+    preview: "images/frontend/kingstep.webp",
+    titleKey: "FrontendKingstepTitle",
+    descKey: "FrontendKingstepDesc",
+    toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
+    comingSoon: true,
+  },
+];
+
 const PANEL_SCENE = {
   scenePad: 24,
   panelSkew: 5,
@@ -359,7 +464,8 @@ const translationKeyToId = {
   roleFrontend: "role-frontend",
   roleML: "role-ml",
   rolePerson: "role-person",
-  personNavbarWho: "person-navbar-who",
+  personTagline: "person-tagline",
+  frontendPageTitle: "frontend-page-title",
   rolePagePlaceholder: "role-page-placeholder",
   experienceBlockTitle: "experience-block-title",
   educationBlockTitle: "education-block-title",
@@ -608,6 +714,123 @@ function initProjectsSceneResizeObserver() {
   projectsSceneResizeObserver.observe(scene);
 }
 
+function getFrontendProjectToolKeys() {
+  const seen = new Set();
+  const keys = [];
+  for (const project of frontendProjects) {
+    for (const key of project.toolKeys ?? []) {
+      if (!seen.has(key)) {
+        seen.add(key);
+        keys.push(key);
+      }
+    }
+  }
+  return keys;
+}
+
+function renderFrontendCardTools(toolKeys, t) {
+  const tools = (toolKeys ?? []).map((key) => t[key]).filter(Boolean);
+  if (!tools.length) return "";
+
+  return `
+    <div class="frontend-card__tools">
+      ${tools.map((label) => `<span class="frontend-card__tool">${escapeHtml(label)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function renderFrontendPreview(project) {
+  if (project.previewMode === "iframe" && project.url) {
+    return `
+      <div class="frontend-card__preview" aria-hidden="true">
+        <iframe
+          class="frontend-card__iframe"
+          src="${escapeHtml(project.url)}"
+          title=""
+          tabindex="-1"
+          loading="lazy"
+        ></iframe>
+      </div>
+    `;
+  }
+
+  if (project.preview) {
+    return `
+      <div class="frontend-card__preview" aria-hidden="true">
+        <img
+          class="frontend-card__image"
+          src="${project.preview}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    `;
+  }
+
+  return `<div class="frontend-card__preview frontend-card__preview--empty" aria-hidden="true"></div>`;
+}
+
+function renderFrontendProjects() {
+  const grid = document.getElementById("frontend-grid");
+  if (!grid) return;
+
+  const t = translations[currentLang];
+
+  grid.innerHTML = frontendProjects
+    .map((project) => {
+      const title = t[project.titleKey] ?? "";
+      const description = t[project.descKey] ?? "";
+      const tools = renderFrontendCardTools(project.toolKeys, t);
+      const body = `
+        ${renderFrontendPreview(project)}
+        <div class="frontend-card__body">
+          <h2 class="frontend-card__title">${escapeHtml(title)}</h2>
+          ${tools}
+          ${description ? `<p class="frontend-card__desc">${escapeHtml(description)}</p>` : ""}
+        </div>
+      `;
+
+      if (project.url && !project.comingSoon) {
+        return `
+          <a
+            class="frontend-card"
+            role="listitem"
+            href="${escapeHtml(project.url)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="${escapeHtml(title)}"
+          >
+            ${body}
+          </a>
+        `;
+      }
+
+      return `
+        <article class="frontend-card frontend-card--static" role="listitem" aria-label="${escapeHtml(title)}">
+          ${body}
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function applyFrontendPage(t) {
+  const skillsEl = document.getElementById("frontend-skills");
+  if (skillsEl) {
+    const tags = getFrontendProjectToolKeys()
+      .map((key) => t[key])
+      .filter(Boolean);
+
+    skillsEl.innerHTML = tags
+      .map((label) => `<li class="frontend-page__skill">${escapeHtml(label)}</li>`)
+      .join("");
+    skillsEl.hidden = tags.length === 0;
+  }
+
+  renderFrontendProjects();
+}
+
 function renderDesignerProjects() {
   const scene = document.getElementById("projects-scene");
   if (!scene) return;
@@ -811,11 +1034,12 @@ function applyTranslations() {
     }
   }
 
-  const personNavbarWho = document.getElementById("person-navbar-who");
-  if (personNavbarWho && t.personNavbarWho) {
-    personNavbarWho.textContent = t.personNavbarWho;
+  const personPageTitle = document.getElementById("person-page-title");
+  if (personPageTitle) {
+    personPageTitle.textContent = t.rolePerson;
   }
 
+  applyFrontendPage(t);
   renderDesignerProjects();
   scheduleHeroLayoutFit();
 

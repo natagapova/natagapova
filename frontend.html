@@ -5,359 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Frontend разработка — портфолио Натальи Агаповой.">
   <title>frontend — natalia's portfolio</title>
-
   <link rel="icon" type="image/webp" href="images/favicon.webp">
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 
-<body>
+<body class="page-frontend">
 
-<nav class="top-navbar top-navbar--subpage">
-
+  <nav class="top-navbar top-navbar--subpage top-navbar--centered">
     <div class="navbar-left">
-        <a href="index.html" class="navbar-back">
-            <span class="navbar-back__icon">←</span>
-        </a>
+      <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
+        <span class="navbar-back__icon" aria-hidden="true">←</span>
+      </a>
     </div>
 
     <div class="navbar-center">
-        <span class="navbar-who">frontend cases</span>
+      <span class="navbar-page-title" id="frontend-page-title">frontend кейсы</span>
     </div>
 
     <div class="navbar-right">
-        <button id="languageSwitch">eng</button>
-        <a id="contact-extra" href="https://t.me/nhefy">связаться</a>
+      <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
+      <a id="contact-extra" href="https://t.me/nhefy">связаться</a>
     </div>
-
-</nav>
-
-<main class="frontend-page">
-
-<section class="frontend-hero">
-
-<h1 class="frontend-title">
-Frontend cases
-</h1>
-
-<p class="frontend-subtitle">
-A selection of interfaces designed and developed with a focus on usability,
-performance and clean implementation.
-</p>
-
-<div class="skills-cloud">
-
-<span>HTML</span>
-<span>CSS</span>
-<span>JavaScript</span>
-<span>TypeScript</span>
-<span>React</span>
-<span>Next.js</span>
-<span>Firebase</span>
-<span>Tailwind</span>
-<span>Git</span>
-<span>Figma</span>
-
-</div>
-
-</section>
-
-<section class="cases-grid">
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 1 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<!-- ===================================================== -->
-<!-- REPLACE IMAGE -->
-<!-- Example:
-images/frontend/project1.webp
-====================================================== -->
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-<!-- REPLACE TITLE -->
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>Next.js</span>
-<span>TypeScript</span>
-<span>Firebase</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 2 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>React</span>
-<span>CSS</span>
-<span>JavaScript</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 3 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>HTML</span>
-<span>CSS</span>
-<span>JavaScript</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 4 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>Next.js</span>
-<span>Tailwind</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 5 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>React</span>
-<span>TypeScript</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- ===================== PROJECT 6 ========================== -->
-<!-- ========================================================= -->
-
-<a
-class="case-card"
-href="REPLACE_WITH_PROJECT_LINK">
-
-<div class="case-image">
-
-<img
-src="images/frontend/REPLACE_ME.webp"
-alt="PROJECT NAME">
-
-</div>
-
-<div class="case-content">
-
-<h2>
-
-PROJECT NAME
-
-</h2>
-
-<div class="case-stack">
-
-<span>HTML</span>
-<span>CSS</span>
-
-</div>
-
-<p>
-
-Replace with a short description.
-
-</p>
-
-</div>
-
-</a>
-
-</section>
-
-</main>
-
-<footer class="footer">
-
-<a class="footer-link" href="https://t.me/nhefy">
-связаться
-</a>
-
-<span class="footer-copy">
-natalia agapova
-</span>
-
-</footer>
+  </nav>
+
+  <main class="frontend-page">
+    <ul class="frontend-skills" id="frontend-skills" role="list"></ul>
+    <div class="frontend-grid" id="frontend-grid" role="list"></div>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-link" id="footer-contact" href="https://t.me/nhefy">связаться</a>
+    <span class="footer-copy">natalia agapova</span>
+  </footer>
 
 </body>
 </html>
