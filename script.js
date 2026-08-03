@@ -10,6 +10,8 @@ const translations = {
     languageSwitch: "eng",
     contactExtra: "связаться",
     portfolioTitle: "проекты",
+    designerPageTitle: "дизайн кейсы",
+    mlPageTitle: "ml кейсы",
     designerToolsLabel: "инструменты",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
@@ -53,6 +55,9 @@ const translations = {
     rolesNavLabel: "Роли",
     backHome: "на главную",
     closeProject: "закрыть",
+    projectLightboxPrev: "предыдущее",
+    projectLightboxNext: "следующее",
+    projectLightboxOpen: "открыть изображение",
     rolePagePlaceholder: "раздел в работе",
     YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
     YandexDirectDesc: "тестовое задание в яндекс: платформа управления рекламой",
@@ -103,6 +108,8 @@ const translations = {
     languageSwitch: "рус",
     contactExtra: "hmu",
     portfolioTitle: "projects",
+    designerPageTitle: "design cases",
+    mlPageTitle: "ml cases",
     designerToolsLabel: "tools",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
@@ -146,6 +153,9 @@ const translations = {
     rolesNavLabel: "Roles",
     backHome: "back to home",
     closeProject: "close",
+    projectLightboxPrev: "previous",
+    projectLightboxNext: "next",
+    projectLightboxOpen: "open image",
     rolePagePlaceholder: "section in progress",
     YandexDirectTitle: "YANDEX DIRECT",
     YandexDirectDesc: "test task in yandex: advertising platform management",
@@ -502,6 +512,8 @@ const translationKeyToId = {
   languageSwitch: "languageSwitch",
   contactExtra: "contact-extra",
   portfolioTitle: "projects-title",
+  designerPageTitle: "designer-page-title",
+  mlPageTitle: "ml-page-title",
   designerToolsLabel: "designer-tools-label",
   roleDesigner: "role-designer",
   roleFrontend: "role-frontend",
@@ -888,11 +900,22 @@ function applyDesignerPage(t) {
     toolsLabel.textContent = t.designerToolsLabel;
   }
 
-  toolsEl.innerHTML = DESIGNER_PAGE_TOOL_KEYS.map((key) => {
-    const label = t[key];
-    if (!label) return "";
-    return `<li class="frontend-page__skill">${escapeHtml(label)}</li>`;
-  }).join("");
+  const tags = DESIGNER_PAGE_TOOL_KEYS.map((key) => t[key]).filter(Boolean);
+  const rows = [];
+  for (let i = 0; i < tags.length; i += 2) {
+    rows.push(tags.slice(i, i + 2));
+  }
+
+  toolsEl.innerHTML = rows
+    .filter((row) => row.length)
+    .map(
+      (row) => `
+        <div class="designer-tools__row" role="list">
+          ${row.map((label) => `<span class="frontend-page__skill" role="listitem">${escapeHtml(label)}</span>`).join("")}
+        </div>
+      `
+    )
+    .join("");
 }
 
 function renderDesignerOverlayTools(toolKeys, t) {
@@ -950,9 +973,9 @@ function renderDesignerProjects() {
   scene.innerHTML = `<div class="projects-stack" id="projects-stack">${panelsHtml}</div>`;
 
   const section = document.getElementById("projects-section");
-  const titleEl = document.getElementById("projects-title");
+  const titleEl = document.getElementById("designer-page-title");
   if (section && titleEl) {
-    section.setAttribute("aria-labelledby", "projects-title");
+    section.setAttribute("aria-labelledby", "designer-page-title");
   }
 
   scheduleDesignerProjectStackLayout();
@@ -985,16 +1008,76 @@ function renderProjectOverlayContent(projectId) {
   galleryEl.innerHTML = project.images
     .map(
       (src, index) => `
-        <img
-          class="project-overlay__image"
-          src="${src}"
-          alt=""
-          loading="${index === 0 ? "eager" : "lazy"}"
-          decoding="async"
-        />
+        <button
+          type="button"
+          class="project-overlay__image-btn"
+          data-image-index="${index}"
+          aria-label="${escapeHtml(t.projectLightboxOpen ?? "open image")}"
+        >
+          <img
+            class="project-overlay__image"
+            src="${src}"
+            alt=""
+            loading="${index === 0 ? "eager" : "lazy"}"
+            decoding="async"
+          />
+        </button>
       `
     )
     .join("");
+}
+
+let projectLightboxImages = [];
+let projectLightboxIndex = 0;
+let projectLightboxOpen = false;
+
+function renderProjectLightboxImage() {
+  const content = document.getElementById("project-lightbox-content");
+  const prevBtn = document.getElementById("project-lightbox-prev");
+  const nextBtn = document.getElementById("project-lightbox-next");
+  if (!content) return;
+
+  const src = projectLightboxImages[projectLightboxIndex];
+  content.innerHTML = src
+    ? `<img src="${src}" alt="">`
+    : "";
+
+  const hasMultiple = projectLightboxImages.length > 1;
+  if (prevBtn) prevBtn.hidden = !hasMultiple;
+  if (nextBtn) nextBtn.hidden = !hasMultiple;
+}
+
+function openProjectLightbox(imageIndex) {
+  const project = designerProjects.find((item) => item.id === openProjectId);
+  const lightbox = document.getElementById("project-lightbox");
+  if (!project?.images?.length || !lightbox) return;
+
+  projectLightboxImages = project.images;
+  projectLightboxIndex = Math.max(0, Math.min(imageIndex, projectLightboxImages.length - 1));
+  projectLightboxOpen = true;
+  renderProjectLightboxImage();
+  lightbox.hidden = false;
+  lightbox.classList.remove("hidden");
+}
+
+function closeProjectLightbox() {
+  const lightbox = document.getElementById("project-lightbox");
+  const content = document.getElementById("project-lightbox-content");
+  if (!lightbox) return;
+
+  projectLightboxOpen = false;
+  projectLightboxImages = [];
+  projectLightboxIndex = 0;
+  lightbox.classList.add("hidden");
+  lightbox.hidden = true;
+  if (content) content.innerHTML = "";
+}
+
+function stepProjectLightbox(delta) {
+  if (!projectLightboxOpen || projectLightboxImages.length < 2) return;
+  const count = projectLightboxImages.length;
+  projectLightboxIndex = (projectLightboxIndex + delta + count) % count;
+  renderProjectLightboxImage();
 }
 
 function openProjectOverlay(projectId) {
@@ -1018,6 +1101,7 @@ function closeProjectOverlay() {
   const overlay = document.getElementById("project-overlay");
   if (!overlay || overlay.hidden) return;
 
+  closeProjectLightbox();
   overlay.hidden = true;
   openProjectId = null;
   document.body.classList.remove("is-project-overlay-open");
@@ -1050,11 +1134,45 @@ function initProjectOverlay() {
 
   const closeBtn = document.getElementById("project-overlay-close");
   const backdrop = overlay.querySelector(".project-overlay__backdrop");
+  const gallery = document.getElementById("project-overlay-gallery");
+  const lightbox = document.getElementById("project-lightbox");
+  const lightboxClose = document.getElementById("project-lightbox-close");
+  const lightboxPrev = document.getElementById("project-lightbox-prev");
+  const lightboxNext = document.getElementById("project-lightbox-next");
 
   closeBtn?.addEventListener("click", closeProjectOverlay);
   backdrop?.addEventListener("click", closeProjectOverlay);
 
+  gallery?.addEventListener("click", (event) => {
+    const button = event.target.closest(".project-overlay__image-btn");
+    if (!button) return;
+    const index = Number.parseInt(button.dataset.imageIndex ?? "", 10);
+    if (Number.isNaN(index)) return;
+    openProjectLightbox(index);
+  });
+
+  lightboxClose?.addEventListener("click", closeProjectLightbox);
+  lightboxPrev?.addEventListener("click", () => stepProjectLightbox(-1));
+  lightboxNext?.addEventListener("click", () => stepProjectLightbox(1));
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeProjectLightbox();
+  });
+
   document.addEventListener("keydown", (event) => {
+    if (projectLightboxOpen) {
+      if (event.key === "Escape") {
+        closeProjectLightbox();
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        stepProjectLightbox(-1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        stepProjectLightbox(1);
+      }
+      return;
+    }
+
     if (event.key === "Escape" && openProjectId) {
       closeProjectOverlay();
     }
@@ -1140,6 +1258,19 @@ function applyTranslations() {
   }
   if (backdrop && t.closeProject) {
     backdrop.setAttribute("aria-label", t.closeProject);
+  }
+
+  const projectLightboxClose = document.getElementById("project-lightbox-close");
+  const projectLightboxPrev = document.getElementById("project-lightbox-prev");
+  const projectLightboxNext = document.getElementById("project-lightbox-next");
+  if (projectLightboxClose && t.closeProject) {
+    projectLightboxClose.setAttribute("aria-label", t.closeProject);
+  }
+  if (projectLightboxPrev && t.projectLightboxPrev) {
+    projectLightboxPrev.setAttribute("aria-label", t.projectLightboxPrev);
+  }
+  if (projectLightboxNext && t.projectLightboxNext) {
+    projectLightboxNext.setAttribute("aria-label", t.projectLightboxNext);
   }
 }
 
