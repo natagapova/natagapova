@@ -8,6 +8,7 @@
   <link rel="icon" type="image/webp" href="images/favicon.webp">
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/script.js"></script>
+  <script defer src="js/mobile-hero.js"></script>
 </head>
 <body>
 
@@ -26,9 +27,8 @@
     <div class="hero-intro__stage">
       <h1 class="hero-intro__name" id="store-name">
         <span class="hero-intro__title-line"
-          ><span class="hero-word">к<span class="hero-letter-gap-kt">т</span>о</span></span
-        ><span class="hero-intro__title-line"
-          ><span class="hero-word">она?</span></span
+          ><span class="hero-word">к<span class="hero-letter-gap-kt">т</span>о</span>
+          <span class="hero-word">она?</span></span
         >
       </h1>
       <div class="hero-intro__photo-wrap" id="hero-photo-wrap">
@@ -52,11 +52,7 @@
           />
         </div>
       </div>
-    </div>
-      </header>
-    </div>
-    <div class="hero-experience__clouds" id="hero-clouds">
-          <nav class="roles-nav roles-nav--hero" aria-label="Роли">
+      <nav class="roles-nav roles-nav--hero" id="hero-roles-nav" aria-label="Роли">
             <a href="designer.html" class="role-card role-card--designer role-card--thought">
               <img
                 class="role-card__thought-img"
@@ -114,6 +110,12 @@
               </span>
             </a>
           </nav>
+    </div>
+      </header>
+    </div>
+    <div class="hero-experience__clouds" id="hero-clouds">
+      <div class="hero-experience__clouds-pin" id="hero-clouds-pin"></div>
+      <div class="hero-experience__clouds-track" id="hero-clouds-track" aria-hidden="true"></div>
     </div>
     <div class="hero-experience__track" id="hero-experience-track" aria-hidden="true"></div>
   </section>

@@ -131,8 +131,12 @@ select {
 }
 
 #nav-brand {
-  margin-right: 0;
+  margin-right: 0.35em;
   font-style: normal;
+}
+
+.navbar-copy {
+  font-style: italic;
 }
 
 .navbar-right {
@@ -222,23 +226,6 @@ select {
   visibility: hidden;
 }
 
-.hero-experience__clouds {
-  position: fixed;
-  top: var(--nav-h, 55px);
-  left: 0;
-  right: 0;
-  height: calc(100svh - var(--nav-h, 55px));
-  z-index: 3;
-  pointer-events: none;
-}
-
-.hero-experience.is-released .hero-experience__clouds {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  height: calc(100svh - var(--nav-h, 55px));
-}
-
 /* Hero — первый экран */
 .hero-experience__pin .hero-intro {
   flex: 1 1 auto;
@@ -319,19 +306,6 @@ select {
   line-height: 1.05;
   letter-spacing: var(--hero-word-gap-tracking);
   padding-block: 0.04em;
-}
-
-@media (min-width: 720px) {
-  .hero-intro .hero-intro__title-line {
-    display: inline;
-    width: auto;
-    margin-inline: 0;
-    padding-block: 0;
-  }
-
-  .hero-intro .hero-intro__title-line + .hero-intro__title-line::before {
-    content: " ";
-  }
 }
 
 .hero-intro .hero-word {
@@ -672,9 +646,48 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     height: auto;
     z-index: 1;
     pointer-events: auto;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .hero-experience__clouds-pin {
+    position: relative;
+    top: auto;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible;
+    pointer-events: auto;
     background-color: var(--hero-surface);
     padding: clamp(16px, 4vh, 28px) var(--hero-mobile-inset, 16px)
-      clamp(32px, 8vh, 56px);
+      clamp(24px, 6vh, 40px);
+    z-index: 3;
+  }
+
+  .hero-experience__clouds.is-pinned .hero-experience__clouds-pin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .hero-experience__clouds.is-released .hero-experience__clouds-pin {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .hero-experience__clouds-track {
+    display: block;
+    height: var(--hero-clouds-scroll-track, 240px);
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .hero-experience__pin .hero-intro {
@@ -771,38 +784,127 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   .hero-experience__clouds .roles-nav--hero {
     position: relative;
     inset: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    display: block;
     margin: 0;
     pointer-events: auto;
     z-index: 1;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card {
-    position: sticky;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
     opacity: 0;
     transform: none;
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    gap: 0;
     --role-rotate: 0deg;
+    --thought-nudge-x: 0%;
+    --thought-nudge-y: 0%;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought {
-    --thought-bubble-scale: var(--hero-mobile-cloud-scale, 0.54);
+    --thought-bubble-scale: var(--hero-mobile-cloud-scale, 0.792);
+    --hero-mobile-cloud-text-scale: 1.15;
+    --thought-pad-top: 25%;
+    --thought-pad-bottom: 32%;
+    --thought-pad-tail: 23%;
+    --thought-pad-side: 12%;
+    --thought-pad-text-left: 18%;
+    --thought-chip-size: clamp(
+      calc(2.5rem * var(--thought-bubble-scale) * var(--hero-mobile-cloud-text-scale)),
+      calc(7.03cqi * var(--thought-bubble-scale)),
+      calc(3rem * var(--thought-bubble-scale) * var(--hero-mobile-cloud-text-scale))
+    );
+    container-type: inline-size;
+    container-name: hero-mobile-cloud;
+    display: block;
+    width: min(94%, calc(400px * var(--thought-bubble-scale)));
+    max-width: 94%;
+    height: auto;
+    padding: 0;
+    line-height: 0;
+    transform-origin: top center;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card__thought-shell {
+    position: relative;
+    display: block;
     width: 100%;
-    max-width: 100%;
-    transform-origin: center center;
+    line-height: 0;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card__thought-shell .role-card__thought-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card__thought-shell .role-card__thought-body {
+    position: absolute;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--thought-chip-size);
+    align-items: center;
+    column-gap: var(--thought-gap);
+    justify-items: stretch;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    line-height: 1.1;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--designer.role-card--thought .role-card__thought-shell .role-card__thought-body,
+  .hero-experience__clouds .roles-nav--hero .role-card--ml.role-card--thought .role-card__thought-shell .role-card__thought-body {
+    inset: var(--thought-pad-top) var(--thought-pad-side) var(--thought-pad-bottom)
+      var(--thought-pad-text-left);
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--frontend.role-card--thought .role-card__thought-shell .role-card__thought-body,
+  .hero-experience__clouds .roles-nav--hero .role-card--person.role-card--thought .role-card__thought-shell .role-card__thought-body {
+    inset: var(--thought-pad-top) var(--thought-pad-tail) var(--thought-pad-bottom)
+      var(--thought-pad-text-left);
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+    flex: none;
+    justify-self: start;
+    min-width: 0;
+    max-width: none;
+    justify-self: auto;
+    font-size: clamp(1.09rem, 5.37cqi, 1.52rem);
+    line-height: 1.1;
   }
 
   html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: clamp(0.82rem, 2.9vw, 0.96rem);
+    font-size: clamp(1.01rem, 4.86cqi, 1.38rem);
+    max-width: none;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__chip {
+    flex: none;
+    justify-self: end;
+    font-size: clamp(0.86rem, 3.83cqi, 1.09rem);
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--ml.role-card--thought .role-card__label,
+  .hero-experience__clouds .roles-nav--hero .role-card--frontend.role-card--thought .role-card__label {
+    max-width: none;
+  }
+
+  html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--ml.role-card--thought .role-card__label,
+  html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--frontend.role-card--thought .role-card__label {
+    max-width: none;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought:not(.role-card--scroll-anim) {
@@ -817,10 +919,17 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   .hero-experience__clouds .roles-nav--hero .role-card--frontend,
   .hero-experience__clouds .roles-nav--hero .role-card--ml,
   .hero-experience__clouds .roles-nav--hero .role-card--person {
-    left: auto;
-    right: auto;
-    --thought-nudge-x: 0%;
-    --thought-nudge-y: 0%;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+@media (min-width: 720px) {
+  .hero-experience__clouds {
+    display: none;
   }
 }
 
@@ -1167,18 +1276,20 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     display: none;
   }
 
-  .hero-experience__clouds {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    height: auto;
-    pointer-events: auto;
-  }
+  @media (max-width: 719px) {
+    .hero-experience__clouds {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      height: auto;
+      pointer-events: auto;
+    }
 
-  .hero-experience__clouds .roles-nav--hero .role-card,
-  .hero-experience__clouds .roles-nav--hero .role-card--scroll-settled {
-    opacity: 1;
-    transform: none;
+    .hero-experience__clouds-pin .roles-nav--hero .role-card,
+    .hero-experience__clouds-pin .roles-nav--hero .role-card--scroll-settled {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .roles-nav--hero .role-card,
@@ -2082,7 +2193,7 @@ body.is-project-overlay-open {
 
 
 /* Mobile styles */
-@media (min-width: 720px) and (max-width: 900px) {
+@media (max-width: 900px) {
   .hero-intro {
     padding: clamp(6px, 1.5vw, 14px) clamp(16px, 4vw, 32px) clamp(10px, 2vw, 20px);
   }
@@ -2091,16 +2202,7 @@ body.is-project-overlay-open {
     --hero-word-gap-tracking: -0.03em;
     --hero-word-inner-tracking: -0.038em;
   }
-}
 
-@media (max-width: 719px) {
-  .hero-intro .hero-intro__name {
-    --hero-word-gap-tracking: -0.03em;
-    --hero-word-inner-tracking: -0.038em;
-  }
-}
-
-@media (max-width: 900px) {
   .project-img {
     height: min(70vh, 420px);
   }

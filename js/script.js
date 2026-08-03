@@ -551,19 +551,10 @@ function formatHeroWord(word) {
 
 function buildHeroHeadlineHtml(text) {
   const words = text.trim().split(/\s+/);
-  if (words.length < 2) {
-    const wordSpans = words
-      .map((word) => `<span class="hero-word">${formatHeroWord(word)}</span>`)
-      .join(" ");
-    return `<span class="hero-intro__title-line">${wordSpans}</span>`;
-  }
-
-  const [first, ...rest] = words;
-  const line1 = `<span class="hero-word">${formatHeroWord(first)}</span>`;
-  const line2 = rest
+  const wordSpans = words
     .map((word) => `<span class="hero-word">${formatHeroWord(word)}</span>`)
     .join(" ");
-  return `<span class="hero-intro__title-line">${line1}</span><span class="hero-intro__title-line">${line2}</span>`;
+  return `<span class="hero-intro__title-line">${wordSpans}</span>`;
 }
 
 function escapeHtml(text) {
@@ -1287,183 +1278,10 @@ const HERO_PHOTO_ASPECT = 2392 / 3503;
 const HERO_PHOTO_CLOSED_ASPECT = 832 / 1248;
 const HERO_BLINK_PHOTO_TUNE = 0.987;
 const HERO_PHOTO_BOTTOM_GAP = 12;
-const MOBILE_HERO_MAX_WIDTH = 719;
-const MOBILE_HERO_PHOTO_VH = 0.45;
-const MOBILE_CLOUDS_BASE_SCALE = 0.54;
-const MOBILE_CLOUDS_MAX_STACK_RATIO = 0.92;
-const MOBILE_CLOUDS_OVERLAP_RATIO = 0.54;
-const MOBILE_CLOUDS_STICKY_BASE_VH = 0.08;
-
-function isMobileHeroLayout() {
-  return window.matchMedia(`(max-width: ${MOBILE_HERO_MAX_WIDTH}px)`).matches;
-}
-
-function getMobileTitleFitWidth(hero, stage) {
-  if (stage?.clientWidth > 0) {
-    return stage.clientWidth;
-  }
-
-  const heroStyle = hero ? getComputedStyle(hero) : null;
-  const inset = parseFloat(heroStyle?.getPropertyValue("--hero-mobile-inset")) || 16;
-  return Math.max(window.innerWidth - inset * 2, 280);
-}
-
-function getHeroTitleLines(heading) {
-  return heading ? [...heading.querySelectorAll(".hero-intro__title-line")] : [];
-}
-
-function fitHeroTitleLineToWidth(line, availableWidth) {
-  const maxWidth = availableWidth - 2;
-  const restore = {
-    display: line.style.display,
-    width: line.style.width,
-    maxWidth: line.style.maxWidth,
-    marginInline: line.style.marginInline,
-    position: line.style.position,
-    left: line.style.left,
-    top: line.style.top,
-    visibility: line.style.visibility,
-    gridRow: line.style.gridRow,
-    gridColumn: line.style.gridColumn,
-  };
-
-  line.style.position = "fixed";
-  line.style.left = "-10000px";
-  line.style.top = "0";
-  line.style.visibility = "hidden";
-  line.style.display = "inline-block";
-  line.style.width = "auto";
-  line.style.maxWidth = "none";
-  line.style.marginInline = "0";
-  line.style.gridRow = "auto";
-  line.style.gridColumn = "auto";
-
-  let lo = 16;
-  let hi = 900;
-
-  while (lo < hi) {
-    const mid = Math.ceil((lo + hi) / 2);
-    line.style.fontSize = `${mid}px`;
-    if (line.scrollWidth > maxWidth) {
-      hi = mid - 1;
-    } else {
-      lo = mid;
-    }
-  }
-
-  line.style.fontSize = `${lo}px`;
-  line.style.position = restore.position;
-  line.style.left = restore.left;
-  line.style.top = restore.top;
-  line.style.visibility = restore.visibility;
-  line.style.gridRow = restore.gridRow;
-  line.style.gridColumn = restore.gridColumn;
-  line.style.display = "block";
-  line.style.width = "auto";
-  line.style.maxWidth = "100%";
-  line.style.marginInline = "auto";
-
-  return lo;
-}
-
-function clearMobileCloudsLayout() {
-  const clouds = document.getElementById("hero-clouds");
-  if (!clouds) return;
-
-  const nav = clouds.querySelector(".roles-nav--hero");
-  const cards = [...clouds.querySelectorAll(".role-card")];
-  nav?.style.removeProperty("--hero-mobile-cloud-scale");
-  nav?.style.removeProperty("--hero-mobile-cloud-stack-h");
-  delete clouds.dataset.cloudStep;
-  delete clouds.dataset.stickyBase;
-  clouds.style.removeProperty("min-height");
-
-  cards.forEach((card) => {
-    card.style.removeProperty("position");
-    card.style.removeProperty("top");
-    card.style.removeProperty("margin-top");
-    card.style.removeProperty("z-index");
-    card.style.removeProperty("opacity");
-    card.style.removeProperty("transform");
-  });
-}
-
-function updateMobileCloudsLayout() {
-  const clouds = document.getElementById("hero-clouds");
-  if (!clouds) return;
-
-  if (!isMobileHeroLayout()) {
-    clearMobileCloudsLayout();
-    return;
-  }
-
-  const nav = clouds.querySelector(".roles-nav--hero");
-  const cards = [...clouds.querySelectorAll(".role-card")];
-  if (!nav || !cards.length) return;
-
-  const viewportH = window.innerHeight;
-  const stickyBase = Math.round(viewportH * MOBILE_CLOUDS_STICKY_BASE_VH);
-  const maxStackH = viewportH * MOBILE_CLOUDS_MAX_STACK_RATIO - stickyBase;
-  let scale = MOBILE_CLOUDS_BASE_SCALE;
-
-  const applyLayout = (nextScale) => {
-    nav.style.setProperty("--hero-mobile-cloud-scale", String(nextScale));
-    cards.forEach((card, index) => {
-      card.style.marginTop = index === 0 ? "0px" : "";
-      card.style.top = "";
-    });
-    void nav.offsetHeight;
-
-    const heights = cards.map((card) => card.getBoundingClientRect().height);
-    const step = Math.max(
-      Math.round((heights[0] || 72) * (1 - MOBILE_CLOUDS_OVERLAP_RATIO)),
-      48
-    );
-    let stackH = heights[0] || 0;
-
-    cards.forEach((card, index) => {
-      const stickyTop = stickyBase + index * step;
-      card.style.position = "sticky";
-      card.style.top = `${stickyTop}px`;
-      card.style.zIndex = String(index + 1);
-
-      if (index > 0) {
-        const overlap = Math.round(heights[index - 1] * MOBILE_CLOUDS_OVERLAP_RATIO);
-        card.style.marginTop = `${-overlap}px`;
-        stackH += heights[index] - overlap;
-      }
-    });
-
-    return { stackH, heights, step };
-  };
-
-  let { stackH, step } = applyLayout(scale);
-  if (stackH > maxStackH && stackH > 0) {
-    scale = MOBILE_CLOUDS_BASE_SCALE * (maxStackH / stackH);
-    ({ stackH, step } = applyLayout(scale));
-  }
-
-  const scrollRunway = Math.max((cards.length - 1) * step, step);
-  nav.style.setProperty("--hero-mobile-cloud-stack-h", `${Math.round(stackH)}px`);
-  clouds.dataset.cloudStep = String(step);
-  clouds.dataset.stickyBase = String(stickyBase);
-  clouds.style.minHeight = `${Math.round(viewportH + scrollRunway + stickyBase)}px`;
-}
 
 function syncBlinkPhotoScale(photoWrap) {
   const open = photoWrap.querySelector(".hero-intro__photo--open");
-  const closed = photoWrap.querySelector(".hero-intro__photo--closed");
   if (!open?.offsetWidth || !open.offsetHeight) return;
-
-  if (closed) {
-    closed.style.removeProperty("width");
-    closed.style.removeProperty("height");
-    closed.style.removeProperty("left");
-    closed.style.removeProperty("top");
-    closed.style.removeProperty("right");
-    closed.style.removeProperty("bottom");
-    closed.style.removeProperty("transform");
-  }
 
   const w = open.offsetWidth;
   const h = open.offsetHeight;
@@ -1483,8 +1301,7 @@ function fitHeroPhoto() {
   const hero = document.querySelector(".hero-intro");
   const stage = hero?.querySelector(".hero-intro__stage");
   const heading = document.getElementById("store-name");
-  const lines = getHeroTitleLines(heading);
-  const line = lines[0];
+  const line = heading?.querySelector(".hero-intro__title-line");
   const photoWrap = document.getElementById("hero-photo-wrap");
   if (!hero || !stage || !heading || !line || !photoWrap) return;
 
@@ -1495,28 +1312,8 @@ function fitHeroPhoto() {
 
   const heroRect = hero.getBoundingClientRect();
   const headingRect = heading.getBoundingClientRect();
-  const titleHeight = heading.offsetHeight;
+  const titleHeight = line.offsetHeight;
   if (heroRect.height <= 0 || stage.clientWidth <= 0) return;
-
-  if (isMobileHeroLayout()) {
-    const viewportH = window.innerHeight;
-    const photoVh = parseFloat(heroStyle.getPropertyValue("--hero-mobile-photo-vh")) || MOBILE_HERO_PHOTO_VH;
-    const targetHeight = Math.round(viewportH * photoVh);
-
-    photoWrap.style.setProperty("--hero-photo-max-height", `${targetHeight}px`);
-    photoWrap.style.removeProperty("--hero-photo-height");
-    photoWrap.style.setProperty("--hero-photo-width", "auto");
-    photoWrap.style.removeProperty("margin-top");
-    syncBlinkPhotoScale(photoWrap);
-    requestAnimationFrame(() => syncBlinkPhotoScale(photoWrap));
-    updateMobileCloudsLayout();
-    rolesScrollMetrics = null;
-    scheduleRolesScrollReveal();
-    return;
-  }
-
-  photoWrap.style.removeProperty("margin-top");
-  photoWrap.style.removeProperty("--hero-photo-height");
 
   const targetBottom = heroRect.bottom - paddingBottom - HERO_PHOTO_BOTTOM_GAP;
   const photoTop = headingRect.bottom - titleHeight * overlap - 12 - lift;
@@ -1534,19 +1331,16 @@ function fitHeroPhoto() {
   photoWrap.style.setProperty("--hero-photo-width", `${Math.round(width)}px`);
   photoWrap.style.setProperty("--hero-photo-max-height", `${Math.round(availableHeight)}px`);
   syncBlinkPhotoScale(photoWrap);
-  updateMobileCloudsLayout();
 }
 
 async function fitHeroHeadline() {
   const heading = document.getElementById("store-name");
-  const lines = getHeroTitleLines(heading);
+  const line = heading?.querySelector(".hero-intro__title-line");
   const hero = document.querySelector(".hero-intro");
   const stage = hero?.querySelector(".hero-intro__stage");
-  if (!heading || !lines.length) return;
+  if (!heading || !line) return;
 
-  const available = isMobileHeroLayout()
-    ? getMobileTitleFitWidth(hero, stage)
-    : heading.clientWidth;
+  const available = heading.clientWidth;
   if (available <= 0) return;
 
   const heroStyle = hero ? getComputedStyle(hero) : null;
@@ -1562,36 +1356,16 @@ async function fitHeroHeadline() {
     /* ignore */
   }
 
-  if (isMobileHeroLayout() && lines.length >= 2) {
-    const mobileWidth = getMobileTitleFitWidth(hero, stage);
-    lines.forEach((titleLine) => {
-      fitHeroTitleLineToWidth(titleLine, mobileWidth);
-    });
-    const titleBlockHeight = lines.reduce((sum, titleLine) => sum + titleLine.offsetHeight, 0);
-    heading.style.setProperty("--hero-title-size", `${titleBlockHeight}px`);
-    fitHeroPhoto();
-    updateMobileCloudsLayout();
-    rolesScrollMetrics = null;
-    scheduleRolesScrollReveal();
-    return;
-  }
-
-  const line = lines[0];
   line.style.fontSize = "16px";
-  lines.slice(1).forEach((titleLine) => {
-    titleLine.style.fontSize = "16px";
-  });
-
   let lo = 16;
   let hi = useHeadlineBoost ? 720 : 600;
+
   const maxWidth = available - 6;
 
   while (lo < hi) {
     const mid = Math.ceil((lo + hi) / 2);
-    lines.forEach((titleLine) => {
-      titleLine.style.fontSize = `${mid}px`;
-    });
-    if (heading.scrollWidth > maxWidth) {
+    line.style.fontSize = `${mid}px`;
+    if (line.scrollWidth > maxWidth) {
       hi = mid - 1;
     } else {
       lo = mid;
@@ -1605,27 +1379,17 @@ async function fitHeroHeadline() {
     const maxTitleHeight = Math.round(stage.clientHeight * 0.5);
     const targetFont = Math.round(stage.clientWidth * headlineMinRatio * 0.58);
     fontSize = Math.max(lo, Math.min(targetFont, hi));
-    lines.forEach((titleLine) => {
-      titleLine.style.fontSize = `${fontSize}px`;
-    });
+    line.style.fontSize = `${fontSize}px`;
 
-    while (
-      fontSize > lo &&
-      (heading.scrollWidth > maxTextWidth || heading.offsetHeight > maxTitleHeight)
-    ) {
+    while (fontSize > lo && (line.scrollWidth > maxTextWidth || line.offsetHeight > maxTitleHeight)) {
       fontSize -= 2;
-      lines.forEach((titleLine) => {
-        titleLine.style.fontSize = `${fontSize}px`;
-      });
+      line.style.fontSize = `${fontSize}px`;
     }
   }
 
-  lines.forEach((titleLine) => {
-    titleLine.style.fontSize = `${fontSize}px`;
-  });
-  heading.style.setProperty("--hero-title-size", `${heading.offsetHeight}px`);
+  line.style.fontSize = `${fontSize}px`;
+  heading.style.setProperty("--hero-title-size", `${line.offsetHeight}px`);
   fitHeroPhoto();
-  updateMobileCloudsLayout();
   rolesScrollMetrics = null;
   scheduleRolesScrollReveal();
 }
@@ -1762,11 +1526,6 @@ function updateHeroPinRelease() {
   const experience = document.getElementById("hero-experience");
   if (!experience) return;
 
-  if (isMobileHeroLayout()) {
-    experience.classList.remove("is-released", "is-pinned");
-    return;
-  }
-
   const { released } = getHeroScrollState();
   experience.classList.toggle("is-released", released);
   experience.classList.toggle("is-pinned", !released);
@@ -1777,41 +1536,8 @@ function updateHeroPinRelease() {
   }
 }
 
-function updateMobileCloudsScroll() {
-  const clouds = document.getElementById("hero-clouds");
-  if (!clouds) return;
-
-  const cards = [...clouds.querySelectorAll(".role-card")];
-  if (!cards.length) return;
-
-  const rect = clouds.getBoundingClientRect();
-  const viewportH = window.innerHeight;
-  const step = parseFloat(clouds.dataset.cloudStep) || 64;
-  const stickyBase = parseFloat(clouds.dataset.stickyBase) || Math.round(viewportH * 0.08);
-  const scrollAnchor = stickyBase + step * 0.15;
-  const scrolled = Math.max(0, scrollAnchor - rect.top);
-  const revealLen = step * 0.82;
-
-  cards.forEach((card, index) => {
-    const revealStart = index * step;
-    const localP = clamp01((scrolled - revealStart) / revealLen);
-    const eased = easeOutCubic(localP);
-
-    card.classList.add("role-card--scroll-anim");
-    card.style.transform = "none";
-    card.style.zIndex = String(index + 1);
-    card.style.opacity = eased <= 0 ? "0" : String(eased);
-    card.classList.toggle("role-card--scroll-settled", localP >= 0.995);
-  });
-}
-
 function updateRolesScroll() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  if (isMobileHeroLayout()) {
-    updateMobileCloudsScroll();
-    return;
-  }
 
   updateHeroPinRelease();
 
@@ -1899,7 +1625,6 @@ function initRolesScrollReveal() {
   rolesScrollMetrics = null;
   heroPinWasReleased = false;
   updateHeroPinRelease();
-  updateMobileCloudsLayout();
   scheduleRolesScrollReveal();
 
   window.addEventListener("scroll", scheduleRolesScrollReveal, { passive: true });
@@ -1907,7 +1632,6 @@ function initRolesScrollReveal() {
     "resize",
     () => {
       rolesScrollMetrics = null;
-      updateMobileCloudsLayout();
       scheduleRolesScrollReveal();
     },
     { passive: true }
@@ -2298,13 +2022,22 @@ function initLangMapGlowObserver() {
   rows.querySelectorAll(".lang-map__row").forEach((row) => observer.observe(row));
 }
 
-applyTranslations();
-scheduleHeroLayoutFit();
-scheduleLangMapPath();
-initLangMapGlowObserver();
-initHeroBlink();
-initRolesScrollReveal();
-initProjectOverlay();
+function bootPortfolio() {
+  applyTranslations();
+  scheduleHeroLayoutFit();
+  scheduleLangMapPath();
+  initLangMapGlowObserver();
+  initHeroBlink();
+  initRolesScrollReveal();
+  initProjectOverlay();
+}
+
+window.bootPortfolio = bootPortfolio;
+
+if (!window.__MOBILE_HERO_EXTENSION__) {
+  bootPortfolio();
+}
+
 window.addEventListener("resize", () => {
   scheduleHeroLayoutFit();
   scheduleLangMapPath();
