@@ -1336,10 +1336,19 @@ function fitHeroPhoto() {
 async function fitHeroHeadline() {
   const heading = document.getElementById("store-name");
   const line = heading?.querySelector(".hero-intro__title-line");
+  const hero = document.querySelector(".hero-intro");
+  const stage = hero?.querySelector(".hero-intro__stage");
   if (!heading || !line) return;
 
   const available = heading.clientWidth;
   if (available <= 0) return;
+
+  const heroStyle = hero ? getComputedStyle(hero) : null;
+  const headlineMinRatio = heroStyle
+    ? parseFloat(heroStyle.getPropertyValue("--hero-headline-min-ratio")) || 0
+    : 0;
+  const isLargeMonitor = window.matchMedia("(min-width: 1600px) and (min-height: 880px)").matches;
+  const useHeadlineBoost = isLargeMonitor && headlineMinRatio > 0;
 
   try {
     await document.fonts.load('1em "Theater Bold"');
@@ -1349,7 +1358,7 @@ async function fitHeroHeadline() {
 
   line.style.fontSize = "16px";
   let lo = 16;
-  let hi = 600;
+  let hi = useHeadlineBoost ? 720 : 600;
 
   const maxWidth = available - 6;
 
@@ -1363,7 +1372,22 @@ async function fitHeroHeadline() {
     }
   }
 
-  line.style.fontSize = `${lo}px`;
+  let fontSize = lo;
+
+  if (useHeadlineBoost && stage) {
+    const maxTextWidth = window.innerWidth - 40;
+    const maxTitleHeight = Math.round(stage.clientHeight * 0.5);
+    const targetFont = Math.round(stage.clientWidth * headlineMinRatio * 0.58);
+    fontSize = Math.max(lo, Math.min(targetFont, hi));
+    line.style.fontSize = `${fontSize}px`;
+
+    while (fontSize > lo && (line.scrollWidth > maxTextWidth || line.offsetHeight > maxTitleHeight)) {
+      fontSize -= 2;
+      line.style.fontSize = `${fontSize}px`;
+    }
+  }
+
+  line.style.fontSize = `${fontSize}px`;
   heading.style.setProperty("--hero-title-size", `${line.offsetHeight}px`);
   fitHeroPhoto();
   rolesScrollMetrics = null;

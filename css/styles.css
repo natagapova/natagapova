@@ -7,25 +7,40 @@
 
 :root {
   color-scheme: light;
-  /* San Francisco на iPhone / Mac (Safari, Chrome); на Windows — Segoe UI */
-  --font-system: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* SF Pro на Apple-устройствах; fallback — system-ui */
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", system-ui, sans-serif;
+  --font-ui: var(--font-system);
   --font-name: "Theater Bold", sans-serif;
-  --color-bg: #f5f5f5;
-  --color-text: #333333;
-  --color-text-muted: #444444;
-  --color-text-strong: #000000;
-  --color-link: #000000;
-  --color-focus: #2d2824;
-  --color-divider: #aeb6b1;
-  --color-footer-muted: #888888;
-  --hero-surface: var(--color-bg);
-  --hero-title: #000000;
+
+  /* iOS-like palette */
+  --ios-bg-grouped: #f2f2f7;
+  --ios-bg-page: #ffffff;
+  --ios-bg-elevated: #fbfbfd;
+  --ios-label: #1d1d1f;
+  --ios-label-secondary: rgb(29 29 31 / 0.78);
+  --ios-label-tertiary: rgb(60 60 67 / 0.3);
+  --ios-separator: rgb(60 60 67 / 0.18);
+  --ios-nav-frost: rgb(255 255 255 / 72%);
+
+  --color-bg: var(--ios-bg-grouped);
+  --color-text: var(--ios-label);
+  --color-text-muted: var(--ios-label-secondary);
+  --color-text-strong: var(--ios-label);
+  --color-link: var(--ios-label);
+  --color-focus: #007aff;
+  --color-divider: var(--ios-separator);
+  --color-footer-muted: var(--ios-label-secondary);
+  --hero-surface: var(--ios-bg-page);
+  --hero-title: var(--ios-label);
   --color-about-bg: #4c6f57;
   --color-about-text: #f5f5f5;
-  --lang-ink: #1c1916;
-  --lang-ink-soft: rgba(28, 25, 22, 0.42);
-  --lang-line: rgba(28, 25, 22, 0.2);
-  --lang-anchor: #000000;
+  --lang-ink: var(--ios-label);
+  --lang-ink-soft: var(--ios-label-secondary);
+  --lang-line: var(--ios-separator);
+  --lang-anchor: var(--ios-label);
+  --lang-glow-rgb: 72, 168, 255;
+  --lang-glow-soft-rgb: 100, 190, 255;
   --lang-anchor-inactive-opacity: 0.5;
   --role-card-border: rgba(255, 255, 255, 0.65);
   --role-chip-border: rgba(0, 0, 0, 0.06);
@@ -43,10 +58,12 @@
 }
 
 html {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 html,
@@ -55,8 +72,11 @@ body {
 }
 
 body {
-  font-size: 15px;
-  font-family: inherit;
+  font-size: 17px;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
   margin: 0;
   padding: 0;
   background-color: var(--color-bg);
@@ -66,28 +86,47 @@ body {
     color 0.35s ease;
 }
 
+@media (min-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
 /* Top Navigation Menu */
 .top-navbar {
   width: 100%;
-  background-color: var(--color-bg);
-  border-bottom: none;
+  background: var(--ios-nav-frost);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--ios-separator);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 20px;
   min-height: 55px;
   box-sizing: border-box;
   z-index: 100;
   position: relative;
-  font-size: 15px;
-  transition: background-color 0.35s ease;
+  font-size: inherit;
+  color: var(--ios-label);
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .navbar-left {
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-size: inherit;
+  letter-spacing: -0.01em;
   text-transform: none;
 }
 
@@ -111,21 +150,32 @@ body {
   border: none;
   color: inherit;
   font-family: inherit;
-  font-size: 15px;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   cursor: pointer;
   padding: 0;
   outline: none;
   text-transform: none;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
+#languageSwitch:hover {
+  opacity: 0.56;
 }
 
 #contact-extra {
-  color: var(--color-link);
-  cursor: pointer;
-  text-decoration: underline;
-  font-weight: normal;
-  font-size: 15px;
-  padding-left: 0;
-  text-transform: none;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
+#contact-extra:hover {
+  opacity: 0.56;
 }
 
 /* Hero + роли: фиксированный первый экран, скролл = анимация карточек */
@@ -187,6 +237,8 @@ body {
   --nav-h: 55px;
   --hero-overlap: 0.52;
   --hero-photo-lift: clamp(0.5rem, 1.2vw, 1rem);
+  --hero-title-lift: -5.5vh;
+  --hero-headline-min-ratio: 0;
   min-height: 100%;
   height: 100%;
   background-color: transparent;
@@ -194,7 +246,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(8px, 2vw, 20px) clamp(16px, 4vw, 48px) clamp(20px, 4vh, 40px);
+  padding: clamp(20px, 4vh, 44px) clamp(16px, 4vw, 48px) clamp(20px, 4vh, 40px);
   margin: 0;
   position: relative;
   z-index: 2;
@@ -202,8 +254,11 @@ body {
 }
 
 .hero-intro__stage {
+  --hero-stage-max-width: 1140px;
   flex: 1 1 auto;
   width: 100%;
+  max-width: var(--hero-stage-max-width);
+  margin-inline: auto;
   min-height: 0;
   height: 100%;
   display: flex;
@@ -213,6 +268,8 @@ body {
   position: relative;
   isolation: isolate;
   overflow: visible;
+  container-type: inline-size;
+  container-name: hero-stage;
 }
 
 .hero-intro .hero-intro__name {
@@ -231,7 +288,7 @@ body {
   text-transform: none;
   color: var(--hero-title);
   font-synthesis: none;
-  transform: translateY(-6vh);
+  transform: translateY(var(--hero-title-lift));
   transition: color 0.35s ease;
   position: relative;
   z-index: 1;
@@ -288,6 +345,7 @@ body {
   line-height: 0;
   max-width: 100%;
   max-height: var(--hero-photo-max-height);
+  transform: scaleX(-1);
 }
 
 .hero-intro__photo {
@@ -335,7 +393,8 @@ body {
   --hero-thought-title-lap: clamp(32px, 6vh, 56px);
   --hero-thought-upper-lift: clamp(28px, 5vh, 48px);
   /* ~30% высоты верхних облаков — опускаем дизайнер / ML */
-  --hero-thought-upper-drop: clamp(52px, 11vw, 80px);
+  --hero-thought-upper-drop: clamp(52px, 7cqi, 80px);
+  --hero-cloud-lower: 0px;
   position: absolute;
   inset: 0;
   z-index: 3;
@@ -389,20 +448,20 @@ html[lang="en"] .roles-nav--hero .role-card__label {
   --thought-pad-text-left: 18%;
   --thought-chip-size: clamp(
     calc(2.5rem * var(--thought-bubble-scale)),
-    calc(6.8vw * var(--thought-bubble-scale)),
-    calc(2.85rem * var(--thought-bubble-scale))
+    calc(5.5cqi * var(--thought-bubble-scale)),
+    calc(3rem * var(--thought-bubble-scale))
   );
   --thought-gap: clamp(
     calc(10px * var(--thought-bubble-scale)),
-    calc(2.4vw * var(--thought-bubble-scale)),
+    calc(2cqi * var(--thought-bubble-scale)),
     calc(14px * var(--thought-bubble-scale))
   );
   position: absolute;
   display: block;
   width: clamp(
     calc(228px * var(--thought-bubble-scale)),
-    calc(52vw * var(--thought-bubble-scale)),
-    calc(368px * var(--thought-bubble-scale))
+    calc(40cqi * var(--thought-bubble-scale)),
+    calc(400px * var(--thought-bubble-scale))
   );
   min-height: 0;
   height: auto;
@@ -468,7 +527,7 @@ html[lang="en"] .roles-nav--hero .role-card__label {
   max-width: 100%;
   text-align: left;
   line-height: 1.1;
-  font-size: clamp(1.28rem, 3.85vw, 1.78rem);
+  font-size: clamp(1.28rem, 3.6cqi, 1.78rem);
   color: #000000;
   text-shadow: none;
 }
@@ -484,7 +543,7 @@ html[lang="en"] .roles-nav--hero .role-card--frontend.role-card--thought .role-c
 }
 
 html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
-  font-size: clamp(1.14rem, 3.35vw, 1.58rem);
+  font-size: clamp(1.14rem, 3.1cqi, 1.58rem);
 }
 
 .roles-nav--hero .role-card--thought .role-card__chip {
@@ -506,13 +565,13 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 .roles-nav--hero .role-card--designer {
   --thought-nudge-x: 10%;
   --thought-nudge-y: -5%;
-  left: clamp(-20px, calc(-3.5vw - 10%), -10px);
+  left: clamp(-24px, -5%, -8px);
   right: auto;
   top: auto;
   bottom: calc(
     var(--hero-card-stack-base) + var(--hero-card-stack-touch) - 4px +
       var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
-      var(--hero-thought-upper-drop)
+      var(--hero-thought-upper-drop) - var(--hero-cloud-lower)
   );
   z-index: 2;
   transform-origin: left bottom;
@@ -521,13 +580,13 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 .roles-nav--hero .role-card--frontend {
   --thought-nudge-x: -10%;
   --thought-nudge-y: -5%;
-  right: clamp(-20px, calc(-3.5vw - 10%), -10px);
+  right: clamp(-24px, -5%, -8px);
   left: auto;
   top: auto;
   bottom: calc(
     var(--hero-card-stack-base) + var(--hero-card-stack-touch) - 4px +
       var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
-      var(--hero-thought-upper-drop)
+      var(--hero-thought-upper-drop) - var(--hero-cloud-lower)
   );
   z-index: 3;
   transform-origin: right bottom;
@@ -535,9 +594,9 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 
 .roles-nav--hero .role-card--ml {
   --thought-nudge-x: -10%;
-  left: clamp(4px, 2vw, 16px);
+  left: clamp(4px, 2%, 18px);
   top: auto;
-  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap) - var(--hero-cloud-lower));
   z-index: 4;
   transform-origin: left bottom;
 }
@@ -545,10 +604,10 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 .roles-nav--hero .role-card--person {
   --thought-nudge-x: 10%;
   --thought-nudge-y: 0%;
-  right: clamp(4px, 2vw, 16px);
+  right: clamp(4px, 2%, 18px);
   left: auto;
   top: auto;
-  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+  bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap) - var(--hero-cloud-lower));
   z-index: 5;
   transform-origin: right bottom;
 }
@@ -704,24 +763,24 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     --hero-card-stack-touch: clamp(168px, 23.5vh, 272px);
     --hero-thought-title-lap: clamp(40px, 6.5vh, 68px);
     --hero-thought-upper-lift: clamp(32px, 5.5vh, 56px);
-    --hero-thought-upper-drop: clamp(64px, 9vw, 88px);
+    --hero-thought-upper-drop: clamp(64px, 7.5cqi, 88px);
   }
 
   .roles-nav--hero .role-card {
-    width: clamp(248px, 34vw, 400px);
+    width: clamp(248px, 36cqi, 420px);
     min-height: clamp(104px, 14vh, 132px);
-    padding: clamp(20px, 2.4vw, 26px) clamp(26px, 3vw, 38px);
+    padding: clamp(20px, 2.4cqi, 26px) clamp(26px, 3.2cqi, 38px);
     gap: 16px;
   }
 
   .roles-nav--hero .role-card__label {
-    font-size: clamp(1.22rem, 1.75vw, 1.58rem);
+    font-size: clamp(1.22rem, 2.2cqi, 1.58rem);
     max-width: 22ch;
   }
 
   html[lang="en"] .roles-nav--hero .role-card__label {
     max-width: 26ch;
-    font-size: clamp(1.14rem, 1.6vw, 1.48rem);
+    font-size: clamp(1.14rem, 2cqi, 1.48rem);
   }
 
   .roles-nav--hero .role-card__chip {
@@ -731,6 +790,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   }
 
   .roles-nav--hero .role-card--thought {
+    --thought-bubble-scale: 1;
     --thought-pad-top: 24%;
     --thought-pad-bottom: 31%;
     --thought-pad-tail: 22%;
@@ -739,8 +799,8 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     --thought-chip-size: calc(2.85rem * var(--thought-bubble-scale));
     width: clamp(
       calc(268px * var(--thought-bubble-scale)),
-      calc(34vw * var(--thought-bubble-scale)),
-      calc(408px * var(--thought-bubble-scale))
+      calc(38cqi * var(--thought-bubble-scale)),
+      calc(440px * var(--thought-bubble-scale))
     );
     min-height: 0;
     padding: 0;
@@ -748,11 +808,11 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   }
 
   .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: clamp(1.34rem, 1.95vw, 1.82rem);
+    font-size: clamp(1.34rem, 2.5cqi, 1.82rem);
   }
 
   html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: clamp(1.26rem, 1.8vw, 1.72rem);
+    font-size: clamp(1.26rem, 2.3cqi, 1.72rem);
   }
 
   .roles-nav--hero .role-card--thought .role-card__chip {
@@ -760,35 +820,113 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   }
 
   .roles-nav--hero .role-card--designer {
-    left: clamp(-32px, calc(-2.5vw - 10%), -14px);
+    left: clamp(-32px, -4.5%, -10px);
     bottom: calc(
       var(--hero-card-stack-base) + var(--hero-card-stack-touch) + 2px +
         var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
-        var(--hero-thought-upper-drop)
+        var(--hero-thought-upper-drop) - var(--hero-cloud-lower)
     );
     z-index: 2;
   }
 
   .roles-nav--hero .role-card--frontend {
-    right: clamp(-32px, calc(-2.5vw - 10%), -14px);
+    right: clamp(-32px, -4.5%, -10px);
     bottom: calc(
       var(--hero-card-stack-base) + var(--hero-card-stack-touch) + 2px +
         var(--hero-thought-title-lap) + var(--hero-thought-upper-lift) -
-        var(--hero-thought-upper-drop)
+        var(--hero-thought-upper-drop) - var(--hero-cloud-lower)
     );
     z-index: 3;
   }
 
   .roles-nav--hero .role-card--ml {
-    left: clamp(12px, 4vw, 52px);
-    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+    left: clamp(8px, 3.5%, 40px);
+    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap) - var(--hero-cloud-lower));
     z-index: 4;
   }
 
   .roles-nav--hero .role-card--person {
-    right: clamp(12px, 4vw, 52px);
-    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap));
+    right: clamp(8px, 3.5%, 40px);
+    bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap) - var(--hero-cloud-lower));
     z-index: 5;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1399px) {
+  .roles-nav--hero {
+    --hero-cloud-lower: 52px;
+  }
+}
+
+@media (min-width: 1400px) {
+  /* верхние облака — designer (слева) и ML (справа, класс --frontend) */
+  .roles-nav--hero .role-card--designer {
+    left: clamp(-88px, -17%, -32px);
+    --thought-nudge-x: 2%;
+    --thought-nudge-y: -5%;
+  }
+
+  .roles-nav--hero .role-card--frontend {
+    right: clamp(-88px, -17%, -32px);
+    --thought-nudge-x: -2%;
+    --thought-nudge-y: -5%;
+  }
+
+  .roles-nav--hero .role-card--ml {
+    left: clamp(-16px, -1.5%, 14px);
+    --thought-nudge-x: -14%;
+  }
+
+  .roles-nav--hero .role-card--person {
+    right: clamp(-16px, -1.5%, 14px);
+    --thought-nudge-x: 14%;
+  }
+}
+
+@media (min-width: 1600px) and (min-height: 880px) {
+  .hero-intro {
+    --hero-headline-min-ratio: 0.7;
+  }
+
+  .hero-intro .hero-intro__title-line {
+    max-width: none;
+  }
+
+  .roles-nav--hero .role-card--thought {
+    --thought-bubble-scale: 1.08;
+    width: clamp(
+      calc(288px * var(--thought-bubble-scale)),
+      calc(42cqi * var(--thought-bubble-scale)),
+      calc(480px * var(--thought-bubble-scale))
+    );
+  }
+
+  .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(1.42rem, 2.75cqi, 1.95rem);
+  }
+
+  html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(1.34rem, 2.55cqi, 1.86rem);
+  }
+
+  .roles-nav--hero .role-card--designer {
+    left: clamp(-156px, -31%, -56px);
+    --thought-nudge-x: -6%;
+  }
+
+  .roles-nav--hero .role-card--frontend {
+    right: clamp(-156px, -31%, -56px);
+    --thought-nudge-x: 6%;
+  }
+
+  .roles-nav--hero .role-card--ml {
+    left: clamp(-72px, -14%, -12px);
+    --thought-nudge-x: -22%;
+  }
+
+  .roles-nav--hero .role-card--person {
+    right: clamp(-72px, -14%, -12px);
+    --thought-nudge-x: 22%;
   }
 }
 
@@ -910,8 +1048,8 @@ body:has(.top-navbar--subpage):not(.page-designer) .footer {
 
 /* ——— Designer page: Apple-style chrome (не карточки) ——— */
 body.page-designer {
-  background: #fbfbfd;
-  color: #1d1d1f;
+  background: var(--ios-bg-elevated);
+  color: var(--ios-label);
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100svh;
@@ -920,10 +1058,10 @@ body.page-designer {
 }
 
 body.page-designer .top-navbar--subpage {
-  background: rgb(251 251 253 / 72%);
+  background: var(--ios-nav-frost);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 0.5px solid rgb(0 0 0 / 10%);
+  border-bottom: 0.5px solid var(--ios-separator);
 }
 
 body.page-designer .navbar-back:hover {
@@ -932,10 +1070,10 @@ body.page-designer .navbar-back:hover {
 
 body.page-designer #languageSwitch,
 body.page-designer #contact-extra {
-  font-size: 14px;
+  font-size: inherit;
   font-weight: 400;
   letter-spacing: -0.01em;
-  color: #1d1d1f;
+  color: var(--ios-label);
   text-decoration: none;
   opacity: 0.88;
   transition: opacity 0.2s ease;
@@ -951,7 +1089,7 @@ body.page-designer .navbar-page-title {
   font-weight: 600;
   letter-spacing: -0.01em;
   text-transform: none;
-  color: rgb(0 0 0 / 56%);
+  color: var(--ios-label-secondary);
 }
 
 body.page-ml .navbar-page-title {
@@ -959,7 +1097,7 @@ body.page-ml .navbar-page-title {
   font-weight: 600;
   letter-spacing: -0.01em;
   text-transform: none;
-  color: rgb(0 0 0 / 56%);
+  color: var(--ios-label-secondary);
 }
 
 .designer-tools-wrap {
@@ -976,12 +1114,13 @@ body.page-ml .navbar-page-title {
 
 .designer-tools__label {
   margin: 0;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1.25;
   text-transform: lowercase;
-  color: rgb(0 0 0 / 44%);
+  color: var(--ios-label-secondary);
 }
 
 .designer-tools {
@@ -1279,7 +1418,7 @@ body.is-project-overlay-open {
     0 0 0 0.5px rgb(0 0 0 / 4%),
     0 16px 48px rgb(0 0 0 / 7%);
   overflow: hidden;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: 15px;
   color: var(--color-text);
 }
@@ -1431,8 +1570,6 @@ body.is-project-overlay-open {
 }
 
 .languages-section {
-  --lang-glow-rgb: 72, 168, 255;
-  --lang-glow-soft-rgb: 100, 190, 255;
   --lang-glow-accent-rgb: 255, 148, 108;
   --lang-glow: rgba(var(--lang-glow-rgb), 0.95);
   --lang-glow-soft: rgba(var(--lang-glow-soft-rgb), 0.45);
@@ -1447,7 +1584,8 @@ body.is-project-overlay-open {
   --lang-anchor-steps: 5;
   position: relative;
   padding: clamp(48px, 10vw, 88px) clamp(20px, 5vw, 40px) clamp(56px, 11vw, 96px);
-  background-color: var(--hero-surface);
+  background-color: var(--ios-bg-page);
+  color: var(--ios-label);
   overflow: hidden;
 }
 
@@ -1459,12 +1597,13 @@ body.is-project-overlay-open {
 }
 
 .languages-section__title {
-  margin: 0 0 clamp(36px, 8vw, 64px);
-  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--lang-ink-soft);
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.27;
+  text-transform: none;
+  color: var(--ios-label);
   text-align: left;
 }
 
@@ -1518,12 +1657,12 @@ body.is-project-overlay-open {
 }
 
 .lang-map__label {
-  font-size: clamp(0.58rem, 1.35vw, 0.68rem);
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--lang-ink-soft);
-  line-height: 1.2;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ios-label);
+  line-height: 1.47;
 }
 
 .lang-map__label--left {
@@ -1534,13 +1673,9 @@ body.is-project-overlay-open {
 
 .lang-map__label--right {
   text-align: right;
-  color: var(--lang-ink);
-  letter-spacing: 0.14em;
-}
-
-.lang-map__row--ru .lang-map__label--right,
-.lang-map__row--en .lang-map__label--right {
-  font-weight: 600;
+  color: var(--ios-label);
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 .lang-map__track {
@@ -1656,8 +1791,8 @@ body.is-project-overlay-open {
 /* Experience section */
 .about-section {
   padding: 60px 20px;
-  background-color: var(--color-about-bg);
-  color: var(--color-about-text);
+  background-color: var(--ios-bg-page);
+  color: var(--ios-label);
   transition:
     background-color 0.35s ease,
     color 0.35s ease;
@@ -1678,8 +1813,12 @@ body.is-project-overlay-open {
 }
 
 .about-block h3 {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.27;
   margin-bottom: 10px;
+  color: var(--ios-label);
 }
 
 .about-block ul {
@@ -1689,8 +1828,10 @@ body.is-project-overlay-open {
 
 .about-block li {
   margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: inherit;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+  color: var(--ios-label);
 }
 
 /* Footer */
@@ -1743,7 +1884,7 @@ body.is-project-overlay-open {
   }
 
   .languages-section__title {
-    margin-bottom: 28px;
+    margin-bottom: 10px;
   }
 }
 
@@ -1772,8 +1913,10 @@ body.is-project-overlay-open {
 }
 
 .navbar-page-title {
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ios-label-secondary);
   white-space: nowrap;
 }
 
@@ -1788,10 +1931,10 @@ body.is-project-overlay-open {
 
 .person-tagline {
   margin: 0 0 14px;
-  font-size: 15px;
+  font-size: inherit;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--color-text);
+  letter-spacing: -0.01em;
+  color: var(--ios-label);
 }
 
 .gallery {
