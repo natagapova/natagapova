@@ -15,7 +15,7 @@ let personGalleryResizeTimer = null;
 let personGalleryObserver = null;
 
 /**
- * Reads the gap between .gallery-item elements as defined in styles.css by
+ * Reads the gap between .gallery-item elements as defined in css/styles.css by
  * creating dummy elements in memory and reading the computed style.
  * Updated to match DOM nesting: .gallery > .gallery-column > .gallery-item
  */

@@ -1,1 +1,10 @@
 node_modules/
+.DS_Store
+
+# LaTeX build artifacts
+docs/*.aux
+docs/*.log
+docs/*.fls
+docs/*.fdb_latexmk
+docs/*.out
+docs/*.synctex.gz
