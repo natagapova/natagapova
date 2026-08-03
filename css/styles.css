@@ -131,12 +131,8 @@ select {
 }
 
 #nav-brand {
-  margin-right: 0.35em;
+  margin-right: 0;
   font-style: normal;
-}
-
-.navbar-copy {
-  font-style: italic;
 }
 
 .navbar-right {
@@ -226,6 +222,23 @@ select {
   visibility: hidden;
 }
 
+.hero-experience__clouds {
+  position: fixed;
+  top: var(--nav-h, 55px);
+  left: 0;
+  right: 0;
+  height: calc(100svh - var(--nav-h, 55px));
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-experience.is-released .hero-experience__clouds {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  height: calc(100svh - var(--nav-h, 55px));
+}
+
 /* Hero — первый экран */
 .hero-experience__pin .hero-intro {
   flex: 1 1 auto;
@@ -306,6 +319,19 @@ select {
   line-height: 1.05;
   letter-spacing: var(--hero-word-gap-tracking);
   padding-block: 0.04em;
+}
+
+@media (min-width: 720px) {
+  .hero-intro .hero-intro__title-line {
+    display: inline;
+    width: auto;
+    margin-inline: 0;
+    padding-block: 0;
+  }
+
+  .hero-intro .hero-intro__title-line + .hero-intro__title-line::before {
+    content: " ";
+  }
 }
 
 .hero-intro .hero-word {
@@ -610,6 +636,192 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   bottom: calc(var(--hero-card-stack-base) + var(--hero-thought-title-lap) - var(--hero-cloud-lower));
   z-index: 5;
   transform-origin: right bottom;
+}
+
+/* ——— Hero: телефоны ——— */
+@media (max-width: 719px) {
+  .hero-experience {
+    height: auto;
+    background-color: var(--hero-surface);
+  }
+
+  .hero-experience__pin {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: 100svh;
+    z-index: 2;
+  }
+
+  .hero-experience.is-released .hero-experience__pin {
+    position: relative;
+    top: auto;
+    bottom: auto;
+  }
+
+  .hero-experience__track {
+    display: none;
+  }
+
+  .hero-experience__clouds {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: auto;
+    z-index: 1;
+    pointer-events: auto;
+    background-color: var(--hero-surface);
+    padding: clamp(16px, 4vh, 28px) var(--hero-mobile-inset, 16px)
+      clamp(32px, 8vh, 56px);
+  }
+
+  .hero-experience__pin .hero-intro {
+    flex: 1 1 auto;
+    min-height: calc(100svh - var(--nav-h, 55px));
+  }
+
+  .hero-intro {
+    --hero-overlap: 0;
+    --hero-title-lift: 0;
+    --hero-photo-lift: 0;
+    --hero-mobile-inset: clamp(12px, 4vw, 20px);
+    --hero-mobile-nav-gap: clamp(14px, 3.5vh, 24px);
+    --hero-mobile-photo-vh: 0.45;
+    padding: var(--hero-mobile-nav-gap) var(--hero-mobile-inset) 0;
+    justify-content: flex-start;
+  }
+
+  .hero-intro__stage {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: stretch;
+    justify-items: stretch;
+    max-width: none;
+  }
+
+  .hero-intro .hero-intro__name {
+    display: contents;
+    transform: none;
+    padding: 0;
+    width: 100%;
+    line-height: 0.88;
+  }
+
+  .hero-intro .hero-intro__title-line {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 0.88;
+    padding-block: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-intro .hero-intro__title-line:first-child {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: start;
+  }
+
+  .hero-intro .hero-intro__title-line:last-child {
+    grid-row: 3;
+    grid-column: 1;
+    align-self: end;
+  }
+
+  .hero-intro .hero-intro__title-line + .hero-intro__title-line {
+    margin-top: 0;
+  }
+
+  .hero-intro .hero-intro__title-line + .hero-intro__title-line::before {
+    content: none;
+  }
+
+  .hero-intro__photo-wrap {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    flex: none;
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    z-index: 5;
+    overflow: visible;
+  }
+
+  .hero-intro__photo-stack {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    line-height: 0;
+  }
+
+  .hero-experience__clouds .roles-nav--hero {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card {
+    position: sticky;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    opacity: 0;
+    transform: none;
+    --role-rotate: 0deg;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--thought {
+    --thought-bubble-scale: var(--hero-mobile-cloud-scale, 0.54);
+    width: 100%;
+    max-width: 100%;
+    transform-origin: center center;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+  }
+
+  html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: clamp(0.82rem, 2.9vw, 0.96rem);
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--thought:not(.role-card--scroll-anim) {
+    transform: none;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card + .role-card {
+    margin-top: 0;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--designer,
+  .hero-experience__clouds .roles-nav--hero .role-card--frontend,
+  .hero-experience__clouds .roles-nav--hero .role-card--ml,
+  .hero-experience__clouds .roles-nav--hero .role-card--person {
+    left: auto;
+    right: auto;
+    --thought-nudge-x: 0%;
+    --thought-nudge-y: 0%;
+  }
 }
 
 .roles-nav {
@@ -953,6 +1165,20 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 
   .hero-experience__track {
     display: none;
+  }
+
+  .hero-experience__clouds {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    height: auto;
+    pointer-events: auto;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card,
+  .hero-experience__clouds .roles-nav--hero .role-card--scroll-settled {
+    opacity: 1;
+    transform: none;
   }
 
   .roles-nav--hero .role-card,
@@ -1856,7 +2082,7 @@ body.is-project-overlay-open {
 
 
 /* Mobile styles */
-@media (max-width: 900px) {
+@media (min-width: 720px) and (max-width: 900px) {
   .hero-intro {
     padding: clamp(6px, 1.5vw, 14px) clamp(16px, 4vw, 32px) clamp(10px, 2vw, 20px);
   }
@@ -1865,7 +2091,16 @@ body.is-project-overlay-open {
     --hero-word-gap-tracking: -0.03em;
     --hero-word-inner-tracking: -0.038em;
   }
+}
 
+@media (max-width: 719px) {
+  .hero-intro .hero-intro__name {
+    --hero-word-gap-tracking: -0.03em;
+    --hero-word-inner-tracking: -0.038em;
+  }
+}
+
+@media (max-width: 900px) {
   .project-img {
     height: min(70vh, 420px);
   }
