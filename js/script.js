@@ -1771,6 +1771,21 @@ function readLangGlowPalette() {
   langGlowOpacity = Number.isFinite(opacity) ? opacity : 0.7;
 }
 
+function getLangGlowLineMetrics() {
+  const section = document.querySelector(".languages-section");
+  const styles = section ? getComputedStyle(section) : null;
+  const readMetric = (name, fallback) => {
+    const value = parseFloat(styles?.getPropertyValue(name));
+    return Number.isFinite(value) ? value : fallback;
+  };
+
+  return {
+    minWidth: readMetric("--lang-glow-line-min", 3.4),
+    maxWidth: readMetric("--lang-glow-line-max", 34),
+    reachPx: readMetric("--lang-glow-line-reach", 50),
+  };
+}
+
 function glowRgba(channel, alpha) {
   return `rgba(${channel}, ${alpha})`;
 }
@@ -1883,9 +1898,7 @@ function drawLangMapGlow(canvas, samples, anchors) {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, width, height);
 
-  const minWidth = 3.4;
-  const maxWidth = 34;
-  const reachPx = 50;
+  const { minWidth, maxWidth, reachPx } = getLangGlowLineMetrics();
 
   const passes = [
     {
