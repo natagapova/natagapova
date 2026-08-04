@@ -626,6 +626,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     right: auto;
     height: 100svh;
     z-index: 2;
+    background-color: var(--hero-surface);
   }
 
   .hero-experience.is-released .hero-experience__pin {

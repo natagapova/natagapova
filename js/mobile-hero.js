@@ -185,7 +185,7 @@ function updateMobileCloudsPinState() {
   const trackH = track.offsetHeight;
   const viewportH = window.innerHeight;
   const rect = clouds.getBoundingClientRect();
-  const scrolled = Math.max(0, -rect.top);
+  const scrolled = Math.max(0, viewportH - rect.top);
 
   clouds.classList.remove("is-pinned", "is-released");
 
@@ -200,7 +200,7 @@ function updateMobileCloudsPinState() {
     return scrolled;
   }
 
-  if (scrolled < trackH) {
+  if (-rect.top < trackH) {
     clouds.classList.add("is-pinned");
     return scrolled;
   }
@@ -333,8 +333,9 @@ function updateMobileCloudsScroll() {
   const trackH = track.offsetHeight;
   if (trackH <= 0) return;
 
+  const viewportH = window.innerHeight;
   const scrolled = updateMobileCloudsPinState();
-  const progress = clamp01(scrolled / trackH);
+  const progress = clamp01(scrolled / (viewportH + trackH));
   const cardCount = cards.length;
   const step = 1 / cardCount;
 
