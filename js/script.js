@@ -400,7 +400,7 @@ const MOBILE_PROJECT_MAX_WIDTH = 719;
 const MOBILE_PANEL_SCENE = {
   edgeInset: 4,
   panelSkew: 3,
-  panelTiltX: 7,
+  panelTiltX: 24,
   stackStep: 42,
   panelWidthRatio: 0.752,
   maxPanelHeight: 157,
@@ -767,14 +767,22 @@ function layoutProjectPanels() {
           scene.style.minHeight = `${Math.ceil(mobile.totalHeight + stackMarginTop + 16)}px`;
         }
 
+        const tiltRad = (panelTiltX * Math.PI) / 180;
+
         panels.forEach((panel, index) => {
           const { left, top, width } = mobile.positions[index];
+          const height = mobile.heights[index];
+          const trapInset = Math.max(
+            8,
+            Math.round(height * Math.tan(tiltRad) * 0.55)
+          );
 
           panel.style.width = `${width}px`;
           panel.style.left = `${left}px`;
           panel.style.top = `${top}px`;
           panel.style.removeProperty("bottom");
           panel.style.setProperty("--panel-z", String(index + 1));
+          panel.style.setProperty("--panel-trap-inset", `${trapInset}px`);
           applyPanelBevelColors(panel);
           panel.classList.remove("project-panel--pending");
         });
@@ -819,6 +827,7 @@ function layoutProjectPanels() {
         panel.style.bottom = `${bottom}px`;
         panel.style.removeProperty("top");
         panel.style.removeProperty("--panel-tilt");
+        panel.style.removeProperty("--panel-trap-inset");
         panel.style.setProperty("--panel-z", String(count - index));
         applyPanelBevelColors(panel);
         panel.classList.remove("project-panel--pending");
@@ -1044,11 +1053,11 @@ function renderDesignerProjects() {
           data-project-id="${project.id}"
           aria-label="${escapeHtml(title)}"
         >
+          <div class="project-panel__caption" aria-hidden="true">
+            <p class="project-panel__caption-title">${escapeHtml(title)}</p>
+            <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
+          </div>
           <div class="project-panel__stack">
-            <div class="project-panel__caption" aria-hidden="true">
-              <p class="project-panel__caption-title">${escapeHtml(title)}</p>
-              <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
-            </div>
             <div class="project-panel__card">
               <span class="project-panel__bevel" aria-hidden="true"></span>
               <img

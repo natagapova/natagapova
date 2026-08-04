@@ -1695,6 +1695,87 @@ body.page-designer .navbar-back:hover {
     overflow: visible;
   }
 
+  body.page-designer {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .top-navbar--subpage {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .navbar-page-title {
+    font-weight: 600;
+  }
+
+  body.page-designer .designer-tools__label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .designer-tools .frontend-page__skill {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .footer {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .footer-copy {
+    font-style: normal;
+  }
+
+  body.page-designer .project-panel__caption-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .project-panel__caption-desc {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .project-overlay__title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .project-overlay__desc {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  body.page-designer .project-overlay__panel .frontend-page__skill {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
   .projects-stack--mobile {
     position: relative;
     top: auto;
@@ -1705,8 +1786,6 @@ body.page-designer .navbar-back:hover {
     margin-top: clamp(108px, 27vw, 136px);
     padding: 0 4px 24px;
     box-sizing: border-box;
-    perspective: 920px;
-    perspective-origin: 50% 0%;
   }
 
   .projects-stack--mobile .project-panel {
@@ -1721,8 +1800,23 @@ body.page-designer .navbar-back:hover {
   }
 
   .projects-stack--mobile .project-panel__stack {
-    transform: rotateX(var(--panel-tilt-x, 7deg));
+    transform: perspective(760px) rotateX(var(--panel-tilt-x, 24deg));
     transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+  }
+
+  .projects-stack--mobile .project-panel__card,
+  .projects-stack--mobile .project-panel__surface {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      calc(100% - var(--panel-trap-inset, 14px)) 100%,
+      var(--panel-trap-inset, 14px) 100%
+    );
+  }
+
+  .projects-stack--mobile .project-panel__bevel {
+    display: none;
   }
 
   .designer-tools {
