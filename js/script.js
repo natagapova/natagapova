@@ -395,7 +395,33 @@ const PANEL_SCENE = {
   diagonalScale: 0.58,
 };
 
+const MOBILE_PROJECT_MAX_WIDTH = 719;
+
+const MOBILE_PANEL_SCENE = {
+  edgeInset: 4,
+  panelSkew: 3,
+  panelTiltX: 7,
+  stackStep: 42,
+  panelWidthRatio: 0.752,
+  maxPanelHeight: 157,
+  minPanelHeight: 86,
+  bottomPad: 72,
+};
+
+function isMobileProjectLayout() {
+  return window.matchMedia(`(max-width: ${MOBILE_PROJECT_MAX_WIDTH}px)`).matches;
+}
+
 function getProjectStackBounds(stack, scene) {
+  if (isMobileProjectLayout()) {
+    const sceneWidth = scene?.clientWidth ?? stack.clientWidth;
+    const pad = 16;
+    return {
+      width: Math.max(0, sceneWidth - pad),
+      height: Math.max(320, window.innerHeight * 0.55),
+    };
+  }
+
   let width = stack.clientWidth;
   let height = stack.clientHeight;
 
@@ -494,6 +520,36 @@ function resolvePanelHeight(bounds, aspects, edgeInset, heightRatio, diagonalSca
   }
 
   return lo;
+}
+
+function layoutMobileVerticalStack(bounds, aspects) {
+  const {
+    edgeInset,
+    stackStep,
+    panelWidthRatio,
+    maxPanelHeight,
+    minPanelHeight,
+    bottomPad,
+  } = MOBILE_PANEL_SCENE;
+  const count = aspects.length;
+  const panelWidth = Math.max(96, bounds.width * panelWidthRatio);
+  const left = Math.max(edgeInset, (bounds.width - panelWidth) / 2);
+  const heights = aspects.map((aspect) => {
+    const natural = panelWidth / aspect;
+    return Math.max(minPanelHeight, Math.min(natural, maxPanelHeight));
+  });
+
+  const positions = [];
+  let top = edgeInset;
+  for (let index = 0; index < count; index += 1) {
+    positions.push({ left, top, width: panelWidth, height: heights[index] });
+    top += stackStep;
+  }
+
+  const totalHeight =
+    positions[count - 1].top + heights[count - 1] + edgeInset + bottomPad;
+
+  return { positions, heights, totalHeight };
 }
 
 let projectStackLayoutFrame = 0;
@@ -689,14 +745,52 @@ function layoutProjectPanels() {
     panels.map((panel) => waitForImage(panel.querySelector(".project-panel__surface")))
   ).then(() => {
     const applyLayout = () => {
-      const { panelSkew, edgeInset, panelHeightRatio, diagonalScale } = PANEL_SCENE;
       const bounds = getProjectStackBounds(stack, scene);
-      if (!bounds.width || !bounds.height) return false;
+      if (!bounds.width) return false;
 
       const aspects = panels.map((panel) => {
         const img = panel.querySelector(".project-panel__surface");
         return img.naturalWidth / img.naturalHeight;
       });
+
+      if (isMobileProjectLayout()) {
+        const { panelSkew, panelTiltX } = MOBILE_PANEL_SCENE;
+        const mobile = layoutMobileVerticalStack(bounds, aspects);
+
+        stack.classList.add("projects-stack--mobile");
+        stack.style.height = `${Math.ceil(mobile.totalHeight)}px`;
+        stack.style.setProperty("--panel-skew", `${panelSkew}deg`);
+        stack.style.setProperty("--panel-tilt-x", `${panelTiltX}deg`);
+
+        if (scene) {
+          const stackMarginTop = Number.parseFloat(getComputedStyle(stack).marginTop) || 0;
+          scene.style.minHeight = `${Math.ceil(mobile.totalHeight + stackMarginTop + 16)}px`;
+        }
+
+        panels.forEach((panel, index) => {
+          const { left, top, width } = mobile.positions[index];
+
+          panel.style.width = `${width}px`;
+          panel.style.left = `${left}px`;
+          panel.style.top = `${top}px`;
+          panel.style.removeProperty("bottom");
+          panel.style.setProperty("--panel-z", String(index + 1));
+          applyPanelBevelColors(panel);
+          panel.classList.remove("project-panel--pending");
+        });
+
+        return true;
+      }
+
+      stack.classList.remove("projects-stack--mobile");
+      stack.style.removeProperty("height");
+      stack.style.removeProperty("--panel-tilt-x");
+      if (scene) {
+        scene.style.removeProperty("min-height");
+      }
+
+      const { panelSkew, edgeInset, panelHeightRatio, diagonalScale } = PANEL_SCENE;
+      if (!bounds.height) return false;
 
       const panelHeight = resolvePanelHeight(
         bounds,
@@ -723,6 +817,8 @@ function layoutProjectPanels() {
         panel.style.width = `${width}px`;
         panel.style.left = `${left}px`;
         panel.style.bottom = `${bottom}px`;
+        panel.style.removeProperty("top");
+        panel.style.removeProperty("--panel-tilt");
         panel.style.setProperty("--panel-z", String(count - index));
         applyPanelBevelColors(panel);
         panel.classList.remove("project-panel--pending");
