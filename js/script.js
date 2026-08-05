@@ -795,6 +795,7 @@ function layoutProjectPanels() {
       stack.classList.remove("projects-stack--mobile");
       stack.style.removeProperty("height");
       stack.style.removeProperty("--panel-tilt-x");
+      hideAllMobilePanelPreviews();
       if (scene) {
         scene.style.removeProperty("min-height");
       }
@@ -1251,41 +1252,32 @@ function resetElevatedMobileCaption(caption) {
   caption.style.transform = "";
 }
 
-function bindMobilePanelCaptionElevation() {
-  const stack = document.getElementById("projects-stack");
-  if (!stack?.classList.contains("projects-stack--mobile")) return;
-
-  stack.querySelectorAll(".project-panel").forEach((panel) => {
-    if (panel.dataset.captionElevateBound === "true") return;
-    panel.dataset.captionElevateBound = "true";
-
-    const stack = panel.querySelector(".project-panel__stack");
-    if (!stack) return;
-
-    const caption = panel.querySelector(".project-panel__caption");
-    if (!caption) return;
-
-    let elevateFrame = 0;
-
-    const elevate = () => {
-      cancelAnimationFrame(elevateFrame);
-      elevateFrame = requestAnimationFrame(() => {
-        positionElevatedMobileCaption(caption, panel);
-      });
-    };
-
-    const lower = () => {
-      cancelAnimationFrame(elevateFrame);
-      resetElevatedMobileCaption(caption);
-    };
-
-    stack.addEventListener("mouseenter", elevate);
-    stack.addEventListener("mouseleave", lower);
-    panel.addEventListener("focusin", elevate);
-    panel.addEventListener("focusout", (event) => {
-      if (!panel.contains(event.relatedTarget)) lower();
-    });
+function showMobilePanelPreview(panel) {
+  const caption = panel.querySelector(".project-panel__caption");
+  if (!caption) return;
+  panel.classList.add("is-preview-open");
+  requestAnimationFrame(() => {
+    positionElevatedMobileCaption(caption, panel);
   });
+}
+
+function hideMobilePanelPreview(panel) {
+  const caption = panel.querySelector(".project-panel__caption");
+  panel.classList.remove("is-preview-open");
+  if (caption) resetElevatedMobileCaption(caption);
+}
+
+function hideAllMobilePanelPreviews() {
+  document
+    .querySelectorAll(".projects-stack--mobile .project-panel.is-preview-open")
+    .forEach((panel) => hideMobilePanelPreview(panel));
+}
+
+function bindMobilePanelCaptionElevation() {
+  if (!document.getElementById("projects-stack")?.classList.contains("projects-stack--mobile")) {
+    return;
+  }
+  ensureMobileCaptionViewportListeners();
 }
 
 function repositionElevatedMobileCaptions() {
@@ -1319,6 +1311,21 @@ function bindProjectPanelHandlers() {
   scene.addEventListener("click", (event) => {
     const panel = event.target.closest(".project-panel");
     if (!panel?.dataset.projectId) return;
+
+    if (isMobileProjectLayout()) {
+      event.stopPropagation();
+
+      if (panel.classList.contains("is-preview-open")) {
+        hideMobilePanelPreview(panel);
+        openProjectOverlay(panel.dataset.projectId);
+        return;
+      }
+
+      hideAllMobilePanelPreviews();
+      showMobilePanelPreview(panel);
+      return;
+    }
+
     openProjectOverlay(panel.dataset.projectId);
   });
 
@@ -1327,7 +1334,26 @@ function bindProjectPanelHandlers() {
     const panel = event.target.closest(".project-panel");
     if (!panel?.dataset.projectId) return;
     event.preventDefault();
+
+    if (isMobileProjectLayout()) {
+      if (panel.classList.contains("is-preview-open")) {
+        hideMobilePanelPreview(panel);
+        openProjectOverlay(panel.dataset.projectId);
+        return;
+      }
+
+      hideAllMobilePanelPreviews();
+      showMobilePanelPreview(panel);
+      return;
+    }
+
     openProjectOverlay(panel.dataset.projectId);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!isMobileProjectLayout()) return;
+    if (event.target.closest(".projects-stack--mobile .project-panel")) return;
+    hideAllMobilePanelPreviews();
   });
 }
 
