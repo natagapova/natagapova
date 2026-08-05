@@ -400,12 +400,13 @@ const MOBILE_PROJECT_MAX_WIDTH = 719;
 const MOBILE_PANEL_SCENE = {
   edgeInset: 4,
   panelSkew: 3,
-  panelTiltX: 24,
+  panelTiltX: 55,
   stackStep: 42,
   panelWidthRatio: 0.752,
   maxPanelHeight: 157,
   minPanelHeight: 86,
   bottomPad: 72,
+  panelSizeScale: 1.5,
 };
 
 function isMobileProjectLayout() {
@@ -530,24 +531,28 @@ function layoutMobileVerticalStack(bounds, aspects) {
     maxPanelHeight,
     minPanelHeight,
     bottomPad,
+    panelSizeScale,
   } = MOBILE_PANEL_SCENE;
   const count = aspects.length;
-  const panelWidth = Math.max(96, bounds.width * panelWidthRatio);
-  const left = Math.max(edgeInset, (bounds.width - panelWidth) / 2);
-  const heights = aspects.map((aspect) => {
-    const natural = panelWidth / aspect;
-    return Math.max(minPanelHeight, Math.min(natural, maxPanelHeight));
-  });
+  const scale = panelSizeScale ?? 1;
+  const baseSize = Math.max(
+    minPanelHeight,
+    Math.min(Math.max(96, bounds.width * panelWidthRatio), maxPanelHeight)
+  );
+  const panelSize = Math.min(bounds.width, Math.round(baseSize * scale));
+  const step = Math.round(stackStep * scale);
+  const left = Math.max(edgeInset, (bounds.width - panelSize) / 2);
+  const heights = aspects.map(() => panelSize);
 
   const positions = [];
   let top = edgeInset;
   for (let index = 0; index < count; index += 1) {
-    positions.push({ left, top, width: panelWidth, height: heights[index] });
-    top += stackStep;
+    positions.push({ left, top, width: panelSize, height: panelSize });
+    top += step;
   }
 
   const totalHeight =
-    positions[count - 1].top + heights[count - 1] + edgeInset + bottomPad;
+    positions[count - 1].top + panelSize + edgeInset + Math.round(bottomPad * scale);
 
   return { positions, heights, totalHeight };
 }
@@ -767,25 +772,22 @@ function layoutProjectPanels() {
           scene.style.minHeight = `${Math.ceil(mobile.totalHeight + stackMarginTop + 16)}px`;
         }
 
-        const tiltRad = (panelTiltX * Math.PI) / 180;
-
         panels.forEach((panel, index) => {
-          const { left, top, width } = mobile.positions[index];
-          const height = mobile.heights[index];
-          const trapInset = Math.max(
-            8,
-            Math.round(height * Math.tan(tiltRad) * 0.55)
-          );
+          const { left, top, width, height } = mobile.positions[index];
 
           panel.style.width = `${width}px`;
+          panel.style.height = `${height}px`;
           panel.style.left = `${left}px`;
           panel.style.top = `${top}px`;
           panel.style.removeProperty("bottom");
           panel.style.setProperty("--panel-z", String(index + 1));
-          panel.style.setProperty("--panel-trap-inset", `${trapInset}px`);
+          panel.style.removeProperty("--panel-trap-inset");
           applyPanelBevelColors(panel);
           panel.classList.remove("project-panel--pending");
         });
+
+        ensureMobileCaptionViewportListeners();
+        bindMobilePanelCaptionElevation();
 
         return true;
       }
@@ -828,6 +830,8 @@ function layoutProjectPanels() {
         panel.style.removeProperty("top");
         panel.style.removeProperty("--panel-tilt");
         panel.style.removeProperty("--panel-trap-inset");
+        panel.style.removeProperty("--panel-depth-z");
+        panel.style.removeProperty("--panel-caption-width");
         panel.style.setProperty("--panel-z", String(count - index));
         applyPanelBevelColors(panel);
         panel.classList.remove("project-panel--pending");
@@ -1053,10 +1057,6 @@ function renderDesignerProjects() {
           data-project-id="${project.id}"
           aria-label="${escapeHtml(title)}"
         >
-          <div class="project-panel__caption" aria-hidden="true">
-            <p class="project-panel__caption-title">${escapeHtml(title)}</p>
-            <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
-          </div>
           <div class="project-panel__stack">
             <div class="project-panel__card">
               <span class="project-panel__bevel" aria-hidden="true"></span>
@@ -1068,6 +1068,10 @@ function renderDesignerProjects() {
                 decoding="async"
               />
             </div>
+          </div>
+          <div class="project-panel__caption" aria-hidden="true">
+            <p class="project-panel__caption-title">${escapeHtml(title)}</p>
+            <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
           </div>
           <span class="visually-hidden">${escapeHtml(title)}. ${escapeHtml(description)}</span>
         </article>
@@ -1210,6 +1214,87 @@ function closeProjectOverlay() {
   overlay.hidden = true;
   openProjectId = null;
   document.body.classList.remove("is-project-overlay-open");
+}
+
+const MOBILE_CAPTION_GAP = 4;
+
+function positionElevatedMobileCaption(caption, panel) {
+  const rect = panel.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+
+  caption.classList.add("project-panel__caption--elevated");
+  caption.style.left = `${centerX}px`;
+  caption.style.right = "auto";
+  caption.style.width = `${rect.width}px`;
+  caption.style.top = "auto";
+  caption.style.bottom = `${window.innerHeight - rect.top + MOBILE_CAPTION_GAP}px`;
+  caption.style.transform = "translateX(-50%)";
+}
+
+function resetElevatedMobileCaption(caption) {
+  caption.classList.remove("project-panel__caption--elevated");
+  caption.style.left = "";
+  caption.style.right = "";
+  caption.style.width = "";
+  caption.style.top = "";
+  caption.style.bottom = "";
+  caption.style.transform = "";
+}
+
+function bindMobilePanelCaptionElevation() {
+  const stack = document.getElementById("projects-stack");
+  if (!stack?.classList.contains("projects-stack--mobile")) return;
+
+  stack.querySelectorAll(".project-panel").forEach((panel) => {
+    if (panel.dataset.captionElevateBound === "true") return;
+    panel.dataset.captionElevateBound = "true";
+
+    const caption = panel.querySelector(".project-panel__caption");
+    if (!caption) return;
+
+    let elevateFrame = 0;
+
+    const elevate = () => {
+      cancelAnimationFrame(elevateFrame);
+      elevateFrame = requestAnimationFrame(() => {
+        positionElevatedMobileCaption(caption, panel);
+      });
+    };
+
+    const lower = () => {
+      cancelAnimationFrame(elevateFrame);
+      resetElevatedMobileCaption(caption);
+    };
+
+    panel.addEventListener("mouseenter", elevate);
+    panel.addEventListener("mouseleave", lower);
+    panel.addEventListener("focusin", elevate);
+    panel.addEventListener("focusout", (event) => {
+      if (!panel.contains(event.relatedTarget)) lower();
+    });
+  });
+}
+
+function repositionElevatedMobileCaptions() {
+  document
+    .querySelectorAll(".projects-stack--mobile .project-panel__caption--elevated")
+    .forEach((caption) => {
+      const panel = caption.closest(".project-panel");
+      if (!panel) return;
+      positionElevatedMobileCaption(caption, panel);
+    });
+}
+
+let mobileCaptionViewportListenersBound = false;
+
+function ensureMobileCaptionViewportListeners() {
+  if (mobileCaptionViewportListenersBound) return;
+  mobileCaptionViewportListenersBound = true;
+  document.addEventListener("scroll", repositionElevatedMobileCaptions, {
+    passive: true,
+    capture: true,
+  });
+  window.addEventListener("resize", repositionElevatedMobileCaptions, { passive: true });
 }
 
 function bindProjectPanelHandlers() {
