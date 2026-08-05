@@ -1685,7 +1685,7 @@ body.page-designer .navbar-back:hover {
   .projects-section {
     height: auto;
     min-height: 0;
-    padding: 0 12px 24px;
+    padding: 0 12px 12px;
     overflow: visible;
   }
 
@@ -1784,7 +1784,7 @@ body.page-designer .navbar-back:hover {
     left: 0;
     width: 100%;
     margin-top: clamp(108px, 27vw, 136px);
-    padding: 0 4px 24px;
+    padding: 0 4px 12px;
     box-sizing: border-box;
   }
 
@@ -1794,6 +1794,7 @@ body.page-designer .navbar-back:hover {
     z-index: var(--panel-z, 1);
     transform: none;
     transform-style: flat;
+    pointer-events: none;
   }
 
   .projects-stack--mobile .project-panel:hover,
@@ -1802,21 +1803,23 @@ body.page-designer .navbar-back:hover {
     transform: none;
   }
 
-  .projects-stack--mobile .project-panel:hover .project-panel__stack,
-  .projects-stack--mobile .project-panel:focus-within .project-panel__stack,
-  .projects-stack--mobile .project-panel:focus-visible .project-panel__stack {
-    transform: perspective(900px) rotateX(calc(-1 * var(--panel-tilt-x, 55deg)))
-      translateY(-6px);
-  }
-
   .projects-stack--mobile .project-panel__stack {
     position: relative;
     z-index: 1;
     height: 100%;
+    cursor: pointer;
+    pointer-events: auto;
     transform: perspective(900px) rotateX(calc(-1 * var(--panel-tilt-x, 55deg)));
     transform-origin: 50% 100%;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+  }
+
+  .projects-stack--mobile .project-panel__stack:hover,
+  .projects-stack--mobile .project-panel:focus-within .project-panel__stack,
+  .projects-stack--mobile .project-panel:focus-visible .project-panel__stack {
+    transform: perspective(900px) rotateX(calc(-1 * var(--panel-tilt-x, 55deg)))
+      translateY(-6px);
   }
 
   .projects-stack--mobile .project-panel__card {
@@ -1882,7 +1885,7 @@ body.page-designer .navbar-back:hover {
     transform: translateX(-50%);
   }
 
-  .projects-stack--mobile .project-panel:hover .project-panel__caption,
+  .projects-stack--mobile .project-panel__stack:hover ~ .project-panel__caption,
   .projects-stack--mobile .project-panel:focus-within .project-panel__caption,
   .projects-stack--mobile .project-panel:focus-visible .project-panel__caption {
     opacity: 1;

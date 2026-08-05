@@ -405,7 +405,7 @@ const MOBILE_PANEL_SCENE = {
   panelWidthRatio: 0.752,
   maxPanelHeight: 157,
   minPanelHeight: 86,
-  bottomPad: 72,
+  bottomPad: 24,
   panelSizeScale: 1.5,
 };
 
@@ -769,7 +769,7 @@ function layoutProjectPanels() {
 
         if (scene) {
           const stackMarginTop = Number.parseFloat(getComputedStyle(stack).marginTop) || 0;
-          scene.style.minHeight = `${Math.ceil(mobile.totalHeight + stackMarginTop + 16)}px`;
+          scene.style.minHeight = `${Math.ceil(mobile.totalHeight + stackMarginTop + 8)}px`;
         }
 
         panels.forEach((panel, index) => {
@@ -1218,16 +1218,26 @@ function closeProjectOverlay() {
 
 const MOBILE_CAPTION_GAP = 4;
 
+function getMobilePanelCaptionMetrics(panel) {
+  const stack = panel.querySelector(".project-panel__stack");
+  const rect = (stack ?? panel).getBoundingClientRect();
+
+  return {
+    centerX: rect.left + rect.width / 2,
+    width: rect.width,
+    top: rect.top,
+  };
+}
+
 function positionElevatedMobileCaption(caption, panel) {
-  const rect = panel.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
+  const { centerX, width, top } = getMobilePanelCaptionMetrics(panel);
 
   caption.classList.add("project-panel__caption--elevated");
   caption.style.left = `${centerX}px`;
   caption.style.right = "auto";
-  caption.style.width = `${rect.width}px`;
+  caption.style.width = `${width}px`;
   caption.style.top = "auto";
-  caption.style.bottom = `${window.innerHeight - rect.top + MOBILE_CAPTION_GAP}px`;
+  caption.style.bottom = `${window.innerHeight - top + MOBILE_CAPTION_GAP}px`;
   caption.style.transform = "translateX(-50%)";
 }
 
@@ -1249,6 +1259,9 @@ function bindMobilePanelCaptionElevation() {
     if (panel.dataset.captionElevateBound === "true") return;
     panel.dataset.captionElevateBound = "true";
 
+    const stack = panel.querySelector(".project-panel__stack");
+    if (!stack) return;
+
     const caption = panel.querySelector(".project-panel__caption");
     if (!caption) return;
 
@@ -1266,8 +1279,8 @@ function bindMobilePanelCaptionElevation() {
       resetElevatedMobileCaption(caption);
     };
 
-    panel.addEventListener("mouseenter", elevate);
-    panel.addEventListener("mouseleave", lower);
+    stack.addEventListener("mouseenter", elevate);
+    stack.addEventListener("mouseleave", lower);
     panel.addEventListener("focusin", elevate);
     panel.addEventListener("focusout", (event) => {
       if (!panel.contains(event.relatedTarget)) lower();
