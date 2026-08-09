@@ -803,6 +803,8 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   }
 
   .hero-experience__clouds .roles-nav--hero {
+    --hero-mobile-cloud-label-size: 15px;
+    --hero-mobile-cloud-chip-font-size: 14px;
     position: relative;
     inset: auto;
     flex: 1 1 auto;
@@ -836,7 +838,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought {
     --thought-bubble-scale: var(--hero-mobile-cloud-scale, 0.792);
-    --hero-mobile-cloud-text-scale: 1.15;
+    --hero-mobile-cloud-text-scale: 1.28;
     --thought-pad-top: 25%;
     --thought-pad-bottom: 32%;
     --thought-pad-tail: 23%;
@@ -903,7 +905,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     min-width: 0;
     max-width: none;
     justify-self: auto;
-    font-size: 13px;
+    font-size: var(--hero-mobile-cloud-label-size, 15px);
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.25;
@@ -911,14 +913,14 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   }
 
   html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: 13px;
+    font-size: var(--hero-mobile-cloud-label-size, 15px);
     max-width: none;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__chip {
     flex: none;
     justify-self: end;
-    font-size: 13px;
+    font-size: var(--hero-mobile-cloud-chip-font-size, 14px);
     font-weight: 400;
     letter-spacing: -0.01em;
   }
@@ -2421,7 +2423,7 @@ body.is-project-overlay-open {
 
   .roles-nav--hero .role-card--thought .role-card__label,
   html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.25;
@@ -2429,7 +2431,7 @@ body.is-project-overlay-open {
   }
 
   .roles-nav--hero .role-card--thought .role-card__chip {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
