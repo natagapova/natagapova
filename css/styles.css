@@ -20,6 +20,10 @@
   --ios-label: #1d1d1f;
   --ios-label-secondary: rgb(29 29 31 / 0.78);
   --ios-label-tertiary: rgb(60 60 67 / 0.3);
+  --tool-tag-color: rgb(60 60 67 / 0.68);
+  --tool-tag-weight: 500;
+  --tool-tag-size: 11px;
+  --tool-tag-size-compact: 10px;
   --ios-separator: rgb(60 60 67 / 0.18);
   --ios-nav-frost: rgb(255 255 255 / 72%);
 
@@ -64,6 +68,12 @@ html {
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 html,
@@ -81,9 +91,15 @@ body {
   padding: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   transition:
     background-color 0.35s ease,
     color 0.35s ease;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -434,8 +450,10 @@ html[lang="en"] .roles-nav--hero .role-card__label {
   font-size: 1.1rem;
 }
 
-.roles-nav--hero .role-card:hover {
-  z-index: 10;
+@media (min-width: 720px) {
+  .roles-nav--hero .role-card:hover {
+    z-index: 10;
+  }
 }
 
 /* Облачко-кнопки (thought1–4) */
@@ -516,9 +534,11 @@ html[lang="en"] .roles-nav--hero .role-card__label {
   pointer-events: none;
 }
 
-.roles-nav--hero .role-card--thought:hover {
-  box-shadow: none;
-  filter: brightness(1.08);
+@media (min-width: 720px) {
+  .roles-nav--hero .role-card--thought:hover {
+    box-shadow: none;
+    filter: brightness(1.08);
+  }
 }
 
 .roles-nav--hero .role-card--thought .role-card__label {
@@ -883,19 +903,24 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     min-width: 0;
     max-width: none;
     justify-self: auto;
-    font-size: clamp(1.09rem, 5.37cqi, 1.52rem);
-    line-height: 1.1;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
   }
 
   html[lang="en"] .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__label {
-    font-size: clamp(1.01rem, 4.86cqi, 1.38rem);
+    font-size: 13px;
     max-width: none;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought .role-card__chip {
     flex: none;
     justify-self: end;
-    font-size: clamp(0.86rem, 3.83cqi, 1.09rem);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--ml.role-card--thought .role-card__label,
@@ -924,6 +949,15 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     bottom: auto;
     left: 0;
     right: 0;
+  }
+
+  .roles-nav--hero .role-card--thought {
+    -webkit-tap-highlight-color: transparent;
+    transition: filter 0.14s ease, opacity 0.2s ease;
+  }
+
+  .roles-nav--hero .role-card--thought:active {
+    filter: brightness(1.08);
   }
 }
 
@@ -970,9 +1004,11 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   transform-origin: center center;
 }
 
-.roles-nav--hero .role-card--scroll-anim:not(.role-card--scroll-settled) {
-  z-index: 2 !important;
-  transform-origin: center center;
+@media (min-width: 720px) {
+  .roles-nav--hero .role-card--scroll-anim:not(.role-card--scroll-settled) {
+    z-index: 2 !important;
+    transform-origin: center center;
+  }
 }
 
 .role-card--scroll-settled {
@@ -988,14 +1024,20 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   outline-offset: 3px;
 }
 
-.role-card:hover {
-  --role-lift: -5px;
-  box-shadow: var(--editorial-shadow-hover);
-  color: var(--color-text-strong);
-}
+@media (min-width: 720px) {
+  .role-card:hover {
+    --role-lift: -5px;
+    box-shadow: var(--editorial-shadow-hover);
+    color: var(--color-text-strong);
+  }
 
-.roles-nav--hero .role-card--scroll-anim:hover {
-  --role-lift: 0px;
+  .roles-nav--hero .role-card--scroll-anim:hover {
+    --role-lift: 0px;
+  }
+
+  .role-card:hover .role-card__chip {
+    transform: translateX(3px);
+  }
 }
 
 .role-card--designer {
@@ -1073,10 +1115,6 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
 .role-card--person .role-card__chip {
   background: #3d3230;
   color: #fff7f4;
-}
-
-.role-card:hover .role-card__chip {
-  transform: translateX(3px);
 }
 
 @media (min-width: 720px) {
@@ -1296,23 +1334,6 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   .roles-nav--hero .role-card,
   .roles-nav--hero .role-card--scroll-settled {
     opacity: 1;
-  }
-
-  .role-card {
-    transition: box-shadow 0.15s ease;
-  }
-
-  .role-card:hover {
-    --role-lift: 0px;
-    transform: rotate(var(--role-rotate));
-  }
-
-  .role-card:hover .role-card__chip {
-    transform: none;
-  }
-
-  .roles-nav--hero .role-card--thought:hover {
-    filter: none;
   }
 }
 
@@ -1693,87 +1714,6 @@ body.page-designer .navbar-back:hover {
     flex: none;
     min-height: 0;
     overflow: visible;
-  }
-
-  body.page-designer {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .top-navbar--subpage {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .navbar-page-title {
-    font-weight: 600;
-  }
-
-  body.page-designer .designer-tools__label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    text-transform: none;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .designer-tools .frontend-page__skill {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .footer {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .footer-copy {
-    font-style: normal;
-  }
-
-  body.page-designer .project-panel__caption-title {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .project-panel__caption-desc {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .project-overlay__title {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .project-overlay__desc {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-    color: var(--ios-label-secondary);
-  }
-
-  body.page-designer .project-overlay__panel .frontend-page__skill {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ios-label-secondary);
   }
 
   .projects-stack--mobile {
@@ -2417,9 +2357,85 @@ body.is-project-overlay-open {
 }
 
 @media (max-width: 719px) {
+  /* ——— Mobile UI typography (design page system, site-wide) ——— */
+  body {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  .top-navbar {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  .navbar-page-title,
+  .about-block h3,
+  .languages-section__title,
+  .designer-tools__label,
+  .frontend-card__title,
+  .role-page__title,
+  .project-panel__caption-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+    text-transform: none;
+  }
+
+  .project-overlay__title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  .footer {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  .footer-copy {
+    font-style: normal;
+  }
+
+  .about-block li,
+  .lang-map__label,
+  .person-tagline,
+  .role-page__placeholder,
+  .frontend-card__desc,
+  .project-panel__caption-desc,
+  .project-overlay__desc {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  .roles-nav--hero .role-card--thought .role-card__label,
+  html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  .roles-nav--hero .role-card--thought .role-card__chip {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
   .languages-section {
     padding: clamp(40px, 9vw, 56px) clamp(24px, 6.5vw, 32px) clamp(48px, 10vw, 64px);
-    font-size: 14px;
     --lang-anchor-size: 6px;
     --lang-anchor-active-size: 13px;
     --lang-glow-size-outer: 21px;
@@ -2433,7 +2449,6 @@ body.is-project-overlay-open {
   }
 
   .languages-section__title {
-    font-size: 18px;
     margin-bottom: 18px;
   }
 
@@ -2452,8 +2467,7 @@ body.is-project-overlay-open {
   }
 
   .lang-map__label {
-    font-size: 14px;
-    line-height: 1.42;
+    line-height: 1.25;
   }
 
   .lang-map__rail {
@@ -2474,7 +2488,6 @@ body.is-project-overlay-open {
 
   .about-section {
     padding: clamp(40px, 9vw, 56px) clamp(24px, 6.5vw, 32px) clamp(48px, 10vw, 64px);
-    font-size: 14px;
   }
 
   .about-columns {
@@ -2490,7 +2503,6 @@ body.is-project-overlay-open {
   }
 
   .about-block h3 {
-    font-size: 18px;
     margin-bottom: 14px;
   }
 
@@ -2501,8 +2513,6 @@ body.is-project-overlay-open {
 
   .about-block li {
     margin-bottom: 14px;
-    font-size: 14px;
-    line-height: 1.45;
   }
 
   .about-block li:last-child {
@@ -2745,18 +2755,6 @@ body.is-project-overlay-open {
 
 }
 
-@media (max-width:520px){
-
-.gallery{
-    flex-direction:column;
-}
-
-.gallery-column{
-    width:100%;
-}
-
-}
-
 /* =========================================================
    FRONTEND PAGE
 ========================================================= */
@@ -2776,21 +2774,24 @@ body.is-project-overlay-open {
 }
 
 .frontend-page__skill,
-.frontend-card__tool {
+.frontend-card__tool,
+.designer-tools .frontend-page__skill,
+.project-overlay__panel .frontend-page__skill {
   padding: 5px 11px;
   border-radius: 999px;
   background: rgb(120 120 128 / 12%);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--tool-tag-size);
+  font-weight: var(--tool-tag-weight);
+  font-style: italic;
   letter-spacing: -0.01em;
   line-height: 1.25;
-  color: #222;
+  color: var(--tool-tag-color);
   white-space: nowrap;
 }
 
 .frontend-card__tool {
   padding: 4px 10px;
-  font-size: 11px;
+  font-size: var(--tool-tag-size-compact);
 }
 
 .frontend-grid {
@@ -2907,5 +2908,75 @@ body.is-project-overlay-open {
   .frontend-skills {
     margin-bottom: 18px;
     gap: 6px;
+  }
+}
+
+@media (max-width: 719px) {
+  .languages-section,
+  .about-section {
+    color: var(--ios-label-secondary);
+  }
+
+  .lang-map__label {
+    color: var(--ios-label-secondary);
+  }
+
+  .person-tagline {
+    color: var(--ios-label-secondary);
+  }
+
+  .frontend-card__title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  .frontend-card__desc {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  .frontend-page__skill,
+  .frontend-card__tool,
+  .designer-tools .frontend-page__skill,
+  .project-overlay__panel .frontend-page__skill {
+    font-size: var(--tool-tag-size);
+  }
+
+  .frontend-card__tool {
+    font-size: var(--tool-tag-size-compact);
+  }
+
+  .project-overlay__panel {
+    font-size: 13px;
+    color: var(--ios-label-secondary);
+  }
+
+  .project-overlay__desc {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ios-label-secondary);
+  }
+
+  .project-panel__caption-title,
+  .project-panel__caption-desc {
+    font-size: 13px;
+    letter-spacing: -0.01em;
+    color: var(--ios-label-secondary);
+  }
+
+  .project-panel__caption-title {
+    font-weight: 600;
+  }
+
+  .project-panel__caption-desc {
+    font-weight: 400;
+    line-height: 1.25;
   }
 }

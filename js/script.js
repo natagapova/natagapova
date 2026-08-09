@@ -39,9 +39,6 @@ const translations = {
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
-    FrontendNinaTitle: "Nina's Space",
-    FrontendNinaDesc:
-      "Камерный персональный сайт — медитации, аффирмации, мини-игры и дыхательный виджет. Полная разработка с нуля, без фреймворков: структура, вёрстка, мультиязычность и интерактив.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "Промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
@@ -137,9 +134,6 @@ const translations = {
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
-    FrontendNinaTitle: "Nina's Space",
-    FrontendNinaDesc:
-      "A small personal site — meditations, affirmations, mini-games, and a breathing widget. Full build from scratch, no frameworks: structure, layout, multilingual UI, and interactivity.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "A promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
@@ -352,14 +346,6 @@ const frontendProjects = [
       "frontendToolNext",
       "frontendToolTailwind",
     ],
-  },
-  {
-    id: "ninas-space",
-    url: "https://ninas-space.vercel.app/",
-    previewMode: "iframe",
-    titleKey: "FrontendNinaTitle",
-    descKey: "FrontendNinaDesc",
-    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
   },
   {
     id: "cruelgames",

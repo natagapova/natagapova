@@ -1,10 +1,8 @@
 const PERSON_GALLERY_MANIFEST = "images/person-images/manifest.json";
 const PERSON_GALLERY_BASE_PATH = "images/person-images/";
 
-// More tolerant breakpoints: columns move up a bit sooner
 const PERSON_GALLERY_BREAKPOINTS = [
-  { maxWidth: 480, columns: 1 },
-  { maxWidth: 800, columns: 2 },
+  { maxWidth: 719, columns: 2 },
   { maxWidth: 1150, columns: 3 },
   { maxWidth: Infinity, columns: 4 },
 ];
@@ -58,15 +56,14 @@ function personGalleryMediaSrc(name) {
 
 function getPersonGalleryColumnCount() {
   const width = window.innerWidth;
-  const gallery = document.getElementById("gallery");
-  const galleryWidth = gallery
-    ? gallery.getBoundingClientRect().width
-    : width;
-  const gap = getGalleryItemGap();
-  const MIN_COLUMN_WIDTH = 260;
-  let columns = Math.floor((galleryWidth + gap) / (MIN_COLUMN_WIDTH + gap));
-  columns = Math.max(1, Math.min(4, columns));
-  return columns;
+
+  for (const breakpoint of PERSON_GALLERY_BREAKPOINTS) {
+    if (width <= breakpoint.maxWidth) {
+      return breakpoint.columns;
+    }
+  }
+
+  return 4;
 }
 
 function isPersonGalleryVideo(filename) {
