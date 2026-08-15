@@ -223,6 +223,7 @@ select {
   flex-shrink: 0;
   position: relative;
   z-index: 5;
+  border-bottom: none;
 }
 
 .hero-experience.is-released .hero-experience__pin {
@@ -693,6 +694,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     left: 0;
     right: 0;
     width: 100%;
+    transform: translateZ(0);
   }
 
   .hero-experience__clouds.is-released .hero-experience__clouds-pin {
@@ -823,7 +825,6 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     right: 0;
     margin-inline: auto;
     opacity: 0;
-    transform: none;
     display: block;
     min-height: 0;
     padding: 0;
@@ -834,6 +835,16 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     --role-rotate: 0deg;
     --thought-nudge-x: 0%;
     --thought-nudge-y: 0%;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--scroll-anim {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transition: none;
+  }
+
+  .hero-experience__clouds .roles-nav--hero .role-card--scroll-settled {
+    will-change: auto;
   }
 
   .hero-experience__clouds .roles-nav--hero .role-card--thought {
@@ -1708,8 +1719,22 @@ body.page-designer .navbar-back:hover {
   .projects-section {
     height: auto;
     min-height: 0;
-    padding: 0 12px 12px;
+    padding: 0 0 12px;
     overflow: visible;
+  }
+
+  .designer-tools-wrap {
+    left: clamp(16px, 4vw, 24px);
+    right: clamp(16px, 4vw, 24px);
+    width: auto;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .designer-tools {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .projects-scene {
@@ -1726,7 +1751,7 @@ body.page-designer .navbar-back:hover {
     left: 0;
     width: 100%;
     margin-top: clamp(108px, 27vw, 136px);
-    padding: 0 4px 12px;
+    padding: 0 clamp(16px, 4vw, 24px) 12px;
     box-sizing: border-box;
   }
 
@@ -2554,6 +2579,18 @@ body.is-project-overlay-open {
   white-space: nowrap;
 }
 
+@media (max-width: 719px) {
+  .top-navbar--centered {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .top-navbar--centered .navbar-center {
+    justify-self: start;
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+
 /* =========================================================
    PERSON PAGE
 ========================================================= */
@@ -2735,26 +2772,32 @@ body.is-project-overlay-open {
 
 }
 
-@media (max-width:700px){
+@media (max-width: 719px) {
+  .person-page {
+    width: auto;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    margin-left: clamp(16px, 4vw, 24px);
+    margin-right: clamp(16px, 4vw, 24px);
+    box-sizing: border-box;
+  }
 
-.person-page{
-    width:min(100%,calc(100% - 24px));
-    margin-top:12px;
-}
+  .person-tagline {
+    max-width: min(320px, 72vw);
+    line-height: 1.3;
+  }
 
-.person-tagline {
-  max-width: min(320px, 72vw);
-  line-height: 1.3;
-}
+  .gallery {
+    gap: 4px;
+  }
 
-.gallery{
-    gap:4px;
-}
+  .gallery-column {
+    gap: 4px;
+  }
 
-.gallery-column{
-    gap:4px;
-}
-
+  body.page-person .footer {
+    padding: 20px clamp(16px, 4vw, 24px) 24px;
+  }
 }
 
 /* =========================================================
@@ -2764,6 +2807,11 @@ body.is-project-overlay-open {
 .frontend-page {
   width: min(1200px, calc(100% - 64px));
   margin: 20px auto 80px;
+}
+
+body.page-frontend .subpage-main.frontend-page {
+  min-height: auto;
+  overflow-y: visible;
 }
 
 .frontend-skills {
@@ -2901,19 +2949,29 @@ body.is-project-overlay-open {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 719px) {
   .frontend-page {
-    width: min(100%, calc(100% - 24px));
+    width: auto;
     margin-top: 14px;
+    margin-left: clamp(16px, 4vw, 24px);
+    margin-right: clamp(16px, 4vw, 24px);
+    box-sizing: border-box;
   }
 
   .frontend-skills {
     margin-bottom: 18px;
     gap: 6px;
+    max-width: 100%;
   }
-}
 
-@media (max-width: 719px) {
+  .frontend-card__body {
+    padding-inline: clamp(16px, 4vw, 20px);
+  }
+
+  .frontend-card__tools {
+    max-width: 100%;
+  }
+
   .languages-section,
   .about-section {
     color: var(--ios-label-secondary);

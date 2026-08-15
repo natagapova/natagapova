@@ -1,7 +1,14 @@
-let currentLang = localStorage.getItem("portfolioLang") || "ru";
-if (currentLang !== "ru" && currentLang !== "en") {
-  currentLang = "ru";
+function readStoredLang() {
+  try {
+    const stored = localStorage.getItem("portfolioLang");
+    if (stored === "ru" || stored === "en") return stored;
+  } catch {
+    /* storage may be blocked in private mode */
+  }
+  return "ru";
 }
+
+let currentLang = readStoredLang();
 
 const translations = {
   ru: {
@@ -224,6 +231,7 @@ const designerProjects = [
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
     toolKeys: ["designerToolTilda", "designerToolFigma"],
+    preview: "images/tsarevbarilova/page1.webp",
     images: [
       "images/tsarevbarilova/page1.webp",
       "images/tsarevbarilova/page2.webp",
@@ -365,7 +373,7 @@ const frontendProjects = [
   },
   {
     id: "kingstep",
-    preview: "images/frontend/kingstep.webp",
+    preview: "images/tsarevbarilova/page1.webp",
     titleKey: "FrontendKingstepTitle",
     descKey: "FrontendKingstepDesc",
     toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
@@ -891,20 +899,6 @@ function renderFrontendCardTools(toolKeys, t) {
 }
 
 function renderFrontendPreview(project) {
-  if (project.previewMode === "iframe" && project.url) {
-    return `
-      <div class="frontend-card__preview" aria-hidden="true">
-        <iframe
-          class="frontend-card__iframe"
-          src="${escapeHtml(project.url)}"
-          title=""
-          tabindex="-1"
-          loading="lazy"
-        ></iframe>
-      </div>
-    `;
-  }
-
   if (project.preview) {
     return `
       <div class="frontend-card__preview" aria-hidden="true">
@@ -919,7 +913,51 @@ function renderFrontendPreview(project) {
     `;
   }
 
+  if (project.previewMode === "iframe" && project.url) {
+    return `
+      <div class="frontend-card__preview" aria-hidden="true">
+        <iframe
+          class="frontend-card__iframe"
+          data-src="${escapeHtml(project.url)}"
+          title=""
+          tabindex="-1"
+          loading="lazy"
+        ></iframe>
+      </div>
+    `;
+  }
+
   return `<div class="frontend-card__preview frontend-card__preview--empty" aria-hidden="true"></div>`;
+}
+
+function initFrontendLazyIframes() {
+  const iframes = document.querySelectorAll(".frontend-card__iframe[data-src]");
+  if (!iframes.length) return;
+
+  const loadIframe = (iframe) => {
+    const src = iframe.dataset.src;
+    if (!src) return;
+    iframe.removeAttribute("data-src");
+    iframe.src = src;
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    iframes.forEach(loadIframe);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadIframe(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "240px 0px" }
+  );
+
+  iframes.forEach((iframe) => observer.observe(iframe));
 }
 
 function renderFrontendProjects() {
@@ -964,6 +1002,8 @@ function renderFrontendProjects() {
       `;
     })
     .join("");
+
+  initFrontendLazyIframes();
 }
 
 function applyFrontendPage(t) {
@@ -1459,8 +1499,14 @@ function applyTranslations() {
 
   applyDesignerPage(t);
   applyFrontendPage(t);
-  renderDesignerProjects();
-  scheduleHeroLayoutFit();
+
+  if (document.getElementById("projects-scene")) {
+    renderDesignerProjects();
+  }
+
+  if (document.getElementById("hero-experience")) {
+    scheduleHeroLayoutFit();
+  }
 
   if (openProjectId) {
     renderProjectOverlayContent(openProjectId);
@@ -1855,7 +1901,11 @@ function initRolesScrollReveal() {
 
 function switchLanguage() {
   currentLang = currentLang === "ru" ? "en" : "ru";
-  localStorage.setItem("portfolioLang", currentLang);
+  try {
+    localStorage.setItem("portfolioLang", currentLang);
+  } catch {
+    /* ignore */
+  }
   applyTranslations();
 }
 
@@ -2251,13 +2301,30 @@ function initLangMapGlowObserver() {
 }
 
 function bootPortfolio() {
-  applyTranslations();
-  scheduleHeroLayoutFit();
-  scheduleLangMapPath();
-  initLangMapGlowObserver();
-  initHeroBlink();
-  initRolesScrollReveal();
-  initProjectOverlay();
+  const isIndexPage = Boolean(document.getElementById("hero-experience"));
+  const isDesignerPage = Boolean(document.getElementById("projects-scene"));
+  const isFrontendPage = Boolean(document.getElementById("frontend-grid"));
+
+  try {
+    applyTranslations();
+  } catch (error) {
+    console.error(error);
+    if (isFrontendPage) {
+      applyFrontendPage(translations[currentLang]);
+    }
+  }
+
+  if (isIndexPage) {
+    scheduleHeroLayoutFit();
+    scheduleLangMapPath();
+    initLangMapGlowObserver();
+    initHeroBlink();
+    initRolesScrollReveal();
+  }
+
+  if (isDesignerPage) {
+    initProjectOverlay();
+  }
 }
 
 window.bootPortfolio = bootPortfolio;

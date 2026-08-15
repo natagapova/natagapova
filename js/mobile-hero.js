@@ -118,6 +118,8 @@ function ensureMobileThoughtShells() {
 }
 
 let mobileCloudImagesWired = false;
+let mobileCloudsPinState = "";
+let mobileCloudsMinHeight = "";
 
 function wireMobileCloudImageLoads() {
   if (mobileCloudImagesWired) return;
@@ -148,6 +150,8 @@ function clearMobileCloudsLayout() {
   const cards = getHeroRoleCards();
 
   clouds?.classList.remove("is-pinned", "is-released");
+  mobileCloudsPinState = "";
+  mobileCloudsMinHeight = "";
   pin?.style.removeProperty("--hero-mobile-cloud-scale");
   nav?.style.removeProperty("--hero-mobile-cloud-scale");
   clouds?.style.removeProperty("min-height");
@@ -171,7 +175,9 @@ function clearMobileCloudsLayout() {
     card.style.removeProperty("z-index");
     card.style.removeProperty("opacity");
     card.style.removeProperty("transform");
+    card.classList.remove("role-card--scroll-anim", "role-card--scroll-settled");
     delete card.dataset.finalTop;
+    delete card.dataset.enterOffset;
   });
 
   clearMobileThoughtShells();
@@ -182,30 +188,39 @@ function updateMobileCloudsPinState() {
   const track = document.getElementById("hero-clouds-track");
   if (!clouds || !track) return 0;
 
-  const trackH = track.offsetHeight;
+  const trackH = Number(clouds.dataset.scrollTrack) || track.offsetHeight;
   const viewportH = window.innerHeight;
   const rect = clouds.getBoundingClientRect();
   const scrolled = Math.max(0, viewportH - rect.top);
 
-  clouds.classList.remove("is-pinned", "is-released");
-
   if (trackH <= 0) {
-    clouds.style.removeProperty("min-height");
+    if (mobileCloudsPinState !== "idle") {
+      mobileCloudsPinState = "idle";
+      clouds.classList.remove("is-pinned", "is-released");
+    }
+    if (mobileCloudsMinHeight !== "") {
+      mobileCloudsMinHeight = "";
+      clouds.style.removeProperty("min-height");
+    }
     return scrolled;
   }
 
-  clouds.style.minHeight = `${viewportH + trackH}px`;
-
-  if (rect.top > 0) {
-    return scrolled;
+  const nextMinHeight = `${viewportH + trackH}px`;
+  if (nextMinHeight !== mobileCloudsMinHeight) {
+    mobileCloudsMinHeight = nextMinHeight;
+    clouds.style.minHeight = nextMinHeight;
   }
 
-  if (-rect.top < trackH) {
-    clouds.classList.add("is-pinned");
-    return scrolled;
+  const nextPinState =
+    rect.top > 0 ? "approach" : -rect.top < trackH ? "pinned" : "released";
+
+  if (nextPinState !== mobileCloudsPinState) {
+    mobileCloudsPinState = nextPinState;
+    clouds.classList.remove("is-pinned", "is-released");
+    if (nextPinState === "pinned") clouds.classList.add("is-pinned");
+    if (nextPinState === "released") clouds.classList.add("is-released");
   }
 
-  clouds.classList.add("is-released");
   return scrolled;
 }
 
@@ -264,10 +279,10 @@ function updateMobileCloudsLayout() {
       card.style.removeProperty("max-width");
       card.style.marginTop = "0";
       card.style.marginInline = "auto";
-      card.style.opacity = "1";
+      card.style.opacity = "0";
       card.style.top = "0";
       card.style.bottom = "auto";
-      card.style.transform = "none";
+      card.style.transform = "translate3d(0, 0, 0)";
     });
     void nav.offsetHeight;
 
@@ -308,14 +323,23 @@ function updateMobileCloudsLayout() {
   const trackH = scrollStep * cards.length;
 
   cards.forEach((card, index) => {
-    card.dataset.finalTop = String(layout.finalTops[index]);
-    card.style.top = `${layout.finalTops[index] + 48}px`;
+    const finalTop = layout.finalTops[index];
+    const enterOffset = 64 - index * 6;
+
+    card.dataset.finalTop = String(finalTop);
+    card.dataset.enterOffset = String(enterOffset);
+    card.style.top = `${finalTop}px`;
     card.style.opacity = "0";
+    card.style.transform = `translate3d(0, ${enterOffset}px, 0)`;
     card.style.zIndex = String(index + 1);
+    card.classList.add("role-card--scroll-anim");
+    card.classList.remove("role-card--scroll-settled");
   });
 
   track.style.height = `${trackH}px`;
-  clouds.style.minHeight = `${viewportH + trackH}px`;
+  mobileCloudsPinState = "";
+  mobileCloudsMinHeight = `${viewportH + trackH}px`;
+  clouds.style.minHeight = mobileCloudsMinHeight;
   clouds.dataset.cloudStep = String(scrollStep);
   clouds.dataset.stickyBase = String(stickyBase);
   clouds.dataset.scrollTrack = String(trackH);
@@ -330,7 +354,7 @@ function updateMobileCloudsScroll() {
   const cards = getHeroRoleCards();
   if (!cards.length) return;
 
-  const trackH = track.offsetHeight;
+  const trackH = Number(clouds.dataset.scrollTrack) || track.offsetHeight;
   if (trackH <= 0) return;
 
   const viewportH = window.innerHeight;
@@ -340,26 +364,39 @@ function updateMobileCloudsScroll() {
   const step = 1 / cardCount;
 
   cards.forEach((card, index) => {
-    const finalTop = parseFloat(card.dataset.finalTop) || 0;
+    const finalTop = parseFloat(card.dataset.finalTop);
+    const enterOffset = parseFloat(card.dataset.enterOffset);
+    if (!Number.isFinite(finalTop) || !Number.isFinite(enterOffset)) return;
+
     const revealStart = index * step;
     const localP = clamp01((progress - revealStart) / (step * 0.9));
     const eased = easeOutCubic(localP);
-    const enterOffset = 64 - index * 6;
-    const startTop = finalTop + enterOffset;
+    const yOffset =
+      Math.round((eased <= 0 ? enterOffset : enterOffset * (1 - eased)) * 10) / 10;
+    const nextOpacity = eased <= 0 ? "0" : String(eased);
+    const nextTransform = `translate3d(0, ${yOffset}px, 0)`;
+    const settled = localP >= 0.995;
 
-    card.classList.add("role-card--scroll-anim");
-    card.style.transform = "none";
-    card.style.zIndex = String(index + 1);
-
-    if (eased <= 0) {
-      card.style.opacity = "0";
-      card.style.top = `${startTop}px`;
-      return;
+    if (card.style.top !== `${finalTop}px`) {
+      card.style.top = `${finalTop}px`;
     }
 
-    card.style.opacity = String(eased);
-    card.style.top = `${startTop + (finalTop - startTop) * eased}px`;
-    card.classList.toggle("role-card--scroll-settled", localP >= 0.995);
+    if (card.style.opacity !== nextOpacity) {
+      card.style.opacity = nextOpacity;
+    }
+
+    if (card.style.transform !== nextTransform) {
+      card.style.transform = nextTransform;
+    }
+
+    if (card.style.zIndex !== String(index + 1)) {
+      card.style.zIndex = String(index + 1);
+    }
+
+    const isSettled = card.classList.contains("role-card--scroll-settled");
+    if (settled !== isSettled) {
+      card.classList.toggle("role-card--scroll-settled", settled);
+    }
   });
 }
 

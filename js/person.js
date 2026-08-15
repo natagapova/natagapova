@@ -467,8 +467,11 @@ function renderPersonGallery() {
     gallery.appendChild(columnEl);
   });
 
-  // Set gallery height to minHeight so nothing overflows below it (use raw float, not rounded)
-  gallery.style.height = minHeight + "px";
+  const renderedHeights = colEls.map((col) => col.offsetHeight);
+  const galleryHeight = renderedHeights.length
+    ? Math.max(...renderedHeights)
+    : Math.round(minHeight);
+  gallery.style.height = galleryHeight > 0 ? `${galleryHeight}px` : "auto";
 }
 
 function schedulePersonGalleryResize() {
