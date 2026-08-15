@@ -57,15 +57,22 @@ const translations = {
       "Сайт танцевальной студии Kingstep — главная, каталог курсов и страницы занятий. Тёмная эстетика бренда: макеты в Figma, сборка в Tilda. Сейчас на финальном этапе.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
-    mlToolSklearn: "scikit-learn",
-    mlToolPandas: "pandas",
+    mlToolBert: "BERT",
+    mlToolXai: "XAI",
+    mlToolCaptum: "Captum",
     mlToolJupyter: "Jupyter",
-    MlCase1Title: "кейс 1",
-    MlCase1Desc: "описание появится позже",
-    MlCase2Title: "кейс 2",
-    MlCase2Desc: "описание появится позже",
-    MlCase3Title: "кейс 3",
-    MlCase3Desc: "описание появится позже",
+    mlToolRag: "RAG",
+    mlToolChroma: "ChromaDB",
+    mlToolOllama: "Ollama",
+    mlActionGithub: "GitHub",
+    mlActionArticle: "статья",
+    mlStatusInProgress: "в разработке",
+    MlResumeScreeningTitle: "Fair resume screening",
+    MlResumeScreeningDesc:
+      'Интерпретируемый BERT-классификатор резюме для 9 IT-суперкатегорий на данных HeadHunter. Аудит прокси-биаса через Integrated Gradients, сравнение шести методов debiasing, city-swap и transfer на английских резюме. Развивает <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">раннюю XAI-работу</a> по bias в классификации резюме.',
+    MlKnowledgeSystemTitle: "Personal Knowledge System",
+    MlKnowledgeSystemDesc:
+      "RAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрана с нуля на Python — без high-level фреймворков.",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -163,15 +170,22 @@ const translations = {
       "A site for Kingstep dance studio — home, course catalog, and class pages. Dark brand aesthetic: layouts in Figma, build in Tilda. Currently in the final stretch.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
-    mlToolSklearn: "scikit-learn",
-    mlToolPandas: "pandas",
+    mlToolBert: "BERT",
+    mlToolXai: "XAI",
+    mlToolCaptum: "Captum",
     mlToolJupyter: "Jupyter",
-    MlCase1Title: "case 1",
-    MlCase1Desc: "description coming soon",
-    MlCase2Title: "case 2",
-    MlCase2Desc: "description coming soon",
-    MlCase3Title: "case 3",
-    MlCase3Desc: "description coming soon",
+    mlToolRag: "RAG",
+    mlToolChroma: "ChromaDB",
+    mlToolOllama: "Ollama",
+    mlActionGithub: "GitHub",
+    mlActionArticle: "paper",
+    mlStatusInProgress: "in progress",
+    MlResumeScreeningTitle: "Fair resume screening",
+    MlResumeScreeningDesc:
+      'An interpretable BERT resume classifier for 9 IT supercategories on HeadHunter data. Geographic proxy bias audit with Integrated Gradients, six debiasing methods, city-swap stress tests, and English transfer evaluation. Builds on earlier <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">XAI work</a> on resume classification bias.',
+    MlKnowledgeSystemTitle: "Personal Knowledge System",
+    MlKnowledgeSystemDesc:
+      "A RAG system for answering questions from personal PDFs: chunking, embeddings, semantic search in ChromaDB, and LLM answers via Ollama with citations. Built from scratch in Python without high-level frameworks.",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -405,22 +419,27 @@ const frontendProjects = [
 
 const mlProjects = [
   {
-    id: "ml-case-1",
-    titleKey: "MlCase1Title",
-    descKey: "MlCase1Desc",
-    toolKeys: ["mlToolPython", "mlToolPytorch"],
+    id: "resume-screening",
+    url: "https://github.com/natagapova/resume-screening",
+    articleUrl: "https://doi.org/10.66693/mathai.1017",
+    titleKey: "MlResumeScreeningTitle",
+    descKey: "MlResumeScreeningDesc",
+    toolKeys: [
+      "mlToolPython",
+      "mlToolPytorch",
+      "mlToolBert",
+      "mlToolXai",
+      "mlToolCaptum",
+      "mlToolJupyter",
+    ],
   },
   {
-    id: "ml-case-2",
-    titleKey: "MlCase2Title",
-    descKey: "MlCase2Desc",
-    toolKeys: ["mlToolSklearn", "mlToolPandas"],
-  },
-  {
-    id: "ml-case-3",
-    titleKey: "MlCase3Title",
-    descKey: "MlCase3Desc",
-    toolKeys: ["mlToolJupyter", "mlToolPython"],
+    id: "personal-knowledge-system",
+    url: "https://github.com/natagapova/personal-knowledge-system",
+    titleKey: "MlKnowledgeSystemTitle",
+    descKey: "MlKnowledgeSystemDesc",
+    toolKeys: ["mlToolPython", "mlToolRag", "mlToolChroma", "mlToolOllama"],
+    inDevelopment: true,
   },
 ];
 
@@ -603,6 +622,7 @@ const innerHtmlKeys = new Set([
   "eduInnopolis",
   "volTrenirovochnaya",
   "volInnostreetdance",
+  "MlResumeScreeningDesc",
 ]);
 
 const translationKeyToId = {
@@ -1090,6 +1110,65 @@ function renderMlCardTools(toolKeys, t) {
   `;
 }
 
+function renderMlPreview(project) {
+  if (project.preview) {
+    return `
+      <div class="ml-card__preview" aria-hidden="true">
+        <img
+          class="ml-card__image"
+          src="${escapeHtml(project.preview)}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    `;
+  }
+
+  return `<div class="ml-card__preview ml-card__preview--placeholder" aria-hidden="true"></div>`;
+}
+
+function renderMlDescription(project, t) {
+  const value = t[project.descKey];
+  if (!value) return "";
+
+  if (innerHtmlKeys.has(project.descKey)) {
+    return `<div class="ml-card__desc">${value}</div>`;
+  }
+
+  return `<p class="ml-card__desc">${escapeHtml(value)}</p>`;
+}
+
+function renderMlActions(project, t) {
+  const links = [];
+
+  if (project.url) {
+    links.push(`
+      <a
+        class="ml-card__action"
+        href="${escapeHtml(project.url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >${escapeHtml(t.mlActionGithub ?? "GitHub")}</a>
+    `);
+  }
+
+  if (project.articleUrl) {
+    links.push(`
+      <a
+        class="ml-card__action ml-card__action--accent"
+        href="${escapeHtml(project.articleUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >${escapeHtml(t.mlActionArticle ?? "paper")}</a>
+    `);
+  }
+
+  if (!links.length) return "";
+
+  return `<div class="ml-card__actions">${links.join("")}</div>`;
+}
+
 function renderMlProjects() {
   const grid = document.getElementById("ml-grid");
   if (!grid) return;
@@ -1099,16 +1178,22 @@ function renderMlProjects() {
   grid.innerHTML = mlProjects
     .map((project) => {
       const title = t[project.titleKey] ?? "";
-      const description = t[project.descKey] ?? "";
       const tools = renderMlCardTools(project.toolKeys, t);
+      const status = project.inDevelopment
+        ? `<span class="ml-card__status">${escapeHtml(t.mlStatusInProgress ?? "")}</span>`
+        : "";
 
       return `
-        <article class="ml-card" role="listitem" aria-label="${escapeHtml(title)}">
-          <div class="ml-card__preview ml-card__preview--placeholder" aria-hidden="true"></div>
+        <article class="ml-card${project.inDevelopment ? " ml-card--in-progress" : ""}" role="listitem" aria-label="${escapeHtml(title)}">
+          ${renderMlPreview(project)}
           <div class="ml-card__body">
-            <h2 class="ml-card__title">${escapeHtml(title)}</h2>
+            <div class="ml-card__heading">
+              <h2 class="ml-card__title">${escapeHtml(title)}</h2>
+              ${status}
+            </div>
             ${tools}
-            ${description ? `<p class="ml-card__desc">${escapeHtml(description)}</p>` : ""}
+            ${renderMlDescription(project, t)}
+            ${renderMlActions(project, t)}
           </div>
         </article>
       `;
