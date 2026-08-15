@@ -55,6 +55,17 @@ const translations = {
     FrontendKingstepTitle: "Барилова & Царёв",
     FrontendKingstepDesc:
       "Сайт танцевальной студии Kingstep — главная, каталог курсов и страницы занятий. Тёмная эстетика бренда: макеты в Figma, сборка в Tilda. Сейчас на финальном этапе.",
+    mlToolPython: "Python",
+    mlToolPytorch: "PyTorch",
+    mlToolSklearn: "scikit-learn",
+    mlToolPandas: "pandas",
+    mlToolJupyter: "Jupyter",
+    MlCase1Title: "кейс 1",
+    MlCase1Desc: "описание появится позже",
+    MlCase2Title: "кейс 2",
+    MlCase2Desc: "описание появится позже",
+    MlCase3Title: "кейс 3",
+    MlCase3Desc: "описание появится позже",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -150,6 +161,17 @@ const translations = {
     FrontendKingstepTitle: "Barilova & Tsarev",
     FrontendKingstepDesc:
       "A site for Kingstep dance studio — home, course catalog, and class pages. Dark brand aesthetic: layouts in Figma, build in Tilda. Currently in the final stretch.",
+    mlToolPython: "Python",
+    mlToolPytorch: "PyTorch",
+    mlToolSklearn: "scikit-learn",
+    mlToolPandas: "pandas",
+    mlToolJupyter: "Jupyter",
+    MlCase1Title: "case 1",
+    MlCase1Desc: "description coming soon",
+    MlCase2Title: "case 2",
+    MlCase2Desc: "description coming soon",
+    MlCase3Title: "case 3",
+    MlCase3Desc: "description coming soon",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -378,6 +400,27 @@ const frontendProjects = [
     descKey: "FrontendKingstepDesc",
     toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
     comingSoon: true,
+  },
+];
+
+const mlProjects = [
+  {
+    id: "ml-case-1",
+    titleKey: "MlCase1Title",
+    descKey: "MlCase1Desc",
+    toolKeys: ["mlToolPython", "mlToolPytorch"],
+  },
+  {
+    id: "ml-case-2",
+    titleKey: "MlCase2Title",
+    descKey: "MlCase2Desc",
+    toolKeys: ["mlToolSklearn", "mlToolPandas"],
+  },
+  {
+    id: "ml-case-3",
+    titleKey: "MlCase3Title",
+    descKey: "MlCase3Desc",
+    toolKeys: ["mlToolJupyter", "mlToolPython"],
   },
 ];
 
@@ -1022,6 +1065,73 @@ function applyFrontendPage(t) {
   renderFrontendProjects();
 }
 
+function getMlProjectToolKeys() {
+  const seen = new Set();
+  const keys = [];
+  for (const project of mlProjects) {
+    for (const key of project.toolKeys ?? []) {
+      if (!seen.has(key)) {
+        seen.add(key);
+        keys.push(key);
+      }
+    }
+  }
+  return keys;
+}
+
+function renderMlCardTools(toolKeys, t) {
+  const tools = (toolKeys ?? []).map((key) => t[key]).filter(Boolean);
+  if (!tools.length) return "";
+
+  return `
+    <div class="ml-card__tools">
+      ${tools.map((label) => `<span class="ml-card__tool">${escapeHtml(label)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function renderMlProjects() {
+  const grid = document.getElementById("ml-grid");
+  if (!grid) return;
+
+  const t = translations[currentLang];
+
+  grid.innerHTML = mlProjects
+    .map((project) => {
+      const title = t[project.titleKey] ?? "";
+      const description = t[project.descKey] ?? "";
+      const tools = renderMlCardTools(project.toolKeys, t);
+
+      return `
+        <article class="ml-card" role="listitem" aria-label="${escapeHtml(title)}">
+          <div class="ml-card__preview ml-card__preview--placeholder" aria-hidden="true"></div>
+          <div class="ml-card__body">
+            <h2 class="ml-card__title">${escapeHtml(title)}</h2>
+            ${tools}
+            ${description ? `<p class="ml-card__desc">${escapeHtml(description)}</p>` : ""}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function applyMlPage(t) {
+  const skillsEl = document.getElementById("ml-skills");
+  if (skillsEl) {
+    const tags = getMlProjectToolKeys()
+      .map((key) => t[key])
+      .filter(Boolean);
+
+    skillsEl.innerHTML = tags
+      .map((label) => `<li class="ml-page__skill">${escapeHtml(label)}</li>`)
+      .join("");
+    skillsEl.hidden = tags.length === 0;
+  }
+
+  renderMlProjects();
+}
+
 function applyDesignerPage(t) {
   const toolsWrap = document.getElementById("designer-tools-wrap");
   const toolsEl = document.getElementById("designer-tools");
@@ -1499,6 +1609,7 @@ function applyTranslations() {
 
   applyDesignerPage(t);
   applyFrontendPage(t);
+  applyMlPage(t);
 
   if (document.getElementById("projects-scene")) {
     renderDesignerProjects();
@@ -2304,6 +2415,7 @@ function bootPortfolio() {
   const isIndexPage = Boolean(document.getElementById("hero-experience"));
   const isDesignerPage = Boolean(document.getElementById("projects-scene"));
   const isFrontendPage = Boolean(document.getElementById("frontend-grid"));
+  const isMlPage = Boolean(document.getElementById("ml-grid"));
 
   try {
     applyTranslations();
@@ -2311,6 +2423,9 @@ function bootPortfolio() {
     console.error(error);
     if (isFrontendPage) {
       applyFrontendPage(translations[currentLang]);
+    }
+    if (isMlPage) {
+      applyMlPage(translations[currentLang]);
     }
   }
 
