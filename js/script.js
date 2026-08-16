@@ -2230,12 +2230,11 @@ function upsertHeadMeta(selector, attributes) {
 function updatePageSeo(lang) {
   const pageKey = getCurrentPageSeoKey();
   const seo = PAGE_SEO[pageKey]?.[lang];
-  if (!seo) return;
+  const shareSeo = PAGE_SEO[pageKey]?.en;
+  if (!seo || !shareSeo) return;
 
   const pagePath = PAGE_SEO[pageKey].path;
   const canonicalUrl = `${SITE_ORIGIN}${pagePath === "/" ? "/" : pagePath}`;
-  const locale = lang === "ru" ? "ru_RU" : "en_US";
-  const alternateLocale = lang === "ru" ? "en_US" : "ru_RU";
 
   document.title = seo.title;
 
@@ -2246,14 +2245,14 @@ function updatePageSeo(lang) {
     ["property", "og:type", "website"],
     ["property", "og:site_name", "natalia's portfolio"],
     ["property", "og:url", canonicalUrl],
-    ["property", "og:title", seo.title],
-    ["property", "og:description", seo.description],
+    ["property", "og:title", shareSeo.title],
+    ["property", "og:description", shareSeo.description],
     ["property", "og:image", SITE_OG_IMAGE],
-    ["property", "og:locale", locale],
-    ["property", "og:locale:alternate", alternateLocale],
+    ["property", "og:locale", "en_US"],
+    ["property", "og:locale:alternate", "ru_RU"],
     ["name", "twitter:card", "summary_large_image"],
-    ["name", "twitter:title", seo.title],
-    ["name", "twitter:description", seo.description],
+    ["name", "twitter:title", shareSeo.title],
+    ["name", "twitter:description", shareSeo.description],
     ["name", "twitter:image", SITE_OG_IMAGE],
   ].forEach(([attr, key, value]) => {
     upsertHeadMeta(`meta[${attr}="${key}"]`, { [attr]: key, content: value });
