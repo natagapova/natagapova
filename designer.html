@@ -36,22 +36,24 @@
     </div>
     <div class="navbar-right">
       <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
+      <a
+        class="btn btn--ghost navbar-cv"
+        id="navbar-cv-download"
+        href="docs/nat_designer.pdf"
+        download="nat_designer.pdf"
+        aria-label="скачать cv"
+      >
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>
+        <span class="btn__label" id="navbar-cv-label">CV</span>
+      </a>
     </div>
   </nav>
 
   <main class="subpage-main subpage-main--designer">
     <section class="projects-section" id="projects-section" aria-labelledby="designer-page-title">
-      <div class="designer-page-header">
-        <div class="designer-tools-wrap" id="designer-tools-wrap">
-          <span class="designer-tools__label" id="designer-tools-label">инструменты</span>
-          <div class="designer-tools" id="designer-tools" role="list"></div>
-        </div>
-        <a
-          href="docs/nat_designer.pdf"
-          class="btn designer-cv-download"
-          id="designer-cv-download"
-          download="nat_designer.pdf"
-        >скачать cv</a>
+      <div class="designer-tools-wrap" id="designer-tools-wrap">
+        <span class="designer-tools__label" id="designer-tools-label">инструменты</span>
+        <div class="designer-tools" id="designer-tools" role="list"></div>
       </div>
       <div class="projects-scene" id="projects-scene"></div>
     </section>

@@ -17,7 +17,8 @@ const translations = {
     languageSwitch: "eng",
     portfolioTitle: "проекты",
     designerPageTitle: "дизайн кейсы",
-    designerCvDownload: "скачать cv",
+    navbarCvLabel: "CV",
+    navbarCvAria: "скачать cv",
     mlPageTitle: "ml кейсы",
     designerToolsLabel: "инструменты",
     designerToolFigma: "Figma",
@@ -224,7 +225,8 @@ const translations = {
     languageSwitch: "рус",
     portfolioTitle: "projects",
     designerPageTitle: "design cases",
-    designerCvDownload: "download cv",
+    navbarCvLabel: "CV",
+    navbarCvAria: "download cv",
     mlPageTitle: "ml cases",
     designerToolsLabel: "tools",
     designerToolFigma: "Figma",
@@ -888,7 +890,7 @@ const translationKeyToId = {
   languageSwitch: "languageSwitch",
   portfolioTitle: "projects-title",
   designerPageTitle: "designer-page-title",
-  designerCvDownload: "designer-cv-download",
+  navbarCvLabel: "navbar-cv-label",
   mlPageTitle: "ml-page-title",
   designerToolsLabel: "designer-tools-label",
   roleDesigner: "role-designer",
@@ -922,6 +924,11 @@ const translationKeyToId = {
   langFr: "lang-fr-name",
   langKo: "lang-ko-name",
   langMapDesc: "lang-map-desc",
+};
+
+const CV_DOWNLOAD = {
+  ru: { href: "docs/nat_designer.pdf", filename: "nat_designer.pdf" },
+  en: { href: "docs/nat_designer_en.pdf", filename: "nat_designer_en.pdf" },
 };
 
 const SOCIAL_LINKS = [
@@ -2281,6 +2288,16 @@ function applyTranslations() {
         ? "Switch interface language to English"
         : "Переключить интерфейс на русский"
     );
+  }
+
+  const cvLink = document.getElementById("navbar-cv-download");
+  const cvFile = CV_DOWNLOAD[currentLang] ?? CV_DOWNLOAD.ru;
+  if (cvLink) {
+    cvLink.href = cvFile.href;
+    cvLink.download = cvFile.filename;
+    if (t.navbarCvAria) {
+      cvLink.setAttribute("aria-label", t.navbarCvAria);
+    }
   }
 
   const heroExperience = document.getElementById("hero-experience");

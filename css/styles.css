@@ -161,8 +161,14 @@ select {
 
 .navbar-right {
   display: flex;
-  gap: 20px;
+  gap: 12px;
   align-items: center;
+}
+
+.navbar-cv {
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 12px;
 }
 
 #languageSwitch {
@@ -440,12 +446,6 @@ html[lang="en"] .roles-nav--hero .role-card__label {
   width: 2.55rem;
   height: 2.55rem;
   font-size: 1.1rem;
-}
-
-@media (min-width: 720px) {
-  .roles-nav--hero .role-card:hover {
-    z-index: 10;
-  }
 }
 
 /* Облачко-кнопки (thought1–4) */
@@ -1431,34 +1431,16 @@ body.page-designer .navbar-back:hover {
   opacity: 0.62;
 }
 
-.designer-page-header {
+.designer-tools-wrap {
   position: absolute;
   top: clamp(10px, 1.8vh, 18px);
   left: clamp(16px, 3vw, 32px);
-  right: clamp(16px, 3vw, 32px);
   z-index: 6;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  pointer-events: none;
-}
-
-.designer-tools-wrap {
-  position: static;
-  flex: 1;
-  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   pointer-events: none;
-}
-
-.designer-cv-download {
-  pointer-events: auto;
-  flex-shrink: 0;
-  align-self: flex-start;
 }
 
 .designer-tools__label {
@@ -1743,13 +1725,12 @@ body.page-designer .navbar-back:hover {
     overflow: visible;
   }
 
-  .designer-page-header {
+  .designer-tools-wrap {
     left: clamp(16px, 4vw, 24px);
     right: clamp(16px, 4vw, 24px);
     width: auto;
     max-width: none;
     box-sizing: border-box;
-    flex-wrap: wrap;
   }
 
   .designer-tools {
@@ -2211,6 +2192,16 @@ body.is-project-overlay-open {
 
 .btn:active {
   opacity: 0.72;
+}
+
+.btn--ghost {
+  background: transparent;
+  box-shadow: var(--editorial-frame-border);
+}
+
+.btn.navbar-cv,
+.btn.navbar-cv .btn__label {
+  text-transform: uppercase;
 }
 
 .btn__icon {

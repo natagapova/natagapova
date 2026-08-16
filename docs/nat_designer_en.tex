@@ -1,0 +1,278 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{russian}
+\IfFontExistsTF{DejaVu Serif}{\setmainfont{DejaVu Serif}}{\setmainfont{Times New Roman}}
+\IfFontExistsTF{DejaVu Sans}{\setsansfont{DejaVu Sans}}{\setsansfont{Arial}}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=[HTML]{2563EB},
+  linkcolor=[HTML]{2563EB}
+}
+
+\definecolor{accent}{HTML}{2563EB}
+\definecolor{textgray}{HTML}{4B5563}
+\definecolor{dategray}{HTML}{9CA3AF}
+\definecolor{lightgray}{HTML}{E5E7EB}
+
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\titleformat{\section}
+  {\Large\bfseries\color{accent}}
+  {}
+  {0pt}
+  {}
+  [\vspace{0.2em}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+
+\newcommand{\roleline}[2]{
+  \textbf{#1}\hfill\textcolor{dategray}{\normalfont #2}
+}
+
+\newcommand{\project}[5]{
+  \subsection*{#1}
+  \textit{#2}
+
+  #3
+
+  \textbf{Stack:} #4
+
+  #5
+}
+
+\begin{document}
+
+{\fontsize{24}{28}\selectfont\textbf{Natalia Agapova}}\\[0.2em]
+{\large Portfolio · Product / UX/UI Designer}
+
+\vspace{0.4em}
+
+\href{mailto:agapnatalya004@mail.ru}{agapnatalya004@mail.ru}
+\quad|\quad
+\href{https://t.me/nhefy}{@nhefy}
+\quad|\quad
+\href{https://www.natagapova.ru}{natagapova.ru}
+\quad|\quad
+\href{https://www.natagapova.ru/designer.html}{design cases}
+
+\vspace{0.8em}
+
+\textcolor{textgray}{
+Product / UX/UI designer with 3+ years of experience in interfaces, visual systems, and branding. I build product screens, landing pages, and promo materials --- from structure and user flows to typography and visual polish. I work in Figma, Tilda, and Adobe; I can take a design to a live interface and combine classic design craft with AI tools in production.
+}
+
+\section*{Key skills}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item UX/UI, product and web design
+  \item Figma, FigJam
+  \item Tilda, Zero Block
+  \item Adobe Illustrator, Photoshop
+  \item Branding, identity, merch
+  \item Landing pages and promo sites
+  \item Graphic design, posters
+  \item Prototyping and user flows
+  \item AI-generated visuals with manual refinement
+  \item Responsive, mobile-first
+  \item Presentations and case studies
+  \item English C1+, native Russian
+\end{itemize}
+\end{multicols}
+
+\section*{About}
+
+I enjoy designing digital products where structure, visuals, and user flows work together. I feel strongest at the intersection of UX, UI, and brand: understanding the audience quickly, building a clear interface, and shaping it into a cohesive visual system. I work both in a studio team and independently on freelance projects --- from brief and wireflows to final layouts, graphics, and handoff to build.
+
+\section*{Experience}
+
+\roleline{Croissan Studio --- product designer}{Apr 2025 --- present}
+
+Full-cycle studio for AI products. I lead product design, visual identity, and digital touchpoints across client and in-house projects.
+
+\begin{itemize}
+  \item Develop brand elements, illustrations, merch, and interface solutions in a unified style.
+  \item Contribute to UX/UI redesigns for studio and client products.
+  \item Combine AI generation with manual refinement for speed and visual quality.
+  \item Prepare materials for presentations, case studies, and the studio's public presence.
+\end{itemize}
+
+\roleline{Freelance --- UX/UI, web and graphic design}{Fall 2022 --- present}
+
+\begin{itemize}
+  \item Landing pages, online stores, and promo sites for cultural, educational, and event projects.
+  \item Posters and visual materials for events in Kazan and Innopolis.
+  \item Figma layouts, Tilda builds, client review, and launch preparation.
+\end{itemize}
+
+\roleline{Brand design and marketing (volunteering)}{2022 --- 2025}
+
+\begin{itemize}
+  \item \textbf{innostreetdance} --- student dance club at Innopolis University: visual identity, posters, SMM assets.
+  \item \textbf{trenirovochnaya.kzn} --- dance events in Kazan: brand, promo, and event communication.
+\end{itemize}
+
+\section*{Selected projects}
+
+\project
+{POCHTATECH}
+{Innopolis + Russian Post · promo booth}
+{
+Game UX/UI for an expo booth: explain Russian Post logistics and digital services in under a minute and hold attention in a noisy environment. Built the game scenario, onboarding, registration flow, and UX skeleton of the game screen in the clients' brand style.
+}
+{Figma, UX scenario, touch-screen UI}
+{
+\begin{itemize}
+  \item End-to-end work from booth brief to finished screens and interaction flow.
+  \item Game scenario, onboarding, and participant registration.
+  \item Touch-screen UI in Innopolis and Russian Post brand style.
+\end{itemize}
+}
+
+\vspace{0.4em}
+\begin{center}
+  \includegraphics[width=0.48\textwidth]{../images/pochtatex/page2.png}%
+  \hfill
+  \includegraphics[width=0.48\textwidth]{../images/pochtatex/page3.png}
+\end{center}
+\begin{center}
+  \textcolor{textgray}{\small Game screens · POCHTATECH}
+\end{center}
+
+\project
+{Croissan Studio}
+{\href{https://croissanstudio.ru}{croissanstudio.ru} · in-house}
+{
+Visual ecosystem for an AI studio: logo, merch, illustrations, and digital touchpoints for the Neuroartist product. The goal was to connect brand, merch, and interfaces into one recognizable language.
+}
+{Figma, Adobe Illustrator, AI + manual refinement}
+{
+\begin{itemize}
+  \item Brand elements, illustrations, and touchpoints in a unified style.
+  \item Visual language for Neuroartist and the studio's public presence.
+  \item AI generation combined with manual refinement.
+\end{itemize}
+}
+
+\project
+{Yoko Matcha}
+{freelance · matcha store}
+{
+The brand should feel premium yet warm --- not like a cold e-commerce template. Built the palette, typography, and catalog grid; generated visuals and refined them by hand for a consistent character.
+}
+{Figma, AI visuals, e-commerce UI}
+{
+\begin{itemize}
+  \item Homepage, catalog, and product cards in one visual system.
+  \item Palette, typography, and brand character.
+  \item Layouts ready for build handoff.
+\end{itemize}
+}
+
+\project
+{Barilova \& Tsarev}
+{Kingstep Dance Studio · \href{https://kingstep.ru}{kingstep.ru}}
+{
+An online dance school sells emotion and trust in teachers, not just a course list. Created a strong visual hero, clear program structure, and warm typography; adapted the layout for a Tilda build.
+}
+{Figma, Tilda, Adobe Illustrator}
+{
+\begin{itemize}
+  \item Site logic: home, course catalog, class pages.
+  \item Dark studio aesthetic aligned with the Kingstep brand.
+  \item Layouts, promo screens, and graphics for Tilda assembly.
+\end{itemize}
+}
+
+\vspace{0.4em}
+\begin{center}
+  \includegraphics[width=0.48\textwidth]{../images/tsarevbarilova/page1.png}%
+  \hfill
+  \includegraphics[width=0.48\textwidth]{../images/tsarevbarilova/page2.png}\\[0.5em]
+  \includegraphics[width=0.48\textwidth]{../images/tsarevbarilova/page3.png}%
+  \hfill
+  \includegraphics[width=0.48\textwidth]{../images/tsarevbarilova/page4.png}
+\end{center}
+\begin{center}
+  \textcolor{textgray}{\small Key screens · Kingstep}
+\end{center}
+
+\project
+{AI Camp · Innopolis}
+{\href{https://aismena.ru}{aismena.ru}}
+{
+Landing page for a summer AI camp for grades 7--11: parents should understand the program and apply without calling a manager. Built the structure, visual presentation, and full Tilda site on a tight deadline.
+}
+{Tilda, Zero Block, typography, forms}
+{
+\begin{itemize}
+  \item Hero, program, daily schedule, team, pricing, FAQ, and signup form.
+  \item Responsive layout and content hierarchy focused on applications.
+  \item Published on aismena.ru.
+\end{itemize}
+}
+
+\project
+{Posters}
+{events in Kazan and Innopolis}
+{
+Posters for dance and cultural events: they need to catch the eye instantly and stay readable from a distance and on a phone screen.
+}
+{Adobe Illustrator, Figma, AI}
+{
+\begin{itemize}
+  \item Contrast, hierarchy of date, venue, and title, one strong visual accent.
+  \item Posters for dance and cultural events in Kazan and Innopolis.
+  \item Adapted for print and digital distribution.
+\end{itemize}
+}
+
+\section*{How I work}
+
+\begin{enumerate}
+  \item Brief: audience, product goal, timeline and format constraints.
+  \item Structure: user flow, content priorities, key screens and CTAs.
+  \item Visuals: palette, typography, components, mood, and brand character.
+  \item Prototype and layout: Figma or Tilda build with responsive in mind.
+  \item Polish: review, final tweaks, handoff to development or publication.
+\end{enumerate}
+
+\section*{Additional}
+
+\begin{itemize}
+  \item Technical background: I understand front-end constraints when handing off layouts.
+  \item Product team experience: AzimovLab (AI test-generation service), product projects at Innopolis.
+  \item ML / research: publication on quantum computing (\textit{Voprosy kiberbezopasnosti}, 2025).
+\end{itemize}
+
+\section*{Education}
+
+Innopolis University, BSc in Applied Artificial Intelligence, 2026.
+
+\vfill
+
+\begin{center}
+\textcolor{textgray}{Last updated: August 2026}
+\end{center}
+
+\end{document}

@@ -14,4 +14,5 @@ Recent graduate of [Innopolis University](https://innopolis.university/en/), **A
 | LinkedIn | [natalia-agapova](https://www.linkedin.com/in/natalia-agapova-265797406/) |
 | Google Scholar | [profile](https://scholar.google.com/citations?user=FqdPM_gAAAAJ&hl=en) |
 | ResearchGate | [Natalia A. Agapova](https://www.researchgate.net/profile/Natalia-Agapova-2?ev=hdr_xprf) |
-| CV | TBD |
+| CV (EN) | [designer CV — English (PDF)](docs/nat_designer_en.pdf) |
+| CV (RU) | [designer CV (PDF)](docs/nat_designer.pdf) |
