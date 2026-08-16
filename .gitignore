@@ -1,6 +1,9 @@
 node_modules/
 .DS_Store
 
+# Archived portfolio assets (kept locally, not published)
+images/_archive/
+
 # LaTeX build artifacts
 docs/*.aux
 docs/*.log

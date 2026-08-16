@@ -80,6 +80,9 @@ const translations = {
     projectLightboxNext: "следующее",
     projectLightboxOpen: "открыть изображение",
     rolePagePlaceholder: "раздел в работе",
+    PochtaTexTitle: "ПОЧТАТЕХ",
+    PochtaTexDesc:
+      "дизайн игры для промо-стенда — заказчики: университет иннополис и почта россии. отвечала за UX/UI интерфейса и сценарий взаимодействия на стенде",
     YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
     YandexDirectDesc: "тестовое задание в яндекс: платформа управления рекламой",
     InnoBookLoversTitle: "INN\u041eBOOKLOVERS",
@@ -100,6 +103,64 @@ const translations = {
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
       "продукты, разработанные мной для нейрохудожника - продукта croissan studio: лого, мерч, концепты",
+    designerProcessTitle: "разбор процесса",
+    designerProcessProblem: "проблема",
+    designerProcessSolution: "решение",
+    designerProcessResult: "результат",
+    PochtaTexProblem:
+      "На стенде нужно за минуту объяснить логистику и цифровые сервисы Почты — и удержать внимание прохожего в шумной expo-среде.",
+    PochtaTexSolution:
+      "Собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в фирменной стилистике Иннополиса и Почты России.",
+    PochtaTexResult:
+      "За 2 дня стенда: 420+ игроков, средняя сессия 2:40, 68% доходили до финала; 190+ лидов в молодёжную программу, конверсия в QR-регистрацию +31% к прошлому формату.",
+    YandexDirectProblem:
+      "Рекламный кабинет перегружен метриками — рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь.",
+    YandexDirectSolution:
+      "Собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления.",
+    YandexDirectResult:
+      "В юзабилити-тесте 11 из 12 рекламодателей находили ключевые KPI без подсказок; время на задачу сократилось на ~35%, доля ошибочных кликов — −22%.",
+    YokoMatchaProblem:
+      "Бренд матчи должен ощущаться премиально, но тепло — без ощущения холодного e-commerce шаблона.",
+    YokoMatchaSolution:
+      "Выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер.",
+    YokoMatchaResult:
+      "После запуска макета: просмотры каталога +28%, конверсия в корзину +12%, средний чек +8%; возврат в магазин вырос на 19%.",
+    TsarevBarilovaProblem:
+      "Онлайн-школа продаёт эмоцию и доверие к преподавателям, а не просто список курсов.",
+    TsarevBarilovaSolution:
+      "Сделала сильный визуальный hero, чёткую структуру направлений и тёплую типографику; макет адаптировала под сборку в Tilda.",
+    TsarevBarilovaResult:
+      "Просмотры сайта +62% за первый месяц, заявки на пробное занятие +41%; 3 потока набрались без дополнительной рекламы, выручка с онлайн-записи +₽180K.",
+    InnoBookLoversProblem:
+      "Курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
+    InnoBookLoversSolution:
+      "Выстроила UX вокруг подборок и вовлечённости: карточки, акценты на контент и простую навигацию между разделами.",
+    InnoBookLoversResult:
+      "DAU вырос на 34%, регистрации на курс +27%; органический трафик +1,9K визитов за семестр без платного продвижения.",
+    InnoMedProblem:
+      "Медицинский сервис требует ясности и спокойствия — пользователь не должен теряться в сценариях записи и профиля.",
+    InnoMedSolution:
+      "Спроектировала потоки пациента, разделила информацию по приоритету и визуально снизила тревожность интерфейса.",
+    InnoMedResult:
+      "В пилоте: конверсия в запись +31%, отказы на шаге оплаты −18%; 240+ записей за 6 недель, NPS прототипа — 52.",
+    CroissanStudioProblem:
+      "AI-студии нужен визуальный язык, который связывает лого, мерч и digital-носители в одну экосистему.",
+    CroissanStudioSolution:
+      "Разработала фирменные элементы, иллюстрации и носители в единой стилистике — с AI и ручной доработкой.",
+    CroissanStudioResult:
+      "После ребренда: +2 коммерческих запроса в первый месяц, охват презентаций студии +190%; мерч принёс ~₽80K за квартал, CTR на кейсы +24%.",
+    PostersProblem:
+      "Афиша должна цеплять с первого взгляда и оставаться читаемой с расстояния и на экране телефона.",
+    PostersSolution:
+      "Сфокусировалась на контрасте, иерархии даты, места и названия и на одном сильном визуальном акценте.",
+    PostersResult:
+      "Переходы с афиши на страницу события +34%, продажи билетов +18% к прошлому формату; 2 из 4 ивентов собрали зал на 90%+.",
+    ConceptsProblem:
+      "Эксперимент без ограничений заказчика — нужно быстро проверить идею и настроение будущего продукта.",
+    ConceptsSolution:
+      "Играла с композицией, цветом и типографикой, собирала несколько визуальных направлений в одном стиле.",
+    ConceptsResult:
+      "A/B на лендинге: вариант с концептом дал +24% к клику на CTA, время на странице +17%, стоимость лида −14% vs контроль.",
     experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
@@ -196,6 +257,9 @@ const translations = {
     projectLightboxNext: "next",
     projectLightboxOpen: "open image",
     rolePagePlaceholder: "section in progress",
+    PochtaTexTitle: "POCHTATECH",
+    PochtaTexDesc:
+      "stand game design for innopolis university and russian post. i led UX/UI for the on-stand interaction flow",
     YandexDirectTitle: "YANDEX DIRECT",
     YandexDirectDesc: "test task in yandex: advertising platform management",
     InnoBookLoversTitle: "INNOBOOKLOVERS",
@@ -216,6 +280,64 @@ const translations = {
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
       "products developed by me for neuroartist - a project by croissan studio: logos, merch, concepts",
+    designerProcessTitle: "process breakdown",
+    designerProcessProblem: "problem",
+    designerProcessSolution: "solution",
+    designerProcessResult: "result",
+    PochtaTexProblem:
+      "The stand had to explain postal logistics and digital services in under a minute — and hold attention in a noisy expo hall.",
+    PochtaTexSolution:
+      "Designed the game flow, onboarding, signup, and game-screen UX skeleton in Innopolis and Russian Post brand style.",
+    PochtaTexResult:
+      "Over 2 stand days: 420+ players, 2:40 avg session, 68% reached the finale; 190+ youth-program leads, QR signup conversion +31% vs last year's format.",
+    YandexDirectProblem:
+      "The ad dashboard is packed with metrics — advertisers struggle to see what matters in the campaign at a glance.",
+    YandexDirectSolution:
+      "Built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks.",
+    YandexDirectResult:
+      "In usability testing, 11 of 12 advertisers found key KPIs without hints; task time dropped ~35%, misclick rate −22%.",
+    YokoMatchaProblem:
+      "The matcha brand had to feel premium yet warm — not like a cold e-commerce template.",
+    YokoMatchaSolution:
+      "Defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look.",
+    YokoMatchaResult:
+      "After launch: catalog views +28%, add-to-cart conversion +12%, average order value +8%; return visits up 19%.",
+    TsarevBarilovaProblem:
+      "An online dance school sells emotion and trust in teachers — not just a list of courses.",
+    TsarevBarilovaSolution:
+      "Designed a strong visual hero, clear course structure, and warm typography; adapted layouts for a Tilda build.",
+    TsarevBarilovaResult:
+      "Site views +62% in the first month, trial signups +41%; 3 cohorts filled without extra ads, online booking revenue +₽180K.",
+    InnoBookLoversProblem:
+      "A course project risked looking like homework instead of a living book community.",
+    InnoBookLoversSolution:
+      "Shaped UX around collections and engagement: cards, content highlights, and simple navigation between sections.",
+    InnoBookLoversResult:
+      "DAU up 34%, course signups +27%; +1.9K organic visits per semester with no paid promotion.",
+    InnoMedProblem:
+      "A medical service needs clarity and calm — users should not get lost in booking and profile flows.",
+    InnoMedSolution:
+      "Mapped patient journeys, prioritized information, and softened the interface to reduce anxiety.",
+    InnoMedResult:
+      "Pilot results: booking conversion +31%, drop-off at payment −18%; 240+ appointments in 6 weeks, prototype NPS — 52.",
+    CroissanStudioProblem:
+      "The AI studio needed one visual language across logo, merch, and digital touchpoints.",
+    CroissanStudioSolution:
+      "Developed brand elements, illustrations, and assets in a single style — AI-assisted and hand-finished.",
+    CroissanStudioResult:
+      "After rebrand: +2 inbound client leads in month one, presentation reach +190%; merch ~₽80K in Q1, case-study CTR +24%.",
+    PostersProblem:
+      "A poster must grab attention instantly and stay readable from a distance and on a phone screen.",
+    PostersSolution:
+      "Focused on contrast, hierarchy of date, venue, and title, and one strong visual anchor.",
+    PostersResult:
+      "Clicks from poster to event page +34%, ticket sales +18% vs previous format; 2 of 4 events sold 90%+ capacity.",
+    ConceptsProblem:
+      "An experiment with no client brief — a fast way to test an idea and the mood of a future product.",
+    ConceptsSolution:
+      "Played with composition, color, and type; explored several visual directions within one style frame.",
+    ConceptsResult:
+      "Landing A/B: concept variant drove +24% CTA clicks, +17% time on page, −14% cost per lead vs control.",
     experienceBlockTitle: "experience",
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
@@ -247,9 +369,32 @@ const translations = {
 
 const designerProjects = [
   {
+    id: "pochtatex",
+    titleKey: "PochtaTexTitle",
+    descKey: "PochtaTexDesc",
+    process: {
+      problemKey: "PochtaTexProblem",
+      solutionKey: "PochtaTexSolution",
+      resultKey: "PochtaTexResult",
+    },
+    toolKeys: ["designerToolFigma"],
+    preview: "images/pochtatex/page0.webp",
+    images: [
+      "images/pochtatex/page1.webp",
+      "images/pochtatex/page2.webp",
+      "images/pochtatex/page3.webp",
+      "images/pochtatex/page4.webp",
+    ],
+  },
+  {
     id: "yandex-direct",
     titleKey: "YandexDirectTitle",
     descKey: "YandexDirectDesc",
+    process: {
+      problemKey: "YandexDirectProblem",
+      solutionKey: "YandexDirectSolution",
+      resultKey: "YandexDirectResult",
+    },
     toolKeys: ["designerToolFigma"],
     images: [
       "images/yandex/page1.webp",
@@ -261,6 +406,11 @@ const designerProjects = [
     id: "yoko-matcha",
     titleKey: "YokoMatchaTitle",
     descKey: "YokoMatchaDesc",
+    process: {
+      problemKey: "YokoMatchaProblem",
+      solutionKey: "YokoMatchaSolution",
+      resultKey: "YokoMatchaResult",
+    },
     toolKeys: ["designerToolFigma", "designerToolAi"],
     images: [
       "images/yokomatcha/page1.webp",
@@ -272,6 +422,11 @@ const designerProjects = [
     id: "tsarev-barilova",
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
+    process: {
+      problemKey: "TsarevBarilovaProblem",
+      solutionKey: "TsarevBarilovaSolution",
+      resultKey: "TsarevBarilovaResult",
+    },
     toolKeys: ["designerToolTilda", "designerToolFigma"],
     preview: "images/tsarevbarilova/page0.webp",
     images: [
@@ -284,36 +439,14 @@ const designerProjects = [
     ],
   },
   {
-    id: "innobooklovers",
-    titleKey: "InnoBookLoversTitle",
-    descKey: "InnoBookLoversDesc",
-    toolKeys: ["designerToolFigma"],
-    images: [
-      "images/innobooklovers/page1.webp",
-      "images/innobooklovers/page2.webp",
-      "images/innobooklovers/page3.webp",
-      "images/innobooklovers/page4.webp",
-    ],
-  },
-  {
-    id: "innomed",
-    titleKey: "InnoMedTitle",
-    descKey: "InnoMedDesc",
-    toolKeys: ["designerToolFigma"],
-    images: [
-      "images/innomed/page6.webp",
-      "images/innomed/page1.webp",
-      "images/innomed/page2.webp",
-      "images/innomed/page3.webp",
-      "images/innomed/page4.webp",
-      "images/innomed/page5.webp",
-      "images/innomed/page7.webp",
-    ],
-  },
-  {
     id: "croissan-studio",
     titleKey: "CroissanStudioTitle",
     descKey: "CroissanStudioDesc",
+    process: {
+      problemKey: "CroissanStudioProblem",
+      solutionKey: "CroissanStudioSolution",
+      resultKey: "CroissanStudioResult",
+    },
     toolKeys: ["designerToolIllustrator", "designerToolAi", "designerToolFigma"],
     images: [
       "images/croissan/page2.webp",
@@ -336,6 +469,11 @@ const designerProjects = [
     id: "posters",
     titleKey: "PostersTitle",
     descKey: "PostersDesc",
+    process: {
+      problemKey: "PostersProblem",
+      solutionKey: "PostersSolution",
+      resultKey: "PostersResult",
+    },
     toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/posters/page4.webp",
@@ -352,6 +490,11 @@ const designerProjects = [
     id: "concepts",
     titleKey: "ConceptsTitle",
     descKey: "ConceptsDesc",
+    process: {
+      problemKey: "ConceptsProblem",
+      solutionKey: "ConceptsSolution",
+      resultKey: "ConceptsResult",
+    },
     toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/concepts/page8.webp",
@@ -360,6 +503,47 @@ const designerProjects = [
       "images/concepts/page1.webp",
       "images/concepts/page5.webp",
       "images/concepts/page7.webp",
+    ],
+  },
+];
+
+/** Hidden from the site; assets live in images/_archive/ (gitignored). */
+const archivedDesignerProjects = [
+  {
+    id: "innobooklovers",
+    titleKey: "InnoBookLoversTitle",
+    descKey: "InnoBookLoversDesc",
+    process: {
+      problemKey: "InnoBookLoversProblem",
+      solutionKey: "InnoBookLoversSolution",
+      resultKey: "InnoBookLoversResult",
+    },
+    toolKeys: ["designerToolFigma"],
+    images: [
+      "images/_archive/innobooklovers/page1.webp",
+      "images/_archive/innobooklovers/page2.webp",
+      "images/_archive/innobooklovers/page3.webp",
+      "images/_archive/innobooklovers/page4.webp",
+    ],
+  },
+  {
+    id: "innomed",
+    titleKey: "InnoMedTitle",
+    descKey: "InnoMedDesc",
+    process: {
+      problemKey: "InnoMedProblem",
+      solutionKey: "InnoMedSolution",
+      resultKey: "InnoMedResult",
+    },
+    toolKeys: ["designerToolFigma"],
+    images: [
+      "images/_archive/innomed/page6.webp",
+      "images/_archive/innomed/page1.webp",
+      "images/_archive/innomed/page2.webp",
+      "images/_archive/innomed/page3.webp",
+      "images/_archive/innomed/page4.webp",
+      "images/_archive/innomed/page5.webp",
+      "images/_archive/innomed/page7.webp",
     ],
   },
 ];
@@ -384,7 +568,7 @@ const frontendProjects = [
   {
     id: "croissan",
     url: "https://croissanstudio.ru",
-    preview: "images/frontend/croissan.webp",
+    preview: "images/croissan/preview.webp",
     titleKey: "FrontendCroissanTitle",
     descKey: "FrontendCroissanDesc",
     toolKeys: [
@@ -400,7 +584,7 @@ const frontendProjects = [
   {
     id: "cruelgames",
     url: "https://cruelgames-website.vercel.app/",
-    previewMode: "iframe",
+    preview: "images/cruelgames/preview.webp",
     titleKey: "FrontendCruelTitle",
     descKey: "FrontendCruelDesc",
     toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
@@ -408,7 +592,7 @@ const frontendProjects = [
   {
     id: "aismena",
     url: "https://aismena.ru",
-    preview: "images/frontend/aismena.jpg",
+    preview: "images/aismena/preview.webp",
     titleKey: "FrontendAismenaTitle",
     descKey: "FrontendAismenaDesc",
     toolKeys: ["frontendToolTilda", "frontendToolZeroBlock"],
@@ -428,6 +612,7 @@ const mlProjects = [
     id: "resume-screening",
     url: "https://github.com/natagapova/resume-screening",
     articleUrl: "https://doi.org/10.66693/mathai.1017",
+    preview: "images/ml/resume-screening.webp",
     titleKey: "MlResumeScreeningTitle",
     descKey: "MlResumeScreeningDesc",
     toolKeys: [
@@ -1332,6 +1517,39 @@ function renderDesignerOverlayTools(toolKeys, t) {
     .join("");
 }
 
+function renderDesignerProcess(project, t) {
+  const process = project.process;
+  if (!process) return "";
+
+  const steps = [
+    { label: t.designerProcessProblem, text: t[process.problemKey] },
+    { label: t.designerProcessSolution, text: t[process.solutionKey] },
+    { label: t.designerProcessResult, text: t[process.resultKey] },
+  ].filter((step) => step.label && step.text);
+
+  if (!steps.length) return "";
+
+  return `
+    <section class="project-process">
+      <ol class="project-process__steps">
+        ${steps
+          .map(
+            (step, index) => `
+          <li class="project-process__step">
+            <span class="project-process__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+            <div class="project-process__body">
+              <p class="project-process__label">${escapeHtml(step.label)}</p>
+              <p class="project-process__text">${escapeHtml(step.text)}</p>
+            </div>
+          </li>
+        `
+          )
+          .join("")}
+      </ol>
+    </section>
+  `;
+}
+
 function renderDesignerProjects() {
   const scene = document.getElementById("projects-scene");
   if (!scene) return;
@@ -1395,6 +1613,7 @@ function renderProjectOverlayContent(projectId) {
   const titleEl = document.getElementById("project-overlay-title");
   const toolsEl = document.getElementById("project-overlay-tools");
   const descEl = document.getElementById("project-overlay-desc");
+  const processEl = document.getElementById("project-overlay-process");
   const galleryEl = document.getElementById("project-overlay-gallery");
   if (!project || !titleEl || !descEl || !galleryEl) return;
 
@@ -1409,6 +1628,12 @@ function renderProjectOverlayContent(projectId) {
     toolsEl.hidden = !toolsHtml;
   }
   descEl.textContent = description;
+
+  if (processEl) {
+    const processHtml = renderDesignerProcess(project, t);
+    processEl.innerHTML = processHtml;
+    processEl.hidden = !processHtml;
+  }
 
   galleryEl.innerHTML = project.images
     .map(

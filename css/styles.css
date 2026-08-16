@@ -1997,6 +1997,64 @@ body.is-project-overlay-open {
   color: var(--color-text-muted);
 }
 
+.project-overlay__process {
+  margin-top: clamp(22px, 3.2vw, 30px);
+}
+
+.project-overlay__process[hidden] {
+  display: none;
+}
+
+.project-process__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-process__step {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100%;
+  padding: 16px 16px 18px;
+  border-radius: 14px;
+  background: rgb(120 120 128 / 6%);
+  box-shadow: inset 0 0 0 1px rgb(120 120 128 / 10%);
+}
+
+.project-process__index {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgb(120 120 128 / 72%);
+}
+
+.project-process__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-process__label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--ios-label);
+}
+
+.project-process__text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--ios-label-secondary);
+}
+
 .project-overlay__gallery {
   display: flex;
   flex-direction: column;
@@ -2044,6 +2102,15 @@ body.is-project-overlay-open {
   .project-overlay__desc {
     font-size: 15px;
     line-height: 1.5;
+  }
+
+  .project-process__steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .project-process__step {
+    padding: 14px 14px 16px;
   }
 }
 
@@ -3122,7 +3189,7 @@ body.page-ml .subpage-main.ml-page {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: rgb(120 120 128 / 8%);
+  background: #fff;
 }
 
 .ml-card__preview--placeholder {
@@ -3133,8 +3200,8 @@ body.page-ml .subpage-main.ml-page {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
 }
 
 .ml-card__body {

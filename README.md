@@ -1,16 +1,16 @@
 # Natalia A. Agapova
 
-Hello world! This is my GIthub. I'm just having fun with code, you can find some of my projects here.
+Hello world! This is my GitHub. I'm just having fun with code, you can find some of my projects here.
 
-4th-year student at [Innopolis University](https://innopolis.university/en/), studying **Applied Artificial Intelligence**.
+Recent graduate of [Innopolis University](https://innopolis.university/en/), **Applied Artificial Intelligence**.
 
-**Website:** TBD
+**Website:** [natagapova.ru](https://www.natagapova.ru)
 
 ## Links
 
 | | |
 | --- | --- |
-| Website | TBD |
+| Website | [natagapova.ru](https://www.natagapova.ru) |
 | LinkedIn | [natalia-agapova](https://www.linkedin.com/in/natalia-agapova-265797406/) |
 | Google Scholar | [profile](https://scholar.google.com/citations?user=FqdPM_gAAAAJ&hl=en) |
 | ResearchGate | [Natalia A. Agapova](https://www.researchgate.net/profile/Natalia-Agapova-2?ev=hdr_xprf) |
