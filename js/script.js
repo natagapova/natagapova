@@ -180,13 +180,37 @@ const translations = {
     footerSocialLinkedin: "LinkedIn",
     footerSocialGithub: "GitHub",
     footerSocialEmail: "Почта",
+    footerSocialScholar: "Google Scholar",
+    introBlockTitle: "обо мне",
+    introLead:
+      "product / UX/UI designer. собираю интерфейсы и визуальные\u00A0системы — от\u00A0структуры до\u00A0деталей, чтобы продуктом было удобно\u00A0пользоваться и приятно\u00A0им\u00A0делиться.",
+    introStatusLabel: "current status:",
+    introStatusValue: "открыта\u00A0к\u00A0проектам",
+    introCta: "дизайн кейсы",
+    introTrustLabel: "мне доверяют",
+    introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов.",
+    introSocialLabel: "соцсети",
+    trustLogoCroissan: "croissan studio",
+    trustLogoInnopolis: "иннополис",
+    trustLogoPochtaRossii: "почта россии",
+    trustLogoPochta: "почтатех",
+    trustLogoLitsei: "лицей иннополис",
+    trustLogoArtCenter: "арт центр иси",
+    trustLogoKingstep: "king step",
+    PochtaTexMeta: "роль: UX/UI · 3 нед · solo · иннополис + почта россии",
+    YandexDirectMeta: "роль: UX/UI · тестовое · solo · яндекс",
+    YokoMatchaMeta: "роль: брендинг + UI · 3 нед · solo · фриланс",
+    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · solo · фриланс",
+    CroissanStudioMeta: "роль: product designer · 6 мес · in-house · croissan studio",
+    PostersMeta: "роль: графический дизайн · ongoing · solo · ивенты казани",
+    ConceptsMeta: "роль: эксперимент · — · solo · личный проект",
     languagesBlockTitle: "языки",
     langRu: "русский",
     langEn: "английский",
     langFr: "французский",
     langKo: "корейский",
     langEnLevel: "C1+",
-    langMapDesc: "Карта владения языками по шкале от A1 до C2.",
+    langMapDesc: "Карта владения языками по шкале от 0 до C2.",
   },
   en: {
     navBrand: "natalia agapova",
@@ -357,13 +381,37 @@ const translations = {
     footerSocialLinkedin: "LinkedIn",
     footerSocialGithub: "GitHub",
     footerSocialEmail: "Email",
+    footerSocialScholar: "Google Scholar",
+    introBlockTitle: "about me",
+    introLead:
+      "Product / UX/UI designer. I build interfaces and visual\u00A0systems — from\u00A0structure to\u00A0details — so products are easy\u00A0to\u00A0use and genuinely nice\u00A0to\u00A0share.",
+    introStatusLabel: "current status:",
+    introStatusValue: "open\u00A0to\u00A0work",
+    introCta: "design cases",
+    introTrustLabel: "trusted by",
+    introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required.",
+    introSocialLabel: "social links",
+    trustLogoCroissan: "croissan studio",
+    trustLogoInnopolis: "innopolis",
+    trustLogoPochtaRossii: "russian post",
+    trustLogoPochta: "pochtatech",
+    trustLogoLitsei: "innopolis lyceum",
+    trustLogoArtCenter: "art center isi",
+    trustLogoKingstep: "king step",
+    PochtaTexMeta: "role: UX/UI · 3 wks · solo · innopolis + russian post",
+    YandexDirectMeta: "role: UX/UI · test task · solo · yandex",
+    YokoMatchaMeta: "role: branding + UI · 3 wks · solo · freelance",
+    TsarevBarilovaMeta: "role: UX/UI · 2 wks · solo · freelance",
+    CroissanStudioMeta: "role: product designer · 6 mo · in-house · croissan studio",
+    PostersMeta: "role: graphic design · ongoing · solo · kazan events",
+    ConceptsMeta: "role: experiment · — · solo · personal project",
     languagesBlockTitle: "languages",
     langRu: "russian",
     langEn: "english",
     langFr: "french",
     langKo: "korean",
     langEnLevel: "C1+",
-    langMapDesc: "Language proficiency map on a scale from A1 to C2.",
+    langMapDesc: "Language proficiency map on a scale from 0 to C2.",
   },
 };
 
@@ -372,6 +420,7 @@ const designerProjects = [
     id: "pochtatex",
     titleKey: "PochtaTexTitle",
     descKey: "PochtaTexDesc",
+    metaKey: "PochtaTexMeta",
     process: {
       problemKey: "PochtaTexProblem",
       solutionKey: "PochtaTexSolution",
@@ -390,6 +439,7 @@ const designerProjects = [
     id: "yandex-direct",
     titleKey: "YandexDirectTitle",
     descKey: "YandexDirectDesc",
+    metaKey: "YandexDirectMeta",
     process: {
       problemKey: "YandexDirectProblem",
       solutionKey: "YandexDirectSolution",
@@ -406,6 +456,7 @@ const designerProjects = [
     id: "yoko-matcha",
     titleKey: "YokoMatchaTitle",
     descKey: "YokoMatchaDesc",
+    metaKey: "YokoMatchaMeta",
     process: {
       problemKey: "YokoMatchaProblem",
       solutionKey: "YokoMatchaSolution",
@@ -422,6 +473,7 @@ const designerProjects = [
     id: "tsarev-barilova",
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
+    metaKey: "TsarevBarilovaMeta",
     process: {
       problemKey: "TsarevBarilovaProblem",
       solutionKey: "TsarevBarilovaSolution",
@@ -442,6 +494,7 @@ const designerProjects = [
     id: "croissan-studio",
     titleKey: "CroissanStudioTitle",
     descKey: "CroissanStudioDesc",
+    metaKey: "CroissanStudioMeta",
     process: {
       problemKey: "CroissanStudioProblem",
       solutionKey: "CroissanStudioSolution",
@@ -469,6 +522,7 @@ const designerProjects = [
     id: "posters",
     titleKey: "PostersTitle",
     descKey: "PostersDesc",
+    metaKey: "PostersMeta",
     process: {
       problemKey: "PostersProblem",
       solutionKey: "PostersSolution",
@@ -490,6 +544,7 @@ const designerProjects = [
     id: "concepts",
     titleKey: "ConceptsTitle",
     descKey: "ConceptsDesc",
+    metaKey: "ConceptsMeta",
     process: {
       problemKey: "ConceptsProblem",
       solutionKey: "ConceptsSolution",
@@ -840,6 +895,13 @@ const translationKeyToId = {
   myName: "store-name",
   volTrenirovochnaya: "vol-trenirovochnaya",
   volInnostreetdance: "vol-innostreetdance",
+  introBlockTitle: "intro-block-title",
+  introLead: "intro-lead",
+  introStatusLabel: "intro-status-label",
+  introStatusValue: "intro-status-value",
+  introCta: "intro-cta",
+  introTrustLabel: "intro-trust-label",
+  introContactPrefix: "intro-contact-prefix",
   languagesBlockTitle: "languages-block-title",
   langRu: "lang-ru-name",
   langEn: "lang-en-name",
@@ -874,18 +936,57 @@ const SOCIAL_LINKS = [
     labelKey: "footerSocialEmail",
     external: false,
   },
+  {
+    id: "scholar",
+    href: "https://scholar.google.com/citations?user=FqdPM_gAAAAJ&hl=en",
+    labelKey: "footerSocialScholar",
+    external: true,
+  },
 ];
 
-function getSocialIconMarkup(id) {
+const TRUSTED_BY = [
+  {
+    id: "pochta-rossii",
+    labelKey: "trustLogoPochtaRossii",
+    logo: "images/logos/trusted/pochta-rossii.png",
+  },
+  {
+    id: "innopolis",
+    labelKey: "trustLogoInnopolis",
+    logoRu: "images/logos/trusted/innopolis-ru.png",
+    logoEn: "images/logos/trusted/innopolis-en.png",
+  },
+  { id: "croissan", labelKey: "trustLogoCroissan", logo: "images/logos/trusted/croissan.png" },
+  { id: "litsei", labelKey: "trustLogoLitsei", logo: "images/logos/trusted/litsei-innopolis.png" },
+  { id: "art-center", labelKey: "trustLogoArtCenter", logo: "images/logos/trusted/art-center-isi.png" },
+  {
+    id: "pochtatech",
+    labelKey: "trustLogoPochta",
+    logoRu: "images/logos/trusted/pochtatech-ru.png",
+    logoEn: "images/logos/trusted/pochtatech-en.png",
+  },
+  { id: "kingstep", labelKey: "trustLogoKingstep", logo: "images/logos/trusted/kingstep.png" },
+];
+
+function getTrustedLogoSrc(item, lang) {
+  if (lang === "en") {
+    return item.logoEn ?? item.logo ?? item.logoRu ?? "";
+  }
+  return item.logoRu ?? item.logo ?? item.logoEn ?? "";
+}
+
+function getSocialIconMarkup(id, iconClass = "footer-social__icon") {
   switch (id) {
     case "telegram":
-      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.95 4.64a1.2 1.2 0 0 0-1.24-.17L3.5 11.28a1 1 0 0 0 .08 1.86l4.2 1.5 1.58 4.86a1 1 0 0 0 1.62.37l2.2-2.16 4.08 3.02a1.2 1.2 0 0 0 1.9-.74l2.9-14.35ZM9.6 13.9l7.45-4.64-5.8 5.36-.34 3.2-1.31-3.92Z"/></svg>`;
+      return `<svg class="${iconClass}" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.95 4.64a1.2 1.2 0 0 0-1.24-.17L3.5 11.28a1 1 0 0 0 .08 1.86l4.2 1.5 1.58 4.86a1 1 0 0 0 1.62.37l2.2-2.16 4.08 3.02a1.2 1.2 0 0 0 1.9-.74l2.9-14.35ZM9.6 13.9l7.45-4.64-5.8 5.36-.34 3.2-1.31-3.92Z"/></svg>`;
     case "linkedin":
-      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.5 8.8h3.1v10.7H6.5V8.8Zm1.55-5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM10.2 8.8h2.97v1.46h.04c.41-.78 1.42-1.6 2.92-1.6 3.12 0 3.7 2.05 3.7 4.72v6.1h-3.1v-5.41c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86v5.5H10.2V8.8Z"/></svg>`;
+      return `<svg class="${iconClass}" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.5 8.8h3.1v10.7H6.5V8.8Zm1.55-5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM10.2 8.8h2.97v1.46h.04c.41-.78 1.42-1.6 2.92-1.6 3.12 0 3.7 2.05 3.7 4.72v6.1h-3.1v-5.41c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86v5.5H10.2V8.8Z"/></svg>`;
     case "github":
-      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>`;
+      return `<svg class="${iconClass}" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>`;
     case "email":
-      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.11a3 3 0 0 1-2.87 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.57 0L22.5 6.91Z"/></svg>`;
+      return `<svg class="${iconClass}" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.11a3 3 0 0 1-2.87 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.57 0L22.5 6.91Z"/></svg>`;
+    case "scholar":
+      return `<svg class="${iconClass}" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l4.5 2.45V16.5c0 .83.67 1.5 1.5 1.5h3V14h5v4h3c.83 0 1.5-.67 1.5-1.5v-5.05L23 9 12 3zm0 2.18 6.9 3.77-6.9 3.77L5.1 8.95 12 5.18zM6 17.5v-3.36l6 3.27 6-3.27v3.36l-6 3.27-6-3.27z"/></svg>`;
     default:
       return "";
   }
@@ -914,6 +1015,59 @@ function renderFooterSocials(t) {
         aria-label="${escapeHtml(ariaLabel)}"${externalAttrs}
       >
         ${getSocialIconMarkup(link.id)}
+      </a>
+    `;
+  }).join("");
+}
+
+function renderIntroTrust(t) {
+  const logosEl = document.getElementById("intro-trust-logos");
+  if (!logosEl) return;
+
+  logosEl.innerHTML = TRUSTED_BY.map((item) => {
+    const label = t[item.labelKey] ?? item.id;
+    const logoSrc = getTrustedLogoSrc(item, currentLang);
+    if (!logoSrc) return "";
+
+    return `
+      <li class="intro-trust__item">
+        <img
+          class="intro-trust__logo-img intro-trust__logo-img--${escapeHtml(item.id)}"
+          src="${escapeHtml(logoSrc)}"
+          alt="${escapeHtml(label)}"
+          width="120"
+          height="28"
+          loading="lazy"
+          decoding="async"
+        />
+      </li>
+    `;
+  }).join("");
+}
+
+function renderIntroSocial(t) {
+  const socialEl = document.getElementById("intro-social");
+  if (!socialEl) return;
+
+  const label = t.introSocialLabel ?? t.footerSocialLabel ?? "";
+  if (label) {
+    socialEl.setAttribute("aria-label", label);
+  }
+
+  socialEl.innerHTML = SOCIAL_LINKS.map((link) => {
+    const linkLabel = t[link.labelKey] ?? link.id;
+    const externalAttrs = link.external
+      ? ' target="_blank" rel="noopener noreferrer"'
+      : "";
+
+    return `
+      <a
+        class="btn"
+        href="${escapeHtml(link.href)}"
+        aria-label="${escapeHtml(linkLabel)}"${externalAttrs}
+      >
+        ${getSocialIconMarkup(link.id, "btn__icon")}
+        <span class="btn__label">${escapeHtml(linkLabel)}</span>
       </a>
     `;
   }).join("");
@@ -1563,6 +1717,7 @@ function renderDesignerProjects() {
 
       const title = t[project.titleKey] ?? "";
       const description = t[project.descKey] ?? "";
+      const meta = project.metaKey ? (t[project.metaKey] ?? "") : "";
 
       return `
         <article
@@ -1572,6 +1727,11 @@ function renderDesignerProjects() {
           aria-label="${escapeHtml(title)}"
         >
           <div class="project-panel__stack">
+            <div class="project-panel__caption" aria-hidden="true">
+              <p class="project-panel__caption-title">${escapeHtml(title)}</p>
+              ${meta ? `<p class="project-panel__caption-meta">${escapeHtml(meta)}</p>` : ""}
+              <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
+            </div>
             <div class="project-panel__card">
               <span class="project-panel__bevel" aria-hidden="true"></span>
               <img
@@ -1582,10 +1742,6 @@ function renderDesignerProjects() {
                 decoding="async"
               />
             </div>
-          </div>
-          <div class="project-panel__caption" aria-hidden="true">
-            <p class="project-panel__caption-title">${escapeHtml(title)}</p>
-            <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
           </div>
           <span class="visually-hidden">${escapeHtml(title)}. ${escapeHtml(description)}</span>
         </article>
@@ -1611,6 +1767,7 @@ let openProjectId = null;
 function renderProjectOverlayContent(projectId) {
   const project = designerProjects.find((item) => item.id === projectId);
   const titleEl = document.getElementById("project-overlay-title");
+  const metaEl = document.getElementById("project-overlay-meta");
   const toolsEl = document.getElementById("project-overlay-tools");
   const descEl = document.getElementById("project-overlay-desc");
   const processEl = document.getElementById("project-overlay-process");
@@ -1620,8 +1777,13 @@ function renderProjectOverlayContent(projectId) {
   const t = translations[currentLang];
   const title = t[project.titleKey] ?? "";
   const description = t[project.descKey] ?? "";
+  const meta = project.metaKey ? (t[project.metaKey] ?? "") : "";
 
   titleEl.textContent = title;
+  if (metaEl) {
+    metaEl.textContent = meta;
+    metaEl.hidden = !meta;
+  }
   if (toolsEl) {
     const toolsHtml = renderDesignerOverlayTools(project.toolKeys, t);
     toolsEl.innerHTML = toolsHtml;
@@ -1995,6 +2157,8 @@ function applyTranslations() {
   applyFrontendPage(t);
   applyMlPage(t);
   renderFooterSocials(t);
+  renderIntroTrust(t);
+  renderIntroSocial(t);
 
   if (document.getElementById("projects-scene")) {
     renderDesignerProjects();
