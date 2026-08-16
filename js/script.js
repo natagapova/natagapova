@@ -17,6 +17,7 @@ const translations = {
     languageSwitch: "eng",
     portfolioTitle: "проекты",
     designerPageTitle: "дизайн кейсы",
+    designerCvDownload: "скачать cv",
     mlPageTitle: "ml кейсы",
     designerToolsLabel: "инструменты",
     designerToolFigma: "Figma",
@@ -79,6 +80,11 @@ const translations = {
     projectLightboxPrev: "предыдущее",
     projectLightboxNext: "следующее",
     projectLightboxOpen: "открыть изображение",
+    heroPhotoAlt: "Наталья Агапова",
+    projectPreviewAlt: "Превью: {{title}}",
+    projectImageAlt: "{{title}}, изображение {{current}} из {{total}}",
+    personGalleryPhotoAlt: "Фото: {{name}}",
+    personGalleryVideoAlt: "Видео: {{name}}",
     rolePagePlaceholder: "раздел в работе",
     PochtaTexTitle: "ПОЧТАТЕХ",
     PochtaTexDesc:
@@ -218,6 +224,7 @@ const translations = {
     languageSwitch: "рус",
     portfolioTitle: "projects",
     designerPageTitle: "design cases",
+    designerCvDownload: "download cv",
     mlPageTitle: "ml cases",
     designerToolsLabel: "tools",
     designerToolFigma: "Figma",
@@ -280,6 +287,11 @@ const translations = {
     projectLightboxPrev: "previous",
     projectLightboxNext: "next",
     projectLightboxOpen: "open image",
+    heroPhotoAlt: "Natalia Agapova",
+    projectPreviewAlt: "Preview: {{title}}",
+    projectImageAlt: "{{title}}, image {{current}} of {{total}}",
+    personGalleryPhotoAlt: "Photo: {{name}}",
+    personGalleryVideoAlt: "Video: {{name}}",
     rolePagePlaceholder: "section in progress",
     PochtaTexTitle: "POCHTATECH",
     PochtaTexDesc:
@@ -876,6 +888,7 @@ const translationKeyToId = {
   languageSwitch: "languageSwitch",
   portfolioTitle: "projects-title",
   designerPageTitle: "designer-page-title",
+  designerCvDownload: "designer-cv-download",
   mlPageTitle: "ml-page-title",
   designerToolsLabel: "designer-tools-label",
   roleDesigner: "role-designer",
@@ -925,16 +938,16 @@ const SOCIAL_LINKS = [
     external: true,
   },
   {
-    id: "github",
-    href: "https://github.com/natagapova",
-    labelKey: "footerSocialGithub",
-    external: true,
-  },
-  {
     id: "email",
     href: "mailto:agapnatalya004@mail.ru",
     labelKey: "footerSocialEmail",
     external: false,
+  },
+  {
+    id: "github",
+    href: "https://github.com/natagapova",
+    labelKey: "footerSocialGithub",
+    external: true,
   },
   {
     id: "scholar",
@@ -1094,6 +1107,10 @@ function escapeHtml(text) {
     .replace(/"/g, "&quot;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+}
+
+function fillAltTemplate(template, values) {
+  return String(template).replace(/\{\{(\w+)\}\}/g, (_, key) => String(values[key] ?? ""));
 }
 
 function waitForImage(img) {
@@ -1374,14 +1391,18 @@ function renderFrontendCardTools(toolKeys, t) {
   `;
 }
 
-function renderFrontendPreview(project) {
+function renderFrontendPreview(project, title) {
+  const previewAlt = escapeHtml(
+    fillAltTemplate(translations[currentLang].projectPreviewAlt, { title })
+  );
+
   if (project.preview) {
     return `
       <div class="frontend-card__preview" aria-hidden="true">
         <img
           class="frontend-card__image"
           src="${project.preview}"
-          alt=""
+          alt="${previewAlt}"
           loading="lazy"
           decoding="async"
         />
@@ -1395,7 +1416,7 @@ function renderFrontendPreview(project) {
         <iframe
           class="frontend-card__iframe"
           data-src="${escapeHtml(project.url)}"
-          title=""
+          title="${escapeHtml(title)}"
           tabindex="-1"
           loading="lazy"
         ></iframe>
@@ -1448,7 +1469,7 @@ function renderFrontendProjects() {
       const description = t[project.descKey] ?? "";
       const tools = renderFrontendCardTools(project.toolKeys, t);
       const body = `
-        ${renderFrontendPreview(project)}
+        ${renderFrontendPreview(project, title)}
         <div class="frontend-card__body">
           <h2 class="frontend-card__title">${escapeHtml(title)}</h2>
           ${tools}
@@ -1523,14 +1544,18 @@ function renderMlCardTools(toolKeys, t) {
   `;
 }
 
-function renderMlPreview(project) {
+function renderMlPreview(project, title) {
+  const previewAlt = escapeHtml(
+    fillAltTemplate(translations[currentLang].projectPreviewAlt, { title })
+  );
+
   if (project.preview) {
     return `
       <div class="ml-card__preview" aria-hidden="true">
         <img
           class="ml-card__image"
           src="${escapeHtml(project.preview)}"
-          alt=""
+          alt="${previewAlt}"
           loading="lazy"
           decoding="async"
         />
@@ -1598,7 +1623,7 @@ function renderMlProjects() {
 
       return `
         <article class="ml-card${project.inDevelopment ? " ml-card--in-progress" : ""}" role="listitem" aria-label="${escapeHtml(title)}">
-          ${renderMlPreview(project)}
+          ${renderMlPreview(project, title)}
           <div class="ml-card__body">
             <div class="ml-card__heading">
               <h2 class="ml-card__title">${escapeHtml(title)}</h2>
@@ -1737,7 +1762,7 @@ function renderDesignerProjects() {
               <img
                 class="project-panel__surface"
                 src="${preview}"
-                alt=""
+                alt="${escapeHtml(fillAltTemplate(t.projectPreviewAlt, { title }))}"
                 loading="eager"
                 decoding="async"
               />
@@ -1799,7 +1824,15 @@ function renderProjectOverlayContent(projectId) {
 
   galleryEl.innerHTML = project.images
     .map(
-      (src, index) => `
+      (src, index) => {
+        const imageAlt = escapeHtml(
+          fillAltTemplate(t.projectImageAlt, {
+            title,
+            current: index + 1,
+            total: project.images.length,
+          })
+        );
+        return `
         <button
           type="button"
           class="project-overlay__image-btn"
@@ -1809,12 +1842,13 @@ function renderProjectOverlayContent(projectId) {
           <img
             class="project-overlay__image"
             src="${src}"
-            alt=""
+            alt="${imageAlt}"
             loading="${index === 0 ? "eager" : "lazy"}"
             decoding="async"
           />
         </button>
-      `
+      `;
+      }
     )
     .join("");
 }
@@ -1822,6 +1856,7 @@ function renderProjectOverlayContent(projectId) {
 let projectLightboxImages = [];
 let projectLightboxIndex = 0;
 let projectLightboxOpen = false;
+let projectLightboxTitle = "";
 
 function renderProjectLightboxImage() {
   const content = document.getElementById("project-lightbox-content");
@@ -1830,8 +1865,16 @@ function renderProjectLightboxImage() {
   if (!content) return;
 
   const src = projectLightboxImages[projectLightboxIndex];
+  const t = translations[currentLang];
+  const alt = escapeHtml(
+    fillAltTemplate(t.projectImageAlt, {
+      title: projectLightboxTitle,
+      current: projectLightboxIndex + 1,
+      total: projectLightboxImages.length,
+    })
+  );
   content.innerHTML = src
-    ? `<img src="${src}" alt="">`
+    ? `<img src="${src}" alt="${alt}">`
     : "";
 
   const hasMultiple = projectLightboxImages.length > 1;
@@ -1844,6 +1887,8 @@ function openProjectLightbox(imageIndex) {
   const lightbox = document.getElementById("project-lightbox");
   if (!project?.images?.length || !lightbox) return;
 
+  const t = translations[currentLang];
+  projectLightboxTitle = t[project.titleKey] ?? "";
   projectLightboxImages = project.images;
   projectLightboxIndex = Math.max(0, Math.min(imageIndex, projectLightboxImages.length - 1));
   projectLightboxOpen = true;
@@ -1860,6 +1905,7 @@ function closeProjectLightbox() {
   projectLightboxOpen = false;
   projectLightboxImages = [];
   projectLightboxIndex = 0;
+  projectLightboxTitle = "";
   lightbox.classList.add("hidden");
   lightbox.hidden = true;
   if (content) content.innerHTML = "";
@@ -2090,9 +2136,127 @@ function initProjectOverlay() {
   });
 }
 
+const SITE_ORIGIN = "https://www.natagapova.ru";
+const SITE_OG_IMAGE = `${SITE_ORIGIN}/images/my-head.png`;
+
+const PAGE_SEO = {
+  index: {
+    path: "/",
+    ru: {
+      title: "natalia's portfolio",
+      description:
+        "Наталья Агапова — product / UX/UI designer. Интерфейсы и визуальные системы для продуктов и брендов. Кейсы для Innopolis, Почты России, Croissan Studio и др.",
+    },
+    en: {
+      title: "natalia's portfolio",
+      description:
+        "Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.",
+    },
+  },
+  designer: {
+    path: "/designer.html",
+    ru: {
+      title: "дизайнер — natalia's portfolio",
+      description: "UX/UI и продуктовый дизайн — кейсы Натальи Агаповой.",
+    },
+    en: {
+      title: "designer — natalia's portfolio",
+      description: "UX/UI and product design cases by Natalia Agapova.",
+    },
+  },
+  frontend: {
+    path: "/frontend.html",
+    ru: {
+      title: "frontend — natalia's portfolio",
+      description: "Frontend-разработка — проекты Натальи Агаповой.",
+    },
+    en: {
+      title: "frontend — natalia's portfolio",
+      description: "Frontend development projects by Natalia Agapova.",
+    },
+  },
+  ml: {
+    path: "/ml.html",
+    ru: {
+      title: "ML — natalia's portfolio",
+      description: "ML-разработка и исследования — портфолио Натальи Агаповой.",
+    },
+    en: {
+      title: "ML — natalia's portfolio",
+      description: "ML development and research — Natalia Agapova's portfolio.",
+    },
+  },
+  person: {
+    path: "/person.html",
+    ru: {
+      title: "человек — natalia's portfolio",
+      description: "Личные заметки и фото — портфолио Натальи Агаповой.",
+    },
+    en: {
+      title: "person — natalia's portfolio",
+      description: "Personal notes and photos — Natalia Agapova's portfolio.",
+    },
+  },
+};
+
+function getCurrentPageSeoKey() {
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes("designer")) return "designer";
+  if (path.includes("frontend")) return "frontend";
+  if (path.includes("ml")) return "ml";
+  if (path.includes("person")) return "person";
+  return "index";
+}
+
+function upsertHeadMeta(selector, attributes) {
+  let el = document.head.querySelector(selector);
+  if (!el) {
+    const isLink = "href" in attributes;
+    el = document.createElement(isLink ? "link" : "meta");
+    document.head.appendChild(el);
+  }
+  Object.entries(attributes).forEach(([name, value]) => {
+    el.setAttribute(name, value);
+  });
+}
+
+function updatePageSeo(lang) {
+  const pageKey = getCurrentPageSeoKey();
+  const seo = PAGE_SEO[pageKey]?.[lang];
+  if (!seo) return;
+
+  const pagePath = PAGE_SEO[pageKey].path;
+  const canonicalUrl = `${SITE_ORIGIN}${pagePath === "/" ? "/" : pagePath}`;
+  const locale = lang === "ru" ? "ru_RU" : "en_US";
+  const alternateLocale = lang === "ru" ? "en_US" : "ru_RU";
+
+  document.title = seo.title;
+
+  upsertHeadMeta('meta[name="description"]', { name: "description", content: seo.description });
+  upsertHeadMeta('link[rel="canonical"]', { rel: "canonical", href: canonicalUrl });
+
+  [
+    ["property", "og:type", "website"],
+    ["property", "og:site_name", "natalia's portfolio"],
+    ["property", "og:url", canonicalUrl],
+    ["property", "og:title", seo.title],
+    ["property", "og:description", seo.description],
+    ["property", "og:image", SITE_OG_IMAGE],
+    ["property", "og:locale", locale],
+    ["property", "og:locale:alternate", alternateLocale],
+    ["name", "twitter:card", "summary_large_image"],
+    ["name", "twitter:title", seo.title],
+    ["name", "twitter:description", seo.description],
+    ["name", "twitter:image", SITE_OG_IMAGE],
+  ].forEach(([attr, key, value]) => {
+    upsertHeadMeta(`meta[${attr}="${key}"]`, { [attr]: key, content: value });
+  });
+}
+
 function applyTranslations() {
   const t = translations[currentLang];
   document.documentElement.lang = currentLang === "ru" ? "ru" : "en";
+  updatePageSeo(currentLang);
 
   for (const [key, id] of Object.entries(translationKeyToId)) {
     const el = document.getElementById(id);
@@ -2127,6 +2291,15 @@ function applyTranslations() {
   const rolesNav = document.querySelector(".roles-nav--hero");
   if (rolesNav && t.rolesNavLabel) {
     rolesNav.setAttribute("aria-label", t.rolesNavLabel);
+  }
+
+  const heroPhoto = document.querySelector(".hero-intro__photo--open");
+  if (heroPhoto && t.heroPhotoAlt) {
+    heroPhoto.alt = t.heroPhotoAlt;
+  }
+
+  if (typeof updatePersonGalleryAlts === "function") {
+    updatePersonGalleryAlts();
   }
 
   const backHome = document.getElementById("back-home");
@@ -2170,6 +2343,14 @@ function applyTranslations() {
 
   if (openProjectId) {
     renderProjectOverlayContent(openProjectId);
+  }
+
+  if (projectLightboxOpen && openProjectId) {
+    const project = designerProjects.find((item) => item.id === openProjectId);
+    if (project) {
+      projectLightboxTitle = t[project.titleKey] ?? "";
+      renderProjectLightboxImage();
+    }
   }
 
   const closeBtn = document.getElementById("project-overlay-close");

@@ -177,11 +177,42 @@ function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
   return { columns, heights };
 }
 
+function personGalleryMediaLabel(name) {
+  return decodeURIComponent(name).replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").trim();
+}
+
+function getPersonGalleryAlt(item) {
+  const t = typeof translations !== "undefined" ? translations[currentLang] : null;
+  const name = personGalleryMediaLabel(item.name);
+  const template =
+    item.type === "video"
+      ? t?.personGalleryVideoAlt ?? "Video: {{name}}"
+      : t?.personGalleryPhotoAlt ?? "Photo: {{name}}";
+  return template.replace("{{name}}", name);
+}
+
+function updatePersonGalleryAlts() {
+  document.querySelectorAll(".gallery-item").forEach((wrapper) => {
+    const src = wrapper.dataset.src;
+    if (!src) return;
+
+    const name = decodeURIComponent(src.split("/").pop() || "");
+    const item = { name, type: wrapper.dataset.type || "image" };
+    const alt = getPersonGalleryAlt(item);
+
+    const img = wrapper.querySelector("img");
+    if (img) img.alt = alt;
+  });
+}
+
+window.updatePersonGalleryAlts = updatePersonGalleryAlts;
+
 function createPersonGalleryElement(item) {
   const wrapper = document.createElement("div");
   wrapper.className = "gallery-item";
   wrapper.dataset.type = item.type;
   wrapper.dataset.src = personGalleryMediaSrc(item.name);
+  wrapper.dataset.mediaName = item.name;
 
   if (item.type === "video") {
     const video = document.createElement("video");
@@ -189,6 +220,7 @@ function createPersonGalleryElement(item) {
     video.loop = true;
     video.playsInline = true;
     video.preload = "none";
+    video.setAttribute("aria-label", getPersonGalleryAlt(item));
     video.style.width = "100%";
     video.style.height = "100%";
     video.style.objectFit = "cover";
@@ -196,7 +228,7 @@ function createPersonGalleryElement(item) {
     wrapper.appendChild(video);
   } else {
     const img = document.createElement("img");
-    img.alt = "";
+    img.alt = getPersonGalleryAlt(item);
     img.loading = "lazy";
     img.decoding = "async";
     img.style.width = "100%";
@@ -263,13 +295,14 @@ function openPersonGalleryLightbox(item) {
     video.controls = true;
     video.autoplay = true;
     video.playsInline = true;
+    video.setAttribute("aria-label", getPersonGalleryAlt(item));
     video.style.maxWidth = "100%";
     video.style.maxHeight = "100vh";
     content.appendChild(video);
   } else {
     const img = document.createElement("img");
     img.src = src;
-    img.alt = "";
+    img.alt = getPersonGalleryAlt(item);
     img.style.maxWidth = "100%";
     img.style.maxHeight = "100vh";
     content.appendChild(img);
