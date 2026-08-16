@@ -267,7 +267,7 @@ const designerProjects = [
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
     toolKeys: ["designerToolTilda", "designerToolFigma"],
-    preview: "images/tsarevbarilova/page1.webp",
+    preview: "images/tsarevbarilova/page0.webp",
     images: [
       "images/tsarevbarilova/page1.webp",
       "images/tsarevbarilova/page2.webp",
