@@ -15,7 +15,6 @@ const translations = {
     navBrand: "наталья агапова",
     myName: "кто она?",
     languageSwitch: "eng",
-    contactExtra: "связаться",
     portfolioTitle: "проекты",
     designerPageTitle: "дизайн кейсы",
     mlPageTitle: "ml кейсы",
@@ -115,7 +114,11 @@ const translations = {
       "<strong>trenirovochnaya.kzn</strong> — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – август 2025)",
     volInnostreetdance:
       "<strong>innostreetdance</strong> — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – сентябрь 2025)",
-    footerContact: "связаться",
+    footerSocialLabel: "соцсети",
+    footerSocialTelegram: "Telegram",
+    footerSocialLinkedin: "LinkedIn",
+    footerSocialGithub: "GitHub",
+    footerSocialEmail: "Почта",
     languagesBlockTitle: "языки",
     langRu: "русский",
     langEn: "английский",
@@ -128,7 +131,6 @@ const translations = {
     navBrand: "natalia agapova",
     myName: "who is she?",
     languageSwitch: "рус",
-    contactExtra: "hmu",
     portfolioTitle: "projects",
     designerPageTitle: "design cases",
     mlPageTitle: "ml cases",
@@ -228,7 +230,11 @@ const translations = {
       "<strong>trenirovochnaya.kzn</strong> — organization of dance events in kazan (brand-designer, marketing person, mar 2025 – aug 2025)",
     volInnostreetdance:
       "<strong>innostreetdance</strong> — student dance club of innopolis university (brand-designer, marketing person, dec 2022 – sep 2025)",
-    footerContact: "hmu",
+    footerSocialLabel: "social links",
+    footerSocialTelegram: "Telegram",
+    footerSocialLinkedin: "LinkedIn",
+    footerSocialGithub: "GitHub",
+    footerSocialEmail: "Email",
     languagesBlockTitle: "languages",
     langRu: "russian",
     langEn: "english",
@@ -628,7 +634,6 @@ const innerHtmlKeys = new Set([
 const translationKeyToId = {
   navBrand: "nav-brand",
   languageSwitch: "languageSwitch",
-  contactExtra: "contact-extra",
   portfolioTitle: "projects-title",
   designerPageTitle: "designer-page-title",
   mlPageTitle: "ml-page-title",
@@ -647,7 +652,6 @@ const translationKeyToId = {
   expAzimov: "exp-azimov",
   expClearmind: "exp-clearmind",
   eduInnopolis: "edu-innopolis",
-  footerContact: "footer-contact",
   myName: "store-name",
   volTrenirovochnaya: "vol-trenirovochnaya",
   volInnostreetdance: "vol-innostreetdance",
@@ -659,6 +663,76 @@ const translationKeyToId = {
   langKo: "lang-ko-name",
   langMapDesc: "lang-map-desc",
 };
+
+const SOCIAL_LINKS = [
+  {
+    id: "telegram",
+    href: "https://t.me/nhefy",
+    labelKey: "footerSocialTelegram",
+    external: true,
+  },
+  {
+    id: "linkedin",
+    href: "https://www.linkedin.com/in/natalia-agapova-265797406/",
+    labelKey: "footerSocialLinkedin",
+    external: true,
+  },
+  {
+    id: "github",
+    href: "https://github.com/natagapova",
+    labelKey: "footerSocialGithub",
+    external: true,
+  },
+  {
+    id: "email",
+    href: "mailto:agapnatalya004@mail.ru",
+    labelKey: "footerSocialEmail",
+    external: false,
+  },
+];
+
+function getSocialIconMarkup(id) {
+  switch (id) {
+    case "telegram":
+      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.95 4.64a1.2 1.2 0 0 0-1.24-.17L3.5 11.28a1 1 0 0 0 .08 1.86l4.2 1.5 1.58 4.86a1 1 0 0 0 1.62.37l2.2-2.16 4.08 3.02a1.2 1.2 0 0 0 1.9-.74l2.9-14.35ZM9.6 13.9l7.45-4.64-5.8 5.36-.34 3.2-1.31-3.92Z"/></svg>`;
+    case "linkedin":
+      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.5 8.8h3.1v10.7H6.5V8.8Zm1.55-5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM10.2 8.8h2.97v1.46h.04c.41-.78 1.42-1.6 2.92-1.6 3.12 0 3.7 2.05 3.7 4.72v6.1h-3.1v-5.41c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86v5.5H10.2V8.8Z"/></svg>`;
+    case "github":
+      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>`;
+    case "email":
+      return `<svg class="footer-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.11a3 3 0 0 1-2.87 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.57 0L22.5 6.91Z"/></svg>`;
+    default:
+      return "";
+  }
+}
+
+function renderFooterSocials(t) {
+  const socialEl = document.getElementById("footer-social");
+  if (!socialEl) return;
+
+  const label = t.footerSocialLabel ?? "";
+  if (label) {
+    socialEl.setAttribute("aria-label", label);
+  }
+
+  socialEl.innerHTML = SOCIAL_LINKS.map((link) => {
+    const ariaLabel = t[link.labelKey] ?? link.id;
+    const externalAttrs = link.external
+      ? ' target="_blank" rel="noopener noreferrer"'
+      : "";
+
+    return `
+      <a
+        class="footer-social__link"
+        id="footer-social-${link.id}"
+        href="${escapeHtml(link.href)}"
+        aria-label="${escapeHtml(ariaLabel)}"${externalAttrs}
+      >
+        ${getSocialIconMarkup(link.id)}
+      </a>
+    `;
+  }).join("");
+}
 
 function formatHeroWord(word) {
   if (word.includes("кт")) {
@@ -1695,6 +1769,7 @@ function applyTranslations() {
   applyDesignerPage(t);
   applyFrontendPage(t);
   applyMlPage(t);
+  renderFooterSocials(t);
 
   if (document.getElementById("projects-scene")) {
     renderDesignerProjects();
