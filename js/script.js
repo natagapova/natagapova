@@ -47,9 +47,9 @@ const translations = {
     devToolSwift: "Swift",
     devToolSwiftUI: "SwiftUI",
     devToolMacos: "macOS",
-    DevMacosTimerTitle: "macos-timer",
+    DevMacosTimerTitle: "Таймер для MacOS",
     DevMacosTimerDesc:
-      "Таймер и помодоро в menu bar для macOS. Не понравились существующие приложения — сделала своё: экран таймера вдохновлён onigiri, помодоро свой.",
+      "В других таймерах не хватало связки таймер + помодоро, нормальной жизни в menu bar и простого интерфейса — всё казалось перегруженным. Сделала своё: минимализм, оба режима, приложение живёт в menu bar. macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
@@ -95,7 +95,7 @@ const translations = {
     rolePagePlaceholder: "раздел в работе",
     PochtaTexTitle: "ПОЧТАТЕХ",
     PochtaTexDesc:
-      "дизайн игры для промо-стенда — заказчики: университет иннополис и почта россии. отвечала за UX/UI интерфейса и сценарий взаимодействия на стенде",
+      "дизайн игры для промо-стенда в лагере InnoBootCamp. отвечала за UX/UI и сценарий взаимодействия на стенде",
     YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
     YandexDirectDesc: "тестовое задание в яндекс: платформа управления рекламой",
     InnoBookLoversTitle: "INN\u041eBOOKLOVERS",
@@ -115,35 +115,31 @@ const translations = {
     YokoMatchaDesc: "дизайн сайта для магазина матчи yokomatcha",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "продукты, разработанные мной для нейрохудожника - продукта croissan studio: лого, мерч, концепты",
+      "продукты, разработанные мной для проектов croissan studio: лого, мерч, концепты",
     designerProcessTitle: "разбор процесса",
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
     designerProcessResult: "результат",
     PochtaTexProblem:
-      "На стенде нужно за минуту объяснить логистику и цифровые сервисы Почты — и удержать внимание прохожего в шумной expo-среде.",
+      "нужно было сделать игру с поиском ошибок в интерфейсе и привлечь максимальное количество игроков",
     PochtaTexSolution:
-      "Собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в фирменной стилистике Иннополиса и Почты России.",
+      "собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в фирменной стилистике университета иннополиса и почты россии",
     PochtaTexResult:
-      "За 2 дня стенда: 420+ игроков, средняя сессия 2:40, 68% доходили до финала; 190+ лидов в молодёжную программу, конверсия в QR-регистрацию +31% к прошлому формату.",
+      "за 7 дней стенда: 420+ игроков, 99% проходили всю игру, +31% к прошлому формату",
     YandexDirectProblem:
-      "Рекламный кабинет перегружен метриками — рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь.",
+      "рекламный кабинет перегружен метриками — рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь",
     YandexDirectSolution:
-      "Собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления.",
-    YandexDirectResult:
-      "В юзабилити-тесте 11 из 12 рекламодателей находили ключевые KPI без подсказок; время на задачу сократилось на ~35%, доля ошибочных кликов — −22%.",
+      "собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления",
     YokoMatchaProblem:
-      "Бренд матчи должен ощущаться премиально, но тепло — без ощущения холодного e-commerce шаблона.",
+      "бренд матчи должен ощущаться тепло — без ощущения холодного e-commerce шаблона",
     YokoMatchaSolution:
-      "Выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер.",
-    YokoMatchaResult:
-      "После запуска макета: просмотры каталога +28%, конверсия в корзину +12%, средний чек +8%; возврат в магазин вырос на 19%.",
+      "выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер",
     TsarevBarilovaProblem:
-      "Онлайн-школа продаёт эмоцию и доверие к преподавателям, а не просто список курсов.",
+      "владельцам танцевальной студии нужно место, где можно собрать воедино все онлайн-курсы, которые они продают, и сделать платформу, на которой их можно оплачивать и просматривать",
     TsarevBarilovaSolution:
-      "Сделала сильный визуальный hero, чёткую структуру направлений и тёплую типографику; макет адаптировала под сборку в Tilda.",
+      "сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda",
     TsarevBarilovaResult:
-      "Просмотры сайта +62% за первый месяц, заявки на пробное занятие +41%; 3 потока набрались без дополнительной рекламы, выручка с онлайн-записи +₽180K.",
+      "сайт ещё в разработке — но макеты главной, каталога и страниц курсов уже согласованы с заказчиками; структура принята, сборка в Tilda на финальном этапе",
     InnoBookLoversProblem:
       "Курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
     InnoBookLoversSolution:
@@ -157,23 +153,16 @@ const translations = {
     InnoMedResult:
       "В пилоте: конверсия в запись +31%, отказы на шаге оплаты −18%; 240+ записей за 6 недель, NPS прототипа — 52.",
     CroissanStudioProblem:
-      "AI-студии нужен визуальный язык, который связывает лого, мерч и digital-носители в одну экосистему.",
+      "AI-студии нужен бренд, общий стиль, который отличает их на рынке. сюда входит как диджитал, так и оффлайн носители",
     CroissanStudioSolution:
-      "Разработала фирменные элементы, иллюстрации и носители в единой стилистике — с AI и ручной доработкой.",
-    CroissanStudioResult:
-      "После ребренда: +2 коммерческих запроса в первый месяц, охват презентаций студии +190%; мерч принёс ~₽80K за квартал, CTR на кейсы +24%.",
+      "разработала фирменные элементы, иллюстрации и носители в единой стилистике — с AI и ручной доработкой",
+    CroissanStudioResult: "NDA",
     PostersProblem:
-      "Афиша должна цеплять с первого взгляда и оставаться читаемой с расстояния и на экране телефона.",
+      "афиша должна цеплять с первого взгляда и оставаться читаемой с расстояния и на экране телефона",
     PostersSolution:
-      "Сфокусировалась на контрасте, иерархии даты, места и названия и на одном сильном визуальном акценте.",
+      "сфокусировалась на контрасте, иерархии даты, места и названия и на одном сильном визуальном акценте",
     PostersResult:
-      "Переходы с афиши на страницу события +34%, продажи билетов +18% к прошлому формату; 2 из 4 ивентов собрали зал на 90%+.",
-    ConceptsProblem:
-      "Эксперимент без ограничений заказчика — нужно быстро проверить идею и настроение будущего продукта.",
-    ConceptsSolution:
-      "Играла с композицией, цветом и типографикой, собирала несколько визуальных направлений в одном стиле.",
-    ConceptsResult:
-      "A/B на лендинге: вариант с концептом дал +24% к клику на CTA, время на странице +17%, стоимость лида −14% vs контроль.",
+      "удавалось собрать до 150 человек на мероприятии с одной афиши",
     experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
@@ -196,12 +185,12 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "обо мне",
     introLead:
-      "product / UX/UI designer. собираю интерфейсы и визуальные\u00A0системы — от\u00A0структуры до\u00A0деталей, чтобы продуктом было удобно\u00A0пользоваться и приятно\u00A0им\u00A0делиться.",
+      "middle product / UX/UI designer. собираю интерфейсы и визуальные\u00A0системы — от\u00A0структуры до\u00A0деталей, чтобы продуктом было удобно\u00A0пользоваться и приятно\u00A0им\u00A0делиться.",
     introStatusLabel: "current status:",
-    introStatusValue: "открыта\u00A0к\u00A0проектам",
+    introStatusValue: "открыта к проектам — дизайн, dev, ml и\u00A0не\u00A0только",
     introCta: "дизайн кейсы",
     introTrustLabel: "мне доверяют",
-    introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов.",
+    introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов",
     introSocialLabel: "соцсети",
     trustLogoCroissan: "croissan studio",
     trustLogoInnopolis: "иннополис",
@@ -210,11 +199,11 @@ const translations = {
     trustLogoLitsei: "лицей иннополис",
     trustLogoArtCenter: "арт центр иси",
     trustLogoKingstep: "king step",
-    PochtaTexMeta: "роль: UX/UI · 3 нед · solo · иннополис + почта россии",
+    PochtaTexMeta: "роль: UX/UI · 1 нед · дизайн solo, проект в команде · университет иннополис и почта россии",
     YandexDirectMeta: "роль: UX/UI · тестовое · solo · яндекс",
-    YokoMatchaMeta: "роль: брендинг + UI · 3 нед · solo · фриланс",
-    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · solo · фриланс",
-    CroissanStudioMeta: "роль: product designer · 6 мес · in-house · croissan studio",
+    YokoMatchaMeta: "роль: брендинг + UI · 2 нед · solo · фриланс",
+    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · команда из 2 человек · фриланс",
+    CroissanStudioMeta: "роль: product designer · in-house · croissan studio",
     PostersMeta: "роль: графический дизайн · ongoing · solo · ивенты казани",
     ConceptsMeta: "роль: эксперимент · — · solo · личный проект",
     languagesBlockTitle: "языки",
@@ -261,9 +250,9 @@ const translations = {
     devToolSwift: "Swift",
     devToolSwiftUI: "SwiftUI",
     devToolMacos: "macOS",
-    DevMacosTimerTitle: "macos-timer",
+    DevMacosTimerTitle: "MacOS Timer",
     DevMacosTimerDesc:
-      "Menu bar timer and pomodoro for macOS. Built my own when existing apps didn't fit — timer screen inspired by onigiri, custom pomodoro flow.",
+      "Other timers offered either a timer or pomodoro, not both; menu bar placement was awkward and the UI felt overloaded. I built my own: minimal, both modes, lives in the menu bar. macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
@@ -309,7 +298,7 @@ const translations = {
     rolePagePlaceholder: "section in progress",
     PochtaTexTitle: "POCHTATECH",
     PochtaTexDesc:
-      "stand game design for innopolis university and russian post. i led UX/UI for the on-stand interaction flow",
+      "game design for a promo stand at InnoBootCamp. i led UX/UI and the on-stand interaction flow",
     YandexDirectTitle: "YANDEX DIRECT",
     YandexDirectDesc: "test task in yandex: advertising platform management",
     InnoBookLoversTitle: "INNOBOOKLOVERS",
@@ -322,42 +311,38 @@ const translations = {
     PostersDesc:
       "i have experience designing event posters for kazan and innopolis. my approach is to keep them readable and aesthetic",
     ConceptsTitle: "CONCEPTS",
-    ConceptsDesc: "experimental mockups and album covers made for fun",
+    ConceptsDesc: "experimental mockups made for myself",
     TsarevBarilovaTitle: "TSAREV & BARILOVA",
     TsarevBarilovaDesc: "website design for online dance courses",
     YokoMatchaTitle: "YOKO MATCHA",
     YokoMatchaDesc: "website design for matcha shop yokomatcha",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "products developed by me for neuroartist - a project by croissan studio: logos, merch, concepts",
+      "products developed by me for croissan studio projects: logos, merch, concepts",
     designerProcessTitle: "process breakdown",
     designerProcessProblem: "problem",
     designerProcessSolution: "solution",
     designerProcessResult: "result",
     PochtaTexProblem:
-      "The stand had to explain postal logistics and digital services in under a minute — and hold attention in a noisy expo hall.",
+      "the task was to build a spot-the-error interface game and draw as many players as possible",
     PochtaTexSolution:
-      "Designed the game flow, onboarding, signup, and game-screen UX skeleton in Innopolis and Russian Post brand style.",
+      "built the game flow, onboarding, signup, and game-screen UX skeleton in innopolis university and russian post brand style",
     PochtaTexResult:
-      "Over 2 stand days: 420+ players, 2:40 avg session, 68% reached the finale; 190+ youth-program leads, QR signup conversion +31% vs last year's format.",
+      "over 7 stand days: 420+ players, 99% completed the full game, +31% vs the previous format",
     YandexDirectProblem:
-      "The ad dashboard is packed with metrics — advertisers struggle to see what matters in the campaign at a glance.",
+      "the ad dashboard is packed with metrics — advertisers struggle to see what matters in the campaign at a glance",
     YandexDirectSolution:
-      "Built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks.",
-    YandexDirectResult:
-      "In usability testing, 11 of 12 advertisers found key KPIs without hints; task time dropped ~35%, misclick rate −22%.",
+      "built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks",
     YokoMatchaProblem:
-      "The matcha brand had to feel premium yet warm — not like a cold e-commerce template.",
+      "the matcha brand had to feel warm — not like a cold e-commerce template",
     YokoMatchaSolution:
-      "Defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look.",
-    YokoMatchaResult:
-      "After launch: catalog views +28%, add-to-cart conversion +12%, average order value +8%; return visits up 19%.",
+      "defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look",
     TsarevBarilovaProblem:
-      "An online dance school sells emotion and trust in teachers — not just a list of courses.",
+      "the dance studio owners needed one place to bring together all their online courses — and a platform where students can pay and watch them",
     TsarevBarilovaSolution:
-      "Designed a strong visual hero, clear course structure, and warm typography; adapted layouts for a Tilda build.",
+      "built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build",
     TsarevBarilovaResult:
-      "Site views +62% in the first month, trial signups +41%; 3 cohorts filled without extra ads, online booking revenue +₽180K.",
+      "the site is still in progress — but home, catalog, and course page layouts are already approved; structure signed off, Tilda build in the final stretch",
     InnoBookLoversProblem:
       "A course project risked looking like homework instead of a living book community.",
     InnoBookLoversSolution:
@@ -371,23 +356,16 @@ const translations = {
     InnoMedResult:
       "Pilot results: booking conversion +31%, drop-off at payment −18%; 240+ appointments in 6 weeks, prototype NPS — 52.",
     CroissanStudioProblem:
-      "The AI studio needed one visual language across logo, merch, and digital touchpoints.",
+      "an AI studio needs a brand and a shared style that sets it apart — both digital and offline touchpoints",
     CroissanStudioSolution:
-      "Developed brand elements, illustrations, and assets in a single style — AI-assisted and hand-finished.",
-    CroissanStudioResult:
-      "After rebrand: +2 inbound client leads in month one, presentation reach +190%; merch ~₽80K in Q1, case-study CTR +24%.",
+      "developed brand elements, illustrations, and assets in a single style — AI-assisted and hand-finished",
+    CroissanStudioResult: "NDA",
     PostersProblem:
-      "A poster must grab attention instantly and stay readable from a distance and on a phone screen.",
+      "a poster must grab attention instantly and stay readable from a distance and on a phone screen",
     PostersSolution:
-      "Focused on contrast, hierarchy of date, venue, and title, and one strong visual anchor.",
+      "focused on contrast, hierarchy of date, venue, and title, and one strong visual anchor",
     PostersResult:
-      "Clicks from poster to event page +34%, ticket sales +18% vs previous format; 2 of 4 events sold 90%+ capacity.",
-    ConceptsProblem:
-      "An experiment with no client brief — a fast way to test an idea and the mood of a future product.",
-    ConceptsSolution:
-      "Played with composition, color, and type; explored several visual directions within one style frame.",
-    ConceptsResult:
-      "Landing A/B: concept variant drove +24% CTA clicks, +17% time on page, −14% cost per lead vs control.",
+      "managed to draw up to 150 people to an event from a single poster",
     experienceBlockTitle: "experience",
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
@@ -410,12 +388,12 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "about me",
     introLead:
-      "Product / UX/UI designer. I build interfaces and visual\u00A0systems — from\u00A0structure to\u00A0details — so products are easy\u00A0to\u00A0use and genuinely nice\u00A0to\u00A0share.",
+      "middle product / UX/UI designer. I build interfaces and visual\u00A0systems — from\u00A0structure to\u00A0details — so products are easy\u00A0to\u00A0use and genuinely nice\u00A0to\u00A0share.",
     introStatusLabel: "current status:",
-    introStatusValue: "open\u00A0to\u00A0work",
+    introStatusValue: "open to work — design, dev, ml &\u00A0more",
     introCta: "design cases",
     introTrustLabel: "trusted by",
-    introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required.",
+    introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required",
     introSocialLabel: "social links",
     trustLogoCroissan: "croissan studio",
     trustLogoInnopolis: "innopolis",
@@ -424,11 +402,11 @@ const translations = {
     trustLogoLitsei: "innopolis lyceum",
     trustLogoArtCenter: "art center isi",
     trustLogoKingstep: "king step",
-    PochtaTexMeta: "role: UX/UI · 3 wks · solo · innopolis + russian post",
+    PochtaTexMeta: "role: UX/UI · 1 wk · design solo, team project · innopolis university and russian post",
     YandexDirectMeta: "role: UX/UI · test task · solo · yandex",
-    YokoMatchaMeta: "role: branding + UI · 3 wks · solo · freelance",
-    TsarevBarilovaMeta: "role: UX/UI · 2 wks · solo · freelance",
-    CroissanStudioMeta: "role: product designer · 6 mo · in-house · croissan studio",
+    YokoMatchaMeta: "role: branding + UI · 2 wks · solo · freelance",
+    TsarevBarilovaMeta: "role: UX/UI · 2 wks · team of 2 · freelance",
+    CroissanStudioMeta: "role: product designer · in-house · croissan studio",
     PostersMeta: "role: graphic design · ongoing · solo · kazan events",
     ConceptsMeta: "role: experiment · — · solo · personal project",
     languagesBlockTitle: "languages",
@@ -440,6 +418,7 @@ const translations = {
     langMapDesc: "Language proficiency map on a scale from 0 to C2.",
   },
 };
+
 
 const designerProjects = [
   {
@@ -469,7 +448,6 @@ const designerProjects = [
     process: {
       problemKey: "YandexDirectProblem",
       solutionKey: "YandexDirectSolution",
-      resultKey: "YandexDirectResult",
     },
     toolKeys: ["designerToolFigma"],
     images: [
@@ -486,7 +464,6 @@ const designerProjects = [
     process: {
       problemKey: "YokoMatchaProblem",
       solutionKey: "YokoMatchaSolution",
-      resultKey: "YokoMatchaResult",
     },
     toolKeys: ["designerToolFigma", "designerToolAi"],
     images: [
@@ -571,11 +548,6 @@ const designerProjects = [
     titleKey: "ConceptsTitle",
     descKey: "ConceptsDesc",
     metaKey: "ConceptsMeta",
-    process: {
-      problemKey: "ConceptsProblem",
-      solutionKey: "ConceptsSolution",
-      resultKey: "ConceptsResult",
-    },
     toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/concepts/page8.webp",
@@ -647,14 +619,6 @@ const DESIGNER_PAGE_TOOL_KEYS = [
 
 const devProjects = [
   {
-    id: "macos-timer",
-    url: "https://github.com/natagapova/macos-timer",
-    preview: "images/dev/macos-timer.webp",
-    titleKey: "DevMacosTimerTitle",
-    descKey: "DevMacosTimerDesc",
-    toolKeys: ["devToolSwift", "devToolSwiftUI", "devToolMacos"],
-  },
-  {
     id: "croissan",
     url: "https://croissanstudio.ru",
     preview: "images/croissan/preview.webp",
@@ -671,12 +635,12 @@ const devProjects = [
     ],
   },
   {
-    id: "cruelgames",
-    url: "https://cruelgames-website.vercel.app/",
-    preview: "images/cruelgames/preview.webp",
-    titleKey: "FrontendCruelTitle",
-    descKey: "FrontendCruelDesc",
-    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
+    id: "macos-timer",
+    url: "https://github.com/natagapova/macos-timer/releases/tag/v1.0.0",
+    preview: "images/dev/macos-timer.webp",
+    titleKey: "DevMacosTimerTitle",
+    descKey: "DevMacosTimerDesc",
+    toolKeys: ["devToolSwift", "devToolSwiftUI", "devToolMacos"],
   },
   {
     id: "aismena",
@@ -685,6 +649,14 @@ const devProjects = [
     titleKey: "FrontendAismenaTitle",
     descKey: "FrontendAismenaDesc",
     toolKeys: ["frontendToolTilda", "frontendToolZeroBlock"],
+  },
+  {
+    id: "cruelgames",
+    url: "https://cruelgames-website.vercel.app/",
+    preview: "images/cruelgames/preview.webp",
+    titleKey: "FrontendCruelTitle",
+    descKey: "FrontendCruelDesc",
+    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
   },
   {
     id: "kingstep",
@@ -716,6 +688,7 @@ const mlProjects = [
   {
     id: "personal-knowledge-system",
     url: "https://github.com/natagapova/personal-knowledge-system",
+    preview: "images/pks_portfolio.png",
     titleKey: "MlKnowledgeSystemTitle",
     descKey: "MlKnowledgeSystemDesc",
     toolKeys: ["mlToolPython", "mlToolRag", "mlToolChroma", "mlToolOllama"],
@@ -1723,21 +1696,42 @@ function renderDesignerOverlayTools(toolKeys, t) {
     .join("");
 }
 
+function isNdaProcessText(text) {
+  return String(text).trim().toUpperCase() === "NDA";
+}
+
+function renderProcessStepContent(text) {
+  if (isNdaProcessText(text)) {
+    return `<span class="project-process__nda">NDA</span>`;
+  }
+
+  return `<p class="project-process__text">${escapeHtml(text)}</p>`;
+}
+
 function renderDesignerProcess(project, t) {
   const process = project.process;
   if (!process) return "";
 
   const steps = [
-    { label: t.designerProcessProblem, text: t[process.problemKey] },
-    { label: t.designerProcessSolution, text: t[process.solutionKey] },
-    { label: t.designerProcessResult, text: t[process.resultKey] },
-  ].filter((step) => step.label && step.text);
+    { label: t.designerProcessProblem, key: process.problemKey },
+    { label: t.designerProcessSolution, key: process.solutionKey },
+    { label: t.designerProcessResult, key: process.resultKey },
+  ]
+    .filter((step) => step.label && step.key && t[step.key])
+    .map((step) => ({ label: step.label, text: t[step.key] }));
 
   if (!steps.length) return "";
 
+  const columnsClass =
+    steps.length === 2
+      ? " project-process__steps--cols-2"
+      : steps.length === 1
+        ? " project-process__steps--cols-1"
+        : "";
+
   return `
     <section class="project-process">
-      <ol class="project-process__steps">
+      <ol class="project-process__steps${columnsClass}">
         ${steps
           .map(
             (step, index) => `
@@ -1745,7 +1739,7 @@ function renderDesignerProcess(project, t) {
             <span class="project-process__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
             <div class="project-process__body">
               <p class="project-process__label">${escapeHtml(step.label)}</p>
-              <p class="project-process__text">${escapeHtml(step.text)}</p>
+              ${renderProcessStepContent(step.text)}
             </div>
           </li>
         `
@@ -1878,6 +1872,98 @@ function renderProjectOverlayContent(projectId) {
       }
     )
     .join("");
+
+  observeProjectOverlayGalleryLayout(galleryEl);
+}
+
+const PROJECT_GALLERY_DESKTOP_MQ = "(min-width: 641px)";
+const PROJECT_GALLERY_MAX_WIDTH = 880;
+const PROJECT_GALLERY_TALL_DISPLAY_HEIGHT = 520;
+const PROJECT_GALLERY_MIN_IMAGES_FOR_COLUMNS = 2;
+let projectGalleryLayoutObserver = null;
+let projectGalleryLayoutMediaQuery = null;
+let projectGalleryLayoutMediaQueryHandler = null;
+
+function updateProjectOverlayGalleryLayout(galleryEl) {
+  if (!galleryEl) return;
+
+  const images = [...galleryEl.querySelectorAll(".project-overlay__image")];
+  const canUseTwoColumns =
+    window.matchMedia(PROJECT_GALLERY_DESKTOP_MQ).matches &&
+    images.length >= PROJECT_GALLERY_MIN_IMAGES_FOR_COLUMNS;
+
+  if (!canUseTwoColumns) {
+    galleryEl.classList.remove("project-overlay__gallery--two-columns");
+    return;
+  }
+
+  let pending = images.length;
+  let useTwoColumns = false;
+
+  const finish = () => {
+    pending -= 1;
+    if (pending === 0) {
+      galleryEl.classList.toggle("project-overlay__gallery--two-columns", useTwoColumns);
+    }
+  };
+
+  const checkImage = (img) => {
+    const width = img.naturalWidth;
+    const height = img.naturalHeight;
+
+    if (width > 0 && height > 0) {
+      const galleryWidth = Math.min(
+        PROJECT_GALLERY_MAX_WIDTH,
+        galleryEl.clientWidth || PROJECT_GALLERY_MAX_WIDTH
+      );
+      const displayHeight = height * (galleryWidth / width);
+      if (displayHeight > PROJECT_GALLERY_TALL_DISPLAY_HEIGHT) {
+        useTwoColumns = true;
+      }
+    }
+
+    finish();
+  };
+
+  images.forEach((img) => {
+    if (img.complete && img.naturalWidth > 0) {
+      checkImage(img);
+      return;
+    }
+
+    img.addEventListener("load", () => checkImage(img), { once: true });
+    img.addEventListener("error", finish, { once: true });
+  });
+}
+
+function observeProjectOverlayGalleryLayout(galleryEl) {
+  disconnectProjectOverlayGalleryLayout();
+  if (!galleryEl) return;
+
+  updateProjectOverlayGalleryLayout(galleryEl);
+
+  projectGalleryLayoutMediaQuery = window.matchMedia(PROJECT_GALLERY_DESKTOP_MQ);
+  projectGalleryLayoutMediaQueryHandler = () => {
+    updateProjectOverlayGalleryLayout(galleryEl);
+  };
+  projectGalleryLayoutMediaQuery.addEventListener("change", projectGalleryLayoutMediaQueryHandler);
+
+  if (typeof ResizeObserver === "undefined") return;
+
+  projectGalleryLayoutObserver = new ResizeObserver(() => {
+    updateProjectOverlayGalleryLayout(galleryEl);
+  });
+  projectGalleryLayoutObserver.observe(galleryEl);
+}
+
+function disconnectProjectOverlayGalleryLayout() {
+  if (projectGalleryLayoutMediaQuery && projectGalleryLayoutMediaQueryHandler) {
+    projectGalleryLayoutMediaQuery.removeEventListener("change", projectGalleryLayoutMediaQueryHandler);
+  }
+  projectGalleryLayoutMediaQuery = null;
+  projectGalleryLayoutMediaQueryHandler = null;
+  projectGalleryLayoutObserver?.disconnect();
+  projectGalleryLayoutObserver = null;
 }
 
 let projectLightboxImages = [];
@@ -1966,6 +2052,7 @@ function closeProjectOverlay() {
   const overlay = document.getElementById("project-overlay");
   if (!overlay || overlay.hidden) return;
 
+  disconnectProjectOverlayGalleryLayout();
   closeProjectLightbox();
   overlay.hidden = true;
   openProjectId = null;

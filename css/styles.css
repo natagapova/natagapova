@@ -2044,6 +2044,14 @@ body.is-project-overlay-open {
   list-style: none;
 }
 
+.project-process__steps--cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-process__steps--cols-1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .project-process__step {
   display: flex;
   flex-direction: column;
@@ -2085,12 +2093,52 @@ body.is-project-overlay-open {
   color: var(--ios-label-secondary);
 }
 
+.project-process__nda {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin: 0;
+  padding: 7px 13px;
+  border-radius: 8px;
+  border: 1px dashed rgb(120 120 128 / 34%);
+  background: rgb(120 120 128 / 7%);
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ios-label-secondary);
+}
+
 .project-overlay__gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: clamp(8px, 1.4vw, 12px);
   margin-top: clamp(18px, 3vw, 24px);
+  width: 100%;
+}
+
+.project-overlay__gallery--two-columns {
+  display: block;
+  columns: 2;
+  column-gap: clamp(8px, 1.4vw, 12px);
+  max-width: 100%;
+}
+
+.project-overlay__gallery--two-columns .project-overlay__image-btn {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 clamp(8px, 1.4vw, 12px);
+}
+
+.project-overlay__gallery--two-columns .project-overlay__image-btn:last-child {
+  margin-bottom: 0;
 }
 
 .project-overlay__image-btn {
@@ -2141,6 +2189,19 @@ body.is-project-overlay-open {
 
   .project-process__step {
     padding: 14px 14px 16px;
+  }
+
+  .project-overlay__gallery--two-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    columns: auto;
+    column-gap: 0;
+  }
+
+  .project-overlay__gallery--two-columns .project-overlay__image-btn {
+    max-width: min(880px, 100%);
+    margin-bottom: 0;
   }
 }
 
@@ -2277,7 +2338,7 @@ body.is-project-overlay-open {
   font-size: 11px;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  white-space: nowrap;
+  max-width: 100%;
   pointer-events: none;
   user-select: none;
 }
