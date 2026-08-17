@@ -28,11 +28,11 @@ const translations = {
     designerToolCanva: "Canva",
     designerToolAi: "AI",
     roleDesigner: "дизайнер",
-    roleFrontend: "frontend разработчик",
+    roleFrontend: "веб/app разработчик",
     roleML: "ML разработчик",
     rolePerson: "человек",
     personTagline: "вот кто делает вам сайты кстати",
-    frontendPageTitle: "frontend кейсы",
+    devPageTitle: "dev кейсы",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -44,6 +44,12 @@ const translations = {
     frontendToolZeroBlock: "Zero Block",
     frontendToolFigma: "Figma",
     frontendToolIllustrator: "Illustrator",
+    devToolSwift: "Swift",
+    devToolSwiftUI: "SwiftUI",
+    devToolMacos: "macOS",
+    DevMacosTimerTitle: "macos-timer",
+    DevMacosTimerDesc:
+      "Таймер и помодоро в menu bar для macOS. Не понравились существующие приложения — сделала своё: экран таймера вдохновлён onigiri, помодоро свой.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
@@ -236,11 +242,11 @@ const translations = {
     designerToolCanva: "Canva",
     designerToolAi: "AI",
     roleDesigner: "designer",
-    roleFrontend: "frontend developer",
+    roleFrontend: "web & app dev",
     roleML: "ML developer",
     rolePerson: "person",
     personTagline: "this is who does your website btw",
-    frontendPageTitle: "frontend cases",
+    devPageTitle: "dev cases",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -252,6 +258,12 @@ const translations = {
     frontendToolZeroBlock: "Zero Block",
     frontendToolFigma: "Figma",
     frontendToolIllustrator: "Illustrator",
+    devToolSwift: "Swift",
+    devToolSwiftUI: "SwiftUI",
+    devToolMacos: "macOS",
+    DevMacosTimerTitle: "macos-timer",
+    DevMacosTimerDesc:
+      "Menu bar timer and pomodoro for macOS. Built my own when existing apps didn't fit — timer screen inspired by onigiri, custom pomodoro flow.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
@@ -633,7 +645,15 @@ const DESIGNER_PAGE_TOOL_KEYS = [
   "designerToolAi",
 ];
 
-const frontendProjects = [
+const devProjects = [
+  {
+    id: "macos-timer",
+    url: "https://github.com/natagapova/macos-timer",
+    preview: "images/dev/macos-timer.webp",
+    titleKey: "DevMacosTimerTitle",
+    descKey: "DevMacosTimerDesc",
+    toolKeys: ["devToolSwift", "devToolSwiftUI", "devToolMacos"],
+  },
   {
     id: "croissan",
     url: "https://croissanstudio.ru",
@@ -898,7 +918,7 @@ const translationKeyToId = {
   roleML: "role-ml",
   rolePerson: "role-person",
   personTagline: "person-tagline",
-  frontendPageTitle: "frontend-page-title",
+  devPageTitle: "dev-page-title",
   rolePagePlaceholder: "role-page-placeholder",
   experienceBlockTitle: "experience-block-title",
   educationBlockTitle: "education-block-title",
@@ -1376,7 +1396,7 @@ function initProjectsSceneResizeObserver() {
 function getFrontendProjectToolKeys() {
   const seen = new Set();
   const keys = [];
-  for (const project of frontendProjects) {
+  for (const project of devProjects) {
     for (const key of project.toolKeys ?? []) {
       if (!seen.has(key)) {
         seen.add(key);
@@ -1465,12 +1485,12 @@ function initFrontendLazyIframes() {
 }
 
 function renderFrontendProjects() {
-  const grid = document.getElementById("frontend-grid");
+  const grid = document.getElementById("dev-grid");
   if (!grid) return;
 
   const t = translations[currentLang];
 
-  grid.innerHTML = frontendProjects
+  grid.innerHTML = devProjects
     .map((project) => {
       const title = t[project.titleKey] ?? "";
       const description = t[project.descKey] ?? "";
@@ -1511,7 +1531,7 @@ function renderFrontendProjects() {
 }
 
 function applyFrontendPage(t) {
-  const skillsEl = document.getElementById("frontend-skills");
+  const skillsEl = document.getElementById("dev-skills");
   if (skillsEl) {
     const tags = getFrontendProjectToolKeys()
       .map((key) => t[key])
@@ -2172,14 +2192,25 @@ const PAGE_SEO = {
     },
   },
   frontend: {
-    path: "/frontend.html",
+    path: "/dev.html",
     ru: {
-      title: "frontend — natalia's portfolio",
-      description: "Frontend-разработка — проекты Натальи Агаповой.",
+      title: "dev — natalia's portfolio",
+      description: "Разработка — веб и нативные приложения, проекты Натальи Агаповой.",
     },
     en: {
-      title: "frontend — natalia's portfolio",
-      description: "Frontend development projects by Natalia Agapova.",
+      title: "dev — natalia's portfolio",
+      description: "Development projects by Natalia Agapova — web and native apps.",
+    },
+  },
+  dev: {
+    path: "/dev.html",
+    ru: {
+      title: "dev — natalia's portfolio",
+      description: "Разработка — веб и нативные приложения, проекты Натальи Агаповой.",
+    },
+    en: {
+      title: "dev — natalia's portfolio",
+      description: "Development projects by Natalia Agapova — web and native apps.",
     },
   },
   ml: {
@@ -2209,7 +2240,8 @@ const PAGE_SEO = {
 function getCurrentPageSeoKey() {
   const path = window.location.pathname.toLowerCase();
   if (path.includes("designer")) return "designer";
-  if (path.includes("frontend")) return "frontend";
+  if (path.includes("dev")) return "dev";
+  if (path.includes("frontend")) return "dev";
   if (path.includes("ml")) return "ml";
   if (path.includes("person")) return "person";
   return "index";
@@ -2326,7 +2358,7 @@ function applyTranslations() {
   const rolePageTitle = document.getElementById("role-page-title");
   if (rolePageTitle) {
     const path = window.location.pathname;
-    if (path.includes("frontend")) {
+    if (path.includes("dev") || path.includes("frontend")) {
       rolePageTitle.textContent = t.roleFrontend;
     } else if (path.includes("ml")) {
       rolePageTitle.textContent = t.roleML;
@@ -3160,14 +3192,14 @@ function initLangMapGlowObserver() {
 function bootPortfolio() {
   const isIndexPage = Boolean(document.getElementById("hero-experience"));
   const isDesignerPage = Boolean(document.getElementById("projects-scene"));
-  const isFrontendPage = Boolean(document.getElementById("frontend-grid"));
+  const isDevPage = Boolean(document.getElementById("dev-grid"));
   const isMlPage = Boolean(document.getElementById("ml-grid"));
 
   try {
     applyTranslations();
   } catch (error) {
     console.error(error);
-    if (isFrontendPage) {
+    if (isDevPage) {
       applyFrontendPage(translations[currentLang]);
     }
     if (isMlPage) {

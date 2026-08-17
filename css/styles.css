@@ -3166,6 +3166,7 @@ body.is-project-overlay-open {
   margin: 20px auto 80px;
 }
 
+body.page-dev .subpage-main.frontend-page,
 body.page-frontend .subpage-main.frontend-page {
   min-height: auto;
   overflow-y: visible;

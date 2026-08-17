@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dev projects by Natalia Agapova — web and native apps.">
+  <title>dev — natalia's portfolio</title>
+  <link rel="canonical" href="https://www.natagapova.ru/dev.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="natalia's portfolio">
+  <meta property="og:url" content="https://www.natagapova.ru/dev.html">
+  <meta property="og:title" content="dev — natalia's portfolio">
+  <meta property="og:description" content="Dev projects by Natalia Agapova — web and native apps.">
+  <meta property="og:image" content="https://www.natagapova.ru/images/my-head.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="dev — natalia's portfolio">
+  <meta name="twitter:description" content="Dev projects by Natalia Agapova — web and native apps.">
+  <meta name="twitter:image" content="https://www.natagapova.ru/images/my-head.png">
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/script.js"></script>
+  <script defer src="js/cursor-trail.js"></script>
+</head>
+
+<body class="page-dev">
+
+  <nav class="top-navbar top-navbar--subpage top-navbar--centered">
+    <div class="navbar-left">
+      <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
+        <span class="navbar-back__icon" aria-hidden="true">←</span>
+      </a>
+    </div>
+
+    <div class="navbar-center">
+      <span class="navbar-page-title" id="dev-page-title">dev кейсы</span>
+    </div>
+
+    <div class="navbar-right">
+      <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
+      <a
+        class="btn btn--ghost navbar-cv"
+        id="navbar-cv-download"
+        href="docs/nat_designer.pdf"
+        download="nat_designer.pdf"
+        aria-label="скачать cv"
+      >
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>
+        <span class="btn__label" id="navbar-cv-label">CV</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="subpage-main frontend-page">
+    <ul class="frontend-skills" id="dev-skills" role="list"></ul>
+    <div class="frontend-grid" id="dev-grid" role="list"></div>
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-social" id="footer-social" aria-label="соцсети"></nav>
+    <span class="footer-copy">natalia agapova</span>
+  </footer>
+
+</body>
+</html>
