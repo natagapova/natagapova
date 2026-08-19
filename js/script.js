@@ -943,7 +943,7 @@ const SOCIAL_LINKS = [
   },
   {
     id: "email",
-    href: "mailto:agapnatalya004@mail.ru",
+    href: "mailto:agapnatalya004@gmail.com",
     labelKey: "footerSocialEmail",
     external: false,
     contact: true,
