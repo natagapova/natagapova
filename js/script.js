@@ -440,6 +440,7 @@ const designerProjects = [
       "images/pochtatex/page2.webp",
       "images/pochtatex/page3.webp",
       "images/pochtatex/page4.webp",
+      "images/pochtatex/page5.webp",
     ],
   },
   {
@@ -1264,14 +1265,15 @@ function layoutProjectPanels() {
         }
 
         panels.forEach((panel, index) => {
-          const { left, top, width, height } = mobile.positions[index];
+          const positionIndex = panels.length - 1 - index;
+          const { left, top, width, height } = mobile.positions[positionIndex];
 
           panel.style.width = `${width}px`;
           panel.style.height = `${height}px`;
           panel.style.left = `${left}px`;
           panel.style.top = `${top}px`;
           panel.style.removeProperty("bottom");
-          panel.style.setProperty("--panel-z", String(index + 1));
+          panel.style.setProperty("--panel-z", String(positionIndex + 1));
           panel.style.removeProperty("--panel-trap-inset");
           applyPanelBevelColors(panel);
           panel.classList.remove("project-panel--pending");
