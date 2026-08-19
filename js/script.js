@@ -61,7 +61,7 @@ const translations = {
       "Лендинг летней AI-смены для школьников. Задача — за пару минут дать родителю полную картину программы и путь к заявке без звонка менеджеру. Сборка на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
     FrontendKingstepTitle: "Барилова & Царёв",
     FrontendKingstepDesc:
-      "Сайт танцевальной студии Kingstep — главная, каталог курсов и страницы занятий. Тёмная эстетика бренда: макеты в Figma, сборка в Tilda. Сейчас на финальном этапе.",
+      "Сайт Kingstep — главная, каталог курсов и страницы занятий. Дизайн и макеты готовы; с моей стороны проект завершён, публичной ссылки нет.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -105,8 +105,7 @@ const translations = {
     InnoMedDesc:
       "прототип приложения innomed был разработан для университета иннополис на курсе по продакт менеджменту. я была в роли владельца продукта и также отвечала за разработку прототипа",
     PostersTitle: "ПОСТЕРЫ",
-    PostersDesc:
-      "у меня есть опыт дизайна афиш для мероприятий в казани и иннополисе. мое видение в том, чтобы плакаты были удобочитаемыми и эстетичными",
+    PostersDesc: "афиши для мероприятий в казани и иннополисе",
     ConceptsTitle: "КОНЦЕПТЫ",
     ConceptsDesc: "экспериментальные макеты, сделанные для себя",
     TsarevBarilovaTitle: "ЦАРЁВ & БАРИЛОВА",
@@ -120,6 +119,7 @@ const translations = {
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
     designerProcessResult: "результат",
+    designerActionTry: "потестировать игру",
     PochtaTexProblem:
       "нужно было сделать игру с поиском ошибок в интерфейсе и привлечь максимальное количество игроков",
     PochtaTexSolution:
@@ -139,7 +139,7 @@ const translations = {
     TsarevBarilovaSolution:
       "сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda",
     TsarevBarilovaResult:
-      "сайт ещё в разработке — но макеты главной, каталога и страниц курсов уже согласованы с заказчиками; структура принята, сборка в Tilda на финальном этапе",
+      "согласовали главную, каталог и страницы курсов; дизайн завершён, сайт не в разработке у меня и не опубликован",
     InnoBookLoversProblem:
       "Курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
     InnoBookLoversSolution:
@@ -169,14 +169,14 @@ const translations = {
     expCroissan:
       "<strong>croissan studio</strong> — студия разработки полного цикла для ии-продуктов (продуктовый дизайнер, апрель 2025 - ...)",
     expAzimov:
-      "<strong>azimovlab</strong> — ии-сервис генерации тестов (тимлид команды фронтенд-разработки, февраль – сентябрь 2024)",
+      "<strong>AzimovLab</strong> — AI-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела продуктовый дизайн и UX интерфейса)",
     expClearmind: "<strong>фриланс</strong> — дизайн афиш, сайтов; вёрстка сайтов на заказ (2022 - ...)",
     eduInnopolis:
       "<strong>университет иннополис</strong> — бакалавриат: прикладной искусственный  интеллект (2026)",
     volTrenirovochnaya:
       "<strong>trenirovochnaya.kzn</strong> — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – август 2025)",
     volInnostreetdance:
-      "<strong>innostreetdance</strong> — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – сентябрь 2025)",
+      "<strong>InnoStreetDance</strong> — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – сентябрь 2025)",
     footerSocialLabel: "соцсети",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -202,7 +202,7 @@ const translations = {
     PochtaTexMeta: "роль: UX/UI · 1 нед · дизайн solo, проект в команде · университет иннополис и почта россии",
     YandexDirectMeta: "роль: UX/UI · тестовое · solo · яндекс",
     YokoMatchaMeta: "роль: брендинг + UI · 2 нед · solo · фриланс",
-    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · команда из 2 человек · фриланс",
+    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · solo · фриланс",
     CroissanStudioMeta: "роль: product designer · in-house · croissan studio",
     PostersMeta: "роль: графический дизайн · ongoing · solo · ивенты казани",
     ConceptsMeta: "роль: эксперимент · — · solo · личный проект",
@@ -264,7 +264,7 @@ const translations = {
       "A landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes — no call to a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
     FrontendKingstepTitle: "Barilova & Tsarev",
     FrontendKingstepDesc:
-      "A site for Kingstep dance studio — home, course catalog, and class pages. Dark brand aesthetic: layouts in Figma, build in Tilda. Currently in the final stretch.",
+      "A Kingstep dance studio site — home, course catalog, and class pages. Design and layouts are done; my part is complete, with no public link.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -308,8 +308,7 @@ const translations = {
     InnoMedDesc:
       "innomed app prototype developed at innopolis university during a product management course. i was the product owner and created the prototype",
     PostersTitle: "POSTERS",
-    PostersDesc:
-      "i have experience designing event posters for kazan and innopolis. my approach is to keep them readable and aesthetic",
+    PostersDesc: "event posters for kazan and innopolis",
     ConceptsTitle: "CONCEPTS",
     ConceptsDesc: "experimental mockups made for myself",
     TsarevBarilovaTitle: "TSAREV & BARILOVA",
@@ -323,6 +322,7 @@ const translations = {
     designerProcessProblem: "problem",
     designerProcessSolution: "solution",
     designerProcessResult: "result",
+    designerActionTry: "try the game",
     PochtaTexProblem:
       "the task was to build a spot-the-error interface game and draw as many players as possible",
     PochtaTexSolution:
@@ -342,7 +342,7 @@ const translations = {
     TsarevBarilovaSolution:
       "built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build",
     TsarevBarilovaResult:
-      "the site is still in progress — but home, catalog, and course page layouts are already approved; structure signed off, Tilda build in the final stretch",
+      "home, catalog, and course pages approved; design is complete — not in development on my side and not published",
     InnoBookLoversProblem:
       "A course project risked looking like homework instead of a living book community.",
     InnoBookLoversSolution:
@@ -372,14 +372,14 @@ const translations = {
     expCroissan:
       "<strong>croissan studio</strong> — ai products studio (product designer, apr 2025 - ...)",
     expAzimov:
-      "<strong>azimovlab</strong> — ai service for generating tests (frontend team lead, feb – sep 2024)",
+      "<strong>AzimovLab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; in a small startup I also owned product design and interface UX)",
     expClearmind: "<strong>freelance</strong> — design posters, websites; web development on order (2022 - ...)",
     eduInnopolis:
       "<strong>innopolis university</strong> — bsc in applied artificial intelligence (2026)",
     volTrenirovochnaya:
       "<strong>trenirovochnaya.kzn</strong> — organization of dance events in kazan (brand-designer, marketing person, mar 2025 – aug 2025)",
     volInnostreetdance:
-      "<strong>innostreetdance</strong> — student dance club of innopolis university (brand-designer, marketing person, dec 2022 – sep 2025)",
+      "<strong>InnoStreetDance</strong> — student dance club of innopolis university (brand-designer, marketing person, dec 2022 – sep 2025)",
     footerSocialLabel: "social links",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -405,7 +405,7 @@ const translations = {
     PochtaTexMeta: "role: UX/UI · 1 wk · design solo, team project · innopolis university and russian post",
     YandexDirectMeta: "role: UX/UI · test task · solo · yandex",
     YokoMatchaMeta: "role: branding + UI · 2 wks · solo · freelance",
-    TsarevBarilovaMeta: "role: UX/UI · 2 wks · team of 2 · freelance",
+    TsarevBarilovaMeta: "role: UX/UI · 2 wks · solo · freelance",
     CroissanStudioMeta: "role: product designer · in-house · croissan studio",
     PostersMeta: "role: graphic design · ongoing · solo · kazan events",
     ConceptsMeta: "role: experiment · — · solo · personal project",
@@ -433,11 +433,41 @@ const designerProjects = [
     },
     toolKeys: ["designerToolFigma"],
     preview: "images/pochtatex/page0.webp",
+    url: "https://dropmefiles.com/C07pI",
+    urlLabelKey: "designerActionTry",
     images: [
       "images/pochtatex/page1.webp",
       "images/pochtatex/page2.webp",
       "images/pochtatex/page3.webp",
       "images/pochtatex/page4.webp",
+    ],
+  },
+  {
+    id: "croissan-studio",
+    titleKey: "CroissanStudioTitle",
+    descKey: "CroissanStudioDesc",
+    metaKey: "CroissanStudioMeta",
+    process: {
+      problemKey: "CroissanStudioProblem",
+      solutionKey: "CroissanStudioSolution",
+      resultKey: "CroissanStudioResult",
+    },
+    toolKeys: ["designerToolIllustrator", "designerToolAi", "designerToolFigma"],
+    images: [
+      "images/croissan/page2.webp",
+      "images/croissan/page13.webp",
+      "images/croissan/page4.webp",
+      "images/croissan/page9.webp",
+      "images/croissan/page12.webp",
+      "images/croissan/page5.webp",
+      "images/croissan/page8.webp",
+      "images/croissan/page14.webp",
+      "images/croissan/page1.webp",
+      "images/croissan/page7.webp",
+      "images/croissan/page15.webp",
+      "images/croissan/page10.webp",
+      "images/croissan/page11.webp",
+      "images/croissan/page6.webp",
     ],
   },
   {
@@ -491,35 +521,6 @@ const designerProjects = [
       "images/tsarevbarilova/page4.webp",
       "images/tsarevbarilova/page5.webp",
       "images/tsarevbarilova/page6.webp",
-    ],
-    inDevelopment: true,
-  },
-  {
-    id: "croissan-studio",
-    titleKey: "CroissanStudioTitle",
-    descKey: "CroissanStudioDesc",
-    metaKey: "CroissanStudioMeta",
-    process: {
-      problemKey: "CroissanStudioProblem",
-      solutionKey: "CroissanStudioSolution",
-      resultKey: "CroissanStudioResult",
-    },
-    toolKeys: ["designerToolIllustrator", "designerToolAi", "designerToolFigma"],
-    images: [
-      "images/croissan/page2.webp",
-      "images/croissan/page13.webp",
-      "images/croissan/page4.webp",
-      "images/croissan/page9.webp",
-      "images/croissan/page12.webp",
-      "images/croissan/page5.webp",
-      "images/croissan/page8.webp",
-      "images/croissan/page14.webp",
-      "images/croissan/page1.webp",
-      "images/croissan/page7.webp",
-      "images/croissan/page15.webp",
-      "images/croissan/page10.webp",
-      "images/croissan/page11.webp",
-      "images/croissan/page6.webp",
     ],
   },
   {
@@ -665,8 +666,6 @@ const devProjects = [
     titleKey: "FrontendKingstepTitle",
     descKey: "FrontendKingstepDesc",
     toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
-    comingSoon: true,
-    inDevelopment: true,
   },
 ];
 
@@ -1761,6 +1760,44 @@ function renderDesignerProcess(project, t) {
   `;
 }
 
+function renderDesignerPanelCaption(project, t) {
+  const title = t[project.titleKey] ?? "";
+  const description = t[project.descKey] ?? "";
+  const linkLabel = project.url ? (t[project.urlLabelKey ?? "designerActionTry"] ?? "") : "";
+  const linkHtml =
+    project.url && linkLabel
+      ? `<a class="project-panel__caption-link" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkLabel)}</a>`
+      : "";
+
+  return `
+    <div class="project-panel__caption" aria-hidden="true">
+      <p class="project-panel__caption-title">${escapeHtml(title)}</p>
+      <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
+      ${linkHtml}
+    </div>
+  `;
+}
+
+function renderDesignerOverlayActions(project, t) {
+  if (!project.url) return "";
+
+  const label = t[project.urlLabelKey ?? "designerActionTry"] ?? "";
+  if (!label) return "";
+
+  return `
+    <div class="project-overlay__actions">
+      <div class="ml-card__actions">
+        <a
+          class="ml-card__action ml-card__action--accent"
+          href="${escapeHtml(project.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >${escapeHtml(label)}</a>
+      </div>
+    </div>
+  `;
+}
+
 function renderDesignerProjects() {
   const scene = document.getElementById("projects-scene");
   if (!scene) return;
@@ -1783,9 +1820,7 @@ function renderDesignerProjects() {
           aria-label="${escapeHtml(title)}"
         >
           <div class="project-panel__stack">
-            <div class="project-panel__caption" aria-hidden="true">
-              <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
-            </div>
+            ${renderDesignerPanelCaption(project, t)}
             <div class="project-panel__card">
               <span class="project-panel__bevel" aria-hidden="true"></span>
               <img
@@ -1825,6 +1860,7 @@ function renderProjectOverlayContent(projectId) {
   const metaEl = document.getElementById("project-overlay-meta");
   const toolsEl = document.getElementById("project-overlay-tools");
   const descEl = document.getElementById("project-overlay-desc");
+  const actionsEl = document.getElementById("project-overlay-actions");
   const processEl = document.getElementById("project-overlay-process");
   const galleryEl = document.getElementById("project-overlay-gallery");
   if (!project || !titleEl || !descEl || !galleryEl) return;
@@ -1853,6 +1889,12 @@ function renderProjectOverlayContent(projectId) {
     toolsEl.hidden = !toolsHtml;
   }
   descEl.textContent = description;
+
+  if (actionsEl) {
+    const actionsHtml = renderDesignerOverlayActions(project, t);
+    actionsEl.innerHTML = actionsHtml;
+    actionsEl.hidden = !actionsHtml;
+  }
 
   if (processEl) {
     const processHtml = renderDesignerProcess(project, t);

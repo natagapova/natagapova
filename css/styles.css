@@ -1698,6 +1698,32 @@ body.page-designer .navbar-back:hover {
   color: var(--color-text-muted);
 }
 
+.project-panel__caption-link {
+  display: inline-flex;
+  margin-top: 8px;
+  pointer-events: auto;
+  color: var(--color-text-strong);
+  font-size: 11px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.005em;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.project-panel__caption-link:hover {
+  opacity: 0.72;
+}
+
+.project-overlay__actions {
+  margin: 14px 0 0;
+}
+
+.project-overlay__actions[hidden] {
+  display: none;
+}
+
 .project-panel:hover .project-panel__caption,
 .project-panel:focus-visible .project-panel__caption {
   opacity: 1;
