@@ -932,18 +932,21 @@ const SOCIAL_LINKS = [
     href: "https://t.me/nhefy",
     labelKey: "footerSocialTelegram",
     external: true,
+    contact: true,
   },
   {
     id: "linkedin",
     href: "https://www.linkedin.com/in/natalia-agapova-265797406/",
     labelKey: "footerSocialLinkedin",
     external: true,
+    contact: true,
   },
   {
     id: "email",
     href: "mailto:agapnatalya004@mail.ru",
     labelKey: "footerSocialEmail",
     external: false,
+    contact: true,
   },
   {
     id: "github",
@@ -1069,7 +1072,7 @@ function renderIntroSocial(t) {
     socialEl.setAttribute("aria-label", label);
   }
 
-  socialEl.innerHTML = SOCIAL_LINKS.map((link) => {
+  socialEl.innerHTML = SOCIAL_LINKS.filter((link) => link.contact).map((link) => {
     const linkLabel = t[link.labelKey] ?? link.id;
     const externalAttrs = link.external
       ? ' target="_blank" rel="noopener noreferrer"'

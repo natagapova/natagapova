@@ -2747,13 +2747,14 @@ body.is-project-overlay-open {
 .footer-social {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .footer-social__link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
   color: var(--color-footer-muted);
   opacity: 0.88;
   text-decoration: none;
@@ -2767,9 +2768,9 @@ body.is-project-overlay-open {
 
 .footer-social__icon {
   display: block;
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
 }
 
 .footer-copy {
