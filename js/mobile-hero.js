@@ -120,6 +120,30 @@ function ensureMobileThoughtShells() {
 let mobileCloudImagesWired = false;
 let mobileCloudsPinState = "";
 let mobileCloudsMinHeight = "";
+let mobileCloudsAnchorTop = 0;
+let mobileHeroLayoutTimer = null;
+
+function getMobileViewportHeight() {
+  return window.visualViewport?.height ?? window.innerHeight;
+}
+
+function cacheMobileCloudsMetrics() {
+  const clouds = document.getElementById("hero-clouds");
+  if (!clouds) return;
+  mobileCloudsAnchorTop = clouds.getBoundingClientRect().top + window.scrollY;
+}
+
+function scheduleMobileHeroLayout() {
+  clearTimeout(mobileHeroLayoutTimer);
+  mobileHeroLayoutTimer = setTimeout(() => {
+    if (!isMobileHeroLayout()) return;
+    rolesScrollMetrics = null;
+    cacheMobileCloudsMetrics();
+    void fitHeroHeadline();
+    syncHeroRolesPlacement();
+    scheduleRolesScrollReveal();
+  }, 180);
+}
 
 function wireMobileCloudImageLoads() {
   if (mobileCloudImagesWired) return;
@@ -183,15 +207,15 @@ function clearMobileCloudsLayout() {
   clearMobileThoughtShells();
 }
 
-function updateMobileCloudsPinState() {
+function updateMobileCloudsPinState(scrollY = window.scrollY) {
   const clouds = document.getElementById("hero-clouds");
   const track = document.getElementById("hero-clouds-track");
   if (!clouds || !track) return 0;
 
   const trackH = Number(clouds.dataset.scrollTrack) || track.offsetHeight;
-  const viewportH = window.innerHeight;
-  const rect = clouds.getBoundingClientRect();
-  const scrolled = Math.max(0, viewportH - rect.top);
+  const viewportH = getMobileViewportHeight();
+  const rectTop = mobileCloudsAnchorTop - scrollY;
+  const scrolled = Math.max(0, viewportH - rectTop);
 
   if (trackH <= 0) {
     if (mobileCloudsPinState !== "idle") {
@@ -212,7 +236,7 @@ function updateMobileCloudsPinState() {
   }
 
   const nextPinState =
-    rect.top > 0 ? "approach" : -rect.top < trackH ? "pinned" : "released";
+    rectTop > 0 ? "approach" : -rectTop < trackH ? "pinned" : "released";
 
   if (nextPinState !== mobileCloudsPinState) {
     mobileCloudsPinState = nextPinState;
@@ -241,7 +265,7 @@ function updateMobileCloudsLayout() {
 
   ensureMobileThoughtShells();
 
-  const viewportH = window.innerHeight;
+  const viewportH = getMobileViewportHeight();
   const pinStyle = getComputedStyle(pin);
   const pinPaddingBottom = parseFloat(pinStyle.paddingBottom) || 0;
   const stickyBase = Math.round(viewportH * MOBILE_CLOUDS_STICKY_BASE_VH);
@@ -344,6 +368,7 @@ function updateMobileCloudsLayout() {
   clouds.dataset.stickyBase = String(stickyBase);
   clouds.dataset.scrollTrack = String(trackH);
   clouds.dataset.overlapRatio = String(overlapRatio);
+  cacheMobileCloudsMetrics();
 }
 
 function updateMobileCloudsScroll() {
@@ -357,18 +382,25 @@ function updateMobileCloudsScroll() {
   const trackH = Number(clouds.dataset.scrollTrack) || track.offsetHeight;
   if (trackH <= 0) return;
 
-  const viewportH = window.innerHeight;
-  const scrolled = updateMobileCloudsPinState();
+  const scrollY = window.scrollY;
+  const viewportH = getMobileViewportHeight();
+  updateMobileCloudsPinState(scrollY);
+  const scrolled = Math.max(0, viewportH - (mobileCloudsAnchorTop - scrollY));
   const progress = clamp01(scrolled / (viewportH + trackH));
   const cardCount = cards.length;
   const step = 1 / cardCount;
 
   cards.forEach((card, index) => {
+    const revealStart = index * step;
+    const revealEnd = revealStart + step * 0.9;
+
+    if (progress < revealStart && card.style.opacity === "0") return;
+    if (progress > revealEnd && card.classList.contains("role-card--scroll-settled")) return;
+
     const finalTop = parseFloat(card.dataset.finalTop);
     const enterOffset = parseFloat(card.dataset.enterOffset);
     if (!Number.isFinite(finalTop) || !Number.isFinite(enterOffset)) return;
 
-    const revealStart = index * step;
     const localP = clamp01((progress - revealStart) / (step * 0.9));
     const eased = easeOutCubic(localP);
     const yOffset =
@@ -426,6 +458,15 @@ function syncHeroRolesPlacement() {
   }
 }
 
+const scheduleHeroLayoutFitDesktop = scheduleHeroLayoutFit;
+scheduleHeroLayoutFit = function scheduleHeroLayoutFitMobile() {
+  if (isMobileHeroLayout()) {
+    scheduleMobileHeroLayout();
+    return;
+  }
+  return scheduleHeroLayoutFitDesktop();
+};
+
 const buildHeroHeadlineHtmlDesktop = buildHeroHeadlineHtml;
 buildHeroHeadlineHtml = function buildHeroHeadlineHtmlMobile(text) {
   const words = text.trim().split(/\s+/);
@@ -451,6 +492,9 @@ syncBlinkPhotoScale = function syncBlinkPhotoScaleMobile(photoWrap) {
   const open = photoWrap.querySelector(".hero-intro__photo--open");
   const closed = photoWrap.querySelector(".hero-intro__photo--closed");
   if (!open?.offsetWidth || !open.offsetHeight) return;
+
+  const viewportH = getMobileViewportHeight();
+  if (open.offsetHeight > viewportH * 0.62) return;
 
   if (closed) {
     closed.style.removeProperty("width");
@@ -481,13 +525,15 @@ fitHeroPhoto = function fitHeroPhotoMobile() {
   if (!lines.length) return;
 
   const heroStyle = getComputedStyle(hero);
-  const viewportH = window.innerHeight;
+  const viewportH = getMobileViewportHeight();
   const photoVh = parseFloat(heroStyle.getPropertyValue("--hero-mobile-photo-vh")) || MOBILE_HERO_PHOTO_VH;
   const targetHeight = Math.round(viewportH * photoVh);
+  const maxWidth = Math.min(stage.clientWidth || window.innerWidth, Math.round(viewportH * 0.42));
 
   photoWrap.style.setProperty("--hero-photo-max-height", `${targetHeight}px`);
   photoWrap.style.removeProperty("--hero-photo-height");
-  photoWrap.style.setProperty("--hero-photo-width", "auto");
+  photoWrap.style.setProperty("--hero-photo-width", `${maxWidth}px`);
+  photoWrap.style.maxWidth = `${maxWidth}px`;
   photoWrap.style.removeProperty("margin-top");
   syncBlinkPhotoScale(photoWrap);
   requestAnimationFrame(() => syncBlinkPhotoScale(photoWrap));
@@ -567,19 +613,13 @@ initRolesScrollReveal = function initRolesScrollRevealMobile() {
     rolesScrollMetrics = null;
     heroPinWasReleased = false;
     wireMobileCloudImageLoads();
+    cacheMobileCloudsMetrics();
     syncHeroRolesPlacement();
     scheduleRolesScrollReveal();
 
     window.addEventListener("scroll", scheduleRolesScrollReveal, { passive: true });
-    window.addEventListener(
-      "resize",
-      () => {
-        rolesScrollMetrics = null;
-        syncHeroRolesPlacement();
-        scheduleRolesScrollReveal();
-      },
-      { passive: true }
-    );
+    window.addEventListener("resize", scheduleMobileHeroLayout, { passive: true });
+    window.visualViewport?.addEventListener("resize", scheduleMobileHeroLayout, { passive: true });
     return;
   }
 
@@ -587,6 +627,10 @@ initRolesScrollReveal = function initRolesScrollRevealMobile() {
 };
 
 window.addEventListener("resize", () => {
+  if (isMobileHeroLayout()) {
+    scheduleMobileHeroLayout();
+    return;
+  }
   syncHeroRolesPlacement();
 });
 

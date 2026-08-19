@@ -716,6 +716,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     --hero-mobile-inset: clamp(12px, 4vw, 20px);
     --hero-mobile-nav-gap: clamp(14px, 3.5vh, 24px);
     --hero-mobile-photo-vh: 0.45;
+    --hero-photo-max-height: min(45svh, 380px);
     padding: var(--hero-mobile-nav-gap) var(--hero-mobile-inset) 0;
     justify-content: flex-start;
   }
@@ -780,19 +781,30 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
     justify-self: center;
     flex: none;
     min-height: 0;
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: min(78vw, 340px);
     margin: 0;
     z-index: 5;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .hero-intro__photo-stack {
     position: relative;
-    width: auto;
+    width: 100%;
     max-width: 100%;
     height: auto;
+    max-height: var(--hero-photo-max-height);
     line-height: 0;
+  }
+
+  .hero-intro__photo--open {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: var(--hero-photo-max-height);
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .hero-experience__clouds .roles-nav--hero {
