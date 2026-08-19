@@ -5,7 +5,7 @@ function readStoredLang() {
   } catch {
     /* storage may be blocked in private mode */
   }
-  return "ru";
+  return "en";
 }
 
 let currentLang = readStoredLang();
@@ -492,6 +492,7 @@ const designerProjects = [
       "images/tsarevbarilova/page5.webp",
       "images/tsarevbarilova/page6.webp",
     ],
+    inDevelopment: true,
   },
   {
     id: "croissan-studio",
@@ -665,6 +666,7 @@ const devProjects = [
     descKey: "FrontendKingstepDesc",
     toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
     comingSoon: true,
+    inDevelopment: true,
   },
 ];
 
@@ -1471,7 +1473,10 @@ function renderFrontendProjects() {
       const body = `
         ${renderFrontendPreview(project, title)}
         <div class="frontend-card__body">
-          <h2 class="frontend-card__title">${escapeHtml(title)}</h2>
+          <div class="frontend-card__heading">
+            <h2 class="frontend-card__title">${escapeHtml(title)}</h2>
+            ${renderInProgressStatus(project, t)}
+          </div>
           ${tools}
           ${description ? `<p class="frontend-card__desc">${escapeHtml(description)}</p>` : ""}
         </div>
@@ -1531,6 +1536,11 @@ function getMlProjectToolKeys() {
     }
   }
   return keys;
+}
+
+function renderInProgressStatus(project, t) {
+  if (!project.inDevelopment) return "";
+  return `<span class="ml-card__status">${escapeHtml(t.mlStatusInProgress ?? "")}</span>`;
 }
 
 function renderMlCardTools(toolKeys, t) {
@@ -1617,9 +1627,7 @@ function renderMlProjects() {
     .map((project) => {
       const title = t[project.titleKey] ?? "";
       const tools = renderMlCardTools(project.toolKeys, t);
-      const status = project.inDevelopment
-        ? `<span class="ml-card__status">${escapeHtml(t.mlStatusInProgress ?? "")}</span>`
-        : "";
+      const status = renderInProgressStatus(project, t);
 
       return `
         <article class="ml-card${project.inDevelopment ? " ml-card--in-progress" : ""}" role="listitem" aria-label="${escapeHtml(title)}">
@@ -1763,7 +1771,6 @@ function renderDesignerProjects() {
 
       const title = t[project.titleKey] ?? "";
       const description = t[project.descKey] ?? "";
-      const meta = project.metaKey ? (t[project.metaKey] ?? "") : "";
 
       return `
         <article
@@ -1774,8 +1781,6 @@ function renderDesignerProjects() {
         >
           <div class="project-panel__stack">
             <div class="project-panel__caption" aria-hidden="true">
-              <p class="project-panel__caption-title">${escapeHtml(title)}</p>
-              ${meta ? `<p class="project-panel__caption-meta">${escapeHtml(meta)}</p>` : ""}
               <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
             </div>
             <div class="project-panel__card">
@@ -1813,6 +1818,7 @@ let openProjectId = null;
 function renderProjectOverlayContent(projectId) {
   const project = designerProjects.find((item) => item.id === projectId);
   const titleEl = document.getElementById("project-overlay-title");
+  const statusEl = document.getElementById("project-overlay-status");
   const metaEl = document.getElementById("project-overlay-meta");
   const toolsEl = document.getElementById("project-overlay-tools");
   const descEl = document.getElementById("project-overlay-desc");
@@ -1826,6 +1832,14 @@ function renderProjectOverlayContent(projectId) {
   const meta = project.metaKey ? (t[project.metaKey] ?? "") : "";
 
   titleEl.textContent = title;
+  if (statusEl) {
+    if (project.inDevelopment) {
+      statusEl.textContent = t.mlStatusInProgress ?? "";
+      statusEl.hidden = false;
+    } else {
+      statusEl.hidden = true;
+    }
+  }
   if (metaEl) {
     metaEl.textContent = meta;
     metaEl.hidden = !meta;
@@ -2325,12 +2339,12 @@ const PAGE_SEO = {
 };
 
 function getCurrentPageSeoKey() {
-  const path = window.location.pathname.toLowerCase();
-  if (path.includes("designer")) return "designer";
-  if (path.includes("dev")) return "dev";
-  if (path.includes("frontend")) return "dev";
-  if (path.includes("ml")) return "ml";
-  if (path.includes("person")) return "person";
+  const page = window.location.pathname.toLowerCase().split("/").pop() || "index.html";
+
+  if (page === "designer.html") return "designer";
+  if (page === "dev.html" || page === "frontend.html") return "dev";
+  if (page === "ml.html") return "ml";
+  if (page === "person.html") return "person";
   return "index";
 }
 
@@ -2409,7 +2423,7 @@ function applyTranslations() {
   }
 
   const cvLink = document.getElementById("navbar-cv-download");
-  const cvFile = CV_DOWNLOAD[currentLang] ?? CV_DOWNLOAD.ru;
+  const cvFile = CV_DOWNLOAD[currentLang] ?? CV_DOWNLOAD.en;
   if (cvLink) {
     cvLink.href = cvFile.href;
     cvLink.download = cvFile.filename;
@@ -2444,15 +2458,15 @@ function applyTranslations() {
 
   const rolePageTitle = document.getElementById("role-page-title");
   if (rolePageTitle) {
-    const path = window.location.pathname;
-    if (path.includes("dev") || path.includes("frontend")) {
-      rolePageTitle.textContent = t.roleFrontend;
-    } else if (path.includes("ml")) {
-      rolePageTitle.textContent = t.roleML;
-    } else if (path.includes("designer")) {
-      rolePageTitle.textContent = t.roleDesigner;
-    } else if (path.includes("person")) {
-      rolePageTitle.textContent = t.rolePerson;
+    const roleTitleByPage = {
+      dev: t.roleFrontend,
+      ml: t.roleML,
+      designer: t.roleDesigner,
+      person: t.rolePerson,
+    };
+    const pageKey = getCurrentPageSeoKey();
+    if (roleTitleByPage[pageKey]) {
+      rolePageTitle.textContent = roleTitleByPage[pageKey];
     }
   }
 

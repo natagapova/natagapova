@@ -1,44 +1,343 @@
 [
-  "IMG_0053.jpg",
-  "IMG_0057.jpg",
-  "IMG_0150.jpg",
-  "IMG_0383.jpg",
-  "IMG_0385.jpg",
-  "IMG_0612.jpg",
-  "IMG_0620.MOV",
-  "IMG_0670.JPG",
-  "IMG_0682.JPG",
-  "IMG_0827.JPG",
-  "IMG_0835.JPG",
-  "IMG_0929.jpg",
-  "IMG_1123.jpg",
-  "IMG_1130.JPG",
-  "IMG_1445.jpg",
-  "IMG_1546.mov",
-  "IMG_1655.mov",
-  "IMG_1769.jpg",
-  "IMG_1822 2.jpg",
-  "IMG_1972.jpg",
-  "IMG_1989.jpg",
-  "IMG_2202.mov",
-  "IMG_2270.mov",
-  "IMG_2309.jpg",
-  "IMG_2873.jpg",
-  "IMG_2947.jpg",
-  "IMG_4155.jpg",
-  "IMG_5275.jpg",
-  "IMG_6142.jpg",
-  "IMG_6947.jpg",
-  "IMG_6950 2.jpg",
-  "IMG_7514.jpg",
-  "IMG_7889.jpg",
-  "IMG_8057.jpg",
-  "IMG_8597.jpg",
-  "IMG_9146.JPG",
-  "IMG_9411.jpg",
-  "IMG_9498.jpg",
-  "IMG_9559.jpg",
-  "IMG_9748.jpg",
-  "IMG_9757.jpg",
-  "IMG_9982.jpg"
+  {
+    "name": "IMG_0053.jpg",
+    "type": "image",
+    "width": 2867,
+    "height": 3823,
+    "aspectRatio": 0.7499346063301072,
+    "thumb": "thumbs/IMG_0053.webp"
+  },
+  {
+    "name": "IMG_0057.jpg",
+    "type": "image",
+    "width": 2402,
+    "height": 3269,
+    "aspectRatio": 0.734781278678495,
+    "thumb": "thumbs/IMG_0057.webp"
+  },
+  {
+    "name": "IMG_0150.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_0150.webp"
+  },
+  {
+    "name": "IMG_0383.jpg",
+    "type": "image",
+    "width": 2315,
+    "height": 2315,
+    "aspectRatio": 1,
+    "thumb": "thumbs/IMG_0383.webp"
+  },
+  {
+    "name": "IMG_0385.jpg",
+    "type": "image",
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_0385.webp"
+  },
+  {
+    "name": "IMG_0612.jpg",
+    "type": "image",
+    "width": 2640,
+    "height": 3300,
+    "aspectRatio": 0.8,
+    "thumb": "thumbs/IMG_0612.webp"
+  },
+  {
+    "name": "IMG_0620.MOV",
+    "type": "video",
+    "width": 3840,
+    "height": 2160,
+    "aspectRatio": 1.7777777777777777,
+    "poster": "posters/IMG_0620.webp",
+    "preview": "previews/IMG_0620.mp4"
+  },
+  {
+    "name": "IMG_0670.JPG",
+    "type": "image",
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_0670.webp"
+  },
+  {
+    "name": "IMG_0682.JPG",
+    "type": "image",
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_0682.webp"
+  },
+  {
+    "name": "IMG_0827.JPG",
+    "type": "image",
+    "width": 5472,
+    "height": 3648,
+    "aspectRatio": 1.5,
+    "thumb": "thumbs/IMG_0827.webp"
+  },
+  {
+    "name": "IMG_0835.JPG",
+    "type": "image",
+    "width": 5472,
+    "height": 3648,
+    "aspectRatio": 1.5,
+    "thumb": "thumbs/IMG_0835.webp"
+  },
+  {
+    "name": "IMG_0929.jpg",
+    "type": "image",
+    "width": 4032,
+    "height": 3024,
+    "aspectRatio": 1.3333333333333333,
+    "thumb": "thumbs/IMG_0929.webp"
+  },
+  {
+    "name": "IMG_1123.jpg",
+    "type": "image",
+    "width": 1575,
+    "height": 2100,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_1123.webp"
+  },
+  {
+    "name": "IMG_1130.JPG",
+    "type": "image",
+    "width": 2066,
+    "height": 3672,
+    "aspectRatio": 0.5626361655773421,
+    "thumb": "thumbs/IMG_1130.webp"
+  },
+  {
+    "name": "IMG_1445.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 3024,
+    "aspectRatio": 1,
+    "thumb": "thumbs/IMG_1445.webp"
+  },
+  {
+    "name": "IMG_1546.mov",
+    "type": "video",
+    "width": 3840,
+    "height": 2160,
+    "aspectRatio": 1.7777777777777777,
+    "poster": "posters/IMG_1546.webp",
+    "preview": "previews/IMG_1546.mp4"
+  },
+  {
+    "name": "IMG_1655.mov",
+    "type": "video",
+    "width": 3110,
+    "height": 1748,
+    "aspectRatio": 1.7791762013729977,
+    "poster": "posters/IMG_1655.webp",
+    "preview": "previews/IMG_1655.mp4"
+  },
+  {
+    "name": "IMG_1769.jpg",
+    "type": "image",
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_1769.webp"
+  },
+  {
+    "name": "IMG_1822 2.jpg",
+    "type": "image",
+    "width": 5006,
+    "height": 2816,
+    "aspectRatio": 1.7776988636363635,
+    "thumb": "thumbs/IMG_1822 2.webp"
+  },
+  {
+    "name": "IMG_1972.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_1972.webp"
+  },
+  {
+    "name": "IMG_1989.jpg",
+    "type": "image",
+    "width": 1611,
+    "height": 2148,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_1989.webp"
+  },
+  {
+    "name": "IMG_2202.mov",
+    "type": "video",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.7777777777777777,
+    "poster": "posters/IMG_2202.webp",
+    "preview": "previews/IMG_2202.mp4"
+  },
+  {
+    "name": "IMG_2270.mov",
+    "type": "video",
+    "width": 2880,
+    "height": 2160,
+    "aspectRatio": 1.3333333333333333,
+    "poster": "posters/IMG_2270.webp",
+    "preview": "previews/IMG_2270.mp4"
+  },
+  {
+    "name": "IMG_2309.jpg",
+    "type": "image",
+    "width": 2268,
+    "height": 4032,
+    "aspectRatio": 0.5625,
+    "thumb": "thumbs/IMG_2309.webp"
+  },
+  {
+    "name": "IMG_2873.jpg",
+    "type": "image",
+    "width": 2316,
+    "height": 2316,
+    "aspectRatio": 1,
+    "thumb": "thumbs/IMG_2873.webp"
+  },
+  {
+    "name": "IMG_2947.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_2947.webp"
+  },
+  {
+    "name": "IMG_4155.jpg",
+    "type": "image",
+    "width": 2663,
+    "height": 3551,
+    "aspectRatio": 0.7499295972965362,
+    "thumb": "thumbs/IMG_4155.webp"
+  },
+  {
+    "name": "IMG_5275.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 3024,
+    "aspectRatio": 1,
+    "thumb": "thumbs/IMG_5275.webp"
+  },
+  {
+    "name": "IMG_6142.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_6142.webp"
+  },
+  {
+    "name": "IMG_6947.jpg",
+    "type": "image",
+    "width": 4284,
+    "height": 5712,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_6947.webp"
+  },
+  {
+    "name": "IMG_6950 2.jpg",
+    "type": "image",
+    "width": 2735,
+    "height": 3648,
+    "aspectRatio": 0.7497258771929824,
+    "thumb": "thumbs/IMG_6950 2.webp"
+  },
+  {
+    "name": "IMG_7514.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 3024,
+    "aspectRatio": 1,
+    "thumb": "thumbs/IMG_7514.webp"
+  },
+  {
+    "name": "IMG_7889.jpg",
+    "type": "image",
+    "width": 3780,
+    "height": 3024,
+    "aspectRatio": 1.25,
+    "thumb": "thumbs/IMG_7889.webp"
+  },
+  {
+    "name": "IMG_8057.jpg",
+    "type": "image",
+    "width": 3024,
+    "height": 4032,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_8057.webp"
+  },
+  {
+    "name": "IMG_8597.jpg",
+    "type": "image",
+    "width": 1947,
+    "height": 3461,
+    "aspectRatio": 0.5625541750939035,
+    "thumb": "thumbs/IMG_8597.webp"
+  },
+  {
+    "name": "IMG_9146.JPG",
+    "type": "image",
+    "width": 2066,
+    "height": 3672,
+    "aspectRatio": 0.5626361655773421,
+    "thumb": "thumbs/IMG_9146.webp"
+  },
+  {
+    "name": "IMG_9411.jpg",
+    "type": "image",
+    "width": 2316,
+    "height": 3088,
+    "aspectRatio": 0.75,
+    "thumb": "thumbs/IMG_9411.webp"
+  },
+  {
+    "name": "IMG_9498.jpg",
+    "type": "image",
+    "width": 2066,
+    "height": 3672,
+    "aspectRatio": 0.5626361655773421,
+    "thumb": "thumbs/IMG_9498.webp"
+  },
+  {
+    "name": "IMG_9559.jpg",
+    "type": "image",
+    "width": 4032,
+    "height": 3024,
+    "aspectRatio": 1.3333333333333333,
+    "thumb": "thumbs/IMG_9559.webp"
+  },
+  {
+    "name": "IMG_9748.jpg",
+    "type": "image",
+    "width": 2570,
+    "height": 3427,
+    "aspectRatio": 0.7499270498978698,
+    "thumb": "thumbs/IMG_9748.webp"
+  },
+  {
+    "name": "IMG_9757.jpg",
+    "type": "image",
+    "width": 2721,
+    "height": 3629,
+    "aspectRatio": 0.7497933314962799,
+    "thumb": "thumbs/IMG_9757.webp"
+  },
+  {
+    "name": "IMG_9982.jpg",
+    "type": "image",
+    "width": 2314,
+    "height": 3085,
+    "aspectRatio": 0.7500810372771475,
+    "thumb": "thumbs/IMG_9982.webp"
+  }
 ]

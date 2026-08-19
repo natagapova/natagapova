@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,21 +29,21 @@
 
   <nav class="top-navbar top-navbar--subpage top-navbar--centered">
     <div class="navbar-left">
-      <a href="index.html" class="navbar-back" id="back-home" aria-label="на главную">
+      <a href="index.html" class="navbar-back" id="back-home" aria-label="back to home">
         <span class="navbar-back__icon" aria-hidden="true">←</span>
       </a>
     </div>
     <div class="navbar-center">
-      <span class="navbar-page-title" id="designer-page-title">дизайн кейсы</span>
+      <span class="navbar-page-title" id="designer-page-title">design cases</span>
     </div>
     <div class="navbar-right">
-      <button type="button" id="languageSwitch" aria-label="Switch interface language to English">eng</button>
+      <button type="button" id="languageSwitch" aria-label="Переключить интерфейс на русский">рус</button>
       <a
         class="btn btn--ghost navbar-cv"
         id="navbar-cv-download"
-        href="docs/nat_designer.pdf"
-        download="nat_designer.pdf"
-        aria-label="скачать cv"
+        href="docs/nat_designer_en.pdf"
+        download="nat_designer_en.pdf"
+        aria-label="download cv"
       >
         <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>
         <span class="btn__label" id="navbar-cv-label">CV</span>
@@ -54,7 +54,7 @@
   <main class="subpage-main subpage-main--designer">
     <section class="projects-section" id="projects-section" aria-labelledby="designer-page-title">
       <div class="designer-tools-wrap" id="designer-tools-wrap">
-        <span class="designer-tools__label" id="designer-tools-label">инструменты</span>
+        <span class="designer-tools__label" id="designer-tools-label">tools</span>
         <div class="designer-tools" id="designer-tools" role="list"></div>
       </div>
       <div class="projects-scene" id="projects-scene"></div>
@@ -62,23 +62,26 @@
   </main>
 
   <footer class="footer">
-    <nav class="footer-social" id="footer-social" aria-label="соцсети"></nav>
+    <nav class="footer-social" id="footer-social" aria-label="social links"></nav>
     <span class="footer-copy">natalia agapova</span>
   </footer>
 
   <div id="project-overlay" class="project-overlay" hidden>
-    <button type="button" class="project-overlay__backdrop" aria-label="закрыть"></button>
+    <button type="button" class="project-overlay__backdrop" aria-label="close"></button>
     <div
       class="project-overlay__panel"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-overlay-title"
     >
-      <button type="button" class="project-overlay__close" id="project-overlay-close" aria-label="закрыть">
+      <button type="button" class="project-overlay__close" id="project-overlay-close" aria-label="close">
         <span aria-hidden="true">×</span>
       </button>
       <div class="project-overlay__scroll" id="project-overlay-scroll">
-        <h2 class="project-overlay__title" id="project-overlay-title"></h2>
+        <div class="project-overlay__heading">
+          <h2 class="project-overlay__title" id="project-overlay-title"></h2>
+          <span class="ml-card__status" id="project-overlay-status" hidden></span>
+        </div>
         <p class="project-overlay__meta" id="project-overlay-meta" hidden></p>
         <div class="project-overlay__tools" id="project-overlay-tools"></div>
         <p class="project-overlay__desc" id="project-overlay-desc"></p>
@@ -89,9 +92,9 @@
   </div>
 
   <div id="project-lightbox" class="lightbox hidden" hidden>
-    <button type="button" class="lightbox-close" id="project-lightbox-close" aria-label="закрыть">×</button>
-    <button type="button" class="lightbox-nav lightbox-nav--prev" id="project-lightbox-prev" aria-label="предыдущее">‹</button>
-    <button type="button" class="lightbox-nav lightbox-nav--next" id="project-lightbox-next" aria-label="следующее">›</button>
+    <button type="button" class="lightbox-close" id="project-lightbox-close" aria-label="close">×</button>
+    <button type="button" class="lightbox-nav lightbox-nav--prev" id="project-lightbox-prev" aria-label="previous">‹</button>
+    <button type="button" class="lightbox-nav lightbox-nav--next" id="project-lightbox-next" aria-label="next">›</button>
     <div class="lightbox-content" id="project-lightbox-content"></div>
   </div>
 

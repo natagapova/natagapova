@@ -12,11 +12,6 @@ let personGalleryColumnCount = 0;
 let personGalleryResizeTimer = null;
 let personGalleryObserver = null;
 
-/**
- * Reads the gap between .gallery-item elements as defined in css/styles.css by
- * creating dummy elements in memory and reading the computed style.
- * Updated to match DOM nesting: .gallery > .gallery-column > .gallery-item
- */
 function getGalleryItemGap() {
   const probe = document.createElement("div");
   probe.className = "gallery gallery-temp";
@@ -50,8 +45,16 @@ function getGalleryItemGap() {
   return gap;
 }
 
-function personGalleryMediaSrc(name) {
-  return PERSON_GALLERY_BASE_PATH + encodeURIComponent(name);
+function personGalleryAssetPath(relativePath) {
+  const parts = relativePath.split("/");
+  if (parts.length === 1) {
+    return PERSON_GALLERY_BASE_PATH + encodeURIComponent(parts[0]);
+  }
+  return `${PERSON_GALLERY_BASE_PATH}${parts.slice(0, -1).join("/")}/${encodeURIComponent(parts[parts.length - 1])}`;
+}
+
+function personGalleryFullSrc(name) {
+  return personGalleryAssetPath(name);
 }
 
 function getPersonGalleryColumnCount() {
@@ -66,8 +69,27 @@ function getPersonGalleryColumnCount() {
   return 4;
 }
 
-function isPersonGalleryVideo(filename) {
-  return /\.(mov|mp4|webm)$/i.test(filename);
+function normalizePersonGalleryItem(entry) {
+  if (typeof entry === "string") {
+    const type = /\.(mov|mp4|webm)$/i.test(entry) ? "video" : "image";
+    return {
+      name: entry,
+      type,
+      aspectRatio: 1,
+      thumb: null,
+      poster: null,
+      preview: null,
+    };
+  }
+
+  return {
+    name: entry.name,
+    type: entry.type,
+    aspectRatio: entry.aspectRatio > 0 ? entry.aspectRatio : 1,
+    thumb: entry.thumb ?? null,
+    poster: entry.poster ?? null,
+    preview: entry.preview ?? null,
+  };
 }
 
 function shufflePersonGallery(items) {
@@ -79,79 +101,13 @@ function shufflePersonGallery(items) {
   return shuffled;
 }
 
-/**
- * Estimates the aspect ratio for an image/video item,
- * but ensures errors are clear in dev tools for debugging.
- */
-function getMediaAspectRatio(item) {
-  const src = personGalleryMediaSrc(item.name);
-
-  return new Promise((resolve) => {
-    if (item.type === "video") {
-      const video = document.createElement("video");
-      video.preload = "metadata";
-      video.muted = true;
-      video.addEventListener(
-        "loadedmetadata",
-        () => {
-          const ratio =
-            video.videoWidth && video.videoHeight
-              ? video.videoWidth / video.videoHeight
-              : 1;
-          resolve(ratio);
-        },
-        { once: true }
-      );
-      video.addEventListener("error", () => {
-        console.warn("Error loading video for aspect ratio:", item.name);
-        resolve(1);
-      }, { once: true });
-      video.src = src;
-    } else {
-      const img = new Image();
-      img.addEventListener(
-        "load",
-        () => {
-          const ratio =
-            img.naturalWidth && img.naturalHeight
-              ? img.naturalWidth / img.naturalHeight
-              : 1;
-          resolve(ratio);
-        },
-        { once: true }
-      );
-      img.addEventListener("error", () => {
-        console.warn("Error loading image for aspect ratio:", item.name);
-        resolve(1);
-      }, { once: true });
-      img.src = src;
-    }
-  });
-}
-
 async function loadPersonGalleryManifest() {
   const response = await fetch(PERSON_GALLERY_MANIFEST);
   if (!response.ok) throw new Error("could not load person gallery manifest");
-  const filenames = await response.json();
-
-  const items = filenames.map((name) => ({
-    name,
-    type: isPersonGalleryVideo(name) ? "video" : "image",
-  }));
-
-  const shuffled = shufflePersonGallery(items);
-
-  // Preload aspect ratios
-  const aspectRatios = await Promise.all(shuffled.map(getMediaAspectRatio));
-
-  return shuffled.map((item, index) => ({
-    ...item,
-    aspectRatio: aspectRatios[index],
-  }));
+  const entries = await response.json();
+  return shufflePersonGallery(entries.map(normalizePersonGalleryItem));
 }
 
-// Greedy bin-packing: assign each new item to column with smallest cumulative "real" height so far.
-// Returns { columns, heights } where columns: array of arrays of items, heights: array of total column heights.
 function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
   const columns = Array.from({ length: columnCount }, () => []);
   const heights = Array.from({ length: columnCount }, () => 0);
@@ -169,7 +125,7 @@ function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
     }
     columns[minIdx].push({
       ...item,
-      _expectedHeight: height
+      _expectedHeight: height,
     });
     heights[minIdx] += (columns[minIdx].length > 1 ? gapPx : 0) + height;
   }
@@ -191,17 +147,29 @@ function getPersonGalleryAlt(item) {
   return template.replace("{{name}}", name);
 }
 
+function getPersonGalleryGridSrc(item) {
+  if (item.type === "video") {
+    return item.poster ? personGalleryAssetPath(item.poster) : personGalleryFullSrc(item.name);
+  }
+  return item.thumb ? personGalleryAssetPath(item.thumb) : personGalleryFullSrc(item.name);
+}
+
 function updatePersonGalleryAlts() {
   document.querySelectorAll(".gallery-item").forEach((wrapper) => {
-    const src = wrapper.dataset.src;
-    if (!src) return;
+    const name = wrapper.dataset.mediaName;
+    if (!name) return;
 
-    const name = decodeURIComponent(src.split("/").pop() || "");
-    const item = { name, type: wrapper.dataset.type || "image" };
+    const item = {
+      name,
+      type: wrapper.dataset.type || "image",
+    };
     const alt = getPersonGalleryAlt(item);
 
     const img = wrapper.querySelector("img");
     if (img) img.alt = alt;
+
+    const video = wrapper.querySelector("video");
+    if (video) video.setAttribute("aria-label", alt);
   });
 }
 
@@ -211,11 +179,27 @@ function createPersonGalleryElement(item) {
   const wrapper = document.createElement("div");
   wrapper.className = "gallery-item";
   wrapper.dataset.type = item.type;
-  wrapper.dataset.src = personGalleryMediaSrc(item.name);
   wrapper.dataset.mediaName = item.name;
+  wrapper.dataset.fullSrc = personGalleryFullSrc(item.name);
+  if (item.poster) {
+    wrapper.dataset.posterSrc = personGalleryAssetPath(item.poster);
+  }
 
   if (item.type === "video") {
+    const poster = document.createElement("img");
+    poster.className = "gallery-item__poster";
+    poster.alt = getPersonGalleryAlt(item);
+    poster.loading = "lazy";
+    poster.decoding = "async";
+    poster.style.width = "100%";
+    poster.style.height = "100%";
+    poster.style.objectFit = "cover";
+    poster.style.display = "block";
+    wrapper.appendChild(poster);
+
     const video = document.createElement("video");
+    video.className = "gallery-item__video";
+    video.hidden = true;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
@@ -225,6 +209,9 @@ function createPersonGalleryElement(item) {
     video.style.height = "100%";
     video.style.objectFit = "cover";
     video.style.display = "block";
+    if (item.preview) {
+      video.dataset.previewSrc = personGalleryAssetPath(item.preview);
+    }
     wrapper.appendChild(video);
   } else {
     const img = document.createElement("img");
@@ -235,6 +222,7 @@ function createPersonGalleryElement(item) {
     img.style.height = "100%";
     img.style.objectFit = "cover";
     img.style.display = "block";
+    img.dataset.gridSrc = getPersonGalleryGridSrc(item);
     wrapper.appendChild(img);
   }
 
@@ -242,26 +230,49 @@ function createPersonGalleryElement(item) {
 }
 
 function loadPersonGalleryMedia(wrapper) {
-  const src = wrapper.dataset.src;
-
   if (wrapper.dataset.type === "video") {
-    const video = wrapper.querySelector("video");
-    if (video && !video.src) {
-      video.src = src;
-      video.play().catch(() => {});
-    } else if (video) {
+    const poster = wrapper.querySelector(".gallery-item__poster");
+    const video = wrapper.querySelector(".gallery-item__video");
+    if (!video) return;
+
+    if (poster && !poster.src && wrapper.dataset.posterSrc) {
+      poster.src = wrapper.dataset.posterSrc;
+    }
+
+    const previewSrc = video.dataset.previewSrc;
+    if (previewSrc && !video.src) {
+      video.src = previewSrc;
+    }
+
+    if (video.src) {
+      video.hidden = false;
+      if (poster) poster.hidden = true;
       video.play().catch(() => {});
     }
-  } else {
-    const img = wrapper.querySelector("img");
-    if (img && !img.src) img.src = src;
+    return;
+  }
+
+  const img = wrapper.querySelector("img");
+  if (img && !img.src) {
+    img.src = img.dataset.gridSrc || wrapper.dataset.fullSrc;
   }
 }
 
 function unloadPersonGalleryVideo(wrapper) {
   if (wrapper.dataset.type !== "video") return;
-  const video = wrapper.querySelector("video");
-  if (video) video.pause();
+
+  const video = wrapper.querySelector(".gallery-item__video");
+  const poster = wrapper.querySelector(".gallery-item__poster");
+  if (!video) return;
+
+  video.pause();
+  video.hidden = true;
+  if (poster) {
+    poster.hidden = false;
+    if (!poster.src && wrapper.dataset.posterSrc) {
+      poster.src = wrapper.dataset.posterSrc;
+    }
+  }
 }
 
 function initPersonGalleryObserver() {
@@ -277,7 +288,7 @@ function initPersonGalleryObserver() {
         }
       });
     },
-    { rootMargin: "200px 0px" }
+    { rootMargin: "240px 0px" }
   );
 }
 
@@ -286,7 +297,7 @@ function openPersonGalleryLightbox(item) {
   const content = lightbox?.querySelector(".lightbox-content");
   if (!lightbox || !content) return;
 
-  const src = personGalleryMediaSrc(item.name);
+  const src = personGalleryFullSrc(item.name);
   content.innerHTML = "";
 
   if (item.type === "video") {
@@ -295,6 +306,7 @@ function openPersonGalleryLightbox(item) {
     video.controls = true;
     video.autoplay = true;
     video.playsInline = true;
+    video.preload = "metadata";
     video.setAttribute("aria-label", getPersonGalleryAlt(item));
     video.style.maxWidth = "100%";
     video.style.maxHeight = "100vh";
@@ -336,23 +348,19 @@ function initPersonGalleryLightboxHandlers() {
   });
 }
 
-/**
- * Render the gallery as a masonry grid with equal-length (flush) columns.
- * 
- * - Distribute items via bin-packing/balancing using estimated layouts.
- * - Compute the min rendered column height, and clip each column
- *   by distributing reduction proportionally across the tallest items,
- *   enforcing a minimum-item-height floor; log a warning if undershoot is forced.
- * - All logic is synchronous & based on computed heights (no DOM race).
- */
 function renderPersonGallery() {
   const gallery = document.getElementById("gallery");
   if (!gallery || personGalleryItems.length === 0) return;
 
   const columnCount = getPersonGalleryColumnCount();
-  if (columnCount === personGalleryColumnCount &&
-      gallery.childNodes.length === columnCount) return;
+  if (columnCount === personGalleryColumnCount && gallery.childNodes.length === columnCount) return;
   personGalleryColumnCount = columnCount;
+
+  if (personGalleryObserver) {
+    gallery.querySelectorAll(".gallery-item").forEach((item) => {
+      personGalleryObserver.unobserve(item);
+    });
+  }
 
   gallery.innerHTML = "";
 
@@ -370,93 +378,68 @@ function renderPersonGallery() {
   );
 
   const minHeight = Math.min(...heights);
-
   const colEls = [];
+  const MIN_HEIGHT_RATIO = 0.7;
 
-  // Height ratio floor for regular reduction
-  const MIN_HEIGHT_RATIO = 0.7; // don't make any image <70% original height
-
-  /**
-   * For a column, adjust item heights so that column sums exactly to minHeight.
-   * First, do MIN_HEIGHT_RATIO-clipping as before (tallest-first distributed trim).
-   * Then, if any exact pixels remain (even < 1px), apply as final unrestricted correction
-   * to the tallest item after floor-limited crops.
-   */
-  function computeColumnAdjustedHeights(columnItems, colIdx, colHeight, minHeight, gapPx) {
-    // 1. Build: {origIdx, item, origHeight, minHeight}
+  function computeColumnAdjustedHeights(columnItems, colIdx, colHeight, targetMinHeight, gapPx) {
     let indexed = columnItems.map((item, idx) => ({
       origIdx: idx,
       item,
       origHeight: item._expectedHeight,
-      minHeight: item._expectedHeight * MIN_HEIGHT_RATIO
+      minHeight: item._expectedHeight * MIN_HEIGHT_RATIO,
     }));
 
     const itemCount = columnItems.length;
-    const numGaps = itemCount > 1 ? (itemCount - 1) : 0;
-    const overflow = colHeight - minHeight;
+    const numGaps = itemCount > 1 ? itemCount - 1 : 0;
+    const overflow = colHeight - targetMinHeight;
     if (overflow <= 0) {
-      return indexed.map(x => x.origHeight);
+      return indexed.map((x) => x.origHeight);
     }
 
     let neededTrim = overflow;
-
-    // 2. Sort by origHeight descending for tallest-first trim
     indexed.sort((a, b) => b.origHeight - a.origHeight);
 
-    let trimmed = new Array(indexed.length).fill(0);
-
-    // 3. Tallest-first distribute down to minHeight floor
+    const trimmed = new Array(indexed.length).fill(0);
     for (let i = 0; i < indexed.length; i++) {
       if (neededTrim <= 0) break;
-      let maxTrim = indexed[i].origHeight - indexed[i].minHeight;
+      const maxTrim = indexed[i].origHeight - indexed[i].minHeight;
       if (maxTrim <= 0) continue;
-      let toTrim = Math.min(neededTrim, maxTrim);
+      const toTrim = Math.min(neededTrim, maxTrim);
       trimmed[i] = toTrim;
       neededTrim -= toTrim;
     }
 
-    // 4. Map trims back to original order (by origIdx)
-    let resultTrimByOrigIdx = new Array(indexed.length);
-    let bySortedOrigIdx = indexed.map((x, idx) => ({ ...x, trim: trimmed[idx] }));
-    bySortedOrigIdx.forEach((obj, sortIdx) => {
-      resultTrimByOrigIdx[obj.origIdx] = obj.trim;
+    const resultTrimByOrigIdx = new Array(indexed.length);
+    indexed.forEach((entry, sortIdx) => {
+      resultTrimByOrigIdx[entry.origIdx] = trimmed[sortIdx];
     });
 
-    // 5. Compose candidate heights (floored by MIN_HEIGHT_RATIO)
-    let candidateHeights = columnItems.map((item, idx) =>
-      Math.max(item._expectedHeight - (resultTrimByOrigIdx[idx] || 0), item._expectedHeight * MIN_HEIGHT_RATIO)
+    const candidateHeights = columnItems.map((item, idx) =>
+      Math.max(
+        item._expectedHeight - (resultTrimByOrigIdx[idx] || 0),
+        item._expectedHeight * MIN_HEIGHT_RATIO
+      )
     );
 
-    // 6. Compute sum after floor-limited distribution
     let sumCandidate = candidateHeights.reduce((a, b) => a + b, 0) + numGaps * gapPx;
-    // Compute the exact required correction (could be positive, negative, or zero)
-    let correction = sumCandidate - minHeight;
+    const correction = sumCandidate - targetMinHeight;
 
-    // 7. If any pixels remain (correction > 0), apply exactly to the tallest final item (now ignoring the min floor)
-    //    (If correction <= 0, no further crop is possible/needed; correction < 0 means we've undershot, only possible if rounding/numeric drift)
-    if (Math.abs(correction) > 1e-6) {
-      if (correction > 0) {
-        // Find tallest of the candidateHeights (after floor-limited correction)
-        let tallestIdx = 0;
-        let tallestHeight = candidateHeights[0];
-        for (let i = 1; i < candidateHeights.length; i++) {
-          if (candidateHeights[i] > tallestHeight) {
-            tallestHeight = candidateHeights[i];
-            tallestIdx = i;
-          }
+    if (Math.abs(correction) > 1e-6 && correction > 0) {
+      let tallestIdx = 0;
+      let tallestHeight = candidateHeights[0];
+      for (let i = 1; i < candidateHeights.length; i++) {
+        if (candidateHeights[i] > tallestHeight) {
+          tallestHeight = candidateHeights[i];
+          tallestIdx = i;
         }
-        candidateHeights[tallestIdx] -= correction;
       }
-      // If correction is negative (should be extremely rare: floating-point undershoot), cannot add to heights (never "grow").
-      // Log only if the drift is actually meaningful
+      candidateHeights[tallestIdx] -= correction;
     }
 
-    // 8. Final check
-    let sumFinal = candidateHeights.reduce((a, b) => a + b, 0) + numGaps * gapPx;
-    if (Math.abs(sumFinal - minHeight) > 1e-5) {
+    const sumFinal = candidateHeights.reduce((a, b) => a + b, 0) + numGaps * gapPx;
+    if (Math.abs(sumFinal - targetMinHeight) > 1e-5) {
       console.warn(
-        `[PersonGallery] Column ${colIdx + 1}: could not match minHeight. Wanted ${minHeight}, got ${sumFinal}. Missed by ${sumFinal - minHeight}.`,
-        {finalHeights: candidateHeights, target: minHeight, columnItems}
+        `[PersonGallery] Column ${colIdx + 1}: could not match minHeight. Wanted ${targetMinHeight}, got ${sumFinal}.`
       );
     }
 
@@ -471,9 +454,9 @@ function renderPersonGallery() {
     columnEl.style.flexDirection = "column";
     columnEl.style.justifyContent = "flex-start";
 
-    // Compute original height for this column
-    const originalColHeight = columnItems.reduce((acc, item, i) =>
-      acc + item._expectedHeight + (i > 0 ? itemGap : 0), 0
+    const originalColHeight = columnItems.reduce(
+      (acc, item, i) => acc + item._expectedHeight + (i > 0 ? itemGap : 0),
+      0
     );
     const finalHeights = computeColumnAdjustedHeights(
       columnItems,
@@ -501,9 +484,7 @@ function renderPersonGallery() {
   });
 
   const renderedHeights = colEls.map((col) => col.offsetHeight);
-  const galleryHeight = renderedHeights.length
-    ? Math.max(...renderedHeights)
-    : Math.round(minHeight);
+  const galleryHeight = renderedHeights.length ? Math.max(...renderedHeights) : Math.round(minHeight);
   gallery.style.height = galleryHeight > 0 ? `${galleryHeight}px` : "auto";
 }
 
