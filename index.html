@@ -18,9 +18,10 @@
   <meta name="twitter:title" content="natalia's portfolio">
   <meta name="twitter:description" content="Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.">
   <meta name="twitter:image" content="https://www.natagapova.ru/images/my-head.png">
-  <link rel="icon" href="images/favicon.ico?v=2" sizes="any">
-  <link rel="icon" type="image/png" href="images/favicon.png?v=2" sizes="32x32">
-  <link rel="icon" type="image/webp" href="images/favicon.webp?v=2">
+  <link rel="preload" as="image" href="images/my-head.webp" type="image/webp">
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" href="images/favicon.png?v=3" sizes="32x32">
+  <link rel="icon" type="image/webp" href="images/favicon.webp?v=3">
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/script.js"></script>
   <script defer src="js/cursor-trail.js"></script>
@@ -57,23 +58,30 @@
       </h1>
       <div class="hero-intro__photo-wrap" id="hero-photo-wrap">
         <div class="hero-intro__photo-stack">
-          <img
-            class="hero-intro__photo hero-intro__photo--open"
-            src="images/my-head.png"
-            alt="Natalia Agapova"
-            width="2392"
-            height="3503"
-            decoding="async"
-          />
-          <img
-            class="hero-intro__photo hero-intro__photo--closed"
-            src="images/my-head-eyesclosed.png"
-            alt=""
-            width="832"
-            height="1248"
-            decoding="async"
-            aria-hidden="true"
-          />
+          <picture>
+            <source srcset="images/my-head.webp" type="image/webp">
+            <img
+              class="hero-intro__photo hero-intro__photo--open"
+              src="images/my-head.png"
+              alt="Natalia Agapova"
+              width="615"
+              height="900"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+          <picture>
+            <source srcset="images/my-head-eyesclosed.webp" type="image/webp">
+            <img
+              class="hero-intro__photo hero-intro__photo--closed"
+              src="images/my-head-eyesclosed.png"
+              alt=""
+              width="600"
+              height="900"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </picture>
         </div>
       </div>
       <nav class="roles-nav roles-nav--hero" id="hero-roles-nav" aria-label="Roles">

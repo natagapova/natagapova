@@ -2912,9 +2912,11 @@ function initHeroBlink() {
   const wrap = document.getElementById("hero-photo-wrap");
   if (!wrap) return;
 
-  const closedSrc = "images/my-head-eyesclosed.png";
-  const preload = new Image();
-  preload.src = closedSrc;
+  const closedImg = wrap.querySelector(".hero-intro__photo--closed");
+  if (closedImg) {
+    const preload = new Image();
+    preload.src = closedImg.currentSrc || closedImg.src;
+  }
 
   let blinkTimer;
 
