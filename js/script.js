@@ -71,6 +71,9 @@ const translations = {
     mlToolRag: "RAG",
     mlToolChroma: "ChromaDB",
     mlToolOllama: "Ollama",
+    mlToolMediaPipe: "MediaPipe",
+    mlToolOpenCV: "OpenCV",
+    mlToolPyAutoGUI: "PyAutoGUI",
     mlActionGithub: "GitHub",
     mlActionArticle: "статья",
     mlStatusInProgress: "в разработке",
@@ -80,6 +83,9 @@ const translations = {
     MlKnowledgeSystemTitle: "Personal Knowledge System",
     MlKnowledgeSystemDesc:
       "RAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрана с нуля на Python — без high-level фреймворков.",
+    MlGestureInputTitle: "Gesture input",
+    MlGestureInputDesc:
+      "Управление курсором жестами руки с веб-камеры: MediaPipe Hands, распознавание pinch / ready / click и плавное перемещение курсора через PyAutoGUI. Реал-тайм трекинг со сглаживанием и двухшаговым кликом.",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -274,6 +280,9 @@ const translations = {
     mlToolRag: "RAG",
     mlToolChroma: "ChromaDB",
     mlToolOllama: "Ollama",
+    mlToolMediaPipe: "MediaPipe",
+    mlToolOpenCV: "OpenCV",
+    mlToolPyAutoGUI: "PyAutoGUI",
     mlActionGithub: "GitHub",
     mlActionArticle: "paper",
     mlStatusInProgress: "in progress",
@@ -283,6 +292,9 @@ const translations = {
     MlKnowledgeSystemTitle: "Personal Knowledge System",
     MlKnowledgeSystemDesc:
       "A RAG system for answering questions from personal PDFs: chunking, embeddings, semantic search in ChromaDB, and LLM answers via Ollama with citations. Built from scratch in Python without high-level frameworks.",
+    MlGestureInputTitle: "Gesture input",
+    MlGestureInputDesc:
+      "Webcam hand-gesture mouse control: MediaPipe Hands landmark tracking, pinch / ready / click recognition, and smooth cursor movement with PyAutoGUI. Real-time tracking with jitter reduction and a two-step click gesture.",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -686,6 +698,14 @@ const mlProjects = [
       "mlToolCaptum",
       "mlToolJupyter",
     ],
+  },
+  {
+    id: "gesture-input",
+    url: "https://github.com/natagapova/gesture-input",
+    preview: "images/ml/gesture-input.gif",
+    titleKey: "MlGestureInputTitle",
+    descKey: "MlGestureInputDesc",
+    toolKeys: ["mlToolPython", "mlToolMediaPipe", "mlToolOpenCV", "mlToolPyAutoGUI"],
   },
   {
     id: "personal-knowledge-system",
