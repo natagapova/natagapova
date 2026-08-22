@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.">
+  <meta name="description" content="Natalia Agapova — design, development, and ML. Portfolio with cases in UX/UI, web apps, and applied machine learning.">
   <title>natalia's portfolio</title>
   <link rel="canonical" href="https://www.natagapova.ru/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="natalia's portfolio">
   <meta property="og:url" content="https://www.natagapova.ru/">
   <meta property="og:title" content="natalia's portfolio">
-  <meta property="og:description" content="Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.">
+  <meta property="og:description" content="Natalia Agapova — design, development, and ML. Portfolio with cases in UX/UI, web apps, and applied machine learning.">
   <meta property="og:image" content="https://www.natagapova.ru/images/my-head.png">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="natalia's portfolio">
-  <meta name="twitter:description" content="Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.">
+  <meta name="twitter:description" content="Natalia Agapova — design, development, and ML. Portfolio with cases in UX/UI, web apps, and applied machine learning.">
   <meta name="twitter:image" content="https://www.natagapova.ru/images/my-head.png">
   <link rel="preload" as="image" href="images/my-head.webp" type="image/webp">
   <link rel="icon" href="/favicon.ico?v=3" sizes="any">
@@ -37,16 +37,16 @@
         </div>
         <div class="navbar-right">
           <button type="button" id="languageSwitch" aria-label="Переключить интерфейс на русский">рус</button>
-          <a
+          <button
+            type="button"
             class="btn btn--ghost navbar-cv"
             id="navbar-cv-download"
-            href="docs/nat_designer_en.pdf"
-            download="nat_designer_en.pdf"
             aria-label="download cv"
+            aria-haspopup="menu"
+            aria-expanded="false"
           >
-            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>
             <span class="btn__label" id="navbar-cv-label">CV</span>
-          </a>
+          </button>
         </div>
       </nav>
       <header class="hero-intro">
@@ -163,7 +163,7 @@
           <span id="intro-block-title">about me</span>
         </h2>
         <p class="intro-section__lead" id="intro-lead">
-          middle product / UX/UI designer. I build interfaces and visual&nbsp;systems — from&nbsp;structure to&nbsp;details — so products are easy&nbsp;to&nbsp;use and genuinely nice&nbsp;to&nbsp;share.
+          Applied AI bachelor's at Innopolis. I build digital products across design, development, and ML — from interfaces and visuals to code, models, and research.
         </p>
         <p class="intro-section__status">
           <span class="intro-section__status-label" id="intro-status-label">current status:</span>
@@ -172,7 +172,11 @@
             <span class="intro-section__status-value" id="intro-status-value">open to work — design, dev, ml &amp;&nbsp;more</span>
           </span>
         </p>
-        <a class="btn intro-section__cta" id="intro-cta" href="designer.html">design cases</a>
+        <div class="intro-section__ctas">
+          <a class="btn intro-section__cta" id="intro-cta-designer" href="designer.html">design cases</a>
+          <a class="btn intro-section__cta" id="intro-cta-dev" href="dev.html">dev cases</a>
+          <a class="btn intro-section__cta" id="intro-cta-ml" href="ml.html">ml cases</a>
+        </div>
       </div>
     </div>
   </section>

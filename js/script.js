@@ -18,7 +18,7 @@ const translations = {
     portfolioTitle: "проекты",
     designerPageTitle: "дизайн кейсы",
     navbarCvLabel: "CV",
-    navbarCvAria: "скачать cv",
+    navbarCvAria: "выбрать cv для скачивания",
     mlPageTitle: "ml кейсы",
     designerToolsLabel: "инструменты",
     designerToolFigma: "Figma",
@@ -74,6 +74,8 @@ const translations = {
     mlToolMediaPipe: "MediaPipe",
     mlToolOpenCV: "OpenCV",
     mlToolPyAutoGUI: "PyAutoGUI",
+    mlToolCoreML: "Core ML",
+    mlToolOnnx: "ONNX",
     mlActionGithub: "GitHub",
     mlActionArticle: "статья",
     mlStatusInProgress: "в разработке",
@@ -86,6 +88,9 @@ const translations = {
     MlGestureInputTitle: "Gesture input",
     MlGestureInputDesc:
       "Управление курсором жестами руки с веб-камеры: MediaPipe Hands, распознавание pinch / ready / click и плавное перемещение курсора через PyAutoGUI. Реал-тайм трекинг со сглаживанием и двухшаговым кликом.",
+    MlEmotionDetectionTitle: "Emotion detection",
+    MlEmotionDetectionDesc:
+      "распознавание эмоций по лицу на FER2013 (7 классов): полный цикл — подготовка данных, обучение EmotionCNN, оценка, INT8-квантизация, экспорт в Core ML и браузерное демо на ONNX Runtime Web. 58.7% accuracy, до 60.8% с ensemble + TTA",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -191,10 +196,23 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "обо мне",
     introLead:
-      "middle product / UX/UI designer. собираю интерфейсы и визуальные\u00A0системы — от\u00A0структуры до\u00A0деталей, чтобы продуктом было удобно\u00A0пользоваться и приятно\u00A0им\u00A0делиться.",
+      "бакалавр прикладного ИИ в иннополисе. собираю цифровые продукты на стыке дизайна, разработки и ML — от интерфейсов и визуала до кода, моделей и исследований.",
     introStatusLabel: "current status:",
     introStatusValue: "открыта к проектам — дизайн, dev, ml и\u00A0не\u00A0только",
-    introCta: "дизайн кейсы",
+    introCtaDesigner: "дизайн кейсы",
+    introCtaDev: "dev кейсы",
+    introCtaMl: "ml кейсы",
+    devIntroTitle: "мой опыт в разработке",
+    devIntroLead:
+      "веб и приложения: лендинги и вёрстка, фронтенд в продуктовых командах, Swift для macOS. в AzimovLab вела фронтенд — от архитектуры до UI; собираю продакшн-сайты и утилиты с акцентом на чистый код и понятный UX.",
+    mlIntroTitle: "мой опыт в ml",
+    mlIntroLead:
+      "прикладной ML и исследования: BERT-классификация с XAI и debiasing, RAG по личным документам, computer vision с MediaPipe. есть публикации; люблю связку модели, объяснимости и продуктового контекста.",
+    cvPickerTitle: "скачать cv",
+    cvPickerClose: "закрыть",
+    cvVariantDesigner: "дизайн",
+    cvVariantDev: "разработка",
+    cvVariantMl: "ml",
     introTrustLabel: "мне доверяют",
     introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов",
     introSocialLabel: "соцсети",
@@ -227,7 +245,7 @@ const translations = {
     portfolioTitle: "projects",
     designerPageTitle: "design cases",
     navbarCvLabel: "CV",
-    navbarCvAria: "download cv",
+    navbarCvAria: "choose a cv to download",
     mlPageTitle: "ml cases",
     designerToolsLabel: "tools",
     designerToolFigma: "Figma",
@@ -283,6 +301,8 @@ const translations = {
     mlToolMediaPipe: "MediaPipe",
     mlToolOpenCV: "OpenCV",
     mlToolPyAutoGUI: "PyAutoGUI",
+    mlToolCoreML: "Core ML",
+    mlToolOnnx: "ONNX",
     mlActionGithub: "GitHub",
     mlActionArticle: "paper",
     mlStatusInProgress: "in progress",
@@ -295,6 +315,9 @@ const translations = {
     MlGestureInputTitle: "Gesture input",
     MlGestureInputDesc:
       "Webcam hand-gesture mouse control: MediaPipe Hands landmark tracking, pinch / ready / click recognition, and smooth cursor movement with PyAutoGUI. Real-time tracking with jitter reduction and a two-step click gesture.",
+    MlEmotionDetectionTitle: "Emotion detection",
+    MlEmotionDetectionDesc:
+      "Facial emotion recognition on FER2013 (7 classes): full pipeline — data prep, EmotionCNN training, evaluation, INT8 quantization, Core ML export, and a browser demo via ONNX Runtime Web. 58.7% accuracy, up to 60.8% with ensemble + TTA",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -400,10 +423,23 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "about me",
     introLead:
-      "middle product / UX/UI designer. I build interfaces and visual\u00A0systems — from\u00A0structure to\u00A0details — so products are easy\u00A0to\u00A0use and genuinely nice\u00A0to\u00A0share.",
+      "Applied AI bachelor's at Innopolis. I build digital products across design, development, and ML — from interfaces and visuals to code, models, and research.",
     introStatusLabel: "current status:",
     introStatusValue: "open to work — design, dev, ml &\u00A0more",
-    introCta: "design cases",
+    introCtaDesigner: "design cases",
+    introCtaDev: "dev cases",
+    introCtaMl: "ml cases",
+    devIntroTitle: "my dev experience",
+    devIntroLead:
+      "Web and apps: landing pages, front-end in product teams, Swift for macOS. At AzimovLab I led front-end — from architecture to UI; I ship production sites and utilities with a focus on clean code and clear UX.",
+    mlIntroTitle: "my ml experience",
+    mlIntroLead:
+      "Applied ML and research: BERT classification with XAI and debiasing, RAG over personal documents, computer vision with MediaPipe. Published work; I like combining models, explainability, and product context.",
+    cvPickerTitle: "download cv",
+    cvPickerClose: "close",
+    cvVariantDesigner: "design",
+    cvVariantDev: "development",
+    cvVariantMl: "ml",
     introTrustLabel: "trusted by",
     introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required",
     introSocialLabel: "social links",
@@ -700,6 +736,14 @@ const mlProjects = [
     ],
   },
   {
+    id: "emotions-with-audio",
+    url: "https://github.com/natagapova/emotions-with-audio",
+    preview: "images/ml/emotions-with-audio.webp",
+    titleKey: "MlEmotionDetectionTitle",
+    descKey: "MlEmotionDetectionDesc",
+    toolKeys: ["mlToolPython", "mlToolPytorch", "mlToolOnnx", "mlToolCoreML"],
+  },
+  {
     id: "gesture-input",
     url: "https://github.com/natagapova/gesture-input",
     preview: "images/ml/gesture-input.gif",
@@ -710,7 +754,7 @@ const mlProjects = [
   {
     id: "personal-knowledge-system",
     url: "https://github.com/natagapova/personal-knowledge-system",
-    preview: "images/pks_portfolio.png",
+    preview: "images/ml/personal-knowledge-system.webp",
     titleKey: "MlKnowledgeSystemTitle",
     descKey: "MlKnowledgeSystemDesc",
     toolKeys: ["mlToolPython", "mlToolRag", "mlToolChroma", "mlToolOllama"],
@@ -929,7 +973,14 @@ const translationKeyToId = {
   introLead: "intro-lead",
   introStatusLabel: "intro-status-label",
   introStatusValue: "intro-status-value",
-  introCta: "intro-cta",
+  introCtaDesigner: "intro-cta-designer",
+  introCtaDev: "intro-cta-dev",
+  introCtaMl: "intro-cta-ml",
+  devIntroTitle: "dev-intro-title",
+  devIntroLead: "dev-intro-lead",
+  mlIntroTitle: "ml-intro-title",
+  mlIntroLead: "ml-intro-lead",
+  cvPickerTitle: "cv-picker-title",
   introTrustLabel: "intro-trust-label",
   introContactPrefix: "intro-contact-prefix",
   languagesBlockTitle: "languages-block-title",
@@ -941,10 +992,142 @@ const translationKeyToId = {
   langMapDesc: "lang-map-desc",
 };
 
-const CV_DOWNLOAD = {
-  ru: { href: "docs/nat_designer.pdf", filename: "nat_designer.pdf" },
-  en: { href: "docs/nat_designer_en.pdf", filename: "nat_designer_en.pdf" },
-};
+const CV_VARIANTS = [
+  {
+    id: "designer",
+    labelKey: "cvVariantDesigner",
+    ru: { href: "docs/nat_designer.pdf", filename: "nat_designer.pdf" },
+    en: { href: "docs/nat_designer_en.pdf", filename: "nat_designer_en.pdf" },
+  },
+  {
+    id: "dev",
+    labelKey: "cvVariantDev",
+    ru: { href: "docs/nat_dev.pdf", filename: "nat_dev.pdf" },
+    en: { href: "docs/nat_dev_en.pdf", filename: "nat_dev_en.pdf" },
+  },
+  {
+    id: "ml",
+    labelKey: "cvVariantMl",
+    ru: { href: "docs/nat_ml.pdf", filename: "nat_ml.pdf" },
+    en: { href: "docs/nat_ml_en.pdf", filename: "nat_ml_en.pdf" },
+  },
+];
+
+let cvPickerBound = false;
+
+const CV_DOWNLOAD_ICON =
+  '<svg class="cv-picker__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>';
+
+function getCvFile(variant) {
+  return variant[currentLang] ?? variant.en;
+}
+
+function ensureCvPicker() {
+  const trigger = document.getElementById("navbar-cv-download");
+  if (!trigger) return null;
+
+  let wrap = trigger.closest(".navbar-cv-wrap");
+  if (!wrap) {
+    wrap = document.createElement("div");
+    wrap.className = "navbar-cv-wrap";
+    trigger.parentNode.insertBefore(wrap, trigger);
+    wrap.appendChild(trigger);
+  }
+
+  trigger.querySelector(".btn__icon")?.remove();
+  trigger.setAttribute("aria-haspopup", "menu");
+  trigger.setAttribute("aria-controls", "cv-picker");
+
+  let picker = wrap.querySelector("#cv-picker");
+  if (!picker) {
+    picker = document.createElement("div");
+    picker.id = "cv-picker";
+    picker.className = "cv-picker";
+    picker.hidden = true;
+    picker.innerHTML = `
+      <ul class="cv-picker__list" id="cv-picker-list" role="menu"></ul>
+    `;
+    wrap.appendChild(picker);
+  }
+
+  return picker;
+}
+
+function renderCvPicker(t) {
+  const picker = ensureCvPicker();
+  const listEl = document.getElementById("cv-picker-list");
+  if (!picker || !listEl) return;
+
+  listEl.innerHTML = CV_VARIANTS.map((variant) => {
+    const file = getCvFile(variant);
+    const label = t[variant.labelKey] ?? variant.id;
+    return `
+      <li role="none">
+        <a
+          class="cv-picker__option"
+          href="${escapeHtml(file.href)}"
+          download="${escapeHtml(file.filename)}"
+          role="menuitem"
+        >
+          <span class="cv-picker__option-label">${escapeHtml(label)}</span>
+          ${CV_DOWNLOAD_ICON}
+        </a>
+      </li>
+    `;
+  }).join("");
+}
+
+function openCvPicker() {
+  const picker = document.getElementById("cv-picker");
+  const trigger = document.getElementById("navbar-cv-download");
+  if (!picker || !trigger) return;
+  picker.hidden = false;
+  trigger.setAttribute("aria-expanded", "true");
+}
+
+function closeCvPicker() {
+  const picker = document.getElementById("cv-picker");
+  const trigger = document.getElementById("navbar-cv-download");
+  if (!picker || !trigger) return;
+  picker.hidden = true;
+  trigger.setAttribute("aria-expanded", "false");
+}
+
+function initCvPicker(t) {
+  if (!cvPickerBound) {
+    const trigger = document.getElementById("navbar-cv-download");
+    if (trigger) {
+      cvPickerBound = true;
+      ensureCvPicker();
+      trigger.setAttribute("aria-expanded", "false");
+
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const picker = document.getElementById("cv-picker");
+        if (!picker) return;
+        if (picker.hidden) openCvPicker();
+        else closeCvPicker();
+      });
+
+      document.addEventListener("click", (event) => {
+        const wrap = document.querySelector(".navbar-cv-wrap");
+        const picker = document.getElementById("cv-picker");
+        if (!wrap || !picker || picker.hidden) return;
+        if (!wrap.contains(event.target)) closeCvPicker();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const picker = document.getElementById("cv-picker");
+        if (event.key === "Escape" && picker && !picker.hidden) {
+          closeCvPicker();
+        }
+      });
+    }
+  }
+
+  renderCvPicker(t);
+}
 
 const SOCIAL_LINKS = [
   {
@@ -1483,6 +1666,67 @@ function initFrontendLazyIframes() {
   iframes.forEach((iframe) => observer.observe(iframe));
 }
 
+const ML_CARD_GRID_BREAKPOINTS = [{ minWidth: 640, columns: 2 }];
+const DEV_CARD_GRID_BREAKPOINTS = [
+  { minWidth: 1024, columns: 3 },
+  { minWidth: 640, columns: 2 },
+];
+
+let cardGridResizeTimer = null;
+
+function getCardGridColumnCount(breakpoints) {
+  const sorted = [...breakpoints].sort((a, b) => b.minWidth - a.minWidth);
+  for (const breakpoint of sorted) {
+    if (window.innerWidth >= breakpoint.minWidth) {
+      return breakpoint.columns;
+    }
+  }
+  return 1;
+}
+
+function layoutCardMasonryGrid(gridEl, { cardSelector, breakpoints }) {
+  if (!gridEl) return;
+
+  const cards = [...gridEl.querySelectorAll(`:scope > ${cardSelector}`)];
+
+  gridEl.querySelectorAll(":scope > .card-grid__column").forEach((column) => {
+    [...column.children].forEach((child) => gridEl.appendChild(child));
+    column.remove();
+  });
+
+  gridEl.classList.remove("card-grid--columns");
+
+  const columnCount = getCardGridColumnCount(breakpoints);
+  if (columnCount <= 1 || cards.length === 0) return;
+
+  const columns = Array.from({ length: columnCount }, () => {
+    const column = document.createElement("div");
+    column.className = "card-grid__column";
+    return column;
+  });
+
+  cards.forEach((card, index) => {
+    columns[index % columnCount].appendChild(card);
+  });
+
+  columns.forEach((column) => gridEl.appendChild(column));
+  gridEl.classList.add("card-grid--columns");
+}
+
+function scheduleCardGridLayout() {
+  clearTimeout(cardGridResizeTimer);
+  cardGridResizeTimer = setTimeout(() => {
+    layoutCardMasonryGrid(document.getElementById("ml-grid"), {
+      cardSelector: ".ml-card",
+      breakpoints: ML_CARD_GRID_BREAKPOINTS,
+    });
+    layoutCardMasonryGrid(document.getElementById("dev-grid"), {
+      cardSelector: ".frontend-card",
+      breakpoints: DEV_CARD_GRID_BREAKPOINTS,
+    });
+  }, 120);
+}
+
 function renderFrontendProjects() {
   const grid = document.getElementById("dev-grid");
   if (!grid) return;
@@ -1530,6 +1774,7 @@ function renderFrontendProjects() {
     .join("");
 
   initFrontendLazyIframes();
+  scheduleCardGridLayout();
 }
 
 function applyFrontendPage(t) {
@@ -1669,6 +1914,8 @@ function renderMlProjects() {
       `;
     })
     .join("");
+
+  scheduleCardGridLayout();
 }
 
 function applyMlPage(t) {
@@ -2489,15 +2736,18 @@ function applyTranslations() {
     );
   }
 
-  const cvLink = document.getElementById("navbar-cv-download");
-  const cvFile = CV_DOWNLOAD[currentLang] ?? CV_DOWNLOAD.en;
-  if (cvLink) {
-    cvLink.href = cvFile.href;
-    cvLink.download = cvFile.filename;
+  const cvTrigger = document.getElementById("navbar-cv-download");
+  if (cvTrigger) {
     if (t.navbarCvAria) {
-      cvLink.setAttribute("aria-label", t.navbarCvAria);
+      cvTrigger.setAttribute("aria-label", t.navbarCvAria);
+    }
+    const cvLabelEl = document.getElementById("navbar-cv-label");
+    if (cvLabelEl && t.navbarCvLabel) {
+      cvLabelEl.textContent = t.navbarCvLabel;
     }
   }
+
+  initCvPicker(t);
 
   const heroExperience = document.getElementById("hero-experience");
   if (heroExperience && t.heroExperienceLabel) {
@@ -3400,6 +3650,7 @@ window.addEventListener("resize", () => {
   scheduleHeroLayoutFit();
   scheduleLangMapPath();
   scheduleDesignerProjectStackLayout();
+  scheduleCardGridLayout();
 });
 if (document.fonts?.ready) {
   document.fonts.ready.then(() => {
