@@ -178,10 +178,11 @@ const translations = {
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
     expCroissan:
-      "<strong>croissan studio</strong> — студия разработки полного цикла для ии-продуктов (продуктовый дизайнер, апрель 2025 - ...)",
+      "<strong>croissan studio</strong> — студия полного цикла для ии-продуктов (продуктовый дизайнер и ml-разработчик, апрель 2025 — ...)",
     expAzimov:
-      "<strong>AzimovLab</strong> — AI-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела продуктовый дизайн и UX интерфейса)",
-    expClearmind: "<strong>фриланс</strong> — дизайн афиш, сайтов; вёрстка сайтов на заказ (2022 - ...)",
+      "<strong>AzimovLab</strong> — ai-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела ml и ux/ui дизайн)",
+    expClearmind:
+      "<strong>фриланс</strong> — дизайн афиш и сайтов, вёрстка, ml-разработка на заказ (2022 — ...)",
     eduInnopolis:
       "<strong>университет иннополис</strong> — бакалавриат: прикладной искусственный  интеллект (2026)",
     volTrenirovochnaya:
@@ -196,7 +197,7 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "обо мне",
     introLead:
-      "бакалавр прикладного ИИ в иннополисе. собираю цифровые продукты на стыке дизайна, разработки и ML — от интерфейсов и визуала до кода, моделей и исследований.",
+      "бережно собираю продукты, которыми правда хочется пользоваться",
     introStatusLabel: "current status:",
     introStatusValue: "открыта к проектам — дизайн, dev, ml и\u00A0не\u00A0только",
     introCtaDesigner: "дизайн кейсы",
@@ -204,10 +205,10 @@ const translations = {
     introCtaMl: "ml кейсы",
     devIntroTitle: "мой опыт в разработке",
     devIntroLead:
-      "веб и приложения: лендинги и вёрстка, фронтенд в продуктовых командах, Swift для macOS. в AzimovLab вела фронтенд — от архитектуры до UI; собираю продакшн-сайты и утилиты с акцентом на чистый код и понятный UX.",
+      "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, swift для macOS. в azimovlab вела фронтенд — от архитектуры до ui; довожу сайты и утилиты до продакшна с чистым кодом и понятным ux.",
     mlIntroTitle: "мой опыт в ml",
     mlIntroLead:
-      "прикладной ML и исследования: BERT-классификация с XAI и debiasing, RAG по личным документам, computer vision с MediaPipe. есть публикации; люблю связку модели, объяснимости и продуктового контекста.",
+      "делаю прикладной ml: bert, xai и debiasing, rag, computer vision. есть публикации — довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
     cvPickerTitle: "скачать cv",
     cvPickerClose: "закрыть",
     cvVariantDesigner: "дизайн",
@@ -405,10 +406,11 @@ const translations = {
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
     expCroissan:
-      "<strong>croissan studio</strong> — ai products studio (product designer, apr 2025 - ...)",
+      "<strong>croissan studio</strong> — full-cycle AI products studio (product designer & ML engineer, apr 2025 — ...)",
     expAzimov:
-      "<strong>AzimovLab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; in a small startup I also owned product design and interface UX)",
-    expClearmind: "<strong>freelance</strong> — design posters, websites; web development on order (2022 - ...)",
+      "<strong>AzimovLab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; also handled ML and UX/UI design)",
+    expClearmind:
+      "<strong>freelance</strong> — poster and web design, front-end builds, ML projects on commission (2022 — ...)",
     eduInnopolis:
       "<strong>innopolis university</strong> — bsc in applied artificial intelligence (2026)",
     volTrenirovochnaya:
@@ -423,7 +425,7 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "about me",
     introLead:
-      "Applied AI bachelor's at Innopolis. I build digital products across design, development, and ML — from interfaces and visuals to code, models, and research.",
+      "I carefully build products you'd genuinely want to use",
     introStatusLabel: "current status:",
     introStatusValue: "open to work — design, dev, ml &\u00A0more",
     introCtaDesigner: "design cases",
@@ -431,10 +433,10 @@ const translations = {
     introCtaMl: "ml cases",
     devIntroTitle: "my dev experience",
     devIntroLead:
-      "Web and apps: landing pages, front-end in product teams, Swift for macOS. At AzimovLab I led front-end — from architecture to UI; I ship production sites and utilities with a focus on clean code and clear UX.",
+      "I build web and apps — landing pages, front-end in product teams, Swift for macOS. At AzimovLab I led front-end from architecture to UI; I ship production sites and utilities with clean code and clear UX.",
     mlIntroTitle: "my ml experience",
     mlIntroLead:
-      "Applied ML and research: BERT classification with XAI and debiasing, RAG over personal documents, computer vision with MediaPipe. Published work; I like combining models, explainability, and product context.",
+      "I do applied ML — BERT, XAI and debiasing, RAG, computer vision. I publish my work and ship models that are accurate, explainable, and grounded in real product context.",
     cvPickerTitle: "download cv",
     cvPickerClose: "close",
     cvVariantDesigner: "design",
@@ -1170,21 +1172,34 @@ const TRUSTED_BY = [
     id: "pochta-rossii",
     labelKey: "trustLogoPochtaRossii",
     logo: "images/logos/trusted/pochta-rossii.png",
+    url: "https://www.pochta.ru",
   },
   {
     id: "innopolis",
     labelKey: "trustLogoInnopolis",
     logoRu: "images/logos/trusted/innopolis-ru.png",
     logoEn: "images/logos/trusted/innopolis-en.png",
+    url: "https://innopolis.university",
   },
-  { id: "croissan", labelKey: "trustLogoCroissan", logo: "images/logos/trusted/croissan.png" },
+  {
+    id: "croissan",
+    labelKey: "trustLogoCroissan",
+    logo: "images/logos/trusted/croissan.png",
+    url: "https://croissanstudio.ru",
+  },
   { id: "litsei", labelKey: "trustLogoLitsei", logo: "images/logos/trusted/litsei-innopolis.png" },
-  { id: "art-center", labelKey: "trustLogoArtCenter", logo: "images/logos/trusted/art-center-isi.png" },
+  {
+    id: "art-center",
+    labelKey: "trustLogoArtCenter",
+    logo: "images/logos/trusted/art-center-isi.png",
+    url: "https://art-center-isi.ru",
+  },
   {
     id: "pochtatech",
     labelKey: "trustLogoPochta",
     logoRu: "images/logos/trusted/pochtatech-ru.png",
     logoEn: "images/logos/trusted/pochtatech-en.png",
+    url: "https://pochta.tech",
   },
   { id: "kingstep", labelKey: "trustLogoKingstep", logo: "images/logos/trusted/kingstep.png" },
 ];
@@ -1250,17 +1265,30 @@ function renderIntroTrust(t) {
     const logoSrc = getTrustedLogoSrc(item, currentLang);
     if (!logoSrc) return "";
 
-    return `
-      <li class="intro-trust__item">
+    const imageMarkup = `
         <img
           class="intro-trust__logo-img intro-trust__logo-img--${escapeHtml(item.id)}"
           src="${escapeHtml(logoSrc)}"
-          alt="${escapeHtml(label)}"
+          alt="${item.url ? "" : escapeHtml(label)}"
           width="120"
           height="28"
           loading="lazy"
           decoding="async"
-        />
+        />`;
+
+    const logoContent = item.url
+      ? `<a
+          class="intro-trust__link"
+          href="${escapeHtml(item.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="${escapeHtml(label)}"
+        >${imageMarkup}</a>`
+      : imageMarkup;
+
+    return `
+      <li class="intro-trust__item">
+        ${logoContent}
       </li>
     `;
   }).join("");
