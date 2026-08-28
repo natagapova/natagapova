@@ -1,261 +1,90 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 
-\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage[a4paper,top=1.6cm,bottom=1.5cm,left=1.85cm,right=1.85cm]{geometry}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
-\IfFontExistsTF{DejaVu Serif}{\setmainfont{DejaVu Serif}}{\setmainfont{Times New Roman}}
-\IfFontExistsTF{DejaVu Sans}{\setsansfont{DejaVu Sans}}{\setsansfont{Arial}}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{xcolor}
-\usepackage{enumitem}
+\input{cv-fonts.tex}
 \usepackage{hyperref}
-\usepackage{titlesec}
-\usepackage{parskip}
-\usepackage{multicol}
-\usepackage{graphicx}
+\usepackage{cv-editorial}
+\input{cv-russian.tex}
 
-\hypersetup{
-  colorlinks=true,
-  urlcolor=[HTML]{2563EB},
-  linkcolor=[HTML]{2563EB}
-}
-
-\definecolor{accent}{HTML}{2563EB}
-\definecolor{textgray}{HTML}{4B5563}
-\definecolor{dategray}{HTML}{9CA3AF}
-\definecolor{lightgray}{HTML}{E5E7EB}
-
-\setlist[itemize]{leftmargin=1.2em,itemsep=0.25em,topsep=0.35em}
-\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
-
-\titleformat{\section}
-  {\Large\bfseries\color{accent}}
-  {}
-  {0pt}
-  {}
-  [\vspace{0.2em}\titlerule]
-
-\titleformat{\subsection}
-  {\large\bfseries}
-  {}
-  {0pt}
-  {}
-
-\newcommand{\roleline}[2]{
-  \textbf{#1}\hfill\textcolor{dategray}{\normalfont #2}
-}
-
-\newcommand{\project}[5]{
-  \subsection*{#1}
-  \textit{#2}
-
-  #3
-
-  \textbf{Стек:} #4
-
-  #5
-}
+\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
 
 \begin{document}
 
-{\fontsize{24}{28}\selectfont\textbf{Наталья Агапова}}\\[0.2em]
-{\large Портфолио · Product / UX/UI Designer}
+\cvheader{Наталья Агапова}{Product / UX/UI Designer}{\cvcontactsbasescholar[Почта]}
 
-\vspace{0.4em}
+\cvsummary{%
+Проектирую цифровые продукты, в которых сценарий, визуал и структура работают как одна система. За три года — UX/UI, брендинг и промо: от игрового стенда для Почты России до айдентики AI-студии и лендингов с ясным CTA. Довожу идею до макета и живого интерфейса; понимаю ограничения вёрстки при передаче в разработку.}
 
-\href{mailto:agapnatalya004@gmail.com}{agapnatalya004@gmail.com}
-\quad|\quad
-\href{https://t.me/nhefy}{@nhefy}
-\quad|\quad
-\href{https://www.natagapova.ru}{natagapova.ru}
-\quad|\quad
-\href{https://www.natagapova.ru/designer.html}{дизайн-кейсы}
+\cvsection{Опыт}
 
-\vspace{0.8em}
+\begin{cvjob}{Croissan Studio · product designer, in-house}{апр. 2025 — н.в.}
+Айдентика и digital-носители AI-студии: лого, мерч, иллюстрации, материалы для продуктов и публичной витрины. UX/UI клиентских проектов; AI-генерация с ручной доработкой визуала.
+\end{cvjob}
 
-\textcolor{textgray}{
-Product / UX/UI designer с 3+ годами опыта в интерфейсах, визуальных системах и брендинге. Собираю продуктовые экраны, лендинги и промо-материалы --- от структуры и сценария до деталей типографики и визуальной подачи. Умею доводить макет до живого интерфейса и сочетаю классический дизайн с AI-инструментами в продакшене.
-}
+\begin{cvjob}{Asimov Lab · UX/UI, тимлид фронтенда}{фев. — сент. 2024}
+MVP AI-сервиса генерации тестов: сценарии, экраны, компоненты. Руководство фронтенд-командой в стартапе — дизайн и реализация без разрыва.
+\end{cvjob}
 
-\section*{Ключевые навыки}
+\begin{cvjob}{Фриланс · UX/UI, веб и графика}{2022 — н.в.}
+Лендинги, интернет-магазины, афиши для культурных и образовательных проектов. Figma, Tilda, согласование и публикация. Волонтёрство: InnoStreetDance, trenirovochnaya.kzn.
+\end{cvjob}
 
-\begin{multicols}{2}
-\begin{itemize}
-  \item UX/UI, продуктовый и веб-дизайн
-  \item Figma, FigJam
-  \item Tilda, Zero Block
-  \item Adobe Illustrator, Photoshop
-  \item Брендинг, айдентика, мерч
-  \item Лендинги и промо-сайты
-  \item Графический дизайн
-  \item Прототипирование и user flow
-  \item AI-генерация и ручная доработка визуалов
-  \item Адаптив, mobile-first
-  \item Презентации и кейсовая подача
-  \item Английский C1+, русский носитель
-\end{itemize}
-\end{multicols}
+\cvsection{Избранные работы}
 
-\section*{О себе}
+\begin{cvproject}{ПОЧТАТЕХ}{UX/UI · выставка · геймификация}
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+\vspace{0pt}%
+За минуту объяснить сервисы Почты на шумной выставке и удержать прохожего. Игровой сценарий с поиском ошибок в UI: онбординг, регистрация, touch-экран в стилистике заказчиков.
 
-Мне интересно проектировать цифровые продукты, в которых структура, визуал и сценарий работают вместе. Лучше всего получается доводить идею до конкретного интерфейса --- чтобы в макете были продуманы сценарии, состояния и детали, и у разработчиков не оставалось лишних вопросов при передаче. Работаю как в команде студии, так и самостоятельно на фрилансе --- от брифа и wireflow до финальных макетов, графики и передачи в сборку.
+\vspace{0.25em}
+\textbf{Результат:} 420+ игроков за 7 дней, 99\% completion, +31\% к прошлому формату.
+\cvskillsru{Figma · UX-сценарий · touch UI}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0pt}%
+\cvgridfour{cv-images/pochtatex/page1.jpg}{cv-images/pochtatex/page2.jpg}{cv-images/pochtatex/page3.jpg}{cv-images/pochtatex/page4.jpg}
+\end{minipage}
+\end{cvproject}
 
-\section*{Опыт}
+\begin{cvproject}{Барилова \& Царёв / Kingstep}{UX/UI · веб · фриланс}
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+\vspace{0pt}%
+Школа продаёт доверие к преподавателям, а не просто список курсов. Главная, каталог, карточки занятий; тёплая типографика и тёмная эстетика. Макеты согласованы и готовы к сборке в Tilda.
 
-\roleline{Croissan Studio --- product designer}{апрель 2025 --- настоящее время}
+\cvskillsru{Figma · Tilda · Illustrator}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0pt}%
+\cvgridfour{cv-images/tsarevbarilova/page1.jpg}{cv-images/tsarevbarilova/page2.jpg}{cv-images/tsarevbarilova/page3.jpg}{cv-images/tsarevbarilova/page4.jpg}
+\end{minipage}
+\end{cvproject}
 
-Работаю на стыке дизайна и фронтенда, занимаюсь визуальной идентичностью и digital-носителями в клиентских и внутренних проектах.
+\begin{cvproject}{Croissan Studio · Yoko Matcha · Яндекс Директ}{брендинг · e-commerce · интерфейс}
+Айдентика AI-студии: лого, мерч, иллюстрации, единый визуальный язык. Yoko Matcha — тёплый e-commerce без шаблонности. Яндекс Директ — иерархия рекламного кабинета, KPI на первом плане.
 
-\begin{itemize}
-  \item Разрабатываю фирменные элементы, иллюстрации, мерч и digital-материалы в единой стилистике.
-  \item Участвую в UX/UI и фронтенд-реализации студийных и клиентских продуктов.
-  \item Соединяю AI-генерацию с ручной доработкой для скорости и качества визуала.
-  \item Готовлю материалы для презентаций, кейсов и публичной витрины студии.
-\end{itemize}
+\vspace{0.3em}
+\cvstripthree{cv-images/croissan/croissan-page2.jpg}{cv-images/croissan/yokomatcha-page1.jpg}{cv-images/croissan/yandex-page1.jpg}
+\end{cvproject}
 
-\roleline{AzimovLab --- тимлид фронтенда, дизайн}{февраль 2024 --- сентябрь 2024}
+\cvsection{Другие проекты}
 
-Стартап с AI-сервисом генерации тестов. Руководила фронтенд-командой и одновременно вела продуктовый дизайн: в небольшой команде интерфейс, UX и реализация шли рядом.
+\cvbody{%
+\textbf{AI-смена · Иннополис} (\cvweblinkru{https://aismena.ru}) — лендинг на Tilda: программа, FAQ, форма заявки. \textbf{Постеры} — афиши для Казани и Иннополиса, до 150 человек с одной афиши. \textbf{Концепты} — экспериментальные макеты.}
 
-\begin{itemize}
-  \item Проектировала UX и UI MVP: сценарии, экраны, компоненты.
-  \item Руководила фронтенд-командой: постановка задач, code review, приоритеты.
-  \item Собирала интерфейс и интегрировала его с API и продуктовой логикой.
-  \item Доводила продукт до релиза в формате стартапа с ограниченными ресурсами.
-\end{itemize}
+\cvsection{Навыки и образование}
 
-\roleline{Фриланс --- UX/UI, веб и графический дизайн}{осень 2022 --- настоящее время}
+\cvbody{%
+UX/UI, продуктовый и веб-дизайн · Figma, FigJam · Tilda · Illustrator, Photoshop · брендинг, прототипирование, адаптив · английский C1+.}
 
-\begin{itemize}
-  \item Дизайн лендингов, интернет-магазинов и промо-сайтов для культурных, образовательных и event-проектов.
-  \item Афиши и визуальные материалы для мероприятий в Казани и Иннополисе.
-  \item Макеты в Figma, сборка в Tilda, согласование с заказчиком и подготовка к публикации.
-\end{itemize}
+\cvmutedbody{%
+Университет Иннополис, бакалавриат «Прикладной искусственный интеллект», 2026.}
 
-\roleline{Бренд-дизайн и маркетинг (волонтёрство)}{2022 --- 2025}
-
-\begin{itemize}
-  \item \textbf{InnoStreetDance} --- студенческий танцевальный клуб Университета Иннополис: визуальная айдентика, афиши, SMM-материалы.
-  \item \textbf{trenirovochnaya.kzn} --- организация танцевальных ивентов в Казани: бренд, промо и коммуникация событий.
-\end{itemize}
-
-\section*{Избранные проекты}
-
-\project
-{ПОЧТАТЕХ}
-{Иннополис + Почта России · промо-стенд}
-{
-Игровой UX/UI для expo-стенда: за минуту объяснить логистику и цифровые сервисы Почты и удержать внимание прохожего в шумной среде. Собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в фирменной стилистике заказчиков.
-}
-{Figma, UX-сценарий, UI для touch-экрана}
-{
-\begin{itemize}
-  \item Полный цикл от задачи стенда до готовых экранов и сценария взаимодействия.
-  \item Игровой сценарий, онбординг и регистрация участника.
-  \item UI для touch-экрана в фирменной стилистике Иннополиса и Почты России.
-\end{itemize}
-}
-
-\vspace{0.4em}
-\begin{center}
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page1.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page2.jpg}\\[0.5em]
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page3.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page4.jpg}
-\end{center}
-\begin{center}
-  \textcolor{textgray}{\small Экраны игры · ПОЧТАТЕХ}
-\end{center}
-
-\project
-{Croissan Studio}
-{\href{https://croissanstudio.ru}{croissanstudio.ru} · in-house}
-{
-Визуальная экосистема AI-студии: логотип, мерч, иллюстрации и digital-носители для продукта «нейрохудожник». Задача --- связать бренд, мерч и интерфейсы в один узнаваемый язык.
-}
-{Figma, Adobe Illustrator, AI + ручная доработка}
-{
-\begin{itemize}
-  \item Фирменные элементы, иллюстрации и носители в единой стилистике.
-  \item Визуальный язык для продукта «нейрохудожник» и публичной витрины студии.
-  \item Сочетание AI-генерации и ручной доработки.
-\end{itemize}
-}
-
-\project
-{AI-смена · Иннополис}
-{\href{https://aismena.ru}{aismena.ru}}
-{
-Лендинг летней AI-смены для школьников 7--11 классов: родитель должен понять программу и оставить заявку без звонка менеджеру. Собрала структуру, визуальную подачу и весь сайт на Tilda в сжатые сроки.
-}
-{Tilda, Zero Block, типографика, формы}
-{
-\begin{itemize}
-  \item Hero, программа, расписание дня, команда, цена, FAQ и форма записи.
-  \item Адаптивная вёрстка и иерархия контента под конверсию в заявку.
-  \item Публикация на домене aismena.ru.
-\end{itemize}
-}
-
-\project
-{Барилова \& Царёв}
-{Kingstep Dance Studio · фриланс}
-{
-Онлайн-школа танцев продаёт эмоцию и доверие к преподавателям, а не просто список курсов. Сделала сильный визуальный hero, структуру направлений и тёплую типографику; макеты согласованы и готовы к сборке. Публичной версии пока нет --- разработка сайта у команды заказчика ещё не завершена.
-}
-{Figma, Tilda, Adobe Illustrator}
-{
-\begin{itemize}
-  \item Логика сайта: главная, каталог курсов, карточки занятий.
-  \item Тёмная эстетика студии и согласование с брендом Kingstep.
-  \item Макеты, промо-экраны и графика для сборки в Tilda.
-\end{itemize}
-}
-
-\vspace{0.4em}
-\begin{center}
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page1.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page2.jpg}\\[0.5em]
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page3.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page4.jpg}
-\end{center}
-\begin{center}
-  \textcolor{textgray}{\small Ключевые экраны · Kingstep}
-\end{center}
-
-\section*{Как я работаю}
-
-\begin{enumerate}
-  \item Бриф: аудитория, цель продукта, ограничения по срокам и формату.
-  \item Структура: user flow, приоритеты контента, ключевые экраны и CTA.
-  \item Визуал: палитра, типографика, компоненты, mood и характер бренда.
-  \item Прототип и макет: Figma или сборка в Tilda с учётом адаптива.
-  \item Полировка: согласование, финальные правки, передача в разработку или публикацию.
-\end{enumerate}
-
-\section*{Дополнительно}
-
-\begin{itemize}
-  \item Технический бэкграунд: понимаю вёрстку и ограничения фронтенда при передаче макетов.
-  \item \textbf{Исследования:} две публикации --- \href{https://scholar.google.com/citations?user=FqdPM_gAAAAJ&hl=ru}{Google Scholar}.
-\end{itemize}
-
-\section*{Образование}
-
-Университет Иннополис, бакалавриат «Прикладной искусственный интеллект», 2026.
-
-\vfill
-
-\begin{center}
-\textcolor{textgray}{Последнее обновление: август 2026}
-\end{center}
+\cvfooter{август 2026 · \cvwebsite}
 
 \end{document}

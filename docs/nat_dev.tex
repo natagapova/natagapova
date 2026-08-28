@@ -1,0 +1,72 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=1.65cm,bottom=1.55cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\input{cv-fonts.tex}
+\usepackage{hyperref}
+\usepackage{cv-editorial}
+\input{cv-russian.tex}
+
+\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+
+\begin{document}
+
+\cvheader{Наталья Агапова}{Frontend Developer}{\cvcontactsgit[Почта]}
+
+\cvsummary{%
+Собираю веб и приложения: лендинги, продуктовые интерфейсы, нативные утилиты. В Asimov Lab вела фронтенд как тимлид; в Croissan Studio участвую в командной разработке студийного сайта. От архитектуры и компонентов до адаптива и релиза — с чистым кодом и понятным UX.}
+
+\cvsection{Опыт}
+
+\begin{cvjob}{Croissan Studio · frontend, design}{апр. 2025 — н.в.}
+Командная разработка \cvweblinkru{https://croissanstudio.ru} и клиентских интерфейсов. React, Next.js, TypeScript, Tailwind — секции, адаптив, визуальная целостность.
+\end{cvjob}
+
+\begin{cvjob}{Asimov Lab · тимлид фронтенда}{фев. — сент. 2024}
+\cvweblinkru{https://asimovlab.ru} — AI-платформа для преподавателей. Архитектура, code review, интеграция с API; лендинг hero, возможности, цены, FAQ. UX/UI MVP в стартапе.
+\end{cvjob}
+
+\begin{cvjob}{Фриланс · frontend / web}{2022 — н.в.}
+Лендинги и промо-сайты: HTML/CSS/JS, Tilda, визуальная целостность. Культурные, образовательные и event-проекты.
+\end{cvjob}
+
+\cvsection{Избранные проекты}
+
+\begin{cvproject}{Croissan Studio}{\cvweblinkru{https://croissanstudio.ru} · React · команда}
+Студийный сайт AI-студии: кейсы, услуги и экспертиза читаются как единая страница. TypeScript, React, Next.js, Tailwind; адаптив и типографика.
+\end{cvproject}
+
+\begin{cvproject}{Asimov Lab}{\cvweblinkru{https://asimovlab.ru} · React · тимлид}
+Лендинг AI-сервиса генерации и проверки учебных заданий. От структуры компонентов до визуальной целостности продукта для преподавателей.
+\end{cvproject}
+
+\begin{cvproject}{Таймер для macOS}{\href{https://github.com/natagapova/macos-timer}{GitHub} · Swift · соло}
+Menu bar app: таймер + помодоро, минимализм, macOS 13+. Swift, SwiftUI — когда в готовых решениях не хватало простоты.
+\end{cvproject}
+
+\begin{cvproject}{AI-смена · Иннополис}{\cvweblinkru{https://aismena.ru} · Tilda · лендинг}
+Лендинг в сжатые сроки: расписание, команда, цена, FAQ, форма записи. Родитель понимает программу и оставляет заявку без звонка менеджеру.
+\end{cvproject}
+
+\begin{cvproject}{Cruel Games}{\cvweblinkru{https://cruelgames-website.vercel.app/} · HTML/CSS/JS}
+Промо театральной постановки: полноэкранный hero, кастомная галерея со свайпом, мобильная подача.
+\end{cvproject}
+
+\begin{cvproject}{Барилова \& Царёв / Kingstep}{Figma · Tilda · веб}
+Главная, каталог и страницы занятий онлайн-школы танцев. Макеты согласованы.
+\end{cvproject}
+
+\cvsection{Навыки и образование}
+
+\cvbody{%
+HTML, CSS, JavaScript, TypeScript · React, Next.js, Tailwind · Tilda · Swift, SwiftUI · Figma · Git · английский C1+.}
+
+\cvmutedbody{%
+Университет Иннополис, бакалавриат «Прикладной искусственный интеллект», 2026. Публикация: квантовый отжиг и RSA, \textit{Вопросы кибербезопасности}, 2025.}
+
+\cvfooter{август 2026 · \cvwebsite}
+
+\end{document}

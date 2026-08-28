@@ -1,0 +1,40 @@
+% CV fonts — one family for Latin and Cyrillic
+\newcommand{\cvsethelvetica}[1]{%
+  #1{Helvetica Neue}[
+    BoldFont = {Helvetica Neue Bold},
+    ItalicFont = {Helvetica Neue Italic},
+    BoldItalicFont = {Helvetica Neue Bold Italic},
+    Ligatures = TeX,
+  ]%
+}
+
+\IfFontExistsTF{Helvetica Neue}{%
+  \cvsethelvetica{\setmainfont}%
+  \cvsethelvetica{\newfontfamily\cyrillicfont}%
+  \cvsethelvetica{\newfontfamily\englishfont}%
+}{%
+  \IfFontExistsTF{Arial}{%
+    \setmainfont{Arial}[
+      BoldFont = {Arial Bold},
+      ItalicFont = {Arial Italic},
+      BoldItalicFont = {Arial Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\cyrillicfont{Arial}[
+      BoldFont = {Arial Bold},
+      ItalicFont = {Arial Italic},
+      BoldItalicFont = {Arial Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\englishfont{Arial}[
+      BoldFont = {Arial Bold},
+      ItalicFont = {Arial Italic},
+      BoldItalicFont = {Arial Bold Italic},
+      Ligatures = TeX,
+    ]%
+  }{%
+    \setmainfont{TeX Gyre Heros}%
+    \newfontfamily\cyrillicfont{TeX Gyre Heros}%
+    \newfontfamily\englishfont{TeX Gyre Heros}%
+  }%
+}

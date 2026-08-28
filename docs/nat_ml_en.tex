@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=1.65cm,bottom=1.55cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{russian}
+\input{cv-fonts.tex}
+\usepackage{hyperref}
+\usepackage{cv-editorial}
+
+\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+
+\begin{document}
+
+\cvheader{Natalia Agapova}{ML Engineer}{\cvcontactsgitscholar}
+
+\cvsummary{%
+Applied ML: NLP, explainability and debiasing, computer vision, RAG. I ship models with metrics, ablations, and honest trade-off analysis — accurate, explainable, and product-ready. Published research; I connect models to interfaces.}
+
+\cvsection{Experience}
+
+\begin{cvjob}{Croissan Studio · ML, design}{Apr 2025 — present}
+AI products in a full-cycle studio: models, interfaces, and how results are presented.
+\end{cvjob}
+
+\begin{cvjob}{Asimov Lab · ML, UX/UI, front-end}{Feb — Sep 2024}
+AI test-generation startup; front-end team lead. Full path from data to UI.
+\end{cvjob}
+
+\begin{cvjob}{Freelance · ML}{2022 — present}
+Applied ML alongside design and web development.
+\end{cvjob}
+
+\cvsection{Selected projects}
+
+\begin{cvproject}{Fair resume screening}{NLP · \href{https://github.com/natagapova/resume-screening}{GitHub} · \href{https://doi.org/10.66693/mathai.1017}{paper}}
+BERT resume classifier for 9 IT supercategories (HeadHunter). Integrated Gradients (Captum) for bias audit; 39+ debiasing configs. Baseline: 60.9\% accuracy, city-swap flipped predictions in 7.7\% of pairs. Data scrubbing: 0\% flip at 59.4\% accuracy.
+\end{cvproject}
+
+\begin{cvproject}{Emotion detection}{CV · FER2013 · on-device}
+EmotionCNN: 58.7\% accuracy, macro-F1 0.569; up to 60.8\% with ensemble+TTA. INT8 quantization \textrightarrow{} Core ML and ONNX Runtime Web, 1.15\,ms latency. Full loop: data, training, eval, deployment.
+\end{cvproject}
+
+\begin{cvproject}{Gesture input}{CV · MediaPipe · real-time}
+Webcam cursor control via pinch / ready / click gestures; PyAutoGUI, smoothing, ~60 FPS. Rule-based classifier on 21 landmarks.
+\end{cvproject}
+
+\begin{cvproject}{Personal Knowledge System}{RAG · NLP · Python}
+Answers from personal PDFs grounded in context only, with filename+page citations. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2 — no LangChain, every layer hand-written.
+\end{cvproject}
+
+\cvsection{Publications}
+
+\cvbody{%
+Fair resume screening, BERT debiasing — \href{https://doi.org/10.66693/mathai.1017}{DOI: 10.66693/mathai.1017}.}
+
+\cvbody{%
+Kholodov Y.~A.; Salloum H.; Agapova N.~A. Quantum annealing and RSA. \textit{Voprosy kiberbezopasnosti}, 2025. \href{https://doi.org/10.21681/2311-3456-2025-4-127-133}{DOI: 10.21681/2311-3456-2025-4-127-133}.}
+
+\cvsection{Skills \& education}
+
+\cvbody{%
+Python, PyTorch · BERT, Captum · debiasing, counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX · English C1+.}
+
+\cvmutedbody{%
+Innopolis University, BSc in Applied Artificial Intelligence, 2026.}
+
+\cvfooter{August 2026 · \cvwebsite}
+
+\end{document}

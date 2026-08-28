@@ -1,261 +1,89 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 
-\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage[a4paper,top=1.6cm,bottom=1.5cm,left=1.85cm,right=1.85cm]{geometry}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{english}
 \setotherlanguage{russian}
-\IfFontExistsTF{DejaVu Serif}{\setmainfont{DejaVu Serif}}{\setmainfont{Times New Roman}}
-\IfFontExistsTF{DejaVu Sans}{\setsansfont{DejaVu Sans}}{\setsansfont{Arial}}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{xcolor}
-\usepackage{enumitem}
+\input{cv-fonts.tex}
 \usepackage{hyperref}
-\usepackage{titlesec}
-\usepackage{parskip}
-\usepackage{multicol}
-\usepackage{graphicx}
+\usepackage{cv-editorial}
 
-\hypersetup{
-  colorlinks=true,
-  urlcolor=[HTML]{2563EB},
-  linkcolor=[HTML]{2563EB}
-}
-
-\definecolor{accent}{HTML}{2563EB}
-\definecolor{textgray}{HTML}{4B5563}
-\definecolor{dategray}{HTML}{9CA3AF}
-\definecolor{lightgray}{HTML}{E5E7EB}
-
-\setlist[itemize]{leftmargin=1.2em,itemsep=0.25em,topsep=0.35em}
-\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
-
-\titleformat{\section}
-  {\Large\bfseries\color{accent}}
-  {}
-  {0pt}
-  {}
-  [\vspace{0.2em}\titlerule]
-
-\titleformat{\subsection}
-  {\large\bfseries}
-  {}
-  {0pt}
-  {}
-
-\newcommand{\roleline}[2]{
-  \textbf{#1}\hfill\textcolor{dategray}{\normalfont #2}
-}
-
-\newcommand{\project}[5]{
-  \subsection*{#1}
-  \textit{#2}
-
-  #3
-
-  \textbf{Stack:} #4
-
-  #5
-}
+\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
 
 \begin{document}
 
-{\fontsize{24}{28}\selectfont\textbf{Natalia Agapova}}\\[0.2em]
-{\large Portfolio · Product / UX/UI Designer}
+\cvheader{Natalia Agapova}{Product / UX/UI Designer}{\cvcontactsbasescholar}
 
-\vspace{0.4em}
+\cvsummary{%
+I design digital products where flows, visuals, and structure work as one system. Over three years — UX/UI, branding, and promo: from a game booth for Russian Post to an AI studio identity and landing pages with clear CTAs. I take ideas through to layouts and live interfaces, and I understand front-end constraints at handoff.}
 
-\href{mailto:agapnatalya004@gmail.com}{agapnatalya004@gmail.com}
-\quad|\quad
-\href{https://t.me/nhefy}{@nhefy}
-\quad|\quad
-\href{https://www.natagapova.ru}{natagapova.ru}
-\quad|\quad
-\href{https://www.natagapova.ru/designer.html}{design cases}
+\cvsection{Experience}
 
-\vspace{0.8em}
+\begin{cvjob}{Croissan Studio · product designer, in-house}{Apr 2025 — present}
+Identity and digital touchpoints for an AI studio: logo, merch, illustrations, product and public-facing assets. UX/UI on client work; AI generation with manual visual refinement.
+\end{cvjob}
 
-\textcolor{textgray}{
-Product / UX/UI designer with 3+ years of experience in interfaces, visual systems, and branding. I build product screens, landing pages, and promo materials --- from structure and user flows to typography and visual polish. I can take a design to a live interface and combine classic design craft with AI tools in production.
-}
+\begin{cvjob}{Asimov Lab · UX/UI, front-end lead}{Feb — Sep 2024}
+MVP for an AI test-generation service: flows, screens, components. Led the front-end team in a startup — design and implementation stayed connected.
+\end{cvjob}
 
-\section*{Key skills}
+\begin{cvjob}{Freelance · UX/UI, web and graphic design}{2022 — present}
+Landing pages, online stores, posters for cultural and educational projects. Figma, Tilda, client review, and launch. Volunteering: InnoStreetDance, trenirovochnaya.kzn.
+\end{cvjob}
 
-\begin{multicols}{2}
-\begin{itemize}
-  \item UX/UI, product and web design
-  \item Figma, FigJam
-  \item Tilda, Zero Block
-  \item Adobe Illustrator, Photoshop
-  \item Branding, identity, merch
-  \item Landing pages and promo sites
-  \item Graphic design
-  \item Prototyping and user flows
-  \item AI-generated visuals with manual refinement
-  \item Responsive, mobile-first
-  \item Presentations and case studies
-  \item English C1+, native Russian
-\end{itemize}
-\end{multicols}
+\cvsection{Selected work}
 
-\section*{About}
+\begin{cvproject}{POCHTATECH}{UX/UI · expo · gamification}
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+\vspace{0pt}%
+Explain Russian Post services at a noisy expo in under a minute and hold attention. Game scenario with UI error-spotting: onboarding, registration, touch UI in client brand style.
 
-I enjoy designing digital products where structure, visuals, and user flows work together. What I do best is taking an idea all the way to a concrete interface --- with flows, states, and details thought through so developers have fewer open questions at handoff. I work both in a studio team and independently on freelance projects --- from brief and wireflows to final layouts, graphics, and handoff to build.
+\vspace{0.25em}
+\textbf{Result:} 420+ players in 7 days, 99\% completion, +31\% vs the previous format.
+\cvskills{Figma · UX scenario · touch UI}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0pt}%
+\cvgridfour{cv-images/pochtatex/page1.jpg}{cv-images/pochtatex/page2.jpg}{cv-images/pochtatex/page3.jpg}{cv-images/pochtatex/page4.jpg}
+\end{minipage}
+\end{cvproject}
 
-\section*{Experience}
+\begin{cvproject}{Barilova \& Tsarev / Kingstep}{UX/UI · web · freelance}
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+\vspace{0pt}%
+The school sells trust in teachers, not just a course list. Home, catalog, class pages; warm typography and a dark studio aesthetic. Layouts approved and ready for Tilda.
 
-\roleline{Croissan Studio --- product designer}{Apr 2025 --- present}
+\cvskills{Figma · Tilda · Illustrator}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0pt}%
+\cvgridfour{cv-images/tsarevbarilova/page1.jpg}{cv-images/tsarevbarilova/page2.jpg}{cv-images/tsarevbarilova/page3.jpg}{cv-images/tsarevbarilova/page4.jpg}
+\end{minipage}
+\end{cvproject}
 
-I work at the intersection of design and front-end, shaping visual identity and digital touchpoints across client and in-house projects.
+\begin{cvproject}{Croissan Studio · Yoko Matcha · Yandex Direct}{branding · e-commerce · UI}
+AI studio identity: logo, merch, illustrations, one visual language. Yoko Matcha — warm e-commerce beyond templates. Yandex Direct — ad dashboard hierarchy with KPIs first.
 
-\begin{itemize}
-  \item Develop brand elements, illustrations, merch, and digital materials in a unified style.
-  \item Contribute to UX/UI and front-end implementation for studio and client products.
-  \item Combine AI generation with manual refinement for speed and visual quality.
-  \item Prepare materials for presentations, case studies, and the studio's public presence.
-\end{itemize}
+\vspace{0.3em}
+\cvstripthree{cv-images/croissan/croissan-page2.jpg}{cv-images/croissan/yokomatcha-page1.jpg}{cv-images/croissan/yandex-page1.jpg}
+\end{cvproject}
 
-\roleline{AzimovLab --- frontend lead, design}{Feb 2024 --- Sep 2024}
+\cvsection{Other projects}
 
-Startup building an AI service for test generation. I led the front-end team while also owning product design --- in a small team, interface, UX, and implementation went hand in hand.
+\cvbody{%
+\textbf{AI Camp · Innopolis} (\cvweblinken{https://aismena.ru}) — Tilda landing: program, FAQ, signup form. \textbf{Posters} — event posters in Kazan and Innopolis, up to 150 attendees from one poster. \textbf{Concepts} — experimental mockups.}
 
-\begin{itemize}
-  \item Designed MVP UX and UI: flows, screens, and components.
-  \item Led the front-end team: task planning, code review, and priorities.
-  \item Built the interface and integrated it with APIs and product logic.
-  \item Shipped the product in a resource-constrained startup setting.
-\end{itemize}
+\cvsection{Skills \& education}
 
-\roleline{Freelance --- UX/UI, web and graphic design}{Fall 2022 --- present}
+\cvbody{%
+UX/UI, product and web design · Figma, FigJam · Tilda · Illustrator, Photoshop · branding, prototyping, responsive · English C1+.}
 
-\begin{itemize}
-  \item Landing pages, online stores, and promo sites for cultural, educational, and event projects.
-  \item Posters and visual materials for events in Kazan and Innopolis.
-  \item Figma layouts, Tilda builds, client review, and launch preparation.
-\end{itemize}
+\cvmutedbody{%
+Innopolis University, BSc in Applied Artificial Intelligence, 2026.}
 
-\roleline{Brand design and marketing (volunteering)}{2022 --- 2025}
-
-\begin{itemize}
-  \item \textbf{InnoStreetDance} --- student dance club at Innopolis University: visual identity, posters, SMM assets.
-  \item \textbf{trenirovochnaya.kzn} --- dance events in Kazan: brand, promo, and event communication.
-\end{itemize}
-
-\section*{Selected projects}
-
-\project
-{POCHTATECH}
-{Innopolis + Russian Post · promo booth}
-{
-Game UX/UI for an expo booth: explain Russian Post logistics and digital services in under a minute and hold attention in a noisy environment. Built the game scenario, onboarding, registration flow, and UX skeleton of the game screen in the clients' brand style.
-}
-{Figma, UX scenario, touch-screen UI}
-{
-\begin{itemize}
-  \item End-to-end work from booth brief to finished screens and interaction flow.
-  \item Game scenario, onboarding, and participant registration.
-  \item Touch-screen UI in Innopolis and Russian Post brand style.
-\end{itemize}
-}
-
-\vspace{0.4em}
-\begin{center}
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page1.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page2.jpg}\\[0.5em]
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page3.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/pochtatex/page4.jpg}
-\end{center}
-\begin{center}
-  \textcolor{textgray}{\small Game screens · POCHTATECH}
-\end{center}
-
-\project
-{Croissan Studio}
-{\href{https://croissanstudio.ru}{croissanstudio.ru} · in-house}
-{
-Visual ecosystem for an AI studio: logo, merch, illustrations, and digital touchpoints for the Neuroartist product. The goal was to connect brand, merch, and interfaces into one recognizable language.
-}
-{Figma, Adobe Illustrator, AI + manual refinement}
-{
-\begin{itemize}
-  \item Brand elements, illustrations, and touchpoints in a unified style.
-  \item Visual language for Neuroartist and the studio's public presence.
-  \item AI generation combined with manual refinement.
-\end{itemize}
-}
-
-\project
-{AI Camp · Innopolis}
-{\href{https://aismena.ru}{aismena.ru}}
-{
-Landing page for a summer AI camp for grades 7--11: parents should understand the program and apply without calling a manager. Built the structure, visual presentation, and full Tilda site on a tight deadline.
-}
-{Tilda, Zero Block, typography, forms}
-{
-\begin{itemize}
-  \item Hero, program, daily schedule, team, pricing, FAQ, and signup form.
-  \item Responsive layout and content hierarchy focused on applications.
-  \item Published on aismena.ru.
-\end{itemize}
-}
-
-\project
-{Barilova \& Tsarev}
-{Kingstep Dance Studio · freelance}
-{
-An online dance school sells emotion and trust in teachers, not just a course list. Created a strong visual hero, clear program structure, and warm typography; layouts are approved and ready for build. No public site yet --- development on the client's side is still unfinished.
-}
-{Figma, Tilda, Adobe Illustrator}
-{
-\begin{itemize}
-  \item Site logic: home, course catalog, class pages.
-  \item Dark studio aesthetic aligned with the Kingstep brand.
-  \item Layouts, promo screens, and graphics for Tilda assembly.
-\end{itemize}
-}
-
-\vspace{0.4em}
-\begin{center}
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page1.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page2.jpg}\\[0.5em]
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page3.jpg}%
-  \hfill
-  \includegraphics[width=0.48\textwidth]{cv-images/tsarevbarilova/page4.jpg}
-\end{center}
-\begin{center}
-  \textcolor{textgray}{\small Key screens · Kingstep}
-\end{center}
-
-\section*{How I work}
-
-\begin{enumerate}
-  \item Brief: audience, product goal, timeline and format constraints.
-  \item Structure: user flow, content priorities, key screens and CTAs.
-  \item Visuals: palette, typography, components, mood, and brand character.
-  \item Prototype and layout: Figma or Tilda build with responsive in mind.
-  \item Polish: review, final tweaks, handoff to development or publication.
-\end{enumerate}
-
-\section*{Additional}
-
-\begin{itemize}
-  \item Technical background: I understand front-end constraints when handing off layouts.
-  \item \textbf{Research:} two publications --- \href{https://scholar.google.com/citations?user=FqdPM_gAAAAJ&hl=en}{Google Scholar}.
-\end{itemize}
-
-\section*{Education}
-
-Innopolis University, BSc in Applied Artificial Intelligence, 2026.
-
-\vfill
-
-\begin{center}
-\textcolor{textgray}{Last updated: August 2026}
-\end{center}
+\cvfooter{August 2026 · \cvwebsite}
 
 \end{document}

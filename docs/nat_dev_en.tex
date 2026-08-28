@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=1.65cm,bottom=1.55cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{russian}
+\input{cv-fonts.tex}
+\usepackage{hyperref}
+\usepackage{cv-editorial}
+
+\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+
+\begin{document}
+
+\cvheader{Natalia Agapova}{Frontend Developer}{\cvcontactsgit}
+
+\cvsummary{%
+I build web and apps: landing pages, product interfaces, native utilities. At Asimov Lab I led front-end; at Croissan Studio I contribute to the studio site in a team. From architecture and components to responsive layout and release — clean code and clear UX.}
+
+\cvsection{Experience}
+
+\begin{cvjob}{Croissan Studio · front-end, design}{Apr 2025 — present}
+Team development of \cvweblinken{https://croissanstudio.ru} and client interfaces. React, Next.js, TypeScript, Tailwind — sections, responsive layout, visual cohesion.
+\end{cvjob}
+
+\begin{cvjob}{Asimov Lab · front-end team lead}{Feb — Sep 2024}
+\cvweblinken{https://asimovlab.ru} — AI platform for educators. Architecture, code review, API integration; landing hero, features, pricing, FAQ. MVP UX/UI in a startup.
+\end{cvjob}
+
+\begin{cvjob}{Freelance · front-end / web}{2022 — present}
+Landing pages and promo sites: HTML/CSS/JS, Tilda, visual cohesion. Cultural, educational, and event projects.
+\end{cvjob}
+
+\cvsection{Selected projects}
+
+\begin{cvproject}{Croissan Studio}{\cvweblinken{https://croissanstudio.ru} · React · team}
+AI studio site: cases, services, and expertise read as one page. TypeScript, React, Next.js, Tailwind; responsive layout and typography.
+\end{cvproject}
+
+\begin{cvproject}{Asimov Lab}{\cvweblinken{https://asimovlab.ru} · React · lead}
+Landing for an AI service that generates and grades assignments. From component structure to visual cohesion for educators.
+\end{cvproject}
+
+\begin{cvproject}{macOS Timer}{\href{https://github.com/natagapova/macos-timer}{GitHub} · Swift · solo}
+Menu bar app: timer + pomodoro, minimal, macOS 13+. Swift, SwiftUI — built when off-the-shelf timers felt overloaded.
+\end{cvproject}
+
+\begin{cvproject}{AI Camp · Innopolis}{\cvweblinken{https://aismena.ru} · Tilda · landing}
+Landing on a tight deadline: schedule, team, pricing, FAQ, signup. Parents understand the program and apply without calling a manager.
+\end{cvproject}
+
+\begin{cvproject}{Cruel Games}{\cvweblinken{https://cruelgames-website.vercel.app/} · HTML/CSS/JS}
+Theatre promo site: full-screen hero, custom swipe gallery, mobile-first layout.
+\end{cvproject}
+
+\begin{cvproject}{Barilova \& Tsarev / Kingstep}{Figma · Tilda · web}
+Home, course catalog, and class pages for an online dance school. Layouts approved; no public link yet.
+\end{cvproject}
+
+\cvsection{Skills \& education}
+
+\cvbody{%
+HTML, CSS, JavaScript, TypeScript · React, Next.js, Tailwind · Tilda · Swift, SwiftUI · Figma · Git · English C1+.}
+
+\cvmutedbody{%
+Innopolis University, BSc in Applied Artificial Intelligence, 2026. Publication: quantum annealing and RSA, \textit{Voprosy kiberbezopasnosti}, 2025.}
+
+\cvfooter{August 2026 · \cvwebsite}
+
+\end{document}

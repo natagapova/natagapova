@@ -53,6 +53,9 @@ const translations = {
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
+    FrontendAsimovLabTitle: "Asimov Lab",
+    FrontendAsimovLabDesc:
+      "Лендинг AI-платформы для преподавателей: генерация и проверка учебных заданий. Вела фронтенд как тимлид — от архитектуры и компонентов до адаптива и визуальной целостности. Hero, возможности, цены и FAQ читаются как единый продукт.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "Промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
@@ -79,6 +82,60 @@ const translations = {
     mlActionGithub: "GitHub",
     mlActionArticle: "статья",
     mlStatusInProgress: "в разработке",
+    mlCaseTask: "задача",
+    mlCaseData: "данные",
+    mlCaseApproach: "архитектура / подход",
+    mlCaseMetrics: "как оценивала",
+    mlCaseEngineering: "инженерные сложности",
+    mlCaseHindsight: "что бы я сейчас поменяла",
+    MlResumeTask:
+      "найти bias в рекрутинг-модели, которая классифицирует резюме в 9 IT-суперкатегорий, — и попробовать снизить его разными методами.",
+    MlResumeData:
+      "приватная выборка HeadHunter; 9 меток суперкатегорий; city-swap counterfactuals по 41 группе городов; английские резюме для transfer-теста.",
+    MlResumeApproach:
+      "fine-tune BERT-base и Integrated Gradients (Captum), чтобы увидеть, на что опирается модель. прогнала 39+ конфигураций — TF-IDF baseline, city-swap, шесть семейств debiasing (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) с разными гиперпараметрами. в статью вошли самые показательные.",
+    MlResumeMetrics:
+      "baseline BERT: 60.9% accuracy, но при смене города в резюме модель меняла ответ в 7.7% пар — явный географический bias. data scrubbing убрал этот эффект (0% flip) почти без потери качества: 59.4% accuracy. combined scrub + GroupDRO слишком просадил точность до 48.8% — наглядный trade-off, а не рабочий вариант.",
+    MlResumeEngineering:
+      "сложнее всего было не обучить модель, а честно сравнить десятки конфигураций: данные закрыты, всё в ноутбуках, легко потерять воспроизводимость. city-swap тесты долгие, и каждый debiasing-метод по-своему бьёт по accuracy.",
+    MlResumeHindsight:
+      "заранее договорилась бы, что для продукта важнее — точность, стабильность по городам или перенос на другой язык. не гналась бы за нулевым flip rate ценой половины accuracy. transfer на английский заложила бы отдельным экспериментом, а не проверкой в конце.",
+    MlEmotionTask:
+      "7-классовое распознавание эмоций по лицу и полный путь до on-device и web-деплоя.",
+    MlEmotionData:
+      "FER2013: 35 887 изображений 48×48 grayscale; оценка на PrivateTest (3 589); WeightedRandomSampler из-за дисбаланса классов.",
+    MlEmotionApproach:
+      "EmotionCNN (1.7M params) vs MobileNetV3-Small; strong augmentation, label smoothing, early stopping; INT8 quantization → Core ML и ONNX Runtime Web.",
+    MlEmotionMetrics:
+      "CNN + strong aug: accuracy 58.7%, macro-F1 0.569; +TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, latency 1.15 ms. happy F1 0.79, neutral 0.45 (было 0.16). MobileNetV3 — 34.5%.",
+    MlEmotionEngineering:
+      "ImageNet pretrain на 48×48 grayscale не работает; memmap .npz вместо pandas (~61 MB vs ~250 MB); квантизация и экспорт в Core ML / ONNX без потери качества.",
+    MlEmotionHindsight:
+      "раньше заложила бы отдельный val для калибровки TTA и ensemble — сейчас это подобрано постфактум. добавила бы явный latency-бюджет под mobile с первого спринта.",
+    MlGestureTask:
+      "управление курсором жестами руки с веб-камеры: перемещение и клик без мыши.",
+    MlGestureData:
+      "обучающей выборки нет — live webcam; 21 landmark MediaPipe Hands на кадр.",
+    MlGestureApproach:
+      "MediaPipe Hands → rule-based классификатор жестов (pinch / ready / click) → PyAutoGUI; фоновый поток для плавного курсора с bezier easing.",
+    MlGestureMetrics:
+      "не классификационный бенчмарк: целевой цикл ~60 FPS на detection; click cooldown 300 ms; порог pinch 0.15; 5 ready-событий за 500 ms для arm click.",
+    MlGestureEngineering:
+      "два потока: detection vs cursor smoothing; jitter threshold 22 px; virtual capture area +20% за края экрана; миграция MediaPipe API (solutions.hands → Tasks); macOS camera + accessibility permissions.",
+    MlGestureHindsight:
+      "переписала бы на MediaPipe Tasks API сразу — legacy solutions ломается на ≥0.10.31. вынесла бы gesture thresholds в конфиг под разные камеры и освещение.",
+    MlPksTask:
+      "RAG Q&A по личным PDF: ответы только из контекста, с цитатами filename + page.",
+    MlPksData:
+      "загружаемые PDF в data/; чанки с привязкой к страницам; публичного бенчмарка нет — pet-project на своих документах.",
+    MlPksApproach:
+      "pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 с strict prompt; без LangChain/LlamaIndex — каждый слой написан вручную.",
+    MlPksMetrics:
+      "формальных метрик retrieval/faithfulness пока нет — проект в разработке; проверяю вручную: grounded vs hallucination, top-k recall на своих запросах.",
+    MlPksEngineering:
+      "инкрементальная индексация (skip if DB exists); citation metadata на чанк; single-file vs folder search; Ollama latency на CPU — ответы 5–15 с на среднем PDF.",
+    MlPksHindsight:
+      "добавила бы eval-набор вопросов с эталонными цитатами до расширения UI. hybrid search (BM25 + dense) и reranker — следующий шаг, не оптимизация chunk size вслепую.",
     MlResumeScreeningTitle: "Fair resume screening",
     MlResumeScreeningDesc:
       'Интерпретируемый BERT-классификатор резюме для 9 IT-суперкатегорий на данных HeadHunter. Аудит прокси-биаса через Integrated Gradients, сравнение шести методов debiasing, city-swap и transfer на английских резюме. Развивает <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">раннюю XAI-работу</a> по bias в классификации резюме.',
@@ -106,9 +163,10 @@ const translations = {
     rolePagePlaceholder: "раздел в работе",
     PochtaTexTitle: "ПОЧТАТЕХ",
     PochtaTexDesc:
-      "дизайн игры для промо-стенда в лагере InnoBootCamp. отвечала за UX/UI и сценарий взаимодействия на стенде",
+      "дизайн игры для промо-стенда в лагере InnoBootCamp — командный проект с университетом иннополис и почтой россии. отвечала за UX/UI и сценарий взаимодействия на стенде, дизайн solo, около недели",
     YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
-    YandexDirectDesc: "тестовое задание в яндекс: платформа управления рекламой",
+    YandexDirectDesc:
+      "тестовое задание в яндекс: платформа управления рекламой. UX/UI, solo",
     InnoBookLoversTitle: "INN\u041eBOOKLOVERS",
     InnoBookLoversDesc:
       "дизайн сайта для курса по фронтенд разработке в университете иннополис. отвечала за ux/ui интерфейс в проекте",
@@ -116,16 +174,19 @@ const translations = {
     InnoMedDesc:
       "прототип приложения innomed был разработан для университета иннополис на курсе по продакт менеджменту. я была в роли владельца продукта и также отвечала за разработку прототипа",
     PostersTitle: "ПОСТЕРЫ",
-    PostersDesc: "афиши для мероприятий в казани и иннополисе",
+    PostersDesc:
+      "афиши для мероприятий в казани и иннополисе — графический дизайн, solo",
     ConceptsTitle: "КОНЦЕПТЫ",
-    ConceptsDesc: "экспериментальные макеты, сделанные для себя",
+    ConceptsDesc: "экспериментальные макеты, сделанные для себя — личный проект, solo",
     TsarevBarilovaTitle: "ЦАРЁВ & БАРИЛОВА",
-    TsarevBarilovaDesc: "дизайн сайта для продажи онлайн курсов по танцам",
+    TsarevBarilovaDesc:
+      "дизайн сайта для продажи онлайн-курсов по танцам — UX/UI, фриланс, около двух недель, solo",
     YokoMatchaTitle: "YOKO MATCHA",
-    YokoMatchaDesc: "дизайн сайта для магазина матчи yokomatcha",
+    YokoMatchaDesc:
+      "дизайн сайта для магазина матчи yokomatcha — брендинг и UI, фриланс, около двух недель, solo",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "продукты, разработанные мной для проектов croissan studio: лого, мерч, концепты",
+      "продукты, разработанные мной для проектов Croissan Studio: лого, мерч, концепты. product designer, in-house",
     designerProcessTitle: "разбор процесса",
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
@@ -178,9 +239,9 @@ const translations = {
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
     expCroissan:
-      "<strong>croissan studio</strong> — студия полного цикла для ии-продуктов (продуктовый дизайнер и ml-разработчик, апрель 2025 — ...)",
+      "<strong>Croissan Studio</strong> — студия полного цикла для ии-продуктов (продуктовый дизайнер и ml-разработчик, апрель 2025 — ...)",
     expAzimov:
-      "<strong>AzimovLab</strong> — ai-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела ml и ux/ui дизайн)",
+      "<strong>Asimov Lab</strong> — ai-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела ml и ux/ui дизайн)",
     expClearmind:
       "<strong>фриланс</strong> — дизайн афиш и сайтов, вёрстка, ml-разработка на заказ (2022 — ...)",
     eduInnopolis:
@@ -205,7 +266,7 @@ const translations = {
     introCtaMl: "ml кейсы",
     devIntroTitle: "мой опыт в разработке",
     devIntroLead:
-      "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, swift для macOS. в azimovlab вела фронтенд — от архитектуры до ui; довожу сайты и утилиты до продакшна с чистым кодом и понятным ux.",
+      "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, swift для macOS. в Asimov Lab вела фронтенд — от архитектуры до ui; довожу сайты и утилиты до продакшна с чистым кодом и понятным ux.",
     mlIntroTitle: "мой опыт в ml",
     mlIntroLead:
       "делаю прикладной ml: bert, xai и debiasing, rag, computer vision. есть публикации — довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
@@ -217,20 +278,13 @@ const translations = {
     introTrustLabel: "мне доверяют",
     introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов",
     introSocialLabel: "соцсети",
-    trustLogoCroissan: "croissan studio",
+    trustLogoCroissan: "Croissan Studio",
     trustLogoInnopolis: "иннополис",
     trustLogoPochtaRossii: "почта россии",
     trustLogoPochta: "почтатех",
     trustLogoLitsei: "лицей иннополис",
     trustLogoArtCenter: "арт центр иси",
     trustLogoKingstep: "king step",
-    PochtaTexMeta: "роль: UX/UI · 1 нед · дизайн solo, проект в команде · университет иннополис и почта россии",
-    YandexDirectMeta: "роль: UX/UI · тестовое · solo · яндекс",
-    YokoMatchaMeta: "роль: брендинг + UI · 2 нед · solo · фриланс",
-    TsarevBarilovaMeta: "роль: UX/UI · 2 нед · solo · фриланс",
-    CroissanStudioMeta: "роль: product designer · in-house · croissan studio",
-    PostersMeta: "роль: графический дизайн · ongoing · solo · ивенты казани",
-    ConceptsMeta: "роль: эксперимент · — · solo · личный проект",
     languagesBlockTitle: "языки",
     langRu: "русский",
     langEn: "английский",
@@ -281,6 +335,9 @@ const translations = {
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
+    FrontendAsimovLabTitle: "Asimov Lab",
+    FrontendAsimovLabDesc:
+      "Landing page for an AI platform that helps educators generate and grade assignments. I led front-end as team lead — from architecture and components to responsive layout and visual cohesion. Hero, features, pricing, and FAQ read as one product.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "A promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
@@ -307,6 +364,60 @@ const translations = {
     mlActionGithub: "GitHub",
     mlActionArticle: "paper",
     mlStatusInProgress: "in progress",
+    mlCaseTask: "task",
+    mlCaseData: "data",
+    mlCaseApproach: "architecture / approach",
+    mlCaseMetrics: "how I evaluated",
+    mlCaseEngineering: "engineering challenges",
+    mlCaseHindsight: "what I'd change now",
+    MlResumeTask:
+      "Find bias in a recruiting model that classifies resumes into 9 IT supercategories — and try to reduce it with different debiasing methods.",
+    MlResumeData:
+      "Private HeadHunter sample; 9 supercategory labels; city-swap counterfactuals across 41 city groups; English resumes for transfer evaluation.",
+    MlResumeApproach:
+      "Fine-tune BERT-base and use Integrated Gradients (Captum) to see what the model relies on. Ran 39+ configurations — TF-IDF baseline, city-swap, six debiasing families (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) with different hyperparameters. The paper includes the most meaningful results.",
+    MlResumeMetrics:
+      "Baseline BERT: 60.9% accuracy, but swapping the city in a resume changed the prediction in 7.7% of pairs — clear geographic bias. Data scrubbing removed that effect (0% flip) with almost no quality loss: 59.4% accuracy. Combined scrub + GroupDRO pushed accuracy down to 48.8% — a useful trade-off lesson, not a shippable option.",
+    MlResumeEngineering:
+      "The hard part wasn't training the model — it was comparing dozens of configurations fairly: private data, everything in notebooks, easy to lose reproducibility. City-swap tests are slow, and every debiasing method hits accuracy differently.",
+    MlResumeHindsight:
+      "I'd agree upfront what matters for the product — accuracy, stability across cities, or cross-language transfer. I wouldn't chase zero flip rate at the cost of half the accuracy. I'd plan the English transfer as its own experiment, not a final check.",
+    MlEmotionTask:
+      "7-class facial emotion recognition and a full path to on-device and web deployment.",
+    MlEmotionData:
+      "FER2013: 35,887 images at 48×48 grayscale; evaluation on PrivateTest (3,589); WeightedRandomSampler for class imbalance.",
+    MlEmotionApproach:
+      "EmotionCNN (1.7M params) vs MobileNetV3-Small; strong augmentation, label smoothing, early stopping; INT8 quantization → Core ML and ONNX Runtime Web.",
+    MlEmotionMetrics:
+      "CNN + strong aug: 58.7% accuracy, macro-F1 0.569; +TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, 1.15 ms latency. Happy F1 0.79, neutral 0.45 (was 0.16). MobileNetV3 — 34.5%.",
+    MlEmotionEngineering:
+      "ImageNet pretraining fails on 48×48 grayscale; memmap .npz instead of pandas (~61 MB vs ~250 MB); quantization and Core ML / ONNX export without quality loss.",
+    MlEmotionHindsight:
+      "I'd reserve a dedicated val set for TTA and ensemble tuning — currently tuned post hoc. I'd set a mobile latency budget from sprint one.",
+    MlGestureTask:
+      "Hand-gesture mouse control from a webcam: cursor movement and click without a physical mouse.",
+    MlGestureData:
+      "No training set — live webcam; 21 MediaPipe Hand landmarks per frame.",
+    MlGestureApproach:
+      "MediaPipe Hands → rule-based gesture classifier (pinch / ready / click) → PyAutoGUI; background thread for smooth cursor with bezier easing.",
+    MlGestureMetrics:
+      "Not a classification benchmark: target ~60 FPS on detection; 300 ms click cooldown; pinch threshold 0.15; 5 ready events in 500 ms to arm a click.",
+    MlGestureEngineering:
+      "Two threads: detection vs cursor smoothing; 22 px jitter threshold; virtual capture area +20% beyond screen edges; MediaPipe API migration (solutions.hands → Tasks); macOS camera + accessibility permissions.",
+    MlGestureHindsight:
+      "I'd rewrite on the MediaPipe Tasks API from day one — legacy solutions breaks on ≥0.10.31. I'd externalize gesture thresholds for different cameras and lighting.",
+    MlPksTask:
+      "RAG Q&A over personal PDFs: answers grounded in context only, with filename + page citations.",
+    MlPksData:
+      "Uploaded PDFs in data/; chunks tied to page positions; no public benchmark — a pet project on my own documents.",
+    MlPksApproach:
+      "pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 with a strict prompt; no LangChain/LlamaIndex — every layer hand-written.",
+    MlPksMetrics:
+      "No formal retrieval/faithfulness metrics yet — project in progress; manual checks: grounded vs hallucination, top-k recall on my own queries.",
+    MlPksEngineering:
+      "Incremental indexing (skip if DB exists); citation metadata per chunk; single-file vs folder search; Ollama latency on CPU — 5–15 s responses on a medium PDF.",
+    MlPksHindsight:
+      "I'd build a question set with gold citations before expanding the UI. Hybrid search (BM25 + dense) and a reranker — next step, not blind chunk-size tuning.",
     MlResumeScreeningTitle: "Fair resume screening",
     MlResumeScreeningDesc:
       'An interpretable BERT resume classifier for 9 IT supercategories on HeadHunter data. Geographic proxy bias audit with Integrated Gradients, six debiasing methods, city-swap stress tests, and English transfer evaluation. Builds on earlier <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">XAI work</a> on resume classification bias.',
@@ -334,9 +445,10 @@ const translations = {
     rolePagePlaceholder: "section in progress",
     PochtaTexTitle: "POCHTATECH",
     PochtaTexDesc:
-      "game design for a promo stand at InnoBootCamp. i led UX/UI and the on-stand interaction flow",
+      "game design for a promo stand at InnoBootCamp — team project with innopolis university and russian post. i led UX/UI and the on-stand interaction flow, solo design, about one week",
     YandexDirectTitle: "YANDEX DIRECT",
-    YandexDirectDesc: "test task in yandex: advertising platform management",
+    YandexDirectDesc:
+      "test task at yandex: advertising platform management. UX/UI, solo",
     InnoBookLoversTitle: "INNOBOOKLOVERS",
     InnoBookLoversDesc:
       "website design for frontend development course at innopolis university. i was responsible for ux/ui design in the project",
@@ -344,16 +456,18 @@ const translations = {
     InnoMedDesc:
       "innomed app prototype developed at innopolis university during a product management course. i was the product owner and created the prototype",
     PostersTitle: "POSTERS",
-    PostersDesc: "event posters for kazan and innopolis",
+    PostersDesc: "event posters for kazan and innopolis — graphic design, solo",
     ConceptsTitle: "CONCEPTS",
-    ConceptsDesc: "experimental mockups made for myself",
+    ConceptsDesc: "experimental mockups made for myself — personal project, solo",
     TsarevBarilovaTitle: "TSAREV & BARILOVA",
-    TsarevBarilovaDesc: "website design for online dance courses",
+    TsarevBarilovaDesc:
+      "website design for online dance courses — UX/UI, freelance, about two weeks, solo",
     YokoMatchaTitle: "YOKO MATCHA",
-    YokoMatchaDesc: "website design for matcha shop yokomatcha",
+    YokoMatchaDesc:
+      "website design for matcha shop yokomatcha — branding and UI, freelance, about two weeks, solo",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "products developed by me for croissan studio projects: logos, merch, concepts",
+      "products developed for Croissan Studio projects: logos, merch, concepts. product designer, in-house",
     designerProcessTitle: "process breakdown",
     designerProcessProblem: "problem",
     designerProcessSolution: "solution",
@@ -406,9 +520,9 @@ const translations = {
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
     expCroissan:
-      "<strong>croissan studio</strong> — full-cycle AI products studio (product designer & ML engineer, apr 2025 — ...)",
+      "<strong>Croissan Studio</strong> — full-cycle AI products studio (product designer & ML engineer, apr 2025 — ...)",
     expAzimov:
-      "<strong>AzimovLab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; also handled ML and UX/UI design)",
+      "<strong>Asimov Lab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; also handled ML and UX/UI design)",
     expClearmind:
       "<strong>freelance</strong> — poster and web design, front-end builds, ML projects on commission (2022 — ...)",
     eduInnopolis:
@@ -433,7 +547,7 @@ const translations = {
     introCtaMl: "ml cases",
     devIntroTitle: "my dev experience",
     devIntroLead:
-      "I build web and apps — landing pages, front-end in product teams, Swift for macOS. At AzimovLab I led front-end from architecture to UI; I ship production sites and utilities with clean code and clear UX.",
+      "I build web and apps — landing pages, front-end in product teams, Swift for macOS. At Asimov Lab I led front-end from architecture to UI; I ship production sites and utilities with clean code and clear UX.",
     mlIntroTitle: "my ml experience",
     mlIntroLead:
       "I do applied ML — BERT, XAI and debiasing, RAG, computer vision. I publish my work and ship models that are accurate, explainable, and grounded in real product context.",
@@ -445,20 +559,13 @@ const translations = {
     introTrustLabel: "trusted by",
     introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required",
     introSocialLabel: "social links",
-    trustLogoCroissan: "croissan studio",
+    trustLogoCroissan: "Croissan Studio",
     trustLogoInnopolis: "innopolis",
     trustLogoPochtaRossii: "russian post",
     trustLogoPochta: "pochtatech",
     trustLogoLitsei: "innopolis lyceum",
     trustLogoArtCenter: "art center isi",
     trustLogoKingstep: "king step",
-    PochtaTexMeta: "role: UX/UI · 1 wk · design solo, team project · innopolis university and russian post",
-    YandexDirectMeta: "role: UX/UI · test task · solo · yandex",
-    YokoMatchaMeta: "role: branding + UI · 2 wks · solo · freelance",
-    TsarevBarilovaMeta: "role: UX/UI · 2 wks · solo · freelance",
-    CroissanStudioMeta: "role: product designer · in-house · croissan studio",
-    PostersMeta: "role: graphic design · ongoing · solo · kazan events",
-    ConceptsMeta: "role: experiment · — · solo · personal project",
     languagesBlockTitle: "languages",
     langRu: "russian",
     langEn: "english",
@@ -475,7 +582,6 @@ const designerProjects = [
     id: "pochtatex",
     titleKey: "PochtaTexTitle",
     descKey: "PochtaTexDesc",
-    metaKey: "PochtaTexMeta",
     process: {
       problemKey: "PochtaTexProblem",
       solutionKey: "PochtaTexSolution",
@@ -497,7 +603,6 @@ const designerProjects = [
     id: "croissan-studio",
     titleKey: "CroissanStudioTitle",
     descKey: "CroissanStudioDesc",
-    metaKey: "CroissanStudioMeta",
     process: {
       problemKey: "CroissanStudioProblem",
       solutionKey: "CroissanStudioSolution",
@@ -525,7 +630,6 @@ const designerProjects = [
     id: "yandex-direct",
     titleKey: "YandexDirectTitle",
     descKey: "YandexDirectDesc",
-    metaKey: "YandexDirectMeta",
     process: {
       problemKey: "YandexDirectProblem",
       solutionKey: "YandexDirectSolution",
@@ -541,7 +645,6 @@ const designerProjects = [
     id: "yoko-matcha",
     titleKey: "YokoMatchaTitle",
     descKey: "YokoMatchaDesc",
-    metaKey: "YokoMatchaMeta",
     process: {
       problemKey: "YokoMatchaProblem",
       solutionKey: "YokoMatchaSolution",
@@ -557,7 +660,6 @@ const designerProjects = [
     id: "tsarev-barilova",
     titleKey: "TsarevBarilovaTitle",
     descKey: "TsarevBarilovaDesc",
-    metaKey: "TsarevBarilovaMeta",
     process: {
       problemKey: "TsarevBarilovaProblem",
       solutionKey: "TsarevBarilovaSolution",
@@ -578,7 +680,6 @@ const designerProjects = [
     id: "posters",
     titleKey: "PostersTitle",
     descKey: "PostersDesc",
-    metaKey: "PostersMeta",
     process: {
       problemKey: "PostersProblem",
       solutionKey: "PostersSolution",
@@ -600,7 +701,6 @@ const designerProjects = [
     id: "concepts",
     titleKey: "ConceptsTitle",
     descKey: "ConceptsDesc",
-    metaKey: "ConceptsMeta",
     toolKeys: ["designerToolIllustrator", "designerToolFigma", "designerToolAi"],
     images: [
       "images/concepts/page8.webp",
@@ -688,6 +788,20 @@ const devProjects = [
     ],
   },
   {
+    id: "asimovlab",
+    url: "https://asimovlab.ru",
+    preview: "images/dev/asimovlab.webp",
+    titleKey: "FrontendAsimovLabTitle",
+    descKey: "FrontendAsimovLabDesc",
+    toolKeys: [
+      "frontendToolTs",
+      "frontendToolReact",
+      "frontendToolNext",
+      "frontendToolTailwind",
+      "frontendToolFigma",
+    ],
+  },
+  {
     id: "macos-timer",
     url: "https://github.com/natagapova/macos-timer/releases/tag/v1.0.0",
     preview: "images/dev/macos-timer.webp",
@@ -728,6 +842,14 @@ const mlProjects = [
     preview: "images/ml/resume-screening.webp",
     titleKey: "MlResumeScreeningTitle",
     descKey: "MlResumeScreeningDesc",
+    caseStudy: {
+      taskKey: "MlResumeTask",
+      dataKey: "MlResumeData",
+      approachKey: "MlResumeApproach",
+      metricsKey: "MlResumeMetrics",
+      engineeringKey: "MlResumeEngineering",
+      hindsightKey: "MlResumeHindsight",
+    },
     toolKeys: [
       "mlToolPython",
       "mlToolPytorch",
@@ -743,6 +865,14 @@ const mlProjects = [
     preview: "images/ml/emotions-with-audio.webp",
     titleKey: "MlEmotionDetectionTitle",
     descKey: "MlEmotionDetectionDesc",
+    caseStudy: {
+      taskKey: "MlEmotionTask",
+      dataKey: "MlEmotionData",
+      approachKey: "MlEmotionApproach",
+      metricsKey: "MlEmotionMetrics",
+      engineeringKey: "MlEmotionEngineering",
+      hindsightKey: "MlEmotionHindsight",
+    },
     toolKeys: ["mlToolPython", "mlToolPytorch", "mlToolOnnx", "mlToolCoreML"],
   },
   {
@@ -751,6 +881,14 @@ const mlProjects = [
     preview: "images/ml/gesture-input.gif",
     titleKey: "MlGestureInputTitle",
     descKey: "MlGestureInputDesc",
+    caseStudy: {
+      taskKey: "MlGestureTask",
+      dataKey: "MlGestureData",
+      approachKey: "MlGestureApproach",
+      metricsKey: "MlGestureMetrics",
+      engineeringKey: "MlGestureEngineering",
+      hindsightKey: "MlGestureHindsight",
+    },
     toolKeys: ["mlToolPython", "mlToolMediaPipe", "mlToolOpenCV", "mlToolPyAutoGUI"],
   },
   {
@@ -759,6 +897,14 @@ const mlProjects = [
     preview: "images/ml/personal-knowledge-system.webp",
     titleKey: "MlKnowledgeSystemTitle",
     descKey: "MlKnowledgeSystemDesc",
+    caseStudy: {
+      taskKey: "MlPksTask",
+      dataKey: "MlPksData",
+      approachKey: "MlPksApproach",
+      metricsKey: "MlPksMetrics",
+      engineeringKey: "MlPksEngineering",
+      hindsightKey: "MlPksHindsight",
+    },
     toolKeys: ["mlToolPython", "mlToolRag", "mlToolChroma", "mlToolOllama"],
     inDevelopment: true,
   },
@@ -1890,22 +2036,22 @@ function renderMlActions(project, t) {
   if (project.url) {
     links.push(`
       <a
-        class="ml-card__action"
+        class="btn ml-card__action"
         href="${escapeHtml(project.url)}"
         target="_blank"
         rel="noopener noreferrer"
-      >${escapeHtml(t.mlActionGithub ?? "GitHub")}</a>
+      ><span class="btn__label">${escapeHtml(t.mlActionGithub ?? "GitHub")} →</span></a>
     `);
   }
 
   if (project.articleUrl) {
     links.push(`
       <a
-        class="ml-card__action ml-card__action--accent"
+        class="btn ml-card__action"
         href="${escapeHtml(project.articleUrl)}"
         target="_blank"
         rel="noopener noreferrer"
-      >${escapeHtml(t.mlActionArticle ?? "paper")}</a>
+      ><span class="btn__label">${escapeHtml(t.mlActionArticle ?? "paper")} →</span></a>
     `);
   }
 
@@ -1927,7 +2073,13 @@ function renderMlProjects() {
       const status = renderInProgressStatus(project, t);
 
       return `
-        <article class="ml-card${project.inDevelopment ? " ml-card--in-progress" : ""}" role="listitem" aria-label="${escapeHtml(title)}">
+        <article
+          class="ml-card ml-card--interactive${project.inDevelopment ? " ml-card--in-progress" : ""}"
+          data-ml-project-id="${escapeHtml(project.id)}"
+          tabindex="0"
+          role="button"
+          aria-label="${escapeHtml(title)}"
+        >
           ${renderMlPreview(project, title)}
           <div class="ml-card__body">
             <div class="ml-card__heading">
@@ -1936,7 +2088,6 @@ function renderMlProjects() {
             </div>
             ${tools}
             ${renderMlDescription(project, t)}
-            ${renderMlActions(project, t)}
           </div>
         </article>
       `;
@@ -1944,6 +2095,27 @@ function renderMlProjects() {
     .join("");
 
   scheduleCardGridLayout();
+}
+
+function bindMlProjectCards() {
+  const grid = document.getElementById("ml-grid");
+  if (!grid || grid.dataset.mlCardsBound === "true") return;
+
+  grid.dataset.mlCardsBound = "true";
+
+  grid.addEventListener("click", (event) => {
+    const card = event.target.closest("[data-ml-project-id]");
+    if (!card) return;
+    openProjectOverlay(card.dataset.mlProjectId, "ml");
+  });
+
+  grid.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const card = event.target.closest("[data-ml-project-id]");
+    if (!card || !grid.contains(card)) return;
+    event.preventDefault();
+    openProjectOverlay(card.dataset.mlProjectId, "ml");
+  });
 }
 
 function applyMlPage(t) {
@@ -1960,6 +2132,7 @@ function applyMlPage(t) {
   }
 
   renderMlProjects();
+  bindMlProjectCards();
 }
 
 function applyDesignerPage(t) {
@@ -2057,40 +2230,194 @@ function renderDesignerProcess(project, t) {
   `;
 }
 
+function renderMlCaseStudy(project, t) {
+  const caseStudy = project.caseStudy;
+  if (!caseStudy) return "";
+
+  const steps = [
+    { label: t.mlCaseTask, key: caseStudy.taskKey },
+    { label: t.mlCaseData, key: caseStudy.dataKey },
+    { label: t.mlCaseApproach, key: caseStudy.approachKey },
+    { label: t.mlCaseMetrics, key: caseStudy.metricsKey },
+    { label: t.mlCaseEngineering, key: caseStudy.engineeringKey },
+    { label: t.mlCaseHindsight, key: caseStudy.hindsightKey },
+  ]
+    .filter((step) => step.label && step.key && t[step.key])
+    .map((step) => ({ label: step.label, text: t[step.key] }));
+
+  if (!steps.length) return "";
+
+  return `
+    <section class="project-process project-process--ml">
+      <ol class="project-process__steps project-process__steps--cols-2">
+        ${steps
+          .map(
+            (step, index) => `
+          <li class="project-process__step">
+            <span class="project-process__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+            <div class="project-process__body">
+              <p class="project-process__label">${escapeHtml(step.label)}</p>
+              ${renderProcessStepContent(step.text)}
+            </div>
+          </li>
+        `
+          )
+          .join("")}
+      </ol>
+    </section>
+  `;
+}
+
+function renderMlOverlayTools(project, t) {
+  const tools = (project.toolKeys ?? []).map((key) => t[key]).filter(Boolean);
+  if (!tools.length) return "";
+
+  return tools
+    .map((label) => `<span class="frontend-page__skill">${escapeHtml(label)}</span>`)
+    .join("");
+}
+
+function renderProjectOverlayLink(href, label) {
+  return `<a
+    class="btn project-overlay__action"
+    href="${escapeHtml(href)}"
+    target="_blank"
+    rel="noopener noreferrer"
+  ><span class="btn__label">${escapeHtml(label)} →</span></a>`;
+}
+
+function populateProjectOverlayActions(actionsEl, links) {
+  if (!actionsEl) return;
+  if (!links.length) {
+    actionsEl.innerHTML = "";
+    actionsEl.hidden = true;
+    return;
+  }
+  actionsEl.innerHTML = links.join("");
+  actionsEl.hidden = false;
+}
+
+function renderMlOverlayLinks(project, t) {
+  const links = [];
+
+  if (project.url) {
+    links.push(renderProjectOverlayLink(project.url, t.mlActionGithub ?? "GitHub"));
+  }
+
+  if (project.articleUrl) {
+    links.push(renderProjectOverlayLink(project.articleUrl, t.mlActionArticle ?? "paper"));
+  }
+
+  return links;
+}
+
+function renderDesignerOverlayLinks(project, t) {
+  if (!project.url) return [];
+
+  const label = t[project.urlLabelKey ?? "designerActionTry"] ?? "";
+  if (!label) return [];
+
+  return [renderProjectOverlayLink(project.url, label)];
+}
+
+function arrangeOverlayLayout(mode) {
+  const scroll = document.getElementById("project-overlay-scroll");
+  if (!scroll) return;
+
+  const heading = scroll.querySelector(".project-overlay__heading");
+  const tools = document.getElementById("project-overlay-tools");
+  const actions = document.getElementById("project-overlay-actions");
+  const desc = document.getElementById("project-overlay-desc");
+  const process = document.getElementById("project-overlay-process");
+  const gallery = document.getElementById("project-overlay-gallery");
+
+  const nodes = [heading, tools, actions, desc, process, gallery];
+
+  nodes.forEach((node) => {
+    if (node) scroll.appendChild(node);
+  });
+}
+
+function renderMlOverlayContent(projectId) {
+  const project = mlProjects.find((item) => item.id === projectId);
+  const titleEl = document.getElementById("project-overlay-title");
+  const statusEl = document.getElementById("project-overlay-status");
+  const toolsEl = document.getElementById("project-overlay-tools");
+  const actionsEl = document.getElementById("project-overlay-actions");
+  const descEl = document.getElementById("project-overlay-desc");
+  const processEl = document.getElementById("project-overlay-process");
+  const galleryEl = document.getElementById("project-overlay-gallery");
+  if (!project || !titleEl || !descEl || !galleryEl) return;
+
+  const t = translations[currentLang];
+  const title = t[project.titleKey] ?? "";
+  const description = t[project.descKey] ?? "";
+
+  titleEl.textContent = title;
+  populateProjectOverlayActions(actionsEl, renderMlOverlayLinks(project, t));
+  if (statusEl) {
+    if (project.inDevelopment) {
+      statusEl.textContent = t.mlStatusInProgress ?? "";
+      statusEl.hidden = false;
+    } else {
+      statusEl.hidden = true;
+    }
+  }
+  if (toolsEl) {
+    const toolsHtml = renderMlOverlayTools(project, t);
+    toolsEl.innerHTML = toolsHtml;
+    toolsEl.hidden = !toolsHtml;
+  }
+
+  if (innerHtmlKeys.has(project.descKey)) {
+    descEl.innerHTML = description;
+  } else {
+    descEl.textContent = description;
+  }
+  descEl.hidden = !description;
+
+  if (processEl) {
+    const processHtml = renderMlCaseStudy(project, t);
+    processEl.innerHTML = processHtml;
+    processEl.hidden = !processHtml;
+  }
+
+  if (project.preview) {
+    const imageAlt = escapeHtml(fillAltTemplate(t.projectPreviewAlt, { title }));
+    galleryEl.innerHTML = `
+      <button
+        type="button"
+        class="project-overlay__image-btn"
+        data-image-index="0"
+        aria-label="${escapeHtml(t.projectLightboxOpen ?? "open image")}"
+      >
+        <img
+          class="project-overlay__image"
+          src="${escapeHtml(project.preview)}"
+          alt="${imageAlt}"
+          loading="eager"
+          decoding="async"
+        />
+      </button>
+    `;
+    galleryEl.hidden = false;
+    galleryEl.classList.remove("project-overlay__gallery--two-columns");
+  } else {
+    galleryEl.innerHTML = "";
+    galleryEl.hidden = true;
+  }
+
+  arrangeOverlayLayout("ml");
+}
+
 function renderDesignerPanelCaption(project, t) {
   const title = t[project.titleKey] ?? "";
   const description = t[project.descKey] ?? "";
-  const linkLabel = project.url ? (t[project.urlLabelKey ?? "designerActionTry"] ?? "") : "";
-  const linkHtml =
-    project.url && linkLabel
-      ? `<a class="project-panel__caption-link" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkLabel)}</a>`
-      : "";
 
   return `
     <div class="project-panel__caption" aria-hidden="true">
       <p class="project-panel__caption-title">${escapeHtml(title)}</p>
       <p class="project-panel__caption-desc">${escapeHtml(description)}</p>
-      ${linkHtml}
-    </div>
-  `;
-}
-
-function renderDesignerOverlayActions(project, t) {
-  if (!project.url) return "";
-
-  const label = t[project.urlLabelKey ?? "designerActionTry"] ?? "";
-  if (!label) return "";
-
-  return `
-    <div class="project-overlay__actions">
-      <div class="ml-card__actions">
-        <a
-          class="ml-card__action ml-card__action--accent"
-          href="${escapeHtml(project.url)}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >${escapeHtml(label)}</a>
-      </div>
     </div>
   `;
 }
@@ -2149,15 +2476,38 @@ function renderDesignerProjects() {
 }
 
 let openProjectId = null;
+let openOverlaySource = null;
+
+function getOpenOverlayProject() {
+  if (!openProjectId) return null;
+  if (openOverlaySource === "ml") {
+    return mlProjects.find((item) => item.id === openProjectId) ?? null;
+  }
+  return designerProjects.find((item) => item.id === openProjectId) ?? null;
+}
+
+function getOpenOverlayImages(project) {
+  if (!project) return [];
+  if (openOverlaySource === "ml") {
+    return project.preview ? [project.preview] : [];
+  }
+  return project.images ?? [];
+}
 
 function renderProjectOverlayContent(projectId) {
+  if (openOverlaySource === "ml") {
+    renderMlOverlayContent(projectId);
+    return;
+  }
+
+  arrangeOverlayLayout("designer");
+
   const project = designerProjects.find((item) => item.id === projectId);
   const titleEl = document.getElementById("project-overlay-title");
   const statusEl = document.getElementById("project-overlay-status");
-  const metaEl = document.getElementById("project-overlay-meta");
   const toolsEl = document.getElementById("project-overlay-tools");
-  const descEl = document.getElementById("project-overlay-desc");
   const actionsEl = document.getElementById("project-overlay-actions");
+  const descEl = document.getElementById("project-overlay-desc");
   const processEl = document.getElementById("project-overlay-process");
   const galleryEl = document.getElementById("project-overlay-gallery");
   if (!project || !titleEl || !descEl || !galleryEl) return;
@@ -2165,9 +2515,9 @@ function renderProjectOverlayContent(projectId) {
   const t = translations[currentLang];
   const title = t[project.titleKey] ?? "";
   const description = t[project.descKey] ?? "";
-  const meta = project.metaKey ? (t[project.metaKey] ?? "") : "";
 
   titleEl.textContent = title;
+  populateProjectOverlayActions(actionsEl, renderDesignerOverlayLinks(project, t));
   if (statusEl) {
     if (project.inDevelopment) {
       statusEl.textContent = t.mlStatusInProgress ?? "";
@@ -2176,22 +2526,12 @@ function renderProjectOverlayContent(projectId) {
       statusEl.hidden = true;
     }
   }
-  if (metaEl) {
-    metaEl.textContent = meta;
-    metaEl.hidden = !meta;
-  }
   if (toolsEl) {
     const toolsHtml = renderDesignerOverlayTools(project.toolKeys, t);
     toolsEl.innerHTML = toolsHtml;
     toolsEl.hidden = !toolsHtml;
   }
   descEl.textContent = description;
-
-  if (actionsEl) {
-    const actionsHtml = renderDesignerOverlayActions(project, t);
-    actionsEl.innerHTML = actionsHtml;
-    actionsEl.hidden = !actionsHtml;
-  }
 
   if (processEl) {
     const processHtml = renderDesignerProcess(project, t);
@@ -2352,14 +2692,15 @@ function renderProjectLightboxImage() {
 }
 
 function openProjectLightbox(imageIndex) {
-  const project = designerProjects.find((item) => item.id === openProjectId);
+  const project = getOpenOverlayProject();
+  const images = getOpenOverlayImages(project);
   const lightbox = document.getElementById("project-lightbox");
-  if (!project?.images?.length || !lightbox) return;
+  if (!images.length || !lightbox) return;
 
   const t = translations[currentLang];
   projectLightboxTitle = t[project.titleKey] ?? "";
-  projectLightboxImages = project.images;
-  projectLightboxIndex = Math.max(0, Math.min(imageIndex, projectLightboxImages.length - 1));
+  projectLightboxImages = images;
+  projectLightboxIndex = Math.max(0, Math.min(imageIndex, images.length - 1));
   projectLightboxOpen = true;
   renderProjectLightboxImage();
   lightbox.hidden = false;
@@ -2387,10 +2728,11 @@ function stepProjectLightbox(delta) {
   renderProjectLightboxImage();
 }
 
-function openProjectOverlay(projectId) {
+function openProjectOverlay(projectId, source = openOverlaySource ?? "designer") {
   const overlay = document.getElementById("project-overlay");
   if (!overlay || !projectId) return;
 
+  openOverlaySource = source;
   openProjectId = projectId;
   renderProjectOverlayContent(projectId);
 
@@ -2412,6 +2754,7 @@ function closeProjectOverlay() {
   closeProjectLightbox();
   overlay.hidden = true;
   openProjectId = null;
+  openOverlaySource = null;
   document.body.classList.remove("is-project-overlay-open");
 }
 
@@ -2515,7 +2858,7 @@ function bindProjectPanelHandlers() {
 
       if (panel.classList.contains("is-preview-open")) {
         hideMobilePanelPreview(panel);
-        openProjectOverlay(panel.dataset.projectId);
+        openProjectOverlay(panel.dataset.projectId, "designer");
         return;
       }
 
@@ -2524,7 +2867,7 @@ function bindProjectPanelHandlers() {
       return;
     }
 
-    openProjectOverlay(panel.dataset.projectId);
+    openProjectOverlay(panel.dataset.projectId, "designer");
   });
 
   scene.addEventListener("keydown", (event) => {
@@ -2536,7 +2879,7 @@ function bindProjectPanelHandlers() {
     if (isMobileProjectLayout()) {
       if (panel.classList.contains("is-preview-open")) {
         hideMobilePanelPreview(panel);
-        openProjectOverlay(panel.dataset.projectId);
+        openProjectOverlay(panel.dataset.projectId, "designer");
         return;
       }
 
@@ -2545,7 +2888,7 @@ function bindProjectPanelHandlers() {
       return;
     }
 
-    openProjectOverlay(panel.dataset.projectId);
+    openProjectOverlay(panel.dataset.projectId, "designer");
   });
 
   document.addEventListener("click", (event) => {
@@ -2840,7 +3183,7 @@ function applyTranslations() {
   }
 
   if (projectLightboxOpen && openProjectId) {
-    const project = designerProjects.find((item) => item.id === openProjectId);
+    const project = getOpenOverlayProject();
     if (project) {
       projectLightboxTitle = t[project.titleKey] ?? "";
       renderProjectLightboxImage();
@@ -3663,7 +4006,7 @@ function bootPortfolio() {
     initRolesScrollReveal();
   }
 
-  if (isDesignerPage) {
+  if (isDesignerPage || isMlPage) {
     initProjectOverlay();
   }
 }
