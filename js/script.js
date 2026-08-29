@@ -29,7 +29,7 @@ const translations = {
     designerToolAi: "AI",
     roleDesigner: "дизайнер",
     roleFrontend: "веб/app разработчик",
-    roleML: "ML разработчик",
+    roleML: "ml разработчик",
     rolePerson: "человек",
     personTagline: "вот кто делает вам сайты кстати",
     devPageTitle: "dev кейсы",
@@ -49,22 +49,22 @@ const translations = {
     devToolMacos: "macOS",
     DevMacosTimerTitle: "Таймер для MacOS",
     DevMacosTimerDesc:
-      "В готовых таймерах не хватало и обычного таймера, и помодоро, плюс хотелось жить в menu bar и не тонуть в лишних кнопках. Сделала своё: оба режима, простой интерфейс, всё в menu bar. Работает на macOS 13+.",
+      "в готовых таймерах не хватало и обычного таймера, и помодоро, плюс хотелось жить в menu bar и не тонуть в лишних кнопках. Сделала своё: оба режима, простой интерфейс, всё в menu bar. Работает на macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
-      "Сайт AI-студии, который мы собирали командой. Настраивала секции, адаптив и визуальную целостность, чтобы кейсы, услуги и экспертиза читались как один продукт, а не как набор блоков.",
+      "сайт AI-студии, который мы собирали командой. Настраивала секции, адаптив и визуальную целостность, чтобы кейсы, услуги и экспертиза читались как один продукт, а не как набор блоков.",
     FrontendAsimovLabTitle: "Asimov Lab",
     FrontendAsimovLabDesc:
-      "Лендинг AI-платформы для преподавателей: генерация и проверка учебных заданий. Вела фронтенд как тимлид, от архитектуры и компонентов до адаптива, чтобы hero, возможности, цены и FAQ читались как единый продукт.",
+      "лендинг AI-платформы для преподавателей: генерация и проверка учебных заданий. Вела фронтенд как тимлид, от архитектуры и компонентов до адаптива, чтобы hero, возможности, цены и FAQ читались как единый продукт.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
-      "Промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
+      "промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
     FrontendAismenaTitle: "AI-смена · Иннополис",
     FrontendAismenaDesc:
-      "Лендинг летней AI-смены для школьников. Родителю за пару минут должно быть понятно, что в программе и как записать ребёнка без звонка менеджеру. Собрала на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
+      "лендинг летней AI-смены для школьников. Родителю за пару минут должно быть понятно, что в программе и как записать ребёнка без звонка менеджеру. Собрала на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
     FrontendKingstepTitle: "Барилова & Царёв",
     FrontendKingstepDesc:
-      "Сайт танцевальной студии Kingstep: главная, каталог курсов и страницы занятий. Дизайн и макеты готовы, моя часть завершена, публичной ссылки пока нет.",
+      "сайт танцевальной студии Kingstep: главная, каталог курсов и страницы занятий. Дизайн и макеты готовы, моя часть завершена, публичной ссылки пока нет.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -89,51 +89,51 @@ const translations = {
     mlCaseEngineering: "инженерные сложности",
     mlCaseHindsight: "что бы я сейчас поменяла",
     MlResumeTask:
-      "Найти bias в рекрутинг-модели, которая сортирует резюме в 9 IT-суперкатегорий, и попробовать снизить его разными методами.",
+      "найти bias в рекрутинг-модели, которая сортирует резюме в 9 IT-суперкатегорий, и попробовать снизить его разными методами.",
     MlResumeData:
       "Приватная выборка HeadHunter, 9 меток суперкатегорий, city-swap counterfactuals по 41 группе городов и английские резюме для transfer-теста.",
     MlResumeApproach:
-      "Дообучила BERT-base и смотрела Integrated Gradients (Captum), чтобы понять, на что опирается модель. Прогнала 39+ конфигураций: TF-IDF baseline, city-swap и шесть семейств debiasing (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) с разными гиперпараметрами. В статью вошли самые показательные.",
+      "дообучила BERT-base и смотрела Integrated Gradients (Captum), чтобы понять, на что опирается модель. Прогнала 39+ конфигураций: TF-IDF baseline, city-swap и шесть семейств debiasing (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) с разными гиперпараметрами. В статью вошли самые показательные.",
     MlResumeMetrics:
       "Baseline BERT дал 60.9% accuracy, но при смене города в резюме модель меняла ответ в 7.7% пар, то есть проявился географический bias. Data scrubbing убрал этот эффект (0% flip) почти без потери качества: 59.4% accuracy. Combined scrub + GroupDRO просадил точность до 48.8%, это наглядный trade-off, а не рабочий вариант.",
     MlResumeEngineering:
-      "Сложнее всего было не обучить модель, а честно сравнить десятки конфигураций: данные закрыты, всё в ноутбуках, легко потерять воспроизводимость. City-swap тесты долгие, и каждый debiasing-метод по-своему бьёт по accuracy.",
+      "сложнее всего было не обучить модель, а честно сравнить десятки конфигураций: данные закрыты, всё в ноутбуках, легко потерять воспроизводимость. City-swap тесты долгие, и каждый debiasing-метод по-своему бьёт по accuracy.",
     MlResumeHindsight:
       "Заранее договорилась бы, что для продукта важнее: точность, стабильность по городам или перенос на другой язык. Не гналась бы за нулевым flip rate ценой половины accuracy. Transfer на английский заложила бы отдельным экспериментом, а не проверкой в конце.",
     MlEmotionTask:
-      "Научить модель узнавать 7 эмоций по лицу и довести решение до запуска в браузере и на устройстве.",
+      "научить модель узнавать 7 эмоций по лицу и довести решение до запуска в браузере и на устройстве.",
     MlEmotionData:
       "FER2013: 35 887 изображений 48×48 в grayscale, оценка на PrivateTest (3 589), WeightedRandomSampler из-за дисбаланса классов.",
     MlEmotionApproach:
-      "Сравнила EmotionCNN (1.7M params) и MobileNetV3-Small, добавила strong augmentation, label smoothing и early stopping, затем INT8 quantization и экспорт в Core ML и ONNX Runtime Web.",
+      "сравнила EmotionCNN (1.7M params) и MobileNetV3-Small, добавила strong augmentation, label smoothing и early stopping, затем INT8 quantization и экспорт в Core ML и ONNX Runtime Web.",
     MlEmotionMetrics:
       "CNN + strong aug: accuracy 58.7%, macro-F1 0.569; с TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, latency 1.15 ms. Happy F1 0.79, neutral 0.45 (было 0.16). MobileNetV3 остановился на 34.5%.",
     MlEmotionEngineering:
-      "ImageNet pretrain на 48×48 grayscale не сработал. Перешла на memmap .npz вместо pandas (~61 MB вместо ~250 MB). Квантизация и экспорт в Core ML / ONNX прошли без потери качества.",
+      "imageNet pretrain на 48×48 grayscale не сработал. Перешла на memmap .npz вместо pandas (~61 MB вместо ~250 MB). Квантизация и экспорт в Core ML / ONNX прошли без потери качества.",
     MlEmotionHindsight:
       "Раньше заложила бы отдельный val для калибровки TTA и ensemble, сейчас это подобрано постфактум. Добавила бы явный latency-бюджет под mobile с первого спринта.",
     MlGestureTask:
-      "Управлять курсором жестами руки с веб-камеры: перемещение и клик без мыши.",
+      "управлять курсором жестами руки с веб-камеры: перемещение и клик без мыши.",
     MlGestureData:
       "Отдельной обучающей выборки нет, работа идёт с live webcam: 21 landmark MediaPipe Hands на кадр.",
     MlGestureApproach:
-      "MediaPipe Hands, rule-based классификатор жестов (pinch / ready / click), PyAutoGUI и фоновый поток для плавного курсора с bezier easing.",
+      "mediaPipe Hands, rule-based классификатор жестов (pinch / ready / click), PyAutoGUI и фоновый поток для плавного курсора с bezier easing.",
     MlGestureMetrics:
       "Это не классификационный бенчмарк: целевой цикл ~60 FPS на detection, click cooldown 300 ms, порог pinch 0.15, 5 ready-событий за 500 ms для arm click.",
     MlGestureEngineering:
-      "Два потока: detection и cursor smoothing. Jitter threshold 22 px, virtual capture area на 20% шире экрана, миграция MediaPipe API (solutions.hands → Tasks), разрешения macOS camera и accessibility.",
+      "два потока: detection и cursor smoothing. Jitter threshold 22 px, virtual capture area на 20% шире экрана, миграция MediaPipe API (solutions.hands → Tasks), разрешения macOS camera и accessibility.",
     MlGestureHindsight:
       "Переписала бы на MediaPipe Tasks API сразу, потому что legacy solutions ломается на ≥0.10.31. Вынесла бы gesture thresholds в конфиг под разные камеры и освещение.",
     MlPksTask:
-      "Сделать RAG Q&A по личным PDF: ответы только из контекста, с цитатами filename + page.",
+      "сделать RAG Q&A по личным PDF: ответы только из контекста, с цитатами filename + page.",
     MlPksData:
       "Загружаемые PDF в data/, чанки с привязкой к страницам. Публичного бенчмарка нет, это pet-project на своих документах.",
     MlPksApproach:
-      "Цепочка pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 со strict prompt. Без LangChain/LlamaIndex, каждый слой написан вручную.",
+      "цепочка pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 со strict prompt. Без LangChain/LlamaIndex, каждый слой написан вручную.",
     MlPksMetrics:
       "Формальных метрик retrieval/faithfulness пока нет, проект в разработке. Проверяю вручную: grounded vs hallucination и top-k recall на своих запросах.",
     MlPksEngineering:
-      "Инкрементальная индексация (skip if DB exists), citation metadata на чанк, поиск по одному файлу и по папке. На CPU ответы Ollama занимают от 5 до 15 секунд на среднем PDF.",
+      "инкрементальная индексация (skip if DB exists), citation metadata на чанк, поиск по одному файлу и по папке. На CPU ответы Ollama занимают от 5 до 15 секунд на среднем PDF.",
     MlPksHindsight:
       "Добавила бы eval-набор вопросов с эталонными цитатами до расширения UI. Hybrid search (BM25 + dense) и reranker сделала бы следующим шагом, а не слепой подстройкой chunk size.",
     MlResumeScreeningTitle: "Fair resume screening",
@@ -141,15 +141,15 @@ const translations = {
       'Интерпретируемый BERT-классификатор резюме для 9 IT-суперкатегорий на данных HeadHunter. Аудит прокси-биаса через Integrated Gradients, сравнение шести методов debiasing, city-swap и transfer на английских резюме. Развивает <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">раннюю XAI-работу</a> по bias в классификации резюме.',
     MlKnowledgeSystemTitle: "Personal Knowledge System",
     MlKnowledgeSystemDesc:
-      "RAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрала с нуля на Python, без high-level фреймворков.",
+      "rAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрала с нуля на Python, без high-level фреймворков.",
     MlGestureInputTitle: "Gesture input",
     MlGestureInputDesc:
-      "Управление курсором жестами руки с веб-камеры: MediaPipe Hands, распознавание pinch / ready / click и плавное перемещение курсора через PyAutoGUI. Реал-тайм трекинг со сглаживанием и двухшаговым кликом.",
+      "управление курсором жестами руки с веб-камеры: MediaPipe Hands, распознавание pinch / ready / click и плавное перемещение курсора через PyAutoGUI. Реал-тайм трекинг со сглаживанием и двухшаговым кликом.",
     MlEmotionDetectionTitle: "Emotion detection",
     MlEmotionDetectionDesc:
-      "Распознавание эмоций по лицу на FER2013 (7 классов): подготовка данных, обучение EmotionCNN, оценка, INT8-квантизация, экспорт в Core ML и браузерное демо на ONNX Runtime Web. 58.7% accuracy, до 60.8% с ensemble + TTA.",
-    heroExperienceLabel: "Направления",
-    rolesNavLabel: "Роли",
+      "распознавание эмоций по лицу на FER2013 (7 классов): подготовка данных, обучение EmotionCNN, оценка, INT8-квантизация, экспорт в Core ML и браузерное демо на ONNX Runtime Web. 58.7% accuracy, до 60.8% с ensemble + TTA.",
+    heroExperienceLabel: "направления",
+    rolesNavLabel: "роли",
     backHome: "на главную",
     closeProject: "закрыть",
     projectLightboxPrev: "предыдущее",
@@ -161,71 +161,71 @@ const translations = {
     personGalleryPhotoAlt: "Фото: {{name}}",
     personGalleryVideoAlt: "Видео: {{name}}",
     rolePagePlaceholder: "раздел в работе",
-    PochtaTexTitle: "ПОЧТАТЕХ",
+    PochtaTexTitle: "Почтатех",
     PochtaTexDesc:
-      "Командный проект с университетом Иннополис и Почтой России: игра для промо-стенда на лагере InnoBootCamp. Отвечала за UX/UI и сценарий на стенде, делала дизайн одна, около недели.",
-    YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
+      "командный проект с университетом Иннополис и Почтой России: игра для промо-стенда на лагере InnoBootCamp. Отвечала за UX/UI и сценарий на стенде, делала дизайн одна, около недели.",
+    YandexDirectTitle: "Яндекс Директ",
     YandexDirectDesc:
-      "Тестовое задание в Яндексе: платформа для управления рекламой. Делала UX/UI одна.",
-    InnoBookLoversTitle: "INN\u041eBOOKLOVERS",
+      "тестовое задание в Яндексе: платформа для управления рекламой. Делала UX/UI одна.",
+    InnoBookLoversTitle: "Innobooklovers",
     InnoBookLoversDesc:
-      "Дизайн сайта для курса по фронтенд-разработке в университете Иннополис. Отвечала за UX/UI интерфейса в проекте.",
-    InnoMedTitle: "INNOMED",
+      "дизайн сайта для курса по фронтенд-разработке в университете Иннополис. Отвечала за UX/UI интерфейса в проекте.",
+    InnoMedTitle: "Innomed",
     InnoMedDesc:
-      "Прототип приложения Innomed для университета Иннополис на курсе по продакт-менеджменту. Была владельцем продукта и собирала прототип.",
-    PostersTitle: "ПОСТЕРЫ",
+      "прототип приложения Innomed для университета Иннополис на курсе по продакт-менеджменту. Была владельцем продукта и собирала прототип.",
+    PostersTitle: "постеры",
     PostersDesc:
-      "Афиши для мероприятий в Казани и Иннополисе. Графический дизайн, делала одна.",
-    ConceptsTitle: "КОНЦЕПТЫ",
-    ConceptsDesc: "Экспериментальные макеты для себя. Личный проект, делала одна.",
-    TsarevBarilovaTitle: "ЦАРЁВ & БАРИЛОВА",
+      "афиши для мероприятий в Казани и Иннополисе. Графический дизайн, делала одна.",
+    ConceptsTitle: "концепты",
+    ConceptsDesc: "экспериментальные макеты для себя. Личный проект, делала одна.",
+    TsarevBarilovaTitle: "Царёв & Барилова",
     TsarevBarilovaDesc:
-      "Дизайн сайта для продажи онлайн-курсов по танцам. UX/UI, фриланс, около двух недель, делала одна.",
-    YokoMatchaTitle: "YOKO MATCHA",
+      "дизайн сайта для продажи онлайн-курсов по танцам. UX/UI, фриланс, около двух недель, делала одна.",
+    YokoMatchaTitle: "Yoko Matcha",
     YokoMatchaDesc:
-      "Дизайн сайта для магазина матчи yokomatcha. Брендинг и UI, фриланс, около двух недель, делала одна.",
-    CroissanStudioTitle: "CROISSAN STUDIO",
+      "дизайн сайта для магазина матчи yokomatcha. Брендинг и UI, фриланс, около двух недель, делала одна.",
+    CroissanStudioTitle: "Croissan Studio",
     CroissanStudioDesc:
-      "Логотипы, мерч и концепты для проектов Croissan Studio. Работаю in-house как product designer.",
+      "логотипы, мерч и концепты для проектов Croissan Studio. Работаю in-house как product designer.",
     designerProcessTitle: "разбор процесса",
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
     designerProcessResult: "результат",
     designerActionTry: "потестировать игру",
     PochtaTexProblem:
-      "Нужно было сделать игру с поиском ошибок в интерфейсе и заинтересовать как можно больше людей на стенде.",
+      "нужно было сделать игру с поиском ошибок в интерфейсе и заинтересовать как можно больше людей на стенде.",
     PochtaTexSolution:
       "Собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в стилистике университета Иннополис и Почты России.",
     PochtaTexResult:
-      "За 7 дней стенда прошли игру 420+ человек, 99% дошли до конца, это на 31% больше, чем в прошлом формате.",
+      "за 7 дней стенда прошли игру 420+ человек, 99% дошли до конца, это на 31% больше, чем в прошлом формате.",
     YandexDirectProblem:
       "Рекламный кабинет перегружен метриками, и рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь.",
     YandexDirectSolution:
-      "Собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления.",
+      "собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления.",
     YokoMatchaProblem:
       "Бренд матчи должен ощущаться тепло, без ощущения холодного e-commerce шаблона.",
     YokoMatchaSolution:
-      "Выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер.",
+      "выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер.",
     TsarevBarilovaProblem:
       "Владельцам танцевальной студии нужно место, где можно собрать воедино все онлайн-курсы, которые они продают, и сделать платформу, на которой их можно оплачивать и просматривать.",
     TsarevBarilovaSolution:
-      "Сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda.",
+      "сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda.",
     TsarevBarilovaResult:
       "Согласовали главную, каталог и страницы курсов; дизайн завершён, сайт не в разработке у меня и не опубликован.",
     InnoBookLoversProblem:
-      "Курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
+      "курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
     InnoBookLoversSolution:
       "Выстроила UX вокруг подборок и вовлечённости: карточки, акценты на контент и простую навигацию между разделами.",
     InnoBookLoversResult:
-      "DAU вырос на 34%, регистрации на курс +27%; органический трафик +1,9K визитов за семестр без платного продвижения.",
+      "dAU вырос на 34%, регистрации на курс +27%; органический трафик +1,9K визитов за семестр без платного продвижения.",
     InnoMedProblem:
       "Медицинский сервис требует ясности и спокойствия, чтобы пользователь не терялся в сценариях записи и профиля.",
     InnoMedSolution:
-      "Спроектировала потоки пациента, разделила информацию по приоритету и визуально снизила тревожность интерфейса.",
+      "спроектировала потоки пациента, разделила информацию по приоритету и визуально снизила тревожность интерфейса.",
     InnoMedResult:
       "В пилоте конверсия в запись выросла на 31%, отказы на шаге оплаты снизились на 18%; 240+ записей за 6 недель, NPS прототипа 52.",
     CroissanStudioProblem:
-      "AI-студии нужен бренд и общий стиль, который отличает их на рынке. Сюда входит и диджитал, и оффлайн носители.",
+      "aI-студии нужен бренд и общий стиль, который отличает их на рынке. Сюда входит и диджитал, и оффлайн носители.",
     CroissanStudioSolution:
       "Разработала фирменные элементы, иллюстрации и носители в единой стилистике, с AI и ручной доработкой.",
     CroissanStudioResult: "NDA",
@@ -266,10 +266,10 @@ const translations = {
     introCtaMl: "ml кейсы",
     devIntroTitle: "мой опыт в разработке",
     devIntroLead:
-      "Собираю веб и приложения: лендинги, фронтенд в продуктовых командах, Swift для macOS. В Asimov Lab вела фронтенд от архитектуры до UI и довожу сайты и утилиты до продакшна с чистым кодом и понятным UX.",
+      "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, Swift для macOS. В Asimov Lab вела фронтенд от архитектуры до UI и довожу сайты и утилиты до продакшна с чистым кодом и понятным UX.",
     mlIntroTitle: "мой опыт в ml",
     mlIntroLead:
-      "Делаю прикладной ML: BERT, XAI и debiasing, RAG, computer vision. Есть публикации, и я довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
+      "делаю прикладной ML: BERT, XAI и debiasing, RAG, computer vision. Есть публикации, и я довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
     cvPickerTitle: "скачать cv",
     cvPickerClose: "закрыть",
     cvVariantDesigner: "дизайн",
@@ -291,7 +291,7 @@ const translations = {
     langFr: "французский",
     langKo: "корейский",
     langEnLevel: "C1+",
-    langMapDesc: "Карта владения языками по шкале от 0 до C2.",
+    langMapDesc: "карта владения языками по шкале от 0 до C2.",
   },
   en: {
     navBrand: "natalia agapova",
@@ -311,7 +311,7 @@ const translations = {
     designerToolAi: "AI",
     roleDesigner: "designer",
     roleFrontend: "web & app dev",
-    roleML: "ML developer",
+    roleML: "ml developer",
     rolePerson: "person",
     personTagline: "this is who does your website btw",
     devPageTitle: "dev cases",
@@ -331,22 +331,22 @@ const translations = {
     devToolMacos: "macOS",
     DevMacosTimerTitle: "MacOS Timer",
     DevMacosTimerDesc:
-      "Most timers made me choose between a regular timer and pomodoro, and the menu bar experience felt cluttered. I built my own: both modes, a simple UI, lives in the menu bar. Works on macOS 13+.",
+      "most timers made me choose between a regular timer and pomodoro, and the menu bar experience felt cluttered. I built my own: both modes, a simple UI, lives in the menu bar. Works on macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
-      "The AI studio site we built as a team. I worked on sections, responsive layout, and visual cohesion so cases, services, and expertise read as one product, not a pile of blocks.",
+      "the AI studio site we built as a team. I worked on sections, responsive layout, and visual cohesion so cases, services, and expertise read as one product, not a pile of blocks.",
     FrontendAsimovLabTitle: "Asimov Lab",
     FrontendAsimovLabDesc:
-      "Landing page for an AI platform that helps educators generate and grade assignments. I led front-end as team lead, from architecture and components to responsive layout, so hero, features, pricing, and FAQ read as one product.",
+      "landing page for an AI platform that helps educators generate and grade assignments. I led front-end as team lead, from architecture and components to responsive layout, so hero, features, pricing, and FAQ read as one product.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
-      "A promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
+      "a promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
     FrontendAismenaTitle: "AI Camp · Innopolis",
     FrontendAismenaDesc:
-      "A landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes without calling a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
+      "a landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes without calling a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
     FrontendKingstepTitle: "Barilova & Tsarev",
     FrontendKingstepDesc:
-      "A dance studio site for Kingstep: home, course catalog, and class pages. Design and layouts are done, my part is complete, and there is no public link yet.",
+      "a dance studio site for Kingstep: home, course catalog, and class pages. Design and layouts are done, my part is complete, and there is no public link yet.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -371,51 +371,51 @@ const translations = {
     mlCaseEngineering: "engineering challenges",
     mlCaseHindsight: "what I'd change now",
     MlResumeTask:
-      "Find bias in a recruiting model that classifies resumes into 9 IT supercategories and try to reduce it with different debiasing methods.",
+      "find bias in a recruiting model that classifies resumes into 9 IT supercategories and try to reduce it with different debiasing methods.",
     MlResumeData:
       "Private HeadHunter sample, 9 supercategory labels, city-swap counterfactuals across 41 city groups, and English resumes for transfer evaluation.",
     MlResumeApproach:
-      "Fine-tuned BERT-base and used Integrated Gradients (Captum) to see what the model relies on. Ran 39+ configurations: TF-IDF baseline, city-swap, and six debiasing families (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) with different hyperparameters. The paper includes the most meaningful results.",
+      "fine-tuned BERT-base and used Integrated Gradients (Captum) to see what the model relies on. Ran 39+ configurations: TF-IDF baseline, city-swap, and six debiasing families (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) with different hyperparameters. The paper includes the most meaningful results.",
     MlResumeMetrics:
       "Baseline BERT reached 60.9% accuracy, but swapping the city in a resume changed the prediction in 7.7% of pairs, which showed geographic bias. Data scrubbing removed that effect (0% flip) with almost no quality loss: 59.4% accuracy. Combined scrub + GroupDRO pushed accuracy down to 48.8%, a useful trade-off lesson, not a shippable option.",
     MlResumeEngineering:
-      "The hard part was not training the model but comparing dozens of configurations fairly: private data, everything in notebooks, easy to lose reproducibility. City-swap tests are slow, and every debiasing method hits accuracy differently.",
+      "the hard part was not training the model but comparing dozens of configurations fairly: private data, everything in notebooks, easy to lose reproducibility. City-swap tests are slow, and every debiasing method hits accuracy differently.",
     MlResumeHindsight:
       "I would agree upfront what matters for the product: accuracy, stability across cities, or cross-language transfer. I would not chase zero flip rate at the cost of half the accuracy. I would plan the English transfer as its own experiment, not a final check.",
     MlEmotionTask:
-      "Teach a model to recognize 7 facial emotions and ship the solution to the browser and on device.",
+      "teach a model to recognize 7 facial emotions and ship the solution to the browser and on device.",
     MlEmotionData:
       "FER2013: 35,887 images at 48×48 grayscale, evaluation on PrivateTest (3,589), WeightedRandomSampler for class imbalance.",
     MlEmotionApproach:
-      "Compared EmotionCNN (1.7M params) and MobileNetV3-Small, added strong augmentation, label smoothing, and early stopping, then INT8 quantization and export to Core ML and ONNX Runtime Web.",
+      "compared EmotionCNN (1.7M params) and MobileNetV3-Small, added strong augmentation, label smoothing, and early stopping, then INT8 quantization and export to Core ML and ONNX Runtime Web.",
     MlEmotionMetrics:
       "CNN + strong aug: 58.7% accuracy, macro-F1 0.569; with TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, 1.15 ms latency. Happy F1 0.79, neutral 0.45 (was 0.16). MobileNetV3 stopped at 34.5%.",
     MlEmotionEngineering:
-      "ImageNet pretraining failed on 48×48 grayscale. I switched to memmap .npz instead of pandas (~61 MB instead of ~250 MB). Quantization and Core ML / ONNX export kept quality intact.",
+      "imageNet pretraining failed on 48×48 grayscale. I switched to memmap .npz instead of pandas (~61 MB instead of ~250 MB). Quantization and Core ML / ONNX export kept quality intact.",
     MlEmotionHindsight:
       "I would reserve a dedicated val set for TTA and ensemble tuning, because right now it is tuned post hoc. I would set a mobile latency budget from sprint one.",
     MlGestureTask:
-      "Control the cursor with hand gestures from a webcam: movement and click without a physical mouse.",
+      "control the cursor with hand gestures from a webcam: movement and click without a physical mouse.",
     MlGestureData:
       "There is no training set, only live webcam input: 21 MediaPipe Hand landmarks per frame.",
     MlGestureApproach:
-      "MediaPipe Hands, a rule-based gesture classifier (pinch / ready / click), PyAutoGUI, and a background thread for smooth cursor movement with bezier easing.",
+      "mediaPipe Hands, a rule-based gesture classifier (pinch / ready / click), PyAutoGUI, and a background thread for smooth cursor movement with bezier easing.",
     MlGestureMetrics:
       "This is not a classification benchmark: target ~60 FPS on detection, 300 ms click cooldown, pinch threshold 0.15, 5 ready events in 500 ms to arm a click.",
     MlGestureEngineering:
-      "Two threads: detection and cursor smoothing. Jitter threshold 22 px, virtual capture area 20% beyond screen edges, MediaPipe API migration (solutions.hands → Tasks), macOS camera and accessibility permissions.",
+      "two threads: detection and cursor smoothing. Jitter threshold 22 px, virtual capture area 20% beyond screen edges, MediaPipe API migration (solutions.hands → Tasks), macOS camera and accessibility permissions.",
     MlGestureHindsight:
       "I would rewrite on the MediaPipe Tasks API from day one because legacy solutions breaks on ≥0.10.31. I would externalize gesture thresholds for different cameras and lighting.",
     MlPksTask:
-      "Build RAG Q&A over personal PDFs with answers grounded in context only and filename + page citations.",
+      "build RAG Q&A over personal PDFs with answers grounded in context only and filename + page citations.",
     MlPksData:
       "Uploaded PDFs in data/, chunks tied to page positions. There is no public benchmark, it is a pet project on my own documents.",
     MlPksApproach:
-      "Pipeline: pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 with a strict prompt. No LangChain/LlamaIndex, every layer is hand-written.",
+      "pipeline: pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 with a strict prompt. No LangChain/LlamaIndex, every layer is hand-written.",
     MlPksMetrics:
       "No formal retrieval/faithfulness metrics yet, the project is in progress. I check manually: grounded vs hallucination and top-k recall on my own queries.",
     MlPksEngineering:
-      "Incremental indexing (skip if DB exists), citation metadata per chunk, single-file and folder search. On CPU, Ollama responses take 5 to 15 seconds on a medium PDF.",
+      "incremental indexing (skip if DB exists), citation metadata per chunk, single-file and folder search. On CPU, Ollama responses take 5 to 15 seconds on a medium PDF.",
     MlPksHindsight:
       "I would build a question set with gold citations before expanding the UI. Hybrid search (BM25 + dense) and a reranker would be the next step, not blind chunk-size tuning.",
     MlResumeScreeningTitle: "Fair resume screening",
@@ -423,15 +423,15 @@ const translations = {
       'An interpretable BERT resume classifier for 9 IT supercategories on HeadHunter data. Geographic proxy bias audit with Integrated Gradients, six debiasing methods, city-swap stress tests, and English transfer evaluation. Builds on earlier <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">XAI work</a> on resume classification bias.',
     MlKnowledgeSystemTitle: "Personal Knowledge System",
     MlKnowledgeSystemDesc:
-      "A RAG system for answering questions from personal PDFs: chunking, embeddings, semantic search in ChromaDB, and LLM answers via Ollama with citations. Built from scratch in Python without high-level frameworks.",
+      "a RAG system for answering questions from personal PDFs: chunking, embeddings, semantic search in ChromaDB, and LLM answers via Ollama with citations. Built from scratch in Python without high-level frameworks.",
     MlGestureInputTitle: "Gesture input",
     MlGestureInputDesc:
-      "Webcam hand-gesture mouse control: MediaPipe Hands landmark tracking, pinch / ready / click recognition, and smooth cursor movement with PyAutoGUI. Real-time tracking with jitter reduction and a two-step click gesture.",
+      "webcam hand-gesture mouse control: MediaPipe Hands landmark tracking, pinch / ready / click recognition, and smooth cursor movement with PyAutoGUI. Real-time tracking with jitter reduction and a two-step click gesture.",
     MlEmotionDetectionTitle: "Emotion detection",
     MlEmotionDetectionDesc:
-      "Facial emotion recognition on FER2013 (7 classes): data prep, EmotionCNN training, evaluation, INT8 quantization, Core ML export, and a browser demo via ONNX Runtime Web. 58.7% accuracy, up to 60.8% with ensemble + TTA.",
-    heroExperienceLabel: "Directions",
-    rolesNavLabel: "Roles",
+      "facial emotion recognition on FER2013 (7 classes): data prep, EmotionCNN training, evaluation, INT8 quantization, Core ML export, and a browser demo via ONNX Runtime Web. 58.7% accuracy, up to 60.8% with ensemble + TTA.",
+    heroExperienceLabel: "directions",
+    rolesNavLabel: "roles",
     backHome: "back to home",
     closeProject: "close",
     projectLightboxPrev: "previous",
@@ -443,70 +443,70 @@ const translations = {
     personGalleryPhotoAlt: "Photo: {{name}}",
     personGalleryVideoAlt: "Video: {{name}}",
     rolePagePlaceholder: "section in progress",
-    PochtaTexTitle: "POCHTATECH",
+    PochtaTexTitle: "Pochtatech",
     PochtaTexDesc:
-      "Team project with Innopolis University and Russian Post: a game for a promo stand at InnoBootCamp. I led UX/UI and the on-stand interaction flow, did the design solo in about a week.",
-    YandexDirectTitle: "YANDEX DIRECT",
+      "team project with Innopolis University and Russian Post: a game for a promo stand at InnoBootCamp. I led UX/UI and the on-stand interaction flow, did the design solo in about a week.",
+    YandexDirectTitle: "Yandex Direct",
     YandexDirectDesc:
-      "Test task at Yandex: an advertising management platform. I did the UX/UI solo.",
-    InnoBookLoversTitle: "INNOBOOKLOVERS",
+      "test task at Yandex: an advertising management platform. I did the UX/UI solo.",
+    InnoBookLoversTitle: "Innobooklovers",
     InnoBookLoversDesc:
-      "Website design for a frontend development course at Innopolis University. I was responsible for the interface UX/UI.",
-    InnoMedTitle: "INNOMED",
+      "website design for a frontend development course at Innopolis University. I was responsible for the interface UX/UI.",
+    InnoMedTitle: "Innomed",
     InnoMedDesc:
-      "Innomed app prototype for Innopolis University during a product management course. I was the product owner and built the prototype.",
-    PostersTitle: "POSTERS",
-    PostersDesc: "Event posters for Kazan and Innopolis. Graphic design, solo project.",
-    ConceptsTitle: "CONCEPTS",
-    ConceptsDesc: "Experimental mockups I made for myself. Personal project, solo.",
-    TsarevBarilovaTitle: "TSAREV & BARILOVA",
+      "innomed app prototype for Innopolis University during a product management course. I was the product owner and built the prototype.",
+    PostersTitle: "posters",
+    PostersDesc: "event posters for Kazan and Innopolis. Graphic design, solo project.",
+    ConceptsTitle: "concepts",
+    ConceptsDesc: "experimental mockups I made for myself. Personal project, solo.",
+    TsarevBarilovaTitle: "Tsarev & Barilova",
     TsarevBarilovaDesc:
-      "Website design for online dance courses. UX/UI, freelance, about two weeks, solo.",
-    YokoMatchaTitle: "YOKO MATCHA",
+      "website design for online dance courses. UX/UI, freelance, about two weeks, solo.",
+    YokoMatchaTitle: "Yoko Matcha",
     YokoMatchaDesc:
-      "Website design for matcha shop yokomatcha. Branding and UI, freelance, about two weeks, solo.",
-    CroissanStudioTitle: "CROISSAN STUDIO",
+      "website design for matcha shop yokomatcha. Branding and UI, freelance, about two weeks, solo.",
+    CroissanStudioTitle: "Croissan Studio",
     CroissanStudioDesc:
-      "Logos, merch, and concepts for Croissan Studio projects. I work in-house as a product designer.",
+      "logos, merch, and concepts for Croissan Studio projects. I work in-house as a product designer.",
     designerProcessTitle: "process breakdown",
     designerProcessProblem: "problem",
     designerProcessSolution: "solution",
     designerProcessResult: "result",
     designerActionTry: "try the game",
     PochtaTexProblem:
-      "We needed a spot-the-error interface game that would draw as many people as possible to the stand.",
+      "we needed a spot-the-error interface game that would draw as many people as possible to the stand.",
     PochtaTexSolution:
       "Built the game flow, onboarding, signup, and game-screen UX skeleton in Innopolis University and Russian Post brand style.",
     PochtaTexResult:
-      "Over 7 stand days, 420+ people played, 99% finished the full game, 31% more than the previous format.",
+      "over 7 stand days, 420+ people played, 99% finished the full game, 31% more than the previous format.",
     YandexDirectProblem:
       "The ad dashboard is packed with metrics, so advertisers struggle to see what matters in the campaign at a glance.",
     YandexDirectSolution:
-      "Built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks.",
+      "built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks.",
     YokoMatchaProblem:
       "The matcha brand had to feel warm, not like a cold e-commerce template.",
     YokoMatchaSolution:
-      "Defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look.",
+      "defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look.",
     TsarevBarilovaProblem:
       "The dance studio owners needed one place to bring together all their online courses and a platform where students can pay and watch them.",
     TsarevBarilovaSolution:
-      "Built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build.",
+      "built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build.",
     TsarevBarilovaResult:
       "Home, catalog, and course pages were approved; design is complete, not in development on my side, and not published.",
     InnoBookLoversProblem:
-      "A course project risked looking like homework instead of a living book community.",
+      "a course project risked looking like homework instead of a living book community.",
     InnoBookLoversSolution:
       "Shaped UX around collections and engagement: cards, content highlights, and simple navigation between sections.",
     InnoBookLoversResult:
-      "DAU up 34%, course signups +27%; +1.9K organic visits per semester with no paid promotion.",
+      "dAU up 34%, course signups +27%; +1.9K organic visits per semester with no paid promotion.",
     InnoMedProblem:
       "A medical service needs clarity and calm so users do not get lost in booking and profile flows.",
     InnoMedSolution:
-      "Mapped patient journeys, prioritized information, and softened the interface to reduce anxiety.",
+      "mapped patient journeys, prioritized information, and softened the interface to reduce anxiety.",
     InnoMedResult:
       "In the pilot, booking conversion rose 31%, drop-off at payment fell 18%; 240+ appointments in 6 weeks, prototype NPS 52.",
     CroissanStudioProblem:
-      "An AI studio needs a brand and a shared style that sets it apart, both in digital and offline touchpoints.",
+      "an AI studio needs a brand and a shared style that sets it apart, both in digital and offline touchpoints.",
     CroissanStudioSolution:
       "Developed brand elements, illustrations, and assets in a single style, AI-assisted and hand-finished.",
     CroissanStudioResult: "NDA",
@@ -539,7 +539,7 @@ const translations = {
     footerSocialScholar: "Google Scholar",
     introBlockTitle: "about me",
     introLead:
-      "I carefully build products you'd genuinely want to use",
+      "i carefully build products you'd genuinely want to use",
     introStatusLabel: "current status:",
     introStatusValue: "open to work: design, dev, ml &\u00A0more",
     introCtaDesigner: "design cases",
@@ -547,10 +547,10 @@ const translations = {
     introCtaMl: "ml cases",
     devIntroTitle: "my dev experience",
     devIntroLead:
-      "I build web and apps: landing pages, front-end in product teams, Swift for macOS. At Asimov Lab I led front-end from architecture to UI and ship production sites and utilities with clean code and clear UX.",
+      "i build web and apps: landing pages, front-end in product teams, Swift for macOS. at Asimov Lab i led front-end from architecture to UI and ship production sites and utilities with clean code and clear UX.",
     mlIntroTitle: "my ml experience",
     mlIntroLead:
-      "I do applied ML: BERT, XAI and debiasing, RAG, computer vision. I publish my work and ship models that are accurate, explainable, and grounded in real product context.",
+      "i do applied ML: BERT, XAI and debiasing, RAG, computer vision. i publish my work and ship models that are accurate, explainable, and grounded in real product context.",
     cvPickerTitle: "download cv",
     cvPickerClose: "close",
     cvVariantDesigner: "design",
@@ -572,7 +572,7 @@ const translations = {
     langFr: "french",
     langKo: "korean",
     langEnLevel: "C1+",
-    langMapDesc: "Language proficiency map on a scale from 0 to C2.",
+    langMapDesc: "language proficiency map on a scale from 0 to C2.",
   },
 };
 
@@ -1654,9 +1654,6 @@ function layoutProjectPanels() {
           panel.classList.remove("project-panel--pending");
         });
 
-        ensureMobileCaptionViewportListeners();
-        bindMobilePanelCaptionElevation();
-
         return true;
       }
 
@@ -2446,8 +2443,8 @@ function renderDesignerProjects() {
           data-project-id="${project.id}"
           aria-label="${escapeHtml(title)}"
         >
+          ${renderDesignerPanelCaption(project, t)}
           <div class="project-panel__stack">
-            ${renderDesignerPanelCaption(project, t)}
             <div class="project-panel__card">
               <span class="project-panel__bevel" aria-hidden="true"></span>
               <img
@@ -2761,89 +2758,22 @@ function closeProjectOverlay() {
   document.body.classList.remove("is-project-overlay-open");
 }
 
-const MOBILE_CAPTION_GAP = 4;
-
-function getMobilePanelCaptionMetrics(panel) {
-  const stack = panel.querySelector(".project-panel__stack");
-  const rect = (stack ?? panel).getBoundingClientRect();
-
-  return {
-    centerX: rect.left + rect.width / 2,
-    width: rect.width,
-    top: rect.top,
-  };
-}
-
-function positionElevatedMobileCaption(caption, panel) {
-  const { centerX, width, top } = getMobilePanelCaptionMetrics(panel);
-
-  caption.classList.add("project-panel__caption--elevated");
-  caption.style.left = `${centerX}px`;
-  caption.style.right = "auto";
-  caption.style.width = `${width}px`;
-  caption.style.top = "auto";
-  caption.style.bottom = `${window.innerHeight - top + MOBILE_CAPTION_GAP}px`;
-  caption.style.transform = "translateX(-50%)";
-}
-
-function resetElevatedMobileCaption(caption) {
-  caption.classList.remove("project-panel__caption--elevated");
-  caption.style.left = "";
-  caption.style.right = "";
-  caption.style.width = "";
-  caption.style.top = "";
-  caption.style.bottom = "";
-  caption.style.transform = "";
-}
-
 function showMobilePanelPreview(panel) {
-  const caption = panel.querySelector(".project-panel__caption");
-  if (!caption) return;
   panel.classList.add("is-preview-open");
-  requestAnimationFrame(() => {
-    positionElevatedMobileCaption(caption, panel);
-  });
+  const caption = panel.querySelector(".project-panel__caption");
+  if (caption) caption.setAttribute("aria-hidden", "false");
 }
 
 function hideMobilePanelPreview(panel) {
-  const caption = panel.querySelector(".project-panel__caption");
   panel.classList.remove("is-preview-open");
-  if (caption) resetElevatedMobileCaption(caption);
+  const caption = panel.querySelector(".project-panel__caption");
+  if (caption) caption.setAttribute("aria-hidden", "true");
 }
 
 function hideAllMobilePanelPreviews() {
   document
     .querySelectorAll(".projects-stack--mobile .project-panel.is-preview-open")
     .forEach((panel) => hideMobilePanelPreview(panel));
-}
-
-function bindMobilePanelCaptionElevation() {
-  if (!document.getElementById("projects-stack")?.classList.contains("projects-stack--mobile")) {
-    return;
-  }
-  ensureMobileCaptionViewportListeners();
-}
-
-function repositionElevatedMobileCaptions() {
-  document
-    .querySelectorAll(".projects-stack--mobile .project-panel__caption--elevated")
-    .forEach((caption) => {
-      const panel = caption.closest(".project-panel");
-      if (!panel) return;
-      positionElevatedMobileCaption(caption, panel);
-    });
-}
-
-let mobileCaptionViewportListenersBound = false;
-
-function ensureMobileCaptionViewportListeners() {
-  if (mobileCaptionViewportListenersBound) return;
-  mobileCaptionViewportListenersBound = true;
-  document.addEventListener("scroll", repositionElevatedMobileCaptions, {
-    passive: true,
-    capture: true,
-  });
-  window.addEventListener("resize", repositionElevatedMobileCaptions, { passive: true });
 }
 
 function bindProjectPanelHandlers() {
