@@ -50,9 +50,10 @@
   {
     "name": "IMG_0620.MOV",
     "type": "video",
-    "width": 3840,
-    "height": 2160,
-    "aspectRatio": 1.7777777777777777,
+    "width": 2160,
+    "height": 3840,
+    "aspectRatio": 0.5625,
+    "rotation": -90,
     "poster": "posters/IMG_0620.webp",
     "preview": "previews/IMG_0620.mp4"
   },
@@ -123,18 +124,20 @@
   {
     "name": "IMG_1546.mov",
     "type": "video",
-    "width": 3840,
-    "height": 2160,
-    "aspectRatio": 1.7777777777777777,
+    "width": 2160,
+    "height": 3840,
+    "aspectRatio": 0.5625,
+    "rotation": -90,
     "poster": "posters/IMG_1546.webp",
     "preview": "previews/IMG_1546.mp4"
   },
   {
     "name": "IMG_1655.mov",
     "type": "video",
-    "width": 3110,
-    "height": 1748,
-    "aspectRatio": 1.7791762013729977,
+    "width": 1748,
+    "height": 3110,
+    "aspectRatio": 0.5620578778135048,
+    "rotation": -90,
     "poster": "posters/IMG_1655.webp",
     "preview": "previews/IMG_1655.mp4"
   },
@@ -182,9 +185,10 @@
   {
     "name": "IMG_2270.mov",
     "type": "video",
-    "width": 2880,
-    "height": 2160,
-    "aspectRatio": 1.3333333333333333,
+    "width": 2160,
+    "height": 2880,
+    "aspectRatio": 0.75,
+    "rotation": -90,
     "poster": "posters/IMG_2270.webp",
     "preview": "previews/IMG_2270.mp4"
   },

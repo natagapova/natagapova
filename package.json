@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": true,
   "scripts": {
-    "dev": "live-server --port=5501 --no-browser --watch=index.html,css/styles.css,js/script.js,js/cursor-trail.js,js/person.js,images,fonts,designer.html,dev.html,frontend.html,ml.html,person.html",
+    "dev": "live-server --port=5501 --no-browser --watch=index.html,css/styles.css,js/script.js,js/cursor-trail.js,js/person.js,images,fonts,designer,dev,frontend.html,ml,person",
     "build:person-gallery": "node scripts/build-person-gallery.mjs"
   },
   "devDependencies": {

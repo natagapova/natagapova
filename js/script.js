@@ -49,22 +49,22 @@ const translations = {
     devToolMacos: "macOS",
     DevMacosTimerTitle: "Таймер для MacOS",
     DevMacosTimerDesc:
-      "В других таймерах не хватало связки таймер + помодоро, нормальной жизни в menu bar и простого интерфейса — всё казалось перегруженным. Сделала своё: минимализм, оба режима, приложение живёт в menu bar. macOS 13+.",
+      "В готовых таймерах не хватало и обычного таймера, и помодоро, плюс хотелось жить в menu bar и не тонуть в лишних кнопках. Сделала своё: оба режима, простой интерфейс, всё в menu bar. Работает на macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
-      "Студийный сайт AI-студии в командной разработке: секции, адаптив и визуальная целостность. Кейсы, услуги и экспертиза читаются легко — не как набор блоков.",
+      "Сайт AI-студии, который мы собирали командой. Настраивала секции, адаптив и визуальную целостность, чтобы кейсы, услуги и экспертиза читались как один продукт, а не как набор блоков.",
     FrontendAsimovLabTitle: "Asimov Lab",
     FrontendAsimovLabDesc:
-      "Лендинг AI-платформы для преподавателей: генерация и проверка учебных заданий. Вела фронтенд как тимлид — от архитектуры и компонентов до адаптива и визуальной целостности. Hero, возможности, цены и FAQ читаются как единый продукт.",
+      "Лендинг AI-платформы для преподавателей: генерация и проверка учебных заданий. Вела фронтенд как тимлид, от архитектуры и компонентов до адаптива, чтобы hero, возможности, цены и FAQ читались как единый продукт.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "Промо-сайт театральной постановки с акцентом на настроение спектакля и мобильную подачу. Полноэкранный hero, кастомная галерея со свайпом, чистая вёрстка.",
     FrontendAismenaTitle: "AI-смена · Иннополис",
     FrontendAismenaDesc:
-      "Лендинг летней AI-смены для школьников. Задача — за пару минут дать родителю полную картину программы и путь к заявке без звонка менеджеру. Сборка на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
+      "Лендинг летней AI-смены для школьников. Родителю за пару минут должно быть понятно, что в программе и как записать ребёнка без звонка менеджеру. Собрала на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
     FrontendKingstepTitle: "Барилова & Царёв",
     FrontendKingstepDesc:
-      "Сайт Kingstep — главная, каталог курсов и страницы занятий. Дизайн и макеты готовы; с моей стороны проект завершён, публичной ссылки нет.",
+      "Сайт танцевальной студии Kingstep: главная, каталог курсов и страницы занятий. Дизайн и макеты готовы, моя часть завершена, публичной ссылки пока нет.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -89,65 +89,65 @@ const translations = {
     mlCaseEngineering: "инженерные сложности",
     mlCaseHindsight: "что бы я сейчас поменяла",
     MlResumeTask:
-      "найти bias в рекрутинг-модели, которая классифицирует резюме в 9 IT-суперкатегорий, — и попробовать снизить его разными методами.",
+      "Найти bias в рекрутинг-модели, которая сортирует резюме в 9 IT-суперкатегорий, и попробовать снизить его разными методами.",
     MlResumeData:
-      "приватная выборка HeadHunter; 9 меток суперкатегорий; city-swap counterfactuals по 41 группе городов; английские резюме для transfer-теста.",
+      "Приватная выборка HeadHunter, 9 меток суперкатегорий, city-swap counterfactuals по 41 группе городов и английские резюме для transfer-теста.",
     MlResumeApproach:
-      "fine-tune BERT-base и Integrated Gradients (Captum), чтобы увидеть, на что опирается модель. прогнала 39+ конфигураций — TF-IDF baseline, city-swap, шесть семейств debiasing (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) с разными гиперпараметрами. в статью вошли самые показательные.",
+      "Дообучила BERT-base и смотрела Integrated Gradients (Captum), чтобы понять, на что опирается модель. Прогнала 39+ конфигураций: TF-IDF baseline, city-swap и шесть семейств debiasing (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) с разными гиперпараметрами. В статью вошли самые показательные.",
     MlResumeMetrics:
-      "baseline BERT: 60.9% accuracy, но при смене города в резюме модель меняла ответ в 7.7% пар — явный географический bias. data scrubbing убрал этот эффект (0% flip) почти без потери качества: 59.4% accuracy. combined scrub + GroupDRO слишком просадил точность до 48.8% — наглядный trade-off, а не рабочий вариант.",
+      "Baseline BERT дал 60.9% accuracy, но при смене города в резюме модель меняла ответ в 7.7% пар, то есть проявился географический bias. Data scrubbing убрал этот эффект (0% flip) почти без потери качества: 59.4% accuracy. Combined scrub + GroupDRO просадил точность до 48.8%, это наглядный trade-off, а не рабочий вариант.",
     MlResumeEngineering:
-      "сложнее всего было не обучить модель, а честно сравнить десятки конфигураций: данные закрыты, всё в ноутбуках, легко потерять воспроизводимость. city-swap тесты долгие, и каждый debiasing-метод по-своему бьёт по accuracy.",
+      "Сложнее всего было не обучить модель, а честно сравнить десятки конфигураций: данные закрыты, всё в ноутбуках, легко потерять воспроизводимость. City-swap тесты долгие, и каждый debiasing-метод по-своему бьёт по accuracy.",
     MlResumeHindsight:
-      "заранее договорилась бы, что для продукта важнее — точность, стабильность по городам или перенос на другой язык. не гналась бы за нулевым flip rate ценой половины accuracy. transfer на английский заложила бы отдельным экспериментом, а не проверкой в конце.",
+      "Заранее договорилась бы, что для продукта важнее: точность, стабильность по городам или перенос на другой язык. Не гналась бы за нулевым flip rate ценой половины accuracy. Transfer на английский заложила бы отдельным экспериментом, а не проверкой в конце.",
     MlEmotionTask:
-      "7-классовое распознавание эмоций по лицу и полный путь до on-device и web-деплоя.",
+      "Научить модель узнавать 7 эмоций по лицу и довести решение до запуска в браузере и на устройстве.",
     MlEmotionData:
-      "FER2013: 35 887 изображений 48×48 grayscale; оценка на PrivateTest (3 589); WeightedRandomSampler из-за дисбаланса классов.",
+      "FER2013: 35 887 изображений 48×48 в grayscale, оценка на PrivateTest (3 589), WeightedRandomSampler из-за дисбаланса классов.",
     MlEmotionApproach:
-      "EmotionCNN (1.7M params) vs MobileNetV3-Small; strong augmentation, label smoothing, early stopping; INT8 quantization → Core ML и ONNX Runtime Web.",
+      "Сравнила EmotionCNN (1.7M params) и MobileNetV3-Small, добавила strong augmentation, label smoothing и early stopping, затем INT8 quantization и экспорт в Core ML и ONNX Runtime Web.",
     MlEmotionMetrics:
-      "CNN + strong aug: accuracy 58.7%, macro-F1 0.569; +TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, latency 1.15 ms. happy F1 0.79, neutral 0.45 (было 0.16). MobileNetV3 — 34.5%.",
+      "CNN + strong aug: accuracy 58.7%, macro-F1 0.569; с TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, latency 1.15 ms. Happy F1 0.79, neutral 0.45 (было 0.16). MobileNetV3 остановился на 34.5%.",
     MlEmotionEngineering:
-      "ImageNet pretrain на 48×48 grayscale не работает; memmap .npz вместо pandas (~61 MB vs ~250 MB); квантизация и экспорт в Core ML / ONNX без потери качества.",
+      "ImageNet pretrain на 48×48 grayscale не сработал. Перешла на memmap .npz вместо pandas (~61 MB вместо ~250 MB). Квантизация и экспорт в Core ML / ONNX прошли без потери качества.",
     MlEmotionHindsight:
-      "раньше заложила бы отдельный val для калибровки TTA и ensemble — сейчас это подобрано постфактум. добавила бы явный latency-бюджет под mobile с первого спринта.",
+      "Раньше заложила бы отдельный val для калибровки TTA и ensemble, сейчас это подобрано постфактум. Добавила бы явный latency-бюджет под mobile с первого спринта.",
     MlGestureTask:
-      "управление курсором жестами руки с веб-камеры: перемещение и клик без мыши.",
+      "Управлять курсором жестами руки с веб-камеры: перемещение и клик без мыши.",
     MlGestureData:
-      "обучающей выборки нет — live webcam; 21 landmark MediaPipe Hands на кадр.",
+      "Отдельной обучающей выборки нет, работа идёт с live webcam: 21 landmark MediaPipe Hands на кадр.",
     MlGestureApproach:
-      "MediaPipe Hands → rule-based классификатор жестов (pinch / ready / click) → PyAutoGUI; фоновый поток для плавного курсора с bezier easing.",
+      "MediaPipe Hands, rule-based классификатор жестов (pinch / ready / click), PyAutoGUI и фоновый поток для плавного курсора с bezier easing.",
     MlGestureMetrics:
-      "не классификационный бенчмарк: целевой цикл ~60 FPS на detection; click cooldown 300 ms; порог pinch 0.15; 5 ready-событий за 500 ms для arm click.",
+      "Это не классификационный бенчмарк: целевой цикл ~60 FPS на detection, click cooldown 300 ms, порог pinch 0.15, 5 ready-событий за 500 ms для arm click.",
     MlGestureEngineering:
-      "два потока: detection vs cursor smoothing; jitter threshold 22 px; virtual capture area +20% за края экрана; миграция MediaPipe API (solutions.hands → Tasks); macOS camera + accessibility permissions.",
+      "Два потока: detection и cursor smoothing. Jitter threshold 22 px, virtual capture area на 20% шире экрана, миграция MediaPipe API (solutions.hands → Tasks), разрешения macOS camera и accessibility.",
     MlGestureHindsight:
-      "переписала бы на MediaPipe Tasks API сразу — legacy solutions ломается на ≥0.10.31. вынесла бы gesture thresholds в конфиг под разные камеры и освещение.",
+      "Переписала бы на MediaPipe Tasks API сразу, потому что legacy solutions ломается на ≥0.10.31. Вынесла бы gesture thresholds в конфиг под разные камеры и освещение.",
     MlPksTask:
-      "RAG Q&A по личным PDF: ответы только из контекста, с цитатами filename + page.",
+      "Сделать RAG Q&A по личным PDF: ответы только из контекста, с цитатами filename + page.",
     MlPksData:
-      "загружаемые PDF в data/; чанки с привязкой к страницам; публичного бенчмарка нет — pet-project на своих документах.",
+      "Загружаемые PDF в data/, чанки с привязкой к страницам. Публичного бенчмарка нет, это pet-project на своих документах.",
     MlPksApproach:
-      "pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 с strict prompt; без LangChain/LlamaIndex — каждый слой написан вручную.",
+      "Цепочка pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 со strict prompt. Без LangChain/LlamaIndex, каждый слой написан вручную.",
     MlPksMetrics:
-      "формальных метрик retrieval/faithfulness пока нет — проект в разработке; проверяю вручную: grounded vs hallucination, top-k recall на своих запросах.",
+      "Формальных метрик retrieval/faithfulness пока нет, проект в разработке. Проверяю вручную: grounded vs hallucination и top-k recall на своих запросах.",
     MlPksEngineering:
-      "инкрементальная индексация (skip if DB exists); citation metadata на чанк; single-file vs folder search; Ollama latency на CPU — ответы 5–15 с на среднем PDF.",
+      "Инкрементальная индексация (skip if DB exists), citation metadata на чанк, поиск по одному файлу и по папке. На CPU ответы Ollama занимают от 5 до 15 секунд на среднем PDF.",
     MlPksHindsight:
-      "добавила бы eval-набор вопросов с эталонными цитатами до расширения UI. hybrid search (BM25 + dense) и reranker — следующий шаг, не оптимизация chunk size вслепую.",
+      "Добавила бы eval-набор вопросов с эталонными цитатами до расширения UI. Hybrid search (BM25 + dense) и reranker сделала бы следующим шагом, а не слепой подстройкой chunk size.",
     MlResumeScreeningTitle: "Fair resume screening",
     MlResumeScreeningDesc:
       'Интерпретируемый BERT-классификатор резюме для 9 IT-суперкатегорий на данных HeadHunter. Аудит прокси-биаса через Integrated Gradients, сравнение шести методов debiasing, city-swap и transfer на английских резюме. Развивает <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">раннюю XAI-работу</a> по bias в классификации резюме.',
     MlKnowledgeSystemTitle: "Personal Knowledge System",
     MlKnowledgeSystemDesc:
-      "RAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрана с нуля на Python — без high-level фреймворков.",
+      "RAG-система для ответов по личным PDF: чанкинг, эмбеддинги, семантический поиск в ChromaDB и генерация ответов через Ollama с цитатами. Собрала с нуля на Python, без high-level фреймворков.",
     MlGestureInputTitle: "Gesture input",
     MlGestureInputDesc:
       "Управление курсором жестами руки с веб-камеры: MediaPipe Hands, распознавание pinch / ready / click и плавное перемещение курсора через PyAutoGUI. Реал-тайм трекинг со сглаживанием и двухшаговым кликом.",
     MlEmotionDetectionTitle: "Emotion detection",
     MlEmotionDetectionDesc:
-      "распознавание эмоций по лицу на FER2013 (7 классов): полный цикл — подготовка данных, обучение EmotionCNN, оценка, INT8-квантизация, экспорт в Core ML и браузерное демо на ONNX Runtime Web. 58.7% accuracy, до 60.8% с ensemble + TTA",
+      "Распознавание эмоций по лицу на FER2013 (7 классов): подготовка данных, обучение EmotionCNN, оценка, INT8-квантизация, экспорт в Core ML и браузерное демо на ONNX Runtime Web. 58.7% accuracy, до 60.8% с ensemble + TTA.",
     heroExperienceLabel: "Направления",
     rolesNavLabel: "Роли",
     backHome: "на главную",
@@ -163,55 +163,55 @@ const translations = {
     rolePagePlaceholder: "раздел в работе",
     PochtaTexTitle: "ПОЧТАТЕХ",
     PochtaTexDesc:
-      "дизайн игры для промо-стенда в лагере InnoBootCamp — командный проект с университетом иннополис и почтой россии. отвечала за UX/UI и сценарий взаимодействия на стенде, дизайн solo, около недели",
+      "Командный проект с университетом Иннополис и Почтой России: игра для промо-стенда на лагере InnoBootCamp. Отвечала за UX/UI и сценарий на стенде, делала дизайн одна, около недели.",
     YandexDirectTitle: "ЯНДЕКС ДИРЕКТ",
     YandexDirectDesc:
-      "тестовое задание в яндекс: платформа управления рекламой. UX/UI, solo",
+      "Тестовое задание в Яндексе: платформа для управления рекламой. Делала UX/UI одна.",
     InnoBookLoversTitle: "INN\u041eBOOKLOVERS",
     InnoBookLoversDesc:
-      "дизайн сайта для курса по фронтенд разработке в университете иннополис. отвечала за ux/ui интерфейс в проекте",
+      "Дизайн сайта для курса по фронтенд-разработке в университете Иннополис. Отвечала за UX/UI интерфейса в проекте.",
     InnoMedTitle: "INNOMED",
     InnoMedDesc:
-      "прототип приложения innomed был разработан для университета иннополис на курсе по продакт менеджменту. я была в роли владельца продукта и также отвечала за разработку прототипа",
+      "Прототип приложения Innomed для университета Иннополис на курсе по продакт-менеджменту. Была владельцем продукта и собирала прототип.",
     PostersTitle: "ПОСТЕРЫ",
     PostersDesc:
-      "афиши для мероприятий в казани и иннополисе — графический дизайн, solo",
+      "Афиши для мероприятий в Казани и Иннополисе. Графический дизайн, делала одна.",
     ConceptsTitle: "КОНЦЕПТЫ",
-    ConceptsDesc: "экспериментальные макеты, сделанные для себя — личный проект, solo",
+    ConceptsDesc: "Экспериментальные макеты для себя. Личный проект, делала одна.",
     TsarevBarilovaTitle: "ЦАРЁВ & БАРИЛОВА",
     TsarevBarilovaDesc:
-      "дизайн сайта для продажи онлайн-курсов по танцам — UX/UI, фриланс, около двух недель, solo",
+      "Дизайн сайта для продажи онлайн-курсов по танцам. UX/UI, фриланс, около двух недель, делала одна.",
     YokoMatchaTitle: "YOKO MATCHA",
     YokoMatchaDesc:
-      "дизайн сайта для магазина матчи yokomatcha — брендинг и UI, фриланс, около двух недель, solo",
+      "Дизайн сайта для магазина матчи yokomatcha. Брендинг и UI, фриланс, около двух недель, делала одна.",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "продукты, разработанные мной для проектов Croissan Studio: лого, мерч, концепты. product designer, in-house",
+      "Логотипы, мерч и концепты для проектов Croissan Studio. Работаю in-house как product designer.",
     designerProcessTitle: "разбор процесса",
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
     designerProcessResult: "результат",
     designerActionTry: "потестировать игру",
     PochtaTexProblem:
-      "нужно было сделать игру с поиском ошибок в интерфейсе и привлечь максимальное количество игроков",
+      "Нужно было сделать игру с поиском ошибок в интерфейсе и заинтересовать как можно больше людей на стенде.",
     PochtaTexSolution:
-      "собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в фирменной стилистике университета иннополиса и почты россии",
+      "Собрала игровой сценарий, онбординг, регистрацию и UX-skeleton игрового экрана в стилистике университета Иннополис и Почты России.",
     PochtaTexResult:
-      "за 7 дней стенда: 420+ игроков, 99% проходили всю игру, +31% к прошлому формату",
+      "За 7 дней стенда прошли игру 420+ человек, 99% дошли до конца, это на 31% больше, чем в прошлом формате.",
     YandexDirectProblem:
-      "рекламный кабинет перегружен метриками — рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь",
+      "Рекламный кабинет перегружен метриками, и рекламодателю сложно за секунды понять, что происходит с кампанией и куда смотреть в первую очередь.",
     YandexDirectSolution:
-      "собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления",
+      "Собрала иерархию экранов, вынесла ключевые показатели на первый план и снизила визуальный шум в блоках статистики и управления.",
     YokoMatchaProblem:
-      "бренд матчи должен ощущаться тепло — без ощущения холодного e-commerce шаблона",
+      "Бренд матчи должен ощущаться тепло, без ощущения холодного e-commerce шаблона.",
     YokoMatchaSolution:
-      "выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер",
+      "Выстроила палитру, типографику и сетку каталога; визуалы сгенерировала и доработала вручную под единый характер.",
     TsarevBarilovaProblem:
-      "владельцам танцевальной студии нужно место, где можно собрать воедино все онлайн-курсы, которые они продают, и сделать платформу, на которой их можно оплачивать и просматривать",
+      "Владельцам танцевальной студии нужно место, где можно собрать воедино все онлайн-курсы, которые они продают, и сделать платформу, на которой их можно оплачивать и просматривать.",
     TsarevBarilovaSolution:
-      "сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda",
+      "Сделала чёткую структуру направлений и тёплую типографику; простая структура сайта для людей из нетехнической сферы; макет адаптировала под сборку в Tilda.",
     TsarevBarilovaResult:
-      "согласовали главную, каталог и страницы курсов; дизайн завершён, сайт не в разработке у меня и не опубликован",
+      "Согласовали главную, каталог и страницы курсов; дизайн завершён, сайт не в разработке у меня и не опубликован.",
     InnoBookLoversProblem:
       "Курсовой проект рисковал выглядеть как учебная страница, а не как живое книжное сообщество.",
     InnoBookLoversSolution:
@@ -219,15 +219,15 @@ const translations = {
     InnoBookLoversResult:
       "DAU вырос на 34%, регистрации на курс +27%; органический трафик +1,9K визитов за семестр без платного продвижения.",
     InnoMedProblem:
-      "Медицинский сервис требует ясности и спокойствия — пользователь не должен теряться в сценариях записи и профиля.",
+      "Медицинский сервис требует ясности и спокойствия, чтобы пользователь не терялся в сценариях записи и профиля.",
     InnoMedSolution:
       "Спроектировала потоки пациента, разделила информацию по приоритету и визуально снизила тревожность интерфейса.",
     InnoMedResult:
-      "В пилоте: конверсия в запись +31%, отказы на шаге оплаты −18%; 240+ записей за 6 недель, NPS прототипа — 52.",
+      "В пилоте конверсия в запись выросла на 31%, отказы на шаге оплаты снизились на 18%; 240+ записей за 6 недель, NPS прототипа 52.",
     CroissanStudioProblem:
-      "AI-студии нужен бренд, общий стиль, который отличает их на рынке. сюда входит как диджитал, так и оффлайн носители",
+      "AI-студии нужен бренд и общий стиль, который отличает их на рынке. Сюда входит и диджитал, и оффлайн носители.",
     CroissanStudioSolution:
-      "разработала фирменные элементы, иллюстрации и носители в единой стилистике — с AI и ручной доработкой",
+      "Разработала фирменные элементы, иллюстрации и носители в единой стилистике, с AI и ручной доработкой.",
     CroissanStudioResult: "NDA",
     PostersProblem:
       "афиша должна цеплять с первого взгляда и оставаться читаемой с расстояния и на экране телефона",
@@ -239,17 +239,17 @@ const translations = {
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
     expCroissan:
-      "<strong>Croissan Studio</strong> — студия полного цикла для ии-продуктов (продуктовый дизайнер и ml-разработчик, апрель 2025 — ...)",
+      "<strong>Croissan Studio</strong>, студия полного цикла для ИИ-продуктов. Продуктовый дизайнер и ML-разработчик, с апреля 2025.",
     expAzimov:
-      "<strong>Asimov Lab</strong> — ai-сервис генерации тестов (тимлид фронтенда, февраль – сентябрь 2024; в стартапе также вела ml и ux/ui дизайн)",
+      "<strong>Asimov Lab</strong>, AI-сервис генерации тестов. Тимлид фронтенда с февраля по сентябрь 2024, в стартапе также вела ML и UX/UI дизайн.",
     expClearmind:
-      "<strong>фриланс</strong> — дизайн афиш и сайтов, вёрстка, ml-разработка на заказ (2022 — ...)",
+      "<strong>фриланс</strong>: дизайн афиш и сайтов, вёрстка, ML-разработка на заказ, с 2022.",
     eduInnopolis:
-      "<strong>университет иннополис</strong> — бакалавриат: прикладной искусственный  интеллект (2026)",
+      "<strong>университет Иннополис</strong>, бакалавриат по прикладному искусственному интеллекту (2026).",
     volTrenirovochnaya:
-      "<strong>trenirovochnaya.kzn</strong> — организация танцевальных мероприятий в казани (бренд-дизайнер, маркетолог, март 2025 – август 2025)",
+      "<strong>trenirovochnaya.kzn</strong>, организация танцевальных мероприятий в Казани. Бренд-дизайнер и маркетолог, с марта по август 2025.",
     volInnostreetdance:
-      "<strong>InnoStreetDance</strong> — студенческий танцевальный клуб университета иннополис (бренд-дизайнер, маркетолог, декабрь 2022 – сентябрь 2025)",
+      "<strong>InnoStreetDance</strong>, студенческий танцевальный клуб университета Иннополис. Бренд-дизайнер и маркетолог, с декабря 2022 по сентябрь 2025.",
     footerSocialLabel: "соцсети",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -260,23 +260,23 @@ const translations = {
     introLead:
       "бережно собираю продукты, которыми правда хочется пользоваться",
     introStatusLabel: "current status:",
-    introStatusValue: "открыта к проектам — дизайн, dev, ml и\u00A0не\u00A0только",
+    introStatusValue: "открыта к проектам: дизайн, dev, ml и\u00A0не\u00A0только",
     introCtaDesigner: "дизайн кейсы",
     introCtaDev: "dev кейсы",
     introCtaMl: "ml кейсы",
     devIntroTitle: "мой опыт в разработке",
     devIntroLead:
-      "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, swift для macOS. в Asimov Lab вела фронтенд — от архитектуры до ui; довожу сайты и утилиты до продакшна с чистым кодом и понятным ux.",
+      "Собираю веб и приложения: лендинги, фронтенд в продуктовых командах, Swift для macOS. В Asimov Lab вела фронтенд от архитектуры до UI и довожу сайты и утилиты до продакшна с чистым кодом и понятным UX.",
     mlIntroTitle: "мой опыт в ml",
     mlIntroLead:
-      "делаю прикладной ml: bert, xai и debiasing, rag, computer vision. есть публикации — довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
+      "Делаю прикладной ML: BERT, XAI и debiasing, RAG, computer vision. Есть публикации, и я довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
     cvPickerTitle: "скачать cv",
     cvPickerClose: "закрыть",
     cvVariantDesigner: "дизайн",
     cvVariantDev: "разработка",
     cvVariantMl: "ml",
     introTrustLabel: "мне доверяют",
-    introContactPrefix: "напишите, если есть идея — разберёмся без\u00A0сложных\u00A0брифов",
+    introContactPrefix: "напишите, если есть идея. разберёмся без\u00A0сложных\u00A0брифов",
     introSocialLabel: "соцсети",
     trustLogoCroissan: "Croissan Studio",
     trustLogoInnopolis: "иннополис",
@@ -331,22 +331,22 @@ const translations = {
     devToolMacos: "macOS",
     DevMacosTimerTitle: "MacOS Timer",
     DevMacosTimerDesc:
-      "Other timers offered either a timer or pomodoro, not both; menu bar placement was awkward and the UI felt overloaded. I built my own: minimal, both modes, lives in the menu bar. macOS 13+.",
+      "Most timers made me choose between a regular timer and pomodoro, and the menu bar experience felt cluttered. I built my own: both modes, a simple UI, lives in the menu bar. Works on macOS 13+.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
-      "The AI studio site, built with a team: sections, responsive layout, and visual cohesion. Cases, services, and expertise read easily — not like a pile of blocks.",
+      "The AI studio site we built as a team. I worked on sections, responsive layout, and visual cohesion so cases, services, and expertise read as one product, not a pile of blocks.",
     FrontendAsimovLabTitle: "Asimov Lab",
     FrontendAsimovLabDesc:
-      "Landing page for an AI platform that helps educators generate and grade assignments. I led front-end as team lead — from architecture and components to responsive layout and visual cohesion. Hero, features, pricing, and FAQ read as one product.",
+      "Landing page for an AI platform that helps educators generate and grade assignments. I led front-end as team lead, from architecture and components to responsive layout, so hero, features, pricing, and FAQ read as one product.",
     FrontendCruelTitle: "Cruel Games",
     FrontendCruelDesc:
       "A promo site for a theatre production, focused on the show's mood and mobile presentation. Full-screen hero, custom swipe gallery, clean hand-coded layout.",
     FrontendAismenaTitle: "AI Camp · Innopolis",
     FrontendAismenaDesc:
-      "A landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes — no call to a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
+      "A landing page for a summer AI camp for school students. A parent should understand the program and apply in a few minutes without calling a manager. Built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
     FrontendKingstepTitle: "Barilova & Tsarev",
     FrontendKingstepDesc:
-      "A Kingstep dance studio site — home, course catalog, and class pages. Design and layouts are done; my part is complete, with no public link.",
+      "A dance studio site for Kingstep: home, course catalog, and class pages. Design and layouts are done, my part is complete, and there is no public link yet.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -371,53 +371,53 @@ const translations = {
     mlCaseEngineering: "engineering challenges",
     mlCaseHindsight: "what I'd change now",
     MlResumeTask:
-      "Find bias in a recruiting model that classifies resumes into 9 IT supercategories — and try to reduce it with different debiasing methods.",
+      "Find bias in a recruiting model that classifies resumes into 9 IT supercategories and try to reduce it with different debiasing methods.",
     MlResumeData:
-      "Private HeadHunter sample; 9 supercategory labels; city-swap counterfactuals across 41 city groups; English resumes for transfer evaluation.",
+      "Private HeadHunter sample, 9 supercategory labels, city-swap counterfactuals across 41 city groups, and English resumes for transfer evaluation.",
     MlResumeApproach:
-      "Fine-tune BERT-base and use Integrated Gradients (Captum) to see what the model relies on. Ran 39+ configurations — TF-IDF baseline, city-swap, six debiasing families (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) with different hyperparameters. The paper includes the most meaningful results.",
+      "Fine-tuned BERT-base and used Integrated Gradients (Captum) to see what the model relies on. Ran 39+ configurations: TF-IDF baseline, city-swap, and six debiasing families (GroupDRO, focal loss, label smoothing, adversarial debiasing, data scrubbing, attribution regularization) with different hyperparameters. The paper includes the most meaningful results.",
     MlResumeMetrics:
-      "Baseline BERT: 60.9% accuracy, but swapping the city in a resume changed the prediction in 7.7% of pairs — clear geographic bias. Data scrubbing removed that effect (0% flip) with almost no quality loss: 59.4% accuracy. Combined scrub + GroupDRO pushed accuracy down to 48.8% — a useful trade-off lesson, not a shippable option.",
+      "Baseline BERT reached 60.9% accuracy, but swapping the city in a resume changed the prediction in 7.7% of pairs, which showed geographic bias. Data scrubbing removed that effect (0% flip) with almost no quality loss: 59.4% accuracy. Combined scrub + GroupDRO pushed accuracy down to 48.8%, a useful trade-off lesson, not a shippable option.",
     MlResumeEngineering:
-      "The hard part wasn't training the model — it was comparing dozens of configurations fairly: private data, everything in notebooks, easy to lose reproducibility. City-swap tests are slow, and every debiasing method hits accuracy differently.",
+      "The hard part was not training the model but comparing dozens of configurations fairly: private data, everything in notebooks, easy to lose reproducibility. City-swap tests are slow, and every debiasing method hits accuracy differently.",
     MlResumeHindsight:
-      "I'd agree upfront what matters for the product — accuracy, stability across cities, or cross-language transfer. I wouldn't chase zero flip rate at the cost of half the accuracy. I'd plan the English transfer as its own experiment, not a final check.",
+      "I would agree upfront what matters for the product: accuracy, stability across cities, or cross-language transfer. I would not chase zero flip rate at the cost of half the accuracy. I would plan the English transfer as its own experiment, not a final check.",
     MlEmotionTask:
-      "7-class facial emotion recognition and a full path to on-device and web deployment.",
+      "Teach a model to recognize 7 facial emotions and ship the solution to the browser and on device.",
     MlEmotionData:
-      "FER2013: 35,887 images at 48×48 grayscale; evaluation on PrivateTest (3,589); WeightedRandomSampler for class imbalance.",
+      "FER2013: 35,887 images at 48×48 grayscale, evaluation on PrivateTest (3,589), WeightedRandomSampler for class imbalance.",
     MlEmotionApproach:
-      "EmotionCNN (1.7M params) vs MobileNetV3-Small; strong augmentation, label smoothing, early stopping; INT8 quantization → Core ML and ONNX Runtime Web.",
+      "Compared EmotionCNN (1.7M params) and MobileNetV3-Small, added strong augmentation, label smoothing, and early stopping, then INT8 quantization and export to Core ML and ONNX Runtime Web.",
     MlEmotionMetrics:
-      "CNN + strong aug: 58.7% accuracy, macro-F1 0.569; +TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, 1.15 ms latency. Happy F1 0.79, neutral 0.45 (was 0.16). MobileNetV3 — 34.5%.",
+      "CNN + strong aug: 58.7% accuracy, macro-F1 0.569; with TTA 59.9%; ensemble + TTA 60.8%. INT8: 58.9%, 1.15 ms latency. Happy F1 0.79, neutral 0.45 (was 0.16). MobileNetV3 stopped at 34.5%.",
     MlEmotionEngineering:
-      "ImageNet pretraining fails on 48×48 grayscale; memmap .npz instead of pandas (~61 MB vs ~250 MB); quantization and Core ML / ONNX export without quality loss.",
+      "ImageNet pretraining failed on 48×48 grayscale. I switched to memmap .npz instead of pandas (~61 MB instead of ~250 MB). Quantization and Core ML / ONNX export kept quality intact.",
     MlEmotionHindsight:
-      "I'd reserve a dedicated val set for TTA and ensemble tuning — currently tuned post hoc. I'd set a mobile latency budget from sprint one.",
+      "I would reserve a dedicated val set for TTA and ensemble tuning, because right now it is tuned post hoc. I would set a mobile latency budget from sprint one.",
     MlGestureTask:
-      "Hand-gesture mouse control from a webcam: cursor movement and click without a physical mouse.",
+      "Control the cursor with hand gestures from a webcam: movement and click without a physical mouse.",
     MlGestureData:
-      "No training set — live webcam; 21 MediaPipe Hand landmarks per frame.",
+      "There is no training set, only live webcam input: 21 MediaPipe Hand landmarks per frame.",
     MlGestureApproach:
-      "MediaPipe Hands → rule-based gesture classifier (pinch / ready / click) → PyAutoGUI; background thread for smooth cursor with bezier easing.",
+      "MediaPipe Hands, a rule-based gesture classifier (pinch / ready / click), PyAutoGUI, and a background thread for smooth cursor movement with bezier easing.",
     MlGestureMetrics:
-      "Not a classification benchmark: target ~60 FPS on detection; 300 ms click cooldown; pinch threshold 0.15; 5 ready events in 500 ms to arm a click.",
+      "This is not a classification benchmark: target ~60 FPS on detection, 300 ms click cooldown, pinch threshold 0.15, 5 ready events in 500 ms to arm a click.",
     MlGestureEngineering:
-      "Two threads: detection vs cursor smoothing; 22 px jitter threshold; virtual capture area +20% beyond screen edges; MediaPipe API migration (solutions.hands → Tasks); macOS camera + accessibility permissions.",
+      "Two threads: detection and cursor smoothing. Jitter threshold 22 px, virtual capture area 20% beyond screen edges, MediaPipe API migration (solutions.hands → Tasks), macOS camera and accessibility permissions.",
     MlGestureHindsight:
-      "I'd rewrite on the MediaPipe Tasks API from day one — legacy solutions breaks on ≥0.10.31. I'd externalize gesture thresholds for different cameras and lighting.",
+      "I would rewrite on the MediaPipe Tasks API from day one because legacy solutions breaks on ≥0.10.31. I would externalize gesture thresholds for different cameras and lighting.",
     MlPksTask:
-      "RAG Q&A over personal PDFs: answers grounded in context only, with filename + page citations.",
+      "Build RAG Q&A over personal PDFs with answers grounded in context only and filename + page citations.",
     MlPksData:
-      "Uploaded PDFs in data/; chunks tied to page positions; no public benchmark — a pet project on my own documents.",
+      "Uploaded PDFs in data/, chunks tied to page positions. There is no public benchmark, it is a pet project on my own documents.",
     MlPksApproach:
-      "pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 with a strict prompt; no LangChain/LlamaIndex — every layer hand-written.",
+      "Pipeline: pdf_loader → sentence chunker → SentenceTransformer all-MiniLM-L6-v2 → ChromaDB top-5 → Ollama llama3.2 with a strict prompt. No LangChain/LlamaIndex, every layer is hand-written.",
     MlPksMetrics:
-      "No formal retrieval/faithfulness metrics yet — project in progress; manual checks: grounded vs hallucination, top-k recall on my own queries.",
+      "No formal retrieval/faithfulness metrics yet, the project is in progress. I check manually: grounded vs hallucination and top-k recall on my own queries.",
     MlPksEngineering:
-      "Incremental indexing (skip if DB exists); citation metadata per chunk; single-file vs folder search; Ollama latency on CPU — 5–15 s responses on a medium PDF.",
+      "Incremental indexing (skip if DB exists), citation metadata per chunk, single-file and folder search. On CPU, Ollama responses take 5 to 15 seconds on a medium PDF.",
     MlPksHindsight:
-      "I'd build a question set with gold citations before expanding the UI. Hybrid search (BM25 + dense) and a reranker — next step, not blind chunk-size tuning.",
+      "I would build a question set with gold citations before expanding the UI. Hybrid search (BM25 + dense) and a reranker would be the next step, not blind chunk-size tuning.",
     MlResumeScreeningTitle: "Fair resume screening",
     MlResumeScreeningDesc:
       'An interpretable BERT resume classifier for 9 IT supercategories on HeadHunter data. Geographic proxy bias audit with Integrated Gradients, six debiasing methods, city-swap stress tests, and English transfer evaluation. Builds on earlier <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">XAI work</a> on resume classification bias.',
@@ -429,7 +429,7 @@ const translations = {
       "Webcam hand-gesture mouse control: MediaPipe Hands landmark tracking, pinch / ready / click recognition, and smooth cursor movement with PyAutoGUI. Real-time tracking with jitter reduction and a two-step click gesture.",
     MlEmotionDetectionTitle: "Emotion detection",
     MlEmotionDetectionDesc:
-      "Facial emotion recognition on FER2013 (7 classes): full pipeline — data prep, EmotionCNN training, evaluation, INT8 quantization, Core ML export, and a browser demo via ONNX Runtime Web. 58.7% accuracy, up to 60.8% with ensemble + TTA",
+      "Facial emotion recognition on FER2013 (7 classes): data prep, EmotionCNN training, evaluation, INT8 quantization, Core ML export, and a browser demo via ONNX Runtime Web. 58.7% accuracy, up to 60.8% with ensemble + TTA.",
     heroExperienceLabel: "Directions",
     rolesNavLabel: "Roles",
     backHome: "back to home",
@@ -445,54 +445,54 @@ const translations = {
     rolePagePlaceholder: "section in progress",
     PochtaTexTitle: "POCHTATECH",
     PochtaTexDesc:
-      "game design for a promo stand at InnoBootCamp — team project with innopolis university and russian post. i led UX/UI and the on-stand interaction flow, solo design, about one week",
+      "Team project with Innopolis University and Russian Post: a game for a promo stand at InnoBootCamp. I led UX/UI and the on-stand interaction flow, did the design solo in about a week.",
     YandexDirectTitle: "YANDEX DIRECT",
     YandexDirectDesc:
-      "test task at yandex: advertising platform management. UX/UI, solo",
+      "Test task at Yandex: an advertising management platform. I did the UX/UI solo.",
     InnoBookLoversTitle: "INNOBOOKLOVERS",
     InnoBookLoversDesc:
-      "website design for frontend development course at innopolis university. i was responsible for ux/ui design in the project",
+      "Website design for a frontend development course at Innopolis University. I was responsible for the interface UX/UI.",
     InnoMedTitle: "INNOMED",
     InnoMedDesc:
-      "innomed app prototype developed at innopolis university during a product management course. i was the product owner and created the prototype",
+      "Innomed app prototype for Innopolis University during a product management course. I was the product owner and built the prototype.",
     PostersTitle: "POSTERS",
-    PostersDesc: "event posters for kazan and innopolis — graphic design, solo",
+    PostersDesc: "Event posters for Kazan and Innopolis. Graphic design, solo project.",
     ConceptsTitle: "CONCEPTS",
-    ConceptsDesc: "experimental mockups made for myself — personal project, solo",
+    ConceptsDesc: "Experimental mockups I made for myself. Personal project, solo.",
     TsarevBarilovaTitle: "TSAREV & BARILOVA",
     TsarevBarilovaDesc:
-      "website design for online dance courses — UX/UI, freelance, about two weeks, solo",
+      "Website design for online dance courses. UX/UI, freelance, about two weeks, solo.",
     YokoMatchaTitle: "YOKO MATCHA",
     YokoMatchaDesc:
-      "website design for matcha shop yokomatcha — branding and UI, freelance, about two weeks, solo",
+      "Website design for matcha shop yokomatcha. Branding and UI, freelance, about two weeks, solo.",
     CroissanStudioTitle: "CROISSAN STUDIO",
     CroissanStudioDesc:
-      "products developed for Croissan Studio projects: logos, merch, concepts. product designer, in-house",
+      "Logos, merch, and concepts for Croissan Studio projects. I work in-house as a product designer.",
     designerProcessTitle: "process breakdown",
     designerProcessProblem: "problem",
     designerProcessSolution: "solution",
     designerProcessResult: "result",
     designerActionTry: "try the game",
     PochtaTexProblem:
-      "the task was to build a spot-the-error interface game and draw as many players as possible",
+      "We needed a spot-the-error interface game that would draw as many people as possible to the stand.",
     PochtaTexSolution:
-      "built the game flow, onboarding, signup, and game-screen UX skeleton in innopolis university and russian post brand style",
+      "Built the game flow, onboarding, signup, and game-screen UX skeleton in Innopolis University and Russian Post brand style.",
     PochtaTexResult:
-      "over 7 stand days: 420+ players, 99% completed the full game, +31% vs the previous format",
+      "Over 7 stand days, 420+ people played, 99% finished the full game, 31% more than the previous format.",
     YandexDirectProblem:
-      "the ad dashboard is packed with metrics — advertisers struggle to see what matters in the campaign at a glance",
+      "The ad dashboard is packed with metrics, so advertisers struggle to see what matters in the campaign at a glance.",
     YandexDirectSolution:
-      "built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks",
+      "Built a clear screen hierarchy, surfaced key KPIs first, and reduced visual noise in stats and management blocks.",
     YokoMatchaProblem:
-      "the matcha brand had to feel warm — not like a cold e-commerce template",
+      "The matcha brand had to feel warm, not like a cold e-commerce template.",
     YokoMatchaSolution:
-      "defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look",
+      "Defined palette, typography, and catalog grid; generated visuals and refined them by hand into one cohesive look.",
     TsarevBarilovaProblem:
-      "the dance studio owners needed one place to bring together all their online courses — and a platform where students can pay and watch them",
+      "The dance studio owners needed one place to bring together all their online courses and a platform where students can pay and watch them.",
     TsarevBarilovaSolution:
-      "built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build",
+      "Built a clear course structure and warm typography; kept the site simple for a non-technical team; adapted layouts for a Tilda build.",
     TsarevBarilovaResult:
-      "home, catalog, and course pages approved; design is complete — not in development on my side and not published",
+      "Home, catalog, and course pages were approved; design is complete, not in development on my side, and not published.",
     InnoBookLoversProblem:
       "A course project risked looking like homework instead of a living book community.",
     InnoBookLoversSolution:
@@ -500,15 +500,15 @@ const translations = {
     InnoBookLoversResult:
       "DAU up 34%, course signups +27%; +1.9K organic visits per semester with no paid promotion.",
     InnoMedProblem:
-      "A medical service needs clarity and calm — users should not get lost in booking and profile flows.",
+      "A medical service needs clarity and calm so users do not get lost in booking and profile flows.",
     InnoMedSolution:
       "Mapped patient journeys, prioritized information, and softened the interface to reduce anxiety.",
     InnoMedResult:
-      "Pilot results: booking conversion +31%, drop-off at payment −18%; 240+ appointments in 6 weeks, prototype NPS — 52.",
+      "In the pilot, booking conversion rose 31%, drop-off at payment fell 18%; 240+ appointments in 6 weeks, prototype NPS 52.",
     CroissanStudioProblem:
-      "an AI studio needs a brand and a shared style that sets it apart — both digital and offline touchpoints",
+      "An AI studio needs a brand and a shared style that sets it apart, both in digital and offline touchpoints.",
     CroissanStudioSolution:
-      "developed brand elements, illustrations, and assets in a single style — AI-assisted and hand-finished",
+      "Developed brand elements, illustrations, and assets in a single style, AI-assisted and hand-finished.",
     CroissanStudioResult: "NDA",
     PostersProblem:
       "a poster must grab attention instantly and stay readable from a distance and on a phone screen",
@@ -520,17 +520,17 @@ const translations = {
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
     expCroissan:
-      "<strong>Croissan Studio</strong> — full-cycle AI products studio (product designer & ML engineer, apr 2025 — ...)",
+      "<strong>Croissan Studio</strong>, full-cycle AI products studio. Product designer and ML engineer since April 2025.",
     expAzimov:
-      "<strong>Asimov Lab</strong> — AI test-generation service (frontend team lead, feb – sep 2024; also handled ML and UX/UI design)",
+      "<strong>Asimov Lab</strong>, AI test-generation service. Frontend team lead from February to September 2024, also handled ML and UX/UI design.",
     expClearmind:
-      "<strong>freelance</strong> — poster and web design, front-end builds, ML projects on commission (2022 — ...)",
+      "<strong>freelance</strong>: poster and web design, front-end builds, ML projects on commission since 2022.",
     eduInnopolis:
-      "<strong>innopolis university</strong> — bsc in applied artificial intelligence (2026)",
+      "<strong>Innopolis University</strong>, BSc in applied artificial intelligence (2026).",
     volTrenirovochnaya:
-      "<strong>trenirovochnaya.kzn</strong> — organization of dance events in kazan (brand-designer, marketing person, mar 2025 – aug 2025)",
+      "<strong>trenirovochnaya.kzn</strong>, dance events in Kazan. Brand designer and marketing, March to August 2025.",
     volInnostreetdance:
-      "<strong>InnoStreetDance</strong> — student dance club of innopolis university (brand-designer, marketing person, dec 2022 – sep 2025)",
+      "<strong>InnoStreetDance</strong>, student dance club at Innopolis University. Brand designer and marketing, December 2022 to September 2025.",
     footerSocialLabel: "social links",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -541,23 +541,23 @@ const translations = {
     introLead:
       "I carefully build products you'd genuinely want to use",
     introStatusLabel: "current status:",
-    introStatusValue: "open to work — design, dev, ml &\u00A0more",
+    introStatusValue: "open to work: design, dev, ml &\u00A0more",
     introCtaDesigner: "design cases",
     introCtaDev: "dev cases",
     introCtaMl: "ml cases",
     devIntroTitle: "my dev experience",
     devIntroLead:
-      "I build web and apps — landing pages, front-end in product teams, Swift for macOS. At Asimov Lab I led front-end from architecture to UI; I ship production sites and utilities with clean code and clear UX.",
+      "I build web and apps: landing pages, front-end in product teams, Swift for macOS. At Asimov Lab I led front-end from architecture to UI and ship production sites and utilities with clean code and clear UX.",
     mlIntroTitle: "my ml experience",
     mlIntroLead:
-      "I do applied ML — BERT, XAI and debiasing, RAG, computer vision. I publish my work and ship models that are accurate, explainable, and grounded in real product context.",
+      "I do applied ML: BERT, XAI and debiasing, RAG, computer vision. I publish my work and ship models that are accurate, explainable, and grounded in real product context.",
     cvPickerTitle: "download cv",
     cvPickerClose: "close",
     cvVariantDesigner: "design",
     cvVariantDev: "development",
     cvVariantMl: "ml",
     introTrustLabel: "trusted by",
-    introContactPrefix: "got an idea? let's talk it through — no\u00A0heavy\u00A0briefs required",
+    introContactPrefix: "got an idea? let's talk it through, no\u00A0heavy\u00A0briefs required",
     introSocialLabel: "social links",
     trustLogoCroissan: "Croissan Studio",
     trustLogoInnopolis: "innopolis",
@@ -803,7 +803,7 @@ const devProjects = [
   },
   {
     id: "macos-timer",
-    url: "https://github.com/natagapova/macos-timer/releases/tag/v1.0.0",
+    url: "https://github.com/natagapova/macos-timer",
     preview: "images/dev/macos-timer.webp",
     titleKey: "DevMacosTimerTitle",
     descKey: "DevMacosTimerDesc",
@@ -871,7 +871,6 @@ const mlProjects = [
       approachKey: "MlEmotionApproach",
       metricsKey: "MlEmotionMetrics",
       engineeringKey: "MlEmotionEngineering",
-      hindsightKey: "MlEmotionHindsight",
     },
     toolKeys: ["mlToolPython", "mlToolPytorch", "mlToolOnnx", "mlToolCoreML"],
   },
@@ -903,7 +902,6 @@ const mlProjects = [
       approachKey: "MlPksApproach",
       metricsKey: "MlPksMetrics",
       engineeringKey: "MlPksEngineering",
-      hindsightKey: "MlPksHindsight",
     },
     toolKeys: ["mlToolPython", "mlToolRag", "mlToolChroma", "mlToolOllama"],
     inDevelopment: true,
@@ -1144,20 +1142,20 @@ const CV_VARIANTS = [
   {
     id: "designer",
     labelKey: "cvVariantDesigner",
-    ru: { href: "docs/nat_designer.pdf", filename: "nat_designer.pdf" },
-    en: { href: "docs/nat_designer_en.pdf", filename: "nat_designer_en.pdf" },
+    ru: { href: "docs/nat_designer.pdf", filename: "Natalia_Agapova_CV_Design_RU.pdf" },
+    en: { href: "docs/nat_designer_en.pdf", filename: "Natalia_Agapova_CV_Design_EN.pdf" },
   },
   {
     id: "dev",
     labelKey: "cvVariantDev",
-    ru: { href: "docs/nat_dev.pdf", filename: "nat_dev.pdf" },
-    en: { href: "docs/nat_dev_en.pdf", filename: "nat_dev_en.pdf" },
+    ru: { href: "docs/nat_dev.pdf", filename: "Natalia_Agapova_CV_Development_RU.pdf" },
+    en: { href: "docs/nat_dev_en.pdf", filename: "Natalia_Agapova_CV_Development_EN.pdf" },
   },
   {
     id: "ml",
     labelKey: "cvVariantMl",
-    ru: { href: "docs/nat_ml.pdf", filename: "nat_ml.pdf" },
-    en: { href: "docs/nat_ml_en.pdf", filename: "nat_ml_en.pdf" },
+    ru: { href: "docs/nat_ml.pdf", filename: "Natalia_Agapova_CV_ML_RU.pdf" },
+    en: { href: "docs/nat_ml_en.pdf", filename: "Natalia_Agapova_CV_ML_EN.pdf" },
   },
 ];
 
@@ -2247,9 +2245,14 @@ function renderMlCaseStudy(project, t) {
 
   if (!steps.length) return "";
 
+  const stepsClass =
+    steps.length === 5
+      ? "project-process__steps project-process__steps--cols-2 project-process__steps--last-full"
+      : "project-process__steps project-process__steps--cols-2";
+
   return `
     <section class="project-process project-process--ml">
-      <ol class="project-process__steps project-process__steps--cols-2">
+      <ol class="${stepsClass}">
         ${steps
           .map(
             (step, index) => `
@@ -2958,78 +2961,79 @@ const PAGE_SEO = {
     ru: {
       title: "natalia's portfolio",
       description:
-        "Наталья Агапова — product / UX/UI designer. Интерфейсы и визуальные системы для продуктов и брендов. Кейсы для Innopolis, Почты России, Croissan Studio и др.",
+        "Наталья Агапова, product / UX/UI designer. Интерфейсы и визуальные системы для продуктов и брендов. Кейсы для Innopolis, Почты России, Croissan Studio и др.",
     },
     en: {
       title: "natalia's portfolio",
       description:
-        "Natalia Agapova — product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.",
+        "Natalia Agapova, product / UX/UI designer. Interfaces and visual systems for products and brands. Cases for Innopolis, Russian Post, Croissan Studio, and more.",
     },
   },
   designer: {
-    path: "/designer.html",
+    path: "/designer",
     ru: {
-      title: "дизайнер — natalia's portfolio",
-      description: "UX/UI и продуктовый дизайн — кейсы Натальи Агаповой.",
+      title: "дизайнер · natalia's portfolio",
+      description: "UX/UI и продуктовый дизайн, кейсы Натальи Агаповой.",
     },
     en: {
-      title: "designer — natalia's portfolio",
+      title: "designer · natalia's portfolio",
       description: "UX/UI and product design cases by Natalia Agapova.",
     },
   },
   frontend: {
-    path: "/dev.html",
+    path: "/dev",
     ru: {
-      title: "dev — natalia's portfolio",
-      description: "Разработка — веб и нативные приложения, проекты Натальи Агаповой.",
+      title: "dev · natalia's portfolio",
+      description: "Разработка: веб и нативные приложения, проекты Натальи Агаповой.",
     },
     en: {
-      title: "dev — natalia's portfolio",
-      description: "Development projects by Natalia Agapova — web and native apps.",
+      title: "dev · natalia's portfolio",
+      description: "Development projects by Natalia Agapova: web and native apps.",
     },
   },
   dev: {
-    path: "/dev.html",
+    path: "/dev",
     ru: {
-      title: "dev — natalia's portfolio",
-      description: "Разработка — веб и нативные приложения, проекты Натальи Агаповой.",
+      title: "dev · natalia's portfolio",
+      description: "Разработка: веб и нативные приложения, проекты Натальи Агаповой.",
     },
     en: {
-      title: "dev — natalia's portfolio",
-      description: "Development projects by Natalia Agapova — web and native apps.",
+      title: "dev · natalia's portfolio",
+      description: "Development projects by Natalia Agapova: web and native apps.",
     },
   },
   ml: {
-    path: "/ml.html",
+    path: "/ml",
     ru: {
-      title: "ML — natalia's portfolio",
-      description: "ML-разработка и исследования — портфолио Натальи Агаповой.",
+      title: "ML · natalia's portfolio",
+      description: "ML-разработка и исследования, портфолио Натальи Агаповой.",
     },
     en: {
-      title: "ML — natalia's portfolio",
-      description: "ML development and research — Natalia Agapova's portfolio.",
+      title: "ML · natalia's portfolio",
+      description: "ML development and research, Natalia Agapova's portfolio.",
     },
   },
   person: {
-    path: "/person.html",
+    path: "/person",
     ru: {
-      title: "человек — natalia's portfolio",
-      description: "Личные заметки и фото — портфолио Натальи Агаповой.",
+      title: "человек · natalia's portfolio",
+      description: "Личные заметки и фото, портфолио Натальи Агаповой.",
     },
     en: {
-      title: "person — natalia's portfolio",
-      description: "Personal notes and photos — Natalia Agapova's portfolio.",
+      title: "person · natalia's portfolio",
+      description: "Personal notes and photos, Natalia Agapova's portfolio.",
     },
   },
 };
 
 function getCurrentPageSeoKey() {
-  const page = window.location.pathname.toLowerCase().split("/").pop() || "index.html";
+  const path = window.location.pathname.replace(/\/+$/, "").toLowerCase();
+  const page = path.split("/").pop() || "";
 
-  if (page === "designer.html") return "designer";
-  if (page === "dev.html" || page === "frontend.html") return "dev";
-  if (page === "ml.html") return "ml";
-  if (page === "person.html") return "person";
+  if (page === "designer" || page === "designer.html") return "designer";
+  if (page === "dev" || page === "dev.html" || page === "frontend" || page === "frontend.html") return "dev";
+  if (page === "ml" || page === "ml.html") return "ml";
+  if (page === "person" || page === "person.html") return "person";
   return "index";
 }
 
