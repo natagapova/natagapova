@@ -1654,6 +1654,9 @@ function layoutProjectPanels() {
           panel.classList.remove("project-panel--pending");
         });
 
+        ensureMobileCaptionViewportListeners();
+        repositionElevatedMobileCaptions();
+
         return true;
       }
 
@@ -2759,15 +2762,161 @@ function closeProjectOverlay() {
 }
 
 function showMobilePanelPreview(panel) {
-  panel.classList.add("is-preview-open");
   const caption = panel.querySelector(".project-panel__caption");
-  if (caption) caption.setAttribute("aria-hidden", "false");
+  if (!caption) return;
+
+  panel.classList.add("is-preview-open");
+  caption.setAttribute("aria-hidden", "false");
+  caption.classList.remove("is-caption-visible");
+
+  delete panel._mobileCaptionLock;
+  lockMobileCaptionGeometry(caption, panel);
+
+  requestAnimationFrame(() => {
+    syncMobileCaptionBottom(caption, panel);
+    runMobileCaptionPositionLoop(panel);
+
+    requestAnimationFrame(() => {
+      caption.classList.add("is-caption-visible");
+    });
+  });
 }
 
 function hideMobilePanelPreview(panel) {
-  panel.classList.remove("is-preview-open");
+  cancelMobileCaptionPositionLoop(panel);
   const caption = panel.querySelector(".project-panel__caption");
-  if (caption) caption.setAttribute("aria-hidden", "true");
+  panel.classList.remove("is-preview-open");
+
+  if (caption) {
+    caption.classList.remove("is-caption-visible");
+    caption.setAttribute("aria-hidden", "true");
+    window.setTimeout(() => {
+      if (!panel.classList.contains("is-preview-open")) {
+        resetElevatedMobileCaption(caption, panel);
+      }
+    }, 460);
+  } else {
+    delete panel._mobileCaptionLock;
+  }
+}
+
+const MOBILE_CAPTION_GAP = 8;
+const MOBILE_PREVIEW_ANIM_MS = 580;
+
+function cancelMobileCaptionPositionLoop(panel) {
+  if (!panel?._captionFrameId) return;
+  cancelAnimationFrame(panel._captionFrameId);
+  panel._captionFrameId = 0;
+}
+
+function getMobilePanelCaptionMetrics(panel) {
+  const card = panel.querySelector(".project-panel__card");
+  const rect = (card ?? panel).getBoundingClientRect();
+
+  return {
+    left: rect.left,
+    width: rect.width,
+    top: rect.top,
+  };
+}
+
+function lockMobileCaptionGeometry(caption, panel) {
+  const { left, width, top } = getMobilePanelCaptionMetrics(panel);
+
+  panel._mobileCaptionLock = { left, width };
+  caption.classList.add("project-panel__caption--elevated");
+  caption.style.left = `${left}px`;
+  caption.style.right = "auto";
+  caption.style.width = `${width}px`;
+  caption.style.top = "auto";
+  caption.style.bottom = `${window.innerHeight - top + MOBILE_CAPTION_GAP}px`;
+}
+
+function syncMobileCaptionBottom(caption, panel) {
+  if (!panel.classList.contains("is-preview-open")) return;
+
+  if (!panel._mobileCaptionLock) {
+    lockMobileCaptionGeometry(caption, panel);
+    return;
+  }
+
+  const { top } = getMobilePanelCaptionMetrics(panel);
+  const { left, width } = panel._mobileCaptionLock;
+
+  caption.style.left = `${left}px`;
+  caption.style.width = `${width}px`;
+  caption.style.bottom = `${window.innerHeight - top + MOBILE_CAPTION_GAP}px`;
+}
+
+function positionElevatedMobileCaption(caption, panel) {
+  syncMobileCaptionBottom(caption, panel);
+}
+
+function resetElevatedMobileCaption(caption, panel) {
+  caption.classList.remove("project-panel__caption--elevated", "is-caption-visible");
+  caption.style.left = "";
+  caption.style.right = "";
+  caption.style.width = "";
+  caption.style.top = "";
+  caption.style.bottom = "";
+  if (panel) {
+    delete panel._mobileCaptionLock;
+  }
+}
+
+function runMobileCaptionPositionLoop(panel, durationMs = MOBILE_PREVIEW_ANIM_MS) {
+  const caption = panel.querySelector(".project-panel__caption");
+  if (!caption) return;
+
+  cancelMobileCaptionPositionLoop(panel);
+
+  const start = performance.now();
+  const tick = (now) => {
+    if (!panel.classList.contains("is-preview-open")) {
+      cancelMobileCaptionPositionLoop(panel);
+      return;
+    }
+
+    syncMobileCaptionBottom(caption, panel);
+
+    if (now - start < durationMs) {
+      panel._captionFrameId = requestAnimationFrame(tick);
+    } else {
+      cancelMobileCaptionPositionLoop(panel);
+    }
+  };
+
+  syncMobileCaptionBottom(caption, panel);
+  panel._captionFrameId = requestAnimationFrame(tick);
+}
+
+function scheduleMobileCaptionPosition(panel) {
+  const caption = panel.querySelector(".project-panel__caption");
+  if (!caption) return;
+
+  delete panel._mobileCaptionLock;
+  lockMobileCaptionGeometry(caption, panel);
+  if (panel.classList.contains("is-preview-open")) {
+    caption.classList.add("is-caption-visible");
+  }
+}
+
+function repositionElevatedMobileCaptions() {
+  document
+    .querySelectorAll(".projects-stack--mobile .project-panel.is-preview-open")
+    .forEach((panel) => scheduleMobileCaptionPosition(panel));
+}
+
+let mobileCaptionViewportListenersBound = false;
+
+function ensureMobileCaptionViewportListeners() {
+  if (mobileCaptionViewportListenersBound) return;
+  mobileCaptionViewportListenersBound = true;
+  document.addEventListener("scroll", repositionElevatedMobileCaptions, {
+    passive: true,
+    capture: true,
+  });
+  window.addEventListener("resize", repositionElevatedMobileCaptions, { passive: true });
 }
 
 function hideAllMobilePanelPreviews() {
