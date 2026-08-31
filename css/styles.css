@@ -2075,6 +2075,10 @@ body.is-project-overlay-open {
   font-family: inherit;
 }
 
+body.page-designer .project-overlay__title {
+  text-transform: uppercase;
+}
+
 .project-overlay__meta {
   margin: 6px 0 0;
   padding-right: 36px;
