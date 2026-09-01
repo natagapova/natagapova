@@ -232,18 +232,37 @@ const translations = {
     experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
-    expCroissan:
-      "<strong>Croissan Studio</strong>, студия полного цикла для ИИ-продуктов. продуктовый дизайнер и ML-разработчик, с апреля 2025.",
-    expAzimov:
-      "<strong>Asimov Lab</strong>, AI-сервис генерации тестов. тимлид фронтенда с февраля по сентябрь 2024, в стартапе также вела ML и UX/UI дизайн.",
-    expClearmind:
-      "<strong>фриланс</strong>: дизайн афиш и сайтов, вёрстка, ML-разработка на заказ, с 2022.",
+    expCroissan: {
+      title: "Croissan Studio",
+      period: "апр 2025 - ...",
+      description:
+        "студия полного цикла для ИИ-продуктов. продуктовый дизайнер и ML-разработчик",
+    },
+    expAzimov: {
+      title: "Asimov Lab",
+      period: "фев - сен 2024",
+      description:
+        "AI-сервис генерации тестов. тимлид фронтенда, в стартапе также вела ML и UX/UI дизайн",
+    },
+    expClearmind: {
+      title: "фриланс",
+      period: "2022 - ...",
+      description: "дизайн афиш и сайтов, вёрстка, ML-разработка на заказ",
+    },
     eduInnopolis:
       "<strong>Университет Иннополис</strong>, бакалавриат по прикладному искусственному интеллекту (2026).",
-    volTrenirovochnaya:
-      "<strong>trenirovochnaya.kzn</strong>, организация танцевальных мероприятий в Казани. бренд-дизайнер и маркетолог, с марта по август 2025.",
-    volInnostreetdance:
-      "<strong>InnoStreetDance</strong>, студенческий танцевальный клуб Университета Иннополис. бренд-дизайнер и маркетолог, с декабря 2022 по сентябрь 2025.",
+    volTrenirovochnaya: {
+      title: "trenirovochnaya.kzn",
+      period: "мар - авг 2025",
+      description:
+        "организация танцевальных мероприятий в Казани. бренд-дизайнер и маркетолог",
+    },
+    volInnostreetdance: {
+      title: "InnoStreetDance",
+      period: "дек 2022 - сен 2025",
+      description:
+        "студенческий танцевальный клуб Университета Иннополис. бренд-дизайнер и маркетолог",
+    },
     footerSocialLabel: "соцсети",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -508,18 +527,35 @@ const translations = {
     experienceBlockTitle: "experience",
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
-    expCroissan:
-      "<strong>Croissan Studio</strong>, full-cycle AI products studio. product designer and ML engineer since April 2025.",
-    expAzimov:
-      "<strong>Asimov Lab</strong>, AI test-generation service. frontend team lead from February to September 2024, also handled ML and UX/UI design.",
-    expClearmind:
-      "<strong>freelance</strong>: poster and web design, front-end builds, ML projects on commission since 2022.",
+    expCroissan: {
+      title: "Croissan Studio",
+      period: "apr 2025 - ...",
+      description: "full-cycle AI products studio. product designer and ML engineer",
+    },
+    expAzimov: {
+      title: "Asimov Lab",
+      period: "feb - sep 2024",
+      description:
+        "AI test-generation service. frontend team lead, also handled ML and UX/UI design",
+    },
+    expClearmind: {
+      title: "freelance",
+      period: "2022 - ...",
+      description: "poster and web design, front-end builds, ML projects on commission",
+    },
     eduInnopolis:
       "<strong>Innopolis University</strong>, BSc in applied artificial intelligence (2026).",
-    volTrenirovochnaya:
-      "<strong>trenirovochnaya.kzn</strong>, dance events in Kazan. brand designer and marketing, March to August 2025.",
-    volInnostreetdance:
-      "<strong>InnoStreetDance</strong>, student dance club at Innopolis University. brand designer and marketing, December 2022 to September 2025.",
+    volTrenirovochnaya: {
+      title: "trenirovochnaya.kzn",
+      period: "mar - aug 2025",
+      description: "dance events in Kazan. brand designer and marketing",
+    },
+    volInnostreetdance: {
+      title: "InnoStreetDance",
+      period: "dec 2022 - sep 2025",
+      description:
+        "student dance club at Innopolis University. brand designer and marketing",
+    },
     footerSocialLabel: "social links",
     footerSocialTelegram: "Telegram",
     footerSocialLinkedin: "LinkedIn",
@@ -1061,15 +1097,15 @@ function layoutMobileVerticalStack(bounds, aspects) {
 
 let projectStackLayoutFrame = 0;
 
-const innerHtmlKeys = new Set([
-  "expCroissan",
-  "expAzimov",
-  "expClearmind",
-  "eduInnopolis",
-  "volTrenirovochnaya",
-  "volInnostreetdance",
-  "MlResumeScreeningDesc",
-]);
+const innerHtmlKeys = new Set(["eduInnopolis", "MlResumeScreeningDesc"]);
+
+const aboutEntryKeyToId = {
+  expCroissan: "exp-croissan",
+  expAzimov: "exp-azimov",
+  expClearmind: "exp-clearmind",
+  volTrenirovochnaya: "vol-trenirovochnaya",
+  volInnostreetdance: "vol-innostreetdance",
+};
 
 const translationKeyToId = {
   navBrand: "nav-brand",
@@ -1089,13 +1125,8 @@ const translationKeyToId = {
   experienceBlockTitle: "experience-block-title",
   educationBlockTitle: "education-block-title",
   volunteeringBlockTitle: "volunteering-block-title",
-  expCroissan: "exp-croissan",
-  expAzimov: "exp-azimov",
-  expClearmind: "exp-clearmind",
   eduInnopolis: "edu-innopolis",
   myName: "store-name",
-  volTrenirovochnaya: "vol-trenirovochnaya",
-  volInnostreetdance: "vol-innostreetdance",
   introBlockTitle: "intro-block-title",
   introLead: "intro-lead",
   introStatusLabel: "intro-status-label",
@@ -3141,6 +3172,22 @@ function updatePageSeo(lang) {
   });
 }
 
+function renderAboutEntries(t) {
+  for (const [key, id] of Object.entries(aboutEntryKeyToId)) {
+    const el = document.getElementById(id);
+    const entry = t[key];
+    if (!el || !entry) continue;
+
+    el.innerHTML = `
+      <div class="about-entry__head">
+        <span class="about-entry__title"><strong>${escapeHtml(entry.title)}</strong></span>
+        <span class="about-entry__period">${escapeHtml(entry.period)}</span>
+      </div>
+      <p class="about-entry__desc">${escapeHtml(entry.description)}</p>
+    `;
+  }
+}
+
 function applyTranslations() {
   const t = translations[currentLang];
   document.documentElement.lang = currentLang === "ru" ? "ru" : "en";
@@ -3159,6 +3206,8 @@ function applyTranslations() {
       el.textContent = value;
     }
   }
+
+  renderAboutEntries(t);
 
   const btn = document.getElementById("languageSwitch");
   if (btn) {

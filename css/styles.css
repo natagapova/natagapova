@@ -2349,6 +2349,7 @@ body.page-designer .project-overlay__title {
 .intro-section__lead,
 .intro-contact,
 .about-block li,
+.about-entry__desc,
 .frontend-card__desc,
 .ml-card__desc,
 .project-overlay__desc,
@@ -2959,6 +2960,34 @@ body.page-designer .project-overlay__title {
   overflow-wrap: break-word;
 }
 
+.about-entry__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+.about-entry__title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.about-entry__title strong {
+  font-weight: 600;
+}
+
+.about-entry__period {
+  flex: 0 0 auto;
+  color: #8e8e93;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.about-entry__desc {
+  margin: 4px 0 0;
+  color: var(--ios-label);
+}
+
 /* Footer */
 .footer {
   display: flex;
@@ -3076,6 +3105,7 @@ body.page-designer .project-overlay__title {
   .intro-section__lead,
   .intro-contact,
   .about-block li,
+.about-entry__desc,
   .lang-map__label,
   .person-tagline,
   .role-page__placeholder,
@@ -3284,6 +3314,14 @@ body.page-designer .project-overlay__title {
 
   .about-block li {
     margin-bottom: 14px;
+  }
+
+  .about-entry__head {
+    gap: 8px 12px;
+  }
+
+  .about-entry__period {
+    white-space: normal;
   }
 
   .about-block li:last-child {
