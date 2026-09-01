@@ -3013,7 +3013,7 @@ function initProjectOverlay() {
 }
 
 const SITE_ORIGIN = "https://www.natagapova.ru";
-const SITE_OG_IMAGE = `${SITE_ORIGIN}/images/my-head.png`;
+const SITE_OG_IMAGE = `${SITE_ORIGIN}/images/bookmark-cloud.png?v=7`;
 
 const PAGE_SEO = {
   index: {

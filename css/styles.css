@@ -363,11 +363,18 @@ html:not(.hero-layout-ready) .hero-intro .hero-intro__title-line {
   font-size: clamp(2.4rem, 11vw, 4.5rem);
 }
 
+html:not(.hero-layout-ready) .hero-intro__photo-wrap {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html.hero-layout-ready .hero-intro__photo-wrap {
+  visibility: visible;
+}
+
 .hero-intro__photo-wrap {
   --hero-blink-photo-scale: 0.987;
   --hero-blink-photo-offset-y: 1%;
-  --hero-photo-width: auto;
-  --hero-photo-max-height: none;
   flex: 1 1 0;
   min-height: 0;
   position: relative;
