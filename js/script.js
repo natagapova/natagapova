@@ -81,6 +81,7 @@ const translations = {
     mlToolOnnx: "ONNX",
     mlActionGithub: "GitHub",
     mlActionArticle: "статья",
+    mlCardMore: "подробнее",
     mlStatusInProgress: "в разработке",
     mlCaseTask: "задача",
     mlCaseData: "данные",
@@ -180,12 +181,13 @@ const translations = {
     YokoMatchaTitle: "Yoko Matcha",
     YokoMatchaDesc: "дизайн сайта для магазина матчи",
     CroissanStudioTitle: "Croissan Studio",
-    CroissanStudioDesc: "бренд- и продуктовый дизайн для проектов Croissan Studio",
+    CroissanStudioDesc: "бренд и продуктовый дизайн для проектов Croissan Studio",
     designerProcessTitle: "разбор процесса",
     designerProcessProblem: "проблема",
     designerProcessSolution: "решение",
     designerProcessResult: "результат",
     designerActionTry: "потестировать игру",
+    projectActionLink: "ссылка",
     PochtaTexProblem:
       "нужно было сделать игру с поиском ошибок в интерфейсе и заинтересовать как можно больше людей на стенде.",
     PochtaTexSolution:
@@ -234,7 +236,7 @@ const translations = {
     volunteeringBlockTitle: "волонтёрство",
     expCroissan: {
       title: "Croissan Studio",
-      period: "апр 2025 - ...",
+      period: "апр 2025 - н.в.",
       description:
         "студия полного цикла для ИИ-продуктов. продуктовый дизайнер и ML-разработчик",
     },
@@ -246,7 +248,7 @@ const translations = {
     },
     expClearmind: {
       title: "фриланс",
-      period: "2022 - ...",
+      period: "2022 - н.в.",
       description: "дизайн афиш и сайтов, вёрстка, ML-разработка на заказ",
     },
     eduInnopolis:
@@ -376,6 +378,7 @@ const translations = {
     mlToolOnnx: "ONNX",
     mlActionGithub: "GitHub",
     mlActionArticle: "paper",
+    mlCardMore: "more",
     mlStatusInProgress: "in progress",
     mlCaseTask: "task",
     mlCaseData: "data",
@@ -481,6 +484,7 @@ const translations = {
     designerProcessSolution: "solution",
     designerProcessResult: "result",
     designerActionTry: "try the game",
+    projectActionLink: "link",
     PochtaTexProblem:
       "we needed a spot-the-error interface game that would draw as many people as possible to the stand.",
     PochtaTexSolution:
@@ -529,7 +533,7 @@ const translations = {
     volunteeringBlockTitle: "volunteering",
     expCroissan: {
       title: "Croissan Studio",
-      period: "apr 2025 - ...",
+      period: "apr 2025 - present",
       description: "full-cycle AI products studio. product designer and ML engineer",
     },
     expAzimov: {
@@ -540,7 +544,7 @@ const translations = {
     },
     expClearmind: {
       title: "freelance",
-      period: "2022 - ...",
+      period: "2022 - present",
       description: "poster and web design, front-end builds, ML projects on commission",
     },
     eduInnopolis:
@@ -634,6 +638,7 @@ const designerProjects = [
       resultKey: "CroissanStudioResult",
     },
     toolKeys: ["designerToolIllustrator", "designerToolAi", "designerToolFigma"],
+    url: "https://croissanstudio.ru",
     images: [
       "images/croissan/page2.webp",
       "images/croissan/page13.webp",
@@ -1138,7 +1143,6 @@ const translationKeyToId = {
   devIntroLead: "dev-intro-lead",
   mlIntroTitle: "ml-intro-title",
   mlIntroLead: "ml-intro-lead",
-  cvPickerTitle: "cv-picker-title",
   introTrustLabel: "intro-trust-label",
   introContactPrefix: "intro-contact-prefix",
   languagesBlockTitle: "languages-block-title",
@@ -1172,6 +1176,7 @@ const CV_VARIANTS = [
 ];
 
 let cvPickerBound = false;
+const SURFACE_TRANSITION_MS = 280;
 
 const CV_DOWNLOAD_ICON =
   '<svg class="cv-picker__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.59 7.7 11.3l1.42-1.42L11 12.17V4h2v8.17l1.88-1.88 1.42 1.42L12 15.59ZM5 18h14v2H5v-2z"/></svg>';
@@ -1180,32 +1185,75 @@ function getCvFile(variant) {
   return variant[currentLang] ?? variant.en;
 }
 
+function positionCvPicker() {
+  const trigger = document.getElementById("navbar-cv-download");
+  const panel = document.querySelector("#cv-picker .cv-picker__panel");
+  if (!trigger || !panel) return;
+
+  const rect = trigger.getBoundingClientRect();
+  const gap = 8;
+  const margin = 16;
+  const panelWidth = panel.offsetWidth || Math.min(220, window.innerWidth - margin * 2);
+  const panelHeight = panel.offsetHeight;
+
+  let left = rect.right - panelWidth;
+  left = Math.max(margin, Math.min(left, window.innerWidth - panelWidth - margin));
+
+  let top = rect.bottom + gap;
+  if (top + panelHeight > window.innerHeight - margin) {
+    top = rect.top - panelHeight - gap;
+  }
+  top = Math.max(margin, Math.min(top, window.innerHeight - panelHeight - margin));
+
+  panel.style.left = `${Math.round(left)}px`;
+  panel.style.top = `${Math.round(top)}px`;
+}
+
+function playSurfaceOpen(surfaceEl, beforeOpen) {
+  if (!surfaceEl) return;
+  surfaceEl.hidden = false;
+  surfaceEl.classList.remove("is-closing");
+  beforeOpen?.();
+  requestAnimationFrame(() => {
+    surfaceEl.classList.add("is-open");
+  });
+}
+
+function playSurfaceClose(surfaceEl, onClosed) {
+  if (!surfaceEl || surfaceEl.hidden) return;
+  surfaceEl.classList.remove("is-open");
+  surfaceEl.classList.add("is-closing");
+  window.clearTimeout(surfaceEl._closeTimer);
+  surfaceEl._closeTimer = window.setTimeout(() => {
+    surfaceEl.hidden = true;
+    surfaceEl.classList.remove("is-closing");
+    onClosed?.();
+  }, SURFACE_TRANSITION_MS);
+}
+
 function ensureCvPicker() {
   const trigger = document.getElementById("navbar-cv-download");
   if (!trigger) return null;
 
-  let wrap = trigger.closest(".navbar-cv-wrap");
-  if (!wrap) {
-    wrap = document.createElement("div");
-    wrap.className = "navbar-cv-wrap";
-    trigger.parentNode.insertBefore(wrap, trigger);
-    wrap.appendChild(trigger);
-  }
-
   trigger.querySelector(".btn__icon")?.remove();
-  trigger.setAttribute("aria-haspopup", "menu");
+  trigger.setAttribute("aria-haspopup", "dialog");
   trigger.setAttribute("aria-controls", "cv-picker");
 
-  let picker = wrap.querySelector("#cv-picker");
+  let picker = document.getElementById("cv-picker");
   if (!picker) {
     picker = document.createElement("div");
     picker.id = "cv-picker";
     picker.className = "cv-picker";
     picker.hidden = true;
     picker.innerHTML = `
-      <ul class="cv-picker__list" id="cv-picker-list" role="menu"></ul>
+      <button type="button" class="cv-picker__backdrop" id="cv-picker-backdrop" aria-label="close"></button>
+      <div class="cv-picker__panel" role="dialog" aria-modal="true" aria-label="CV">
+        <ul class="cv-picker__list" id="cv-picker-list" role="menu"></ul>
+      </div>
     `;
-    wrap.appendChild(picker);
+    document.body.appendChild(picker);
+
+    picker.querySelector("#cv-picker-backdrop")?.addEventListener("click", closeCvPicker);
   }
 
   return picker;
@@ -1215,6 +1263,13 @@ function renderCvPicker(t) {
   const picker = ensureCvPicker();
   const listEl = document.getElementById("cv-picker-list");
   if (!picker || !listEl) return;
+
+  const closeLabel = t.cvPickerClose ?? t.closeProject ?? "close";
+  picker.querySelector("#cv-picker-backdrop")?.setAttribute("aria-label", closeLabel);
+  picker.querySelector(".cv-picker__panel")?.setAttribute(
+    "aria-label",
+    t.navbarCvLabel ?? "CV"
+  );
 
   listEl.innerHTML = CV_VARIANTS.map((variant) => {
     const file = getCvFile(variant);
@@ -1239,16 +1294,33 @@ function openCvPicker() {
   const picker = document.getElementById("cv-picker");
   const trigger = document.getElementById("navbar-cv-download");
   if (!picker || !trigger) return;
-  picker.hidden = false;
+
+  playSurfaceOpen(picker, positionCvPicker);
   trigger.setAttribute("aria-expanded", "true");
+
+  if (!picker.dataset.positionBound) {
+    picker.dataset.positionBound = "true";
+    window.addEventListener("resize", () => {
+      if (!picker.hidden) positionCvPicker();
+    });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!picker.hidden) positionCvPicker();
+      },
+      true
+    );
+  }
 }
 
 function closeCvPicker() {
   const picker = document.getElementById("cv-picker");
   const trigger = document.getElementById("navbar-cv-download");
   if (!picker || !trigger) return;
-  picker.hidden = true;
-  trigger.setAttribute("aria-expanded", "false");
+
+  playSurfaceClose(picker, () => {
+    trigger.setAttribute("aria-expanded", "false");
+  });
 }
 
 function initCvPicker(t) {
@@ -1266,13 +1338,6 @@ function initCvPicker(t) {
         if (!picker) return;
         if (picker.hidden) openCvPicker();
         else closeCvPicker();
-      });
-
-      document.addEventListener("click", (event) => {
-        const wrap = document.querySelector(".navbar-cv-wrap");
-        const picker = document.getElementById("cv-picker");
-        if (!wrap || !picker || picker.hidden) return;
-        if (!wrap.contains(event.target)) closeCvPicker();
       });
 
       document.addEventListener("keydown", (event) => {
@@ -1503,6 +1568,18 @@ function escapeHtml(text) {
 
 function fillAltTemplate(template, values) {
   return String(template).replace(/\{\{(\w+)\}\}/g, (_, key) => String(values[key] ?? ""));
+}
+
+const aboutEntryUrls = {
+  expCroissan: "https://croissanstudio.ru",
+  expAzimov: "https://asimovlab.ru",
+};
+
+function renderProjectTitleLink(title, url) {
+  const safeTitle = escapeHtml(title);
+  if (!url) return safeTitle;
+
+  return `<a class="text-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${safeTitle}</a>`;
 }
 
 function waitForImage(img) {
@@ -1931,26 +2008,16 @@ function renderFrontendProjects() {
           </div>
           ${tools}
           ${description ? `<p class="frontend-card__desc">${escapeHtml(description)}</p>` : ""}
+          ${
+            project.url && !project.comingSoon
+              ? `<div class="frontend-card__actions">${renderProjectCardLink(project, t, "frontend-card__action")}</div>`
+              : ""
+          }
         </div>
       `;
 
-      if (project.url && !project.comingSoon) {
-        return `
-          <a
-            class="frontend-card"
-            role="listitem"
-            href="${escapeHtml(project.url)}"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="${escapeHtml(title)}"
-          >
-            ${body}
-          </a>
-        `;
-      }
-
       return `
-        <article class="frontend-card frontend-card--static" role="listitem" aria-label="${escapeHtml(title)}">
+        <article class="frontend-card" role="listitem" aria-label="${escapeHtml(title)}">
           ${body}
         </article>
       `;
@@ -2070,6 +2137,11 @@ function renderMlActions(project, t) {
   return `<div class="ml-card__actions">${links.join("")}</div>`;
 }
 
+function renderMlCardMore(project, t) {
+  const label = escapeHtml(t.mlCardMore ?? "подробнее");
+  return `<div class="ml-card__actions"><button type="button" class="btn ml-card__more" data-ml-project-id="${escapeHtml(project.id)}"><span class="btn__label">${label}</span></button></div>`;
+}
+
 function renderMlProjects() {
   const grid = document.getElementById("ml-grid");
   if (!grid) return;
@@ -2084,10 +2156,8 @@ function renderMlProjects() {
 
       return `
         <article
-          class="ml-card ml-card--interactive${project.inDevelopment ? " ml-card--in-progress" : ""}"
-          data-ml-project-id="${escapeHtml(project.id)}"
-          tabindex="0"
-          role="button"
+          class="ml-card${project.inDevelopment ? " ml-card--in-progress" : ""}"
+          role="listitem"
           aria-label="${escapeHtml(title)}"
         >
           ${renderMlPreview(project, title)}
@@ -2098,6 +2168,7 @@ function renderMlProjects() {
             </div>
             ${tools}
             ${renderMlDescription(project, t)}
+            ${renderMlCardMore(project, t)}
           </div>
         </article>
       `;
@@ -2114,17 +2185,17 @@ function bindMlProjectCards() {
   grid.dataset.mlCardsBound = "true";
 
   grid.addEventListener("click", (event) => {
-    const card = event.target.closest("[data-ml-project-id]");
-    if (!card) return;
-    openProjectOverlay(card.dataset.mlProjectId, "ml");
+    const trigger = event.target.closest(".ml-card__more");
+    if (!trigger) return;
+    openProjectOverlay(trigger.dataset.mlProjectId, "ml");
   });
 
   grid.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
-    const card = event.target.closest("[data-ml-project-id]");
-    if (!card || !grid.contains(card)) return;
+    const trigger = event.target.closest(".ml-card__more");
+    if (!trigger || !grid.contains(trigger)) return;
     event.preventDefault();
-    openProjectOverlay(card.dataset.mlProjectId, "ml");
+    openProjectOverlay(trigger.dataset.mlProjectId, "ml");
   });
 }
 
@@ -2292,13 +2363,20 @@ function renderMlOverlayTools(project, t) {
     .join("");
 }
 
-function renderProjectOverlayLink(href, label) {
+function renderProjectOverlayLink(href, label, actionClass = "project-overlay__action") {
   return `<a
-    class="btn project-overlay__action"
+    class="btn ${actionClass}"
     href="${escapeHtml(href)}"
     target="_blank"
     rel="noopener noreferrer"
   ><span class="btn__label">${escapeHtml(label)} →</span></a>`;
+}
+
+function renderProjectCardLink(project, t, actionClass) {
+  if (!project.url || project.comingSoon) return "";
+
+  const label = t.projectActionLink ?? "ссылка";
+  return renderProjectOverlayLink(project.url, label, actionClass);
 }
 
 function populateProjectOverlayActions(actionsEl, links) {
@@ -2329,7 +2407,7 @@ function renderMlOverlayLinks(project, t) {
 function renderDesignerOverlayLinks(project, t) {
   if (!project.url) return [];
 
-  const label = t[project.urlLabelKey ?? "designerActionTry"] ?? "";
+  const label = t.projectActionLink ?? "ссылка";
   if (!label) return [];
 
   return [renderProjectOverlayLink(project.url, label)];
@@ -2751,26 +2829,27 @@ function openProjectOverlay(projectId, source = openOverlaySource ?? "designer")
   openProjectId = projectId;
   renderProjectOverlayContent(projectId);
 
-  overlay.hidden = false;
+  playSurfaceOpen(overlay, () => {
+    const closeBtn = document.getElementById("project-overlay-close");
+    closeBtn?.focus({ preventScroll: true });
+
+    const scroll = document.getElementById("project-overlay-scroll");
+    if (scroll) scroll.scrollTop = 0;
+  });
   document.body.classList.add("is-project-overlay-open");
-
-  const closeBtn = document.getElementById("project-overlay-close");
-  closeBtn?.focus({ preventScroll: true });
-
-  const scroll = document.getElementById("project-overlay-scroll");
-  if (scroll) scroll.scrollTop = 0;
 }
 
 function closeProjectOverlay() {
   const overlay = document.getElementById("project-overlay");
   if (!overlay || overlay.hidden) return;
 
-  disconnectProjectOverlayGalleryLayout();
-  closeProjectLightbox();
-  overlay.hidden = true;
-  openProjectId = null;
-  openOverlaySource = null;
-  document.body.classList.remove("is-project-overlay-open");
+  playSurfaceClose(overlay, () => {
+    disconnectProjectOverlayGalleryLayout();
+    closeProjectLightbox();
+    openProjectId = null;
+    openOverlaySource = null;
+    document.body.classList.remove("is-project-overlay-open");
+  });
 }
 
 function showMobilePanelPreview(panel) {
@@ -3180,7 +3259,7 @@ function renderAboutEntries(t) {
 
     el.innerHTML = `
       <div class="about-entry__head">
-        <span class="about-entry__title"><strong>${escapeHtml(entry.title)}</strong></span>
+        <span class="about-entry__title">${renderProjectTitleLink(entry.title, aboutEntryUrls[key])}</span>
         <span class="about-entry__period">${escapeHtml(entry.period)}</span>
       </div>
       <p class="about-entry__desc">${escapeHtml(entry.description)}</p>

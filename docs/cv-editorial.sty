@@ -21,8 +21,12 @@
   \href{https://scholar.google.com/citations?user=FqdPM_gAAAAJ}{Google Scholar}%
 }
 
-\newcommand{\cvweblinkru}[1]{\href{#1}{ссылка}}
-\newcommand{\cvweblinken}[1]{\href{#1}{link}}
+\newcommand{\cvlink}[2]{%
+  \href{#1}{\textcolor{cvtext}{\underline{#2}}}%
+}
+
+\NewDocumentCommand{\cvweblinkru}{m}{\cvlink{#1}{#1}}
+\NewDocumentCommand{\cvweblinken}{m}{\cvlink{#1}{#1}}
 
 \NewDocumentCommand{\cvcontactsbase}{O{Email}}{%
   \cvwebsite \enspace·\enspace
@@ -59,6 +63,12 @@
 \newif\ifcvrussian
 \newcommand{\cvrussianon}{\cvrussiantrue}
 
+\newif\ifcvcompact
+\newcommand{\cvcompacton}{\cvcompacttrue}
+
+\newif\ifcvfirstsection
+\cvfirstsectiontrue
+
 \newcommand{\cvtitlewidth}{0.64\linewidth}
 \newcommand{\cvtagwidth}{0.34\linewidth}
 \newcommand{\cvjobtitlewidth}{0.74\linewidth}
@@ -67,45 +77,110 @@
 \newcommand{\cvsection}[1]{%
   \cvprojectfirsttrue
   \cvneedssectiontoptrue
-  \addvspace{1em}%
+  \ifcvfirstsection
+    \cvfirstsectionfalse
+    \ifcvcompact
+      \par\vspace{0.95em}%
+    \else
+      \par\vspace{1.15em}%
+    \fi
+  \else
+    \ifcvcompact
+      \par\vspace{0.82em}%
+    \else
+      \par\vspace{1em}%
+    \fi
+  \fi
+  \noindent{\color{cvline}\rule{\linewidth}{0.35pt}}\par
+  \vspace{0.38em}%
   \noindent
-  {\fontsize{7.5}{8.8}\selectfont\bfseries\textcolor{cvmuted}{\MakeUppercase{#1}}\par}%
-  \vspace{0.06em}%
-  \noindent{\color{cvline}\rule{\linewidth}{0.4pt}}%
-  \vspace{0.08em}%
+  {\fontsize{8.6}{11}\selectfont\bfseries\color{cvmuted}{\MakeUppercase{#1}}\par}%
+  \vspace{0.26em}%
 }
 
 \newcommand{\cvheader}[3]{%
   {\fontsize{21}{25}\selectfont\bfseries\color{cvtext}#1\par}%
-  \vspace{0.18em}%
-  {\fontsize{10.5}{13}\selectfont\color{cvmuted}#2\par}%
-  \vspace{0.38em}%
-  {\fontsize{8.8}{11.5}\selectfont\color{cvlight}#3\par}%
-  \vspace{0.55em}%
+  \vspace{0.2em}%
+  {\fontsize{10.5}{13.5}\selectfont\color{cvmuted}#2\par}%
+  \ifcvcompact
+    \vspace{0.3em}%
+  \else
+    \vspace{0.4em}%
+  \fi
+  {\fontsize{8.8}{12}\selectfont\color{cvlight}#3\par}%
+  \ifcvcompact
+    \vspace{0.42em}%
+  \else
+    \vspace{0.58em}%
+  \fi
   {\color{cvline}\rule{\linewidth}{0.4pt}}%
-  \vspace{0.48em}%
+  \ifcvcompact
+    \vspace{0.38em}%
+  \else
+    \vspace{0.52em}%
+  \fi
 }
 
 \newcommand{\cvsummary}[1]{%
-  {\fontsize{10}{14}\selectfont\color{cvtext}#1\par}%
-  \vspace{0.35em}%
+  {\fontsize{10}{14.5}\selectfont\color{cvtext}#1\par}%
+  \ifcvcompact
+    \vspace{0.18em}%
+  \else
+    \vspace{0.38em}%
+  \fi
 }
 
 \newcommand{\cvbody}[1]{%
   \ifcvneedssectiontop
     \cvneedssectiontopfalse
   \fi
-  {\fontsize{9.6}{13.4}\selectfont\color{cvtext}#1\par}%
-  \vspace{0.28em}%
+  {\fontsize{9.6}{14}\selectfont\color{cvtext}#1\par}%
+}
+
+\newcommand{\cvskillswithlanguages}[2]{%
+  \ifcvneedssectiontop
+    \cvneedssectiontopfalse
+  \fi
+  {\fontsize{9.6}{14}\selectfont\color{cvtext}#1\par}%
+  \vspace{0.14em}%
+  {\fontsize{9.6}{14}\selectfont\color{cvtext}#2\par}%
+}
+
+\newcommand{\cvlanguagesru}{%
+  Русский C2 (носитель) · Английский C1+ · Французский A2 · Корейский A1%
+}
+
+\newcommand{\cvlanguagesen}{%
+  Russian C2 (native) · English C1+ · French A2 · Korean A1%
+}
+
+\newcommand{\cvpubresumetitleen}{%
+  Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System%
+}
+
+\newcommand{\cvpubresumetitleru}{%
+  Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System%
+}
+
+\newcommand{\cvpubrsatitleen}{%
+  Quantum Annealing Approaches to Breaking RSA Encryption%
+}
+
+\newcommand{\cvpubrsatitleru}{%
+  Подходы квантового отжига к взлому шифрования RSA%
 }
 
 \newcommand{\cvmutedbody}[1]{%
-  {\fontsize{9.2}{12.8}\selectfont\color{cvmuted}#1\par}%
+  {\fontsize{9.2}{13.5}\selectfont\color{cvmuted}#1\par}%
   \vspace{0.22em}%
 }
 
 \newcommand{\cvfooter}[1]{%
-  \vspace{0.9em}%
+  \ifcvcompact
+    \vspace{0.35em}%
+  \else
+    \vspace{0.9em}%
+  \fi
   \begin{center}
     {\fontsize{7.5}{9.5}\selectfont\color{cvlight}#1}
   \end{center}%
@@ -114,23 +189,74 @@
 \newcommand{\cvskills}[1]{\cvmutedbody{\textbf{Tools:} #1}}
 \newcommand{\cvskillsru}[1]{\cvmutedbody{\textbf{Инструменты:} #1}}
 
+\newcommand{\cvblocktitle}[1]{%
+  \ifcvcompact
+    \vspace{0.08em}%
+  \else
+    \vspace{0.18em}%
+  \fi
+  \noindent{\fontsize{8.2}{10.2}\selectfont\bfseries\color{cvmuted}#1\par}%
+  \vspace{0.08em}%
+}
+
+\newcommand{\cveducation}[3]{%
+  \ifcvneedssectiontop
+    \cvneedssectiontopfalse
+  \fi
+  \noindent{\fontsize{9.6}{13.8}\selectfont\bfseries\color{cvtext}#1\par}%
+  \vspace{0.12em}%
+  \noindent{\fontsize{9.2}{13.4}\selectfont\color{cvtext}#2\par}%
+  \vspace{0.1em}%
+  \noindent{\fontsize{8.6}{12}\selectfont\color{cvlight}#3\par}%
+}
+
+\newcommand{\cvdoi}[1]{%
+  \cvlink{https://doi.org/#1}{doi:#1}%
+}
+
+\newcommand{\cvpublication}[3]{%
+  \ifcvneedssectiontop
+    \cvneedssectiontopfalse
+  \else
+    \ifcvcompact
+      \vspace{0.28em}%
+    \else
+      \vspace{0.34em}%
+    \fi
+  \fi
+  \noindent{\fontsize{9.5}{13.6}\selectfont\bfseries\color{cvtext}#1\par}%
+  \vspace{0.1em}%
+  \noindent{\fontsize{9}{13.2}\selectfont\color{cvmuted}#2\par}%
+  \vspace{0.08em}%
+  \noindent{\fontsize{8.6}{12.2}\selectfont\color{cvlight}\cvdoi{#3}\par}%
+}
+
 \NewDocumentEnvironment{cvjob}{m m}{%
   \ifcvneedssectiontop
     \cvneedssectiontopfalse
   \else
-    \vspace{0.12em}%
+    \ifcvcompact
+      \vspace{0.22em}%
+    \else
+      \vspace{0.28em}%
+    \fi
   \fi
   \noindent
   \begin{minipage}[t]{\cvjobtitlewidth}
-    {\fontsize{9.8}{12}\selectfont\bfseries\color{cvtext}#1}%
+    {\fontsize{9.8}{12.8}\selectfont\bfseries\color{cvtext}#1}%
   \end{minipage}\hfill
   \begin{minipage}[t]{\cvjobdatewidth}
-    \raggedleft{\fontsize{8.3}{10}\selectfont\color{cvlight}#2}%
+    \raggedleft{\fontsize{8.4}{11.2}\selectfont\color{cvlight}#2}%
   \end{minipage}%
-  \par\vspace{0.18em}%
-  \begingroup\fontsize{9.4}{13}\selectfont\color{cvtext}%
+  \par\vspace{0.16em}%
+  \begingroup
+  \ifcvcompact
+    \fontsize{9.2}{13.6}\selectfont\color{cvtext}%
+  \else
+    \fontsize{9.4}{14}\selectfont\color{cvtext}%
+  \fi
 }{%
-  \par\endgroup\vspace{0.1em}%
+  \par\endgroup
 }
 
 \NewDocumentEnvironment{cvproject}{m m}{%
@@ -140,22 +266,32 @@
       \cvneedssectiontopfalse
     \fi
   \else
-    \vspace{0.55em}%
-    {\color{cvline}\rule{\linewidth}{0.35pt}}%
-    \vspace{0.45em}%
+    \ifcvcompact
+      \vspace{0.34em}%
+      {\color{cvline}\rule{\linewidth}{0.35pt}}%
+      \vspace{0.28em}%
+    \else
+      \vspace{0.48em}%
+      {\color{cvline}\rule{\linewidth}{0.35pt}}%
+      \vspace{0.38em}%
+    \fi
   \fi
   \noindent
   \begin{minipage}[t]{\cvtitlewidth}
-    {\fontsize{9.9}{12}\selectfont\bfseries\color{cvtext}#1}%
+    {\fontsize{9.9}{12.8}\selectfont\bfseries\color{cvtext}#1}%
   \end{minipage}\hfill
   \begin{minipage}[t]{\cvtagwidth}
-    \raggedleft{\fontsize{7.8}{10.2}\selectfont\color{cvlight}#2}%
+    \raggedleft{\fontsize{7.8}{10.8}\selectfont\color{cvlight}#2}%
   \end{minipage}%
-  \par\vspace{0.2em}%
-  \begingroup\fontsize{9.2}{12.8}\selectfont\color{cvtext}%
+  \par\vspace{0.16em}%
+  \begingroup
+  \ifcvcompact
+    \fontsize{9}{13.4}\selectfont\color{cvtext}%
+  \else
+    \fontsize{9.2}{14}\selectfont\color{cvtext}%
+  \fi
 }{%
   \par\endgroup
-  \vspace{0.15em}%
 }
 
 \newcommand{\cvthumb}[2]{%

@@ -1,6 +1,6 @@
 \documentclass[10pt,a4paper]{article}
 
-\usepackage[a4paper,top=1.65cm,bottom=1.55cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage[a4paper,top=1.45cm,bottom=1.32cm,left=1.8cm,right=1.8cm]{geometry}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
@@ -13,59 +13,58 @@
 \hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
 
 \begin{document}
+\cvcompacton
 
 \cvheader{Наталья Агапова}{ML Engineer}{\cvcontactsgitscholar[Почта]}
 
 \cvsummary{%
-Прикладной ML: NLP, explainability и debiasing, computer vision, RAG. Довожу модели до решений с метриками, ablation и честной оценкой trade-off — точных, объяснимых и применимых в продукте. Есть публикации; умею связать модель с интерфейсом.}
+Прикладной ML: NLP, explainability и debiasing, computer vision, RAG. Довожу модели до решений с метриками, ablation и честной оценкой trade-off: точных, объяснимых и применимых в продукте. Есть публикации; умею связать модель с интерфейсом.}
 
 \cvsection{Опыт}
 
-\begin{cvjob}{Croissan Studio · ML, дизайн}{апр. 2025 — н.в.}
+\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · ML, дизайн}{апр. 2025 - н.в.}
 AI-продукты в студии полного цикла: модели, интерфейс, визуальная подача результата.
 \end{cvjob}
 
-\begin{cvjob}{Asimov Lab · ML, UX/UI, фронтенд}{фев. — сент. 2024}
-Стартап AI-сервиса генерации тестов; тимлид фронтенда. Полный цикл от данных до UI.
+\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · ML, UX/UI, фронтенд}{фев. - сент. 2024}
+Стартап AI-сервиса генерации тестов; Тимлид фронтенда. Полный цикл от данных до UI.
 \end{cvjob}
 
-\begin{cvjob}{Фриланс · ML}{2022 — н.в.}
+\begin{cvjob}{Фриланс · ML}{2022 - н.в.}
 Прикладные ML-задачи на стыке с дизайном и веб-разработкой.
 \end{cvjob}
 
 \cvsection{Избранные проекты}
 
-\begin{cvproject}{Fair resume screening}{NLP · \href{https://github.com/natagapova/resume-screening}{GitHub} · \href{https://doi.org/10.66693/mathai.1017}{статья}}
-BERT-классификатор резюме в 9 IT-суперкатегорий (HeadHunter). Integrated Gradients (Captum) для аудита bias; 39+ конфигураций debiasing. Baseline: 60.9\% accuracy, city-swap менял предсказание в 7.7\% пар. Data scrubbing: 0\% flip при 59.4\% accuracy.
+\begin{cvproject}{\cvlink{https://github.com/natagapova/resume-screening}{Fair resume screening}}{NLP · debiasing · paper}
+BERT-классификатор резюме в 9 IT-суперкатегорий (HeadHunter). Integrated Gradients (Captum) для аудита bias; 39+ конфигураций debiasing. Baseline: 60.9\% accuracy, city-swap менял предсказание в 7.7\% пар.
 \end{cvproject}
 
-\begin{cvproject}{Emotion detection}{CV · FER2013 · on-device}
-EmotionCNN: 58.7\% accuracy, macro-F1 0.569; до 60.8\% с ensemble+TTA. INT8-квантизация \textrightarrow{} Core ML и ONNX Runtime Web, latency 1.15\,ms. Полный цикл: данные, обучение, eval, деплой.
+\begin{cvproject}{\cvlink{https://github.com/natagapova/emotions-with-audio}{Emotion detection}}{CV · FER2013 · on-device}
+EmotionCNN: 58.7\% accuracy, macro-F1 0.569; до 60.8\% с ensemble+TTA. INT8-квантизация \textrightarrow{} Core ML и ONNX Runtime Web, latency 1.15\,ms.
 \end{cvproject}
 
-\begin{cvproject}{Gesture input}{CV · MediaPipe · real-time}
-Управление курсором жестами с веб-камеры: pinch / ready / click, PyAutoGUI, сглаживание, ~60 FPS. Rule-based классификатор поверх 21 landmark.
+\begin{cvproject}{\cvlink{https://github.com/natagapova/gesture-input}{Gesture input}}{CV · MediaPipe · real-time}
+Управление курсором жестами с веб-камеры: pinch / ready / click, PyAutoGUI, сглаживание, ~60 FPS.
 \end{cvproject}
 
-\begin{cvproject}{Personal Knowledge System}{RAG · NLP · Python}
-Ответы по личным PDF только из контекста, с цитатами filename+page. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2 — без LangChain, каждый слой написан вручную.
+\begin{cvproject}{\cvlink{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
+Ответы по личным PDF только из контекста, с цитатами filename+page. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.
 \end{cvproject}
+
+\cvsection{Навыки}
+\cvskillswithlanguages{%
+Python, PyTorch · BERT, Captum · debiasing, counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}{%
+\cvlanguagesru}
+
+\cvsection{Образование}
+\cveducation{Университет Иннополис}{Бакалавриат «Прикладной искусственный интеллект»}{2026}
 
 \cvsection{Публикации}
 
-\cvbody{%
-Fair resume screening, debiasing BERT — \href{https://doi.org/10.66693/mathai.1017}{DOI: 10.66693/mathai.1017}.}
+\cvpublication{\cvpubresumetitleru}{Агапова Н.~А.; Лукманов Р.~А., 2026}{10.66693/mathai.1017}
 
-\cvbody{%
-Холодов Я.~А.; Саллум Х.; Агапова Н.~А. Квантовый отжиг и RSA. \textit{Вопросы кибербезопасности}, 2025. \href{https://doi.org/10.21681/2311-3456-2025-4-127-133}{DOI: 10.21681/2311-3456-2025-4-127-133}.}
-
-\cvsection{Навыки и образование}
-
-\cvbody{%
-Python, PyTorch · BERT, Captum · debiasing, counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX · английский C1+.}
-
-\cvmutedbody{%
-Университет Иннополис, бакалавриат «Прикладной искусственный интеллект», 2026.}
+\cvpublication{\cvpubrsatitleru}{Холодов Я.~А.; Саллум Х.; Агапова Н.~А. \textit{Вопросы кибербезопасности}, 2025}{10.21681/2311-3456-2025-4-127-133}
 
 \cvfooter{август 2026 · \cvwebsite}
 
