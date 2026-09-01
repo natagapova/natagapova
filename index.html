@@ -344,7 +344,7 @@
 
         var shouldRestore = false;
         var nav = performance.getEntriesByType("navigation")[0];
-        if (nav && nav.type === "back_forward") shouldRestore = true;
+        if (nav && (nav.type === "back_forward" || nav.type === "reload")) shouldRestore = true;
 
         if (!shouldRestore && document.referrer) {
           var refUrl = new URL(document.referrer);

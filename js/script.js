@@ -3444,7 +3444,8 @@ function shouldRestoreHomeScroll() {
     const y = parseFloat(raw);
     if (!Number.isFinite(y) || y <= 0) return false;
 
-    if (getHomeNavigationType() === "back_forward") return true;
+    const navType = getHomeNavigationType();
+    if (navType === "back_forward" || navType === "reload") return true;
 
     if (sessionStorage.getItem(HOME_SCROLL_PENDING_KEY) === "1") {
       const ref = document.referrer;
@@ -3502,6 +3503,13 @@ function restoreHomeScrollPosition(force = false) {
 function initHomeScrollMemory() {
   if (!document.getElementById("hero-experience")) return;
 
+  let scrollSaveRaf = 0;
+  const scheduleSaveHomeScrollPosition = () => {
+    cancelAnimationFrame(scrollSaveRaf);
+    scrollSaveRaf = requestAnimationFrame(saveHomeScrollPosition);
+  };
+
+  window.addEventListener("scroll", scheduleSaveHomeScrollPosition, { passive: true });
   window.addEventListener("pagehide", saveHomeScrollPosition);
   window.addEventListener("pageshow", (event) => {
     if (event.persisted) {
@@ -3515,7 +3523,7 @@ function initHomeScrollMemory() {
 function markHeroLayoutReady() {
   document.documentElement.classList.add("hero-layout-ready");
   document.getElementById("hero-experience")?.classList.add("is-layout-ready");
-  if (getHomeNavigationType() === "back_forward") {
+  if (getHomeNavigationType() === "back_forward" || getHomeNavigationType() === "reload") {
     restoreHomeScrollPosition(true);
   }
 }
