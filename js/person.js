@@ -11,7 +11,10 @@ let personGalleryItems = [];
 let personGalleryColumnCount = 0;
 let personGalleryLastWidth = 0;
 let personGalleryResizeTimer = null;
+let personGalleryEqualizeTimer = null;
+let personGalleryEqualizeRaf = 0;
 let personGalleryObserver = null;
+let personGalleryLayoutObserver = null;
 
 function getGalleryItemGap() {
   const probe = document.createElement("div");
@@ -134,67 +137,146 @@ function distributePersonGalleryItems(items, columnCount, columnWidth, gapPx) {
   return { columns, heights };
 }
 
+let personGalleryIsEqualizing = false;
+
 function getPersonGalleryMinHeightRatio(item) {
-  return item.type === "video" ? 1 : 0.85;
+  return item.type === "video" ? 0.92 : 0.68;
 }
 
-function computeColumnAdjustedHeights(columnItems, colHeight, targetMinHeight, gapPx) {
-  const itemCount = columnItems.length;
-  const numGaps = itemCount > 1 ? itemCount - 1 : 0;
-  const overflow = colHeight - targetMinHeight;
+function measureColumnItemsHeight(column) {
+  const items = [...column.querySelectorAll(".gallery-item")];
+  if (!items.length) return 0;
 
-  const indexed = columnItems.map((item, idx) => ({
-    origIdx: idx,
-    origHeight: item._expectedHeight,
-    minHeight: item._expectedHeight * getPersonGalleryMinHeightRatio(item),
-  }));
+  const gap = parseFloat(window.getComputedStyle(column).rowGap) || 0;
+  return items.reduce((sum, item, index) => sum + item.offsetHeight + (index > 0 ? gap : 0), 0);
+}
 
-  if (overflow <= 0) {
-    return indexed.map((entry) => entry.origHeight);
+function trimColumnOverflow(column, overflow) {
+  if (overflow <= 0.5) return 0;
+
+  const items = [...column.querySelectorAll(".gallery-item")];
+  const trimOrder = items
+    .map((element) => {
+      const type = element.dataset.type || "image";
+      const height = element.offsetHeight;
+      const baseHeight = Number.parseFloat(element.dataset.baseHeight) || height;
+      return {
+        element,
+        type,
+        height,
+        minHeight: baseHeight * getPersonGalleryMinHeightRatio({ type }),
+      };
+    })
+    .sort((a, b) => {
+      if (a.type !== b.type) return a.type === "image" ? -1 : 1;
+      return b.height - a.height;
+    });
+
+  let remaining = overflow;
+  for (const item of trimOrder) {
+    if (remaining <= 0.5) break;
+
+    const current = item.element.offsetHeight;
+    const maxTrim = current - item.minHeight;
+    if (maxTrim <= 0.5) continue;
+
+    const trim = Math.min(remaining, maxTrim);
+    item.element.style.height = `${current - trim}px`;
+    remaining -= trim;
   }
 
-  let neededTrim = overflow;
-  const sorted = [...indexed].sort((a, b) => b.origHeight - a.origHeight);
-  const trimmed = new Array(indexed.length).fill(0);
+  return overflow - remaining;
+}
 
-  for (const entry of sorted) {
-    if (neededTrim <= 0) break;
-    const maxTrim = entry.origHeight - entry.minHeight;
-    if (maxTrim <= 0) continue;
-    const toTrim = Math.min(neededTrim, maxTrim);
-    trimmed[entry.origIdx] = toTrim;
-    neededTrim -= toTrim;
-  }
+function equalizePersonGalleryColumns(gallery) {
+  if (!gallery || personGalleryIsEqualizing) return;
 
-  const candidateHeights = columnItems.map((item, idx) =>
-    Math.max(
-      item._expectedHeight - (trimmed[idx] || 0),
-      item._expectedHeight * getPersonGalleryMinHeightRatio(item)
-    )
-  );
+  const columns = [...gallery.querySelectorAll(".gallery-column")];
+  if (!columns.length) return;
 
-  let sumCandidate = candidateHeights.reduce((sum, height) => sum + height, 0) + numGaps * gapPx;
-  const correction = sumCandidate - targetMinHeight;
+  personGalleryIsEqualizing = true;
 
-  if (correction > 1e-6) {
-    const trimmable = candidateHeights
-      .map((height, idx) => ({
-        idx,
-        slack: height - columnItems[idx]._expectedHeight * getPersonGalleryMinHeightRatio(columnItems[idx]),
-      }))
-      .filter((entry) => entry.slack > 1e-6)
-      .sort((a, b) => b.slack - a.slack);
+  try {
+    columns.forEach((column) => {
+      column.style.removeProperty("min-height");
+      const spacer = column.querySelector(".gallery-column__spacer");
+      if (spacer) {
+        spacer.style.height = "0px";
+        spacer.style.minHeight = "0px";
+      }
+    });
 
-    let remaining = correction;
-    for (const entry of trimmable) {
-      if (remaining <= 0) break;
-      const delta = Math.min(remaining, entry.slack);
-      candidateHeights[entry.idx] -= delta;
-      remaining -= delta;
+    for (let attempt = 0; attempt < 16; attempt += 1) {
+      const contentHeights = columns.map(measureColumnItemsHeight);
+      const targetContent = Math.min(...contentHeights);
+      const tallestContent = Math.max(...contentHeights);
+
+      if (tallestContent - targetContent <= 1) break;
+
+      let trimmed = false;
+      for (const column of columns) {
+        const overflow = measureColumnItemsHeight(column) - targetContent;
+        if (overflow > 1 && trimColumnOverflow(column, overflow) > 0) {
+          trimmed = true;
+        }
+      }
+
+      if (!trimmed) break;
     }
+  } finally {
+    personGalleryIsEqualizing = false;
+  }
+}
+
+function scheduleEqualizePersonGalleryColumns(gallery) {
+  if (!gallery) return;
+
+  cancelAnimationFrame(personGalleryEqualizeRaf);
+  personGalleryEqualizeRaf = requestAnimationFrame(() => {
+    equalizePersonGalleryColumns(gallery);
+    requestAnimationFrame(() => equalizePersonGalleryColumns(gallery));
+  });
+}
+
+function primePersonGalleryMedia(gallery) {
+  gallery.querySelectorAll(".gallery-item img").forEach((img) => {
+    if (!img.src) {
+      img.src = img.dataset.gridSrc || img.closest(".gallery-item")?.dataset.fullSrc || "";
+    }
+  });
+}
+
+function bindPersonGalleryMediaLoads(gallery) {
+  gallery.querySelectorAll(".gallery-item img").forEach((img) => {
+    if (img.complete) return;
+    img.addEventListener("load", () => scheduleEqualizePersonGalleryColumns(gallery), { once: true });
+    img.addEventListener("error", () => scheduleEqualizePersonGalleryColumns(gallery), { once: true });
+  });
+
+  gallery.querySelectorAll(".gallery-item__video").forEach((video) => {
+    const rebalance = () => scheduleEqualizePersonGalleryColumns(gallery);
+    video.addEventListener("loadedmetadata", rebalance, { once: true });
+    video.addEventListener("loadeddata", rebalance, { once: true });
+  });
+}
+
+function watchPersonGalleryLayout(gallery) {
+  if (personGalleryLayoutObserver) {
+    personGalleryLayoutObserver.disconnect();
+    personGalleryLayoutObserver = null;
   }
 
-  return candidateHeights;
+  if (!window.ResizeObserver) return;
+
+  personGalleryLayoutObserver = new ResizeObserver(() => {
+    if (personGalleryIsEqualizing) return;
+    clearTimeout(personGalleryEqualizeTimer);
+    personGalleryEqualizeTimer = setTimeout(() => {
+      scheduleEqualizePersonGalleryColumns(gallery);
+    }, 80);
+  });
+
+  personGalleryLayoutObserver.observe(gallery);
 }
 
 function personGalleryMediaLabel(name) {
@@ -252,6 +334,15 @@ function createPersonGalleryElement(item) {
   if (item.type === "video") {
     wrapper.classList.add("gallery-item--video");
 
+    if (item.poster) {
+      const poster = document.createElement("img");
+      poster.className = "gallery-item__poster";
+      poster.alt = "";
+      poster.decoding = "async";
+      poster.src = personGalleryAssetPath(item.poster);
+      wrapper.appendChild(poster);
+    }
+
     const video = document.createElement("video");
     video.className = "gallery-item__video";
     video.muted = true;
@@ -266,9 +357,9 @@ function createPersonGalleryElement(item) {
   } else {
     const img = document.createElement("img");
     img.alt = getPersonGalleryAlt(item);
-    img.loading = "lazy";
     img.decoding = "async";
     img.dataset.gridSrc = getPersonGalleryGridSrc(item);
+    img.src = img.dataset.gridSrc;
     wrapper.appendChild(img);
   }
 
@@ -276,6 +367,8 @@ function createPersonGalleryElement(item) {
 }
 
 function loadPersonGalleryMedia(wrapper) {
+  const gallery = document.getElementById("gallery");
+
   if (wrapper.dataset.type === "video") {
     const video = wrapper.querySelector(".gallery-item__video");
     if (!video) return;
@@ -288,6 +381,8 @@ function loadPersonGalleryMedia(wrapper) {
     if (video.src) {
       video.play().catch(() => {});
     }
+
+    if (gallery) scheduleEqualizePersonGalleryColumns(gallery);
     return;
   }
 
@@ -295,6 +390,8 @@ function loadPersonGalleryMedia(wrapper) {
   if (img && !img.src) {
     img.src = img.dataset.gridSrc || wrapper.dataset.fullSrc;
   }
+
+  if (gallery) scheduleEqualizePersonGalleryColumns(gallery);
 }
 
 function unloadPersonGalleryVideo(wrapper) {
@@ -316,6 +413,8 @@ function initPersonGalleryObserver() {
         if (entry.isIntersecting) {
           loadPersonGalleryMedia(wrapper);
           wrapper.classList.add("visible");
+          const gallery = document.getElementById("gallery");
+          if (gallery) scheduleEqualizePersonGalleryColumns(gallery);
         } else {
           unloadPersonGalleryVideo(wrapper);
         }
@@ -381,51 +480,6 @@ function initPersonGalleryLightboxHandlers() {
   });
 }
 
-function equalizePersonGalleryColumns(gallery) {
-  const columns = gallery.querySelectorAll(".gallery-column");
-  if (!columns.length) return;
-
-  columns.forEach((column) => {
-    const spacer = column.querySelector(".gallery-column__spacer");
-    if (spacer) spacer.style.minHeight = "";
-  });
-
-  let maxContentHeight = 0;
-
-  columns.forEach((column) => {
-    const items = column.querySelectorAll(".gallery-item");
-    if (!items.length) return;
-
-    const gap = parseFloat(window.getComputedStyle(column).rowGap) || 0;
-    let contentHeight = 0;
-
-    items.forEach((item, index) => {
-      contentHeight += item.offsetHeight;
-      if (index > 0) contentHeight += gap;
-    });
-
-    maxContentHeight = Math.max(maxContentHeight, contentHeight);
-  });
-
-  columns.forEach((column) => {
-    const items = column.querySelectorAll(".gallery-item");
-    if (!items.length) return;
-
-    const gap = parseFloat(window.getComputedStyle(column).rowGap) || 0;
-    let contentHeight = 0;
-
-    items.forEach((item, index) => {
-      contentHeight += item.offsetHeight;
-      if (index > 0) contentHeight += gap;
-    });
-
-    const spacer = column.querySelector(".gallery-column__spacer");
-    if (spacer) {
-      spacer.style.minHeight = `${Math.max(0, maxContentHeight - contentHeight)}px`;
-    }
-  });
-}
-
 function renderPersonGallery() {
   const gallery = document.getElementById("gallery");
   if (!gallery || personGalleryItems.length === 0) return;
@@ -439,6 +493,7 @@ function renderPersonGallery() {
     Math.abs(galleryWidth - personGalleryLastWidth) < 1 &&
     gallery.childNodes.length === columnCount
   ) {
+    scheduleEqualizePersonGalleryColumns(gallery);
     return;
   }
   personGalleryColumnCount = columnCount;
@@ -450,20 +505,23 @@ function renderPersonGallery() {
     });
   }
 
+  if (personGalleryLayoutObserver) {
+    personGalleryLayoutObserver.disconnect();
+    personGalleryLayoutObserver = null;
+  }
+
   gallery.innerHTML = "";
 
   const itemGap = getGalleryItemGap();
   const totalColGaps = (columnCount - 1) * itemGap;
   const columnWidth = (galleryWidth - totalColGaps) / columnCount;
 
-  const { columns, heights } = distributePersonGalleryItems(
+  const { columns } = distributePersonGalleryItems(
     personGalleryItems,
     columnCount,
     columnWidth,
     itemGap
   );
-
-  const minHeight = Math.min(...heights);
 
   gallery.className = "gallery";
   gallery.classList.add(`gallery--cols-${columnCount}`);
@@ -472,20 +530,11 @@ function renderPersonGallery() {
     const columnEl = document.createElement("div");
     columnEl.className = "gallery-column";
 
-    const originalColHeight = columnItems.reduce(
-      (acc, item, i) => acc + item._expectedHeight + (i > 0 ? itemGap : 0),
-      0
-    );
-    const finalHeights = computeColumnAdjustedHeights(
-      columnItems,
-      originalColHeight,
-      minHeight,
-      itemGap
-    );
-
-    columnItems.forEach((item, i) => {
+    columnItems.forEach((item) => {
       const wrapper = createPersonGalleryElement(item);
-      wrapper.style.height = `${finalHeights[i]}px`;
+      const height = Math.round(item._expectedHeight);
+      wrapper.dataset.baseHeight = String(height);
+      wrapper.style.height = `${height}px`;
       wrapper.addEventListener("click", () => openPersonGalleryLightbox(item));
       personGalleryObserver.observe(wrapper);
       columnEl.appendChild(wrapper);
@@ -499,7 +548,12 @@ function renderPersonGallery() {
     gallery.appendChild(columnEl);
   });
 
-  requestAnimationFrame(() => equalizePersonGalleryColumns(gallery));
+  primePersonGalleryMedia(gallery);
+  bindPersonGalleryMediaLoads(gallery);
+  watchPersonGalleryLayout(gallery);
+  scheduleEqualizePersonGalleryColumns(gallery);
+  window.setTimeout(() => scheduleEqualizePersonGalleryColumns(gallery), 120);
+  window.setTimeout(() => scheduleEqualizePersonGalleryColumns(gallery), 420);
 }
 
 function schedulePersonGalleryResize() {

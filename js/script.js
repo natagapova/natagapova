@@ -3393,6 +3393,7 @@ async function fitHeroHeadline() {
   line.style.fontSize = `${fontSize}px`;
   heading.style.setProperty("--hero-title-size", `${line.offsetHeight}px`);
   fitHeroPhoto();
+  markHeroLayoutReady();
   rolesScrollMetrics = null;
   scheduleRolesScrollReveal();
 }
@@ -3401,7 +3402,11 @@ let heroFitFrame;
 function scheduleHeroLayoutFit() {
   cancelAnimationFrame(heroFitFrame);
   heroFitFrame = requestAnimationFrame(() => {
-    void fitHeroHeadline();
+    Promise.resolve(fitHeroHeadline()).finally(() => {
+      if (!document.documentElement.classList.contains("hero-layout-ready")) {
+        markHeroLayoutReady();
+      }
+    });
     scheduleLangMapPath();
     rolesScrollMetrics = null;
     scheduleRolesScrollReveal();
@@ -3418,6 +3423,102 @@ function clamp01(value) {
 
 const HEAD_SPAWN_Y = 0.54;
 const MIN_HERO_PHOTO_READY_H = 96;
+const HOME_SCROLL_STORAGE_KEY = "portfolioHomeScrollY";
+const HOME_SCROLL_PENDING_KEY = "portfolioHomeScrollPending";
+
+function getHomeNavigationType() {
+  const nav = performance.getEntriesByType("navigation")[0];
+  return nav?.type || "";
+}
+
+function isInternalSubpagePath(pathname) {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  return path !== "/" && path !== "/index.html";
+}
+
+function shouldRestoreHomeScroll() {
+  try {
+    const raw = sessionStorage.getItem(HOME_SCROLL_STORAGE_KEY);
+    if (!raw) return false;
+
+    const y = parseFloat(raw);
+    if (!Number.isFinite(y) || y <= 0) return false;
+
+    if (getHomeNavigationType() === "back_forward") return true;
+
+    if (sessionStorage.getItem(HOME_SCROLL_PENDING_KEY) === "1") {
+      const ref = document.referrer;
+      if (ref) {
+        const refUrl = new URL(ref);
+        if (refUrl.origin === window.location.origin && isInternalSubpagePath(refUrl.pathname)) {
+          return true;
+        }
+      }
+    }
+
+    const ref = document.referrer;
+    if (!ref) return false;
+
+    const refUrl = new URL(ref);
+    if (refUrl.origin !== window.location.origin) return false;
+
+    return isInternalSubpagePath(refUrl.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function saveHomeScrollPosition() {
+  if (!document.getElementById("hero-experience")) return;
+
+  try {
+    sessionStorage.setItem(HOME_SCROLL_STORAGE_KEY, String(window.scrollY));
+    sessionStorage.setItem(HOME_SCROLL_PENDING_KEY, "1");
+  } catch {
+    /* storage may be blocked */
+  }
+}
+
+function restoreHomeScrollPosition(force = false) {
+  if (!force && !shouldRestoreHomeScroll()) return;
+
+  try {
+    const y = parseFloat(sessionStorage.getItem(HOME_SCROLL_STORAGE_KEY));
+    if (!Number.isFinite(y) || y <= 0) return;
+
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, y);
+    updateHeroPinRelease();
+    rolesScrollMetrics = null;
+    scheduleRolesScrollReveal();
+  } catch {
+    /* ignore */
+  }
+}
+
+function initHomeScrollMemory() {
+  if (!document.getElementById("hero-experience")) return;
+
+  window.addEventListener("pagehide", saveHomeScrollPosition);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      restoreHomeScrollPosition(true);
+    }
+  });
+
+  restoreHomeScrollPosition();
+}
+
+function markHeroLayoutReady() {
+  document.documentElement.classList.add("hero-layout-ready");
+  document.getElementById("hero-experience")?.classList.add("is-layout-ready");
+  if (getHomeNavigationType() === "back_forward") {
+    restoreHomeScrollPosition(true);
+  }
+}
 
 const roleSpawnOffsets = [
   { className: "role-card--designer", x: -0.1, y: 0.02 },
@@ -4063,11 +4164,15 @@ function bootPortfolio() {
   }
 
   if (isIndexPage) {
+    initHomeScrollMemory();
     scheduleHeroLayoutFit();
     scheduleLangMapPath();
     initLangMapGlowObserver();
     initHeroBlink();
     initRolesScrollReveal();
+    requestAnimationFrame(() => {
+      restoreHomeScrollPosition();
+    });
   }
 
   if (isDesignerPage || isMlPage) {

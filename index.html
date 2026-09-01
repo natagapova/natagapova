@@ -316,5 +316,34 @@
     <span class="footer-copy">natalia agapova</span>
   </footer>
 
+  <script>
+    (function () {
+      try {
+        var raw = sessionStorage.getItem("portfolioHomeScrollY");
+        if (!raw) return;
+        var y = parseFloat(raw);
+        if (!Number.isFinite(y) || y <= 0) return;
+
+        var shouldRestore = false;
+        var nav = performance.getEntriesByType("navigation")[0];
+        if (nav && nav.type === "back_forward") shouldRestore = true;
+
+        if (!shouldRestore && document.referrer) {
+          var refUrl = new URL(document.referrer);
+          if (refUrl.origin === location.origin) {
+            var refPath = refUrl.pathname.replace(/\/+$/, "") || "/";
+            if (refPath !== "/" && refPath !== "/index.html") shouldRestore = true;
+          }
+        }
+
+        if (!shouldRestore) return;
+
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+        window.scrollTo(0, y);
+      } catch (e) {
+        /* ignore */
+      }
+    })();
+  </script>
 </body>
 </html>

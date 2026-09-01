@@ -133,16 +133,20 @@ function cacheMobileCloudsMetrics() {
   mobileCloudsAnchorTop = clouds.getBoundingClientRect().top + window.scrollY;
 }
 
+let mobileHeroLayoutDidRun = false;
+
 function scheduleMobileHeroLayout() {
   clearTimeout(mobileHeroLayoutTimer);
+  const delay = mobileHeroLayoutDidRun ? 180 : 0;
   mobileHeroLayoutTimer = setTimeout(() => {
+    mobileHeroLayoutDidRun = true;
     if (!isMobileHeroLayout()) return;
     rolesScrollMetrics = null;
     cacheMobileCloudsMetrics();
     void fitHeroHeadline();
     syncHeroRolesPlacement();
     scheduleRolesScrollReveal();
-  }, 180);
+  }, delay);
 }
 
 function wireMobileCloudImageLoads() {
@@ -578,6 +582,7 @@ fitHeroHeadline = async function fitHeroHeadlineMobile() {
   const titleBlockHeight = lines.reduce((sum, titleLine) => sum + titleLine.offsetHeight, 0);
   heading.style.setProperty("--hero-title-size", `${titleBlockHeight}px`);
   fitHeroPhoto();
+  markHeroLayoutReady();
   syncHeroRolesPlacement();
   rolesScrollMetrics = null;
   scheduleRolesScrollReveal();
