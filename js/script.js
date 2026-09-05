@@ -17,10 +17,9 @@ const translations = {
     languageSwitch: "eng",
     portfolioTitle: "проекты",
     designerPageTitle: "дизайн кейсы",
-    navbarCvLabel: "CV",
+    navbarCvLabel: "cv",
     navbarCvAria: "выбрать cv для скачивания",
     mlPageTitle: "ml кейсы",
-    designerToolsLabel: "инструменты",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -271,7 +270,6 @@ const translations = {
     footerSocialGithub: "GitHub",
     footerSocialEmail: "Почта",
     footerSocialScholar: "Google Scholar",
-    introBlockTitle: "обо мне",
     introLead:
       "бережно собираю продукты, которыми правда хочется пользоваться",
     introStatusLabel: "current status:",
@@ -314,10 +312,9 @@ const translations = {
     languageSwitch: "рус",
     portfolioTitle: "projects",
     designerPageTitle: "design cases",
-    navbarCvLabel: "CV",
+    navbarCvLabel: "cv",
     navbarCvAria: "choose a cv to download",
     mlPageTitle: "ml cases",
-    designerToolsLabel: "tools",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -566,7 +563,6 @@ const translations = {
     footerSocialGithub: "GitHub",
     footerSocialEmail: "Email",
     footerSocialScholar: "Google Scholar",
-    introBlockTitle: "about me",
     introLead:
       "i carefully build products you'd genuinely want to use",
     introStatusLabel: "current status:",
@@ -1119,7 +1115,6 @@ const translationKeyToId = {
   designerPageTitle: "designer-page-title",
   navbarCvLabel: "navbar-cv-label",
   mlPageTitle: "ml-page-title",
-  designerToolsLabel: "designer-tools-label",
   roleDesigner: "role-designer",
   roleFrontend: "role-frontend",
   roleML: "role-ml",
@@ -1132,7 +1127,6 @@ const translationKeyToId = {
   volunteeringBlockTitle: "volunteering-block-title",
   eduInnopolis: "edu-innopolis",
   myName: "store-name",
-  introBlockTitle: "intro-block-title",
   introLead: "intro-lead",
   introStatusLabel: "intro-status-label",
   introStatusValue: "intro-status-value",
@@ -2219,18 +2213,14 @@ function applyMlPage(t) {
 function applyDesignerPage(t) {
   const toolsWrap = document.getElementById("designer-tools-wrap");
   const toolsEl = document.getElementById("designer-tools");
-  const toolsLabel = document.getElementById("designer-tools-label");
   if (!toolsEl) return;
 
-  if (toolsWrap && t.designerToolsLabel) {
-    toolsWrap.setAttribute("aria-label", t.designerToolsLabel);
-  }
-
-  if (toolsLabel && t.designerToolsLabel) {
-    toolsLabel.textContent = t.designerToolsLabel;
-  }
-
   const tags = DESIGNER_PAGE_TOOL_KEYS.map((key) => t[key]).filter(Boolean);
+
+  if (toolsWrap && tags.length) {
+    toolsWrap.setAttribute("aria-label", tags.join(", "));
+  }
+
   const rows = [];
   for (let i = 0; i < tags.length; i += 2) {
     rows.push(tags.slice(i, i + 2));

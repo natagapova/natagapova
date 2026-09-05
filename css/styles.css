@@ -184,27 +184,45 @@ select {
   align-items: center;
 }
 
+.navbar-right .btn.navbar-cv,
+.navbar-right .btn.navbar-cv .btn__label {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: none;
+}
+
+.navbar-right .btn.navbar-cv {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  min-height: 34px;
+  padding: 0 10px;
+}
+
 .navbar-cv-wrap {
   position: relative;
 }
 
-.navbar-cv {
-  min-height: 34px;
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
 #languageSwitch {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  margin: 0;
+  padding: 0;
   border: none;
+  background: none;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   font-weight: 400;
   letter-spacing: -0.01em;
+  line-height: 1;
   cursor: pointer;
-  padding: 0;
-  outline: none;
   text-transform: none;
   opacity: 0.88;
   transition: opacity 0.2s ease;
@@ -610,7 +628,7 @@ html[lang="en"] .roles-nav--hero .role-card--thought .role-card__label {
   margin: 0;
   font-size: 1.15rem;
   background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: none;
   color: #000000;
 }
 
@@ -2380,7 +2398,6 @@ body.page-designer .project-overlay__title {
 
 .text-eyebrow,
 .designer-tools__label,
-.intro-section__status-label,
 .project-process__label {
   font-size: var(--text-eyebrow-size);
   font-weight: var(--text-eyebrow-weight);
@@ -2424,11 +2441,6 @@ body.page-designer .project-overlay__title {
   box-shadow: var(--editorial-frame-border);
 }
 
-.btn.navbar-cv,
-.btn.navbar-cv .btn__label {
-  text-transform: uppercase;
-}
-
 .btn__icon {
   display: block;
   flex: 0 0 18px;
@@ -2445,6 +2457,13 @@ body.page-designer .project-overlay__title {
   border-radius: var(--editorial-frame-radius);
   background: var(--editorial-frame-bg);
   box-shadow: var(--editorial-frame-border);
+}
+
+.intro-section .editorial-panel,
+.languages-section .editorial-panel,
+.contact-section .editorial-panel,
+.page-intro-section .editorial-panel {
+  box-shadow: none;
 }
 
 .intro-section {
@@ -2478,6 +2497,10 @@ body.page-designer .project-overlay__title {
 
 .intro-section__status-label {
   color: var(--ios-label-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .intro-section__status-tag {
@@ -3778,7 +3801,7 @@ body.page-frontend .subpage-main.frontend-page {
   text-decoration: none;
   color: inherit;
   background: #fff;
-  border-radius: var(--editorial-radius-md);
+  border-radius: var(--editorial-frame-radius);
   overflow: hidden;
   box-shadow: var(--editorial-shadow);
   transition:
@@ -4012,7 +4035,7 @@ body.page-ml .subpage-main.ml-page {
   width: 100%;
   height: auto;
   background: #fff;
-  border-radius: var(--editorial-radius-md);
+  border-radius: var(--editorial-frame-radius);
   overflow: hidden;
   box-shadow: var(--editorial-shadow);
   transition:
