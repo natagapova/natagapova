@@ -1,0 +1,50 @@
+% Russian CVs: system Baskerville (Cyrillic + Latin; closest to template on macOS)
+\newcommand{\cvfontsru}{%
+  \IfFontExistsTF{Baskerville}{%
+    \setmainfont{Baskerville}[
+      BoldFont = {Baskerville Bold},
+      ItalicFont = {Baskerville Italic},
+      BoldItalicFont = {Baskerville Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\cyrillicfont{Baskerville}[
+      BoldFont = {Baskerville Bold},
+      ItalicFont = {Baskerville Italic},
+      BoldItalicFont = {Baskerville Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\englishfont{Baskerville}[
+      BoldFont = {Baskerville Bold},
+      ItalicFont = {Baskerville Italic},
+      BoldItalicFont = {Baskerville Bold Italic},
+      Ligatures = TeX,
+    ]%
+  }{%
+    \setmainfont{TeX Gyre Pagella}[
+      BoldFont = {TeX Gyre Pagella Bold},
+      ItalicFont = {TeX Gyre Pagella Italic},
+      BoldItalicFont = {TeX Gyre Pagella Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\cyrillicfont{TeX Gyre Pagella}[
+      BoldFont = {TeX Gyre Pagella Bold},
+      ItalicFont = {TeX Gyre Pagella Italic},
+      BoldItalicFont = {TeX Gyre Pagella Bold Italic},
+      Ligatures = TeX,
+    ]%
+    \newfontfamily\englishfont{TeX Gyre Pagella}[
+      BoldFont = {TeX Gyre Pagella Bold},
+      ItalicFont = {TeX Gyre Pagella Italic},
+      BoldItalicFont = {TeX Gyre Pagella Bold Italic},
+      Ligatures = TeX,
+    ]%
+  }%
+}
+
+\newcommand{\cvpagemargins}{%
+  \addtolength{\oddsidemargin}{-0.5in}%
+  \addtolength{\evensidemargin}{-0.5in}%
+  \addtolength{\textwidth}{1.0in}%
+  \addtolength{\topmargin}{-0.5in}%
+  \addtolength{\textheight}{1.0in}%
+}

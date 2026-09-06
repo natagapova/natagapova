@@ -1,71 +1,96 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[a4paper,top=1.42cm,bottom=1.28cm,left=1.75cm,right=1.75cm]{geometry}
+\usepackage[empty]{fullpage}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
-\input{cv-fonts.tex}
-\usepackage{hyperref}
-\usepackage{cv-editorial}
-\input{cv-russian.tex}
-
-\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+\usepackage{cv-simple}
+\input{cv-fonts-simple.tex}
+\cvfontsru
+\cvpagemargins
 
 \begin{document}
-\cvcompacton
 
-\cvheader{Наталья Агапова}{Frontend Developer}{\cvcontactsgit[Почта]}
+\cvname{Наталья Агапова}{Frontend Developer}
+\cvcontacts{\cvcontactsdevru}
 
 \cvsummary{%
 Собираю веб и приложения: лендинги, продуктовые интерфейсы, нативные утилиты. В Asimov Lab вела фронтенд как тимлид; в Croissan Studio участвую в разработке студийного сайта. От архитектуры до релиза, с чистым кодом и понятным UX.}
 
-\cvsection{Опыт}
+\section{Опыт}
+\resumeSubHeadingListStart
 
-\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · Фронтенд, дизайн}{апр. 2025 - н.в.}
-Командная разработка студийного сайта и клиентских интерфейсов. React, Next.js, TypeScript, Tailwind.
-\end{cvjob}
+  \resumeSubheading
+    {Frontend Developer, UX Designer}{апр. 2025 -- н.в.}
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeItemListStart
+    \resumeItem{Командная разработка студийного сайта и клиентских интерфейсов. React, Next.js, TypeScript, Tailwind.}
+  \resumeItemListEnd
 
-\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · Тимлид фронтенда}{фев. - сент. 2024}
-AI-платформа для преподавателей. Архитектура, ревью кода, интеграция с API; лендинг и UX/UI MVP.
-\end{cvjob}
+  \resumeSubheading
+    {Front-end Team Lead}{фев. -- сент. 2024}
+    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeItemListStart
+    \resumeItem{AI-платформа для преподавателей. Архитектура, ревью кода, интеграция с API; лендинг и UX/UI MVP.}
+  \resumeItemListEnd
 
-\begin{cvjob}{Фриланс · Фронтенд / веб}{2022 - н.в.}
-Лендинги и промо-сайты на HTML/CSS/JS и Tilda для культурных и образовательных проектов.
-\end{cvjob}
+  \resumeSubheading
+    {Фронтенд / веб}{2022 -- н.в.}
+    {Фриланс}{}
+  \resumeItemListStart
+    \resumeItem{Лендинги и промо-сайты на HTML/CSS/JS и Tilda для культурных и образовательных проектов.}
+  \resumeItemListEnd
 
-\cvsection{Избранные проекты}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://croissanstudio.ru}{Croissan Studio}}{React · команда}
-Студийный сайт AI-студии: кейсы, услуги и экспертиза на одной странице. TypeScript, React, Next.js, Tailwind.
-\end{cvproject}
+\section{Избранные проекты}
+\resumeSubHeadingListStart
 
-\begin{cvproject}{\cvlink{https://asimovlab.ru}{Asimov Lab}}{React · Тимлид}
-Лендинг AI-сервиса генерации и проверки учебных заданий. Структура компонентов и визуальная целостность.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{React · Команда}
+    {TypeScript · React · Next.js · Tailwind}{}
+  \resumeItemListStart
+    \resumeItem{Студийный сайт AI-студии: кейсы, услуги и экспертиза на одной странице.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/macos-timer}{Таймер для macOS}}{Swift · соло}
-Menu bar app: таймер и помодоро, macOS 13+. Swift, SwiftUI.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://asimovlab.ru}{Asimov Lab}}{React · Тимлид}
+    {Лендинг AI-сервиса}{}
+  \resumeItemListStart
+    \resumeItem{Генерация и проверка учебных заданий. Структура компонентов и визуальная целостность.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://aismena.ru}{AI-смена · Иннополис}}{Tilda · лендинг}
-Лендинг в сжатые сроки: расписание, команда, цена, FAQ, форма записи.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/macos-timer}{Таймер для macOS}}{Swift · Соло}
+    {Menu Bar App}{}
+  \resumeItemListStart
+    \resumeItem{Таймер и помодоро, macOS 13+. Swift, SwiftUI.}
+  \resumeItemListEnd
 
-\cvsection{Навыки}
-\cvskillswithlanguages{%
-HTML, CSS, JavaScript, TypeScript · React, Next.js, Tailwind · Tilda · Swift, SwiftUI · Figma · Git}{%
+  \resumeSubheading
+    {\href{https://aismena.ru}{AI-смена · Иннополис}}{Tilda · Лендинг}
+    {Промо-сайт}{}
+  \resumeItemListStart
+    \resumeItem{Лендинг в сжатые сроки: расписание, команда, цена, FAQ, форма записи.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Навыки}
+\cvskillsblock{%
+\textbf{Стек}{: HTML, CSS, JavaScript, TypeScript · React, Next.js, Tailwind · Tilda · Swift, SwiftUI · Figma · Git}\\
 \cvlanguagesru}
 
-\cvsection{Образование}
-\cveducation{Университет Иннополис}{Бакалавриат «Прикладной искусственный интеллект»}{2026}
+\section{Образование}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Университет Иннополис}{2026}
+    {Бакалавриат «Прикладной искусственный интеллект»}{}
+\resumeSubHeadingListEnd
 
-\cvsection{Публикации}
-
-\cvpublication{\cvpubresumetitleru}{Агапова Н.~А.; Лукманов Р.~А., 2026}{10.66693/mathai.1017}
-
-\cvpublication{\cvpubrsatitleru}{Холодов Я.~А.; Саллум Х.; Агапова Н.~А. \textit{Вопросы кибербезопасности}, 2025}{10.21681/2311-3456-2025-4-127-133}
-
-\cvfooter{август 2026 · \cvwebsite}
+\section{Публикации}
+\cvpublication{Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System}{Агапова Н.~А.; Лукманов Р.~А., 2026}{10.66693/mathai.1017}
+\cvpublication{Подходы квантового отжига к взлому шифрования RSA}{Холодов Я.~А.; Саллум Х.; Агапова Н.~А. \textit{Вопросы кибербезопасности}, 2025}{10.21681/2311-3456-2025-4-127-133}
 
 \end{document}

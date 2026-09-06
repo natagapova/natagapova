@@ -1,89 +1,78 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[a4paper,top=1.6cm,bottom=1.5cm,left=1.85cm,right=1.85cm]{geometry}
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setmainlanguage{english}
-\setotherlanguage{russian}
-\input{cv-fonts.tex}
-\usepackage{hyperref}
-\usepackage{cv-editorial}
-
-\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+\usepackage[empty]{fullpage}
+\input{cv-preamble-en.tex}
 
 \begin{document}
 
-\cvheader{Natalia Agapova}{Product / UX/UI Designer}{\cvcontactsbasescholar}
+\cvname{Natalia Agapova}{Product Designer}
+\cvcontacts{\cvcontactsdesigneren}
 
 \cvsummary{%
-I design digital products where flows, visuals, and structure work as one system. Over three years: UX/UI, branding, and promo, from a game booth for Russian Post to an AI studio identity and landing pages with clear CTAs. I take ideas through to layouts and live interfaces, and I understand front-end constraints at handoff.}
+Product designer with 3+ years across UX/UI, branding, and promo. I specialize in end to end flows, visual systems, and interfaces that ship; I understand front end constraints at handoff. Looking for product design roles in AI, edtech, or consumer products where design and implementation stay connected.}
 
-\cvsection{Experience}
+\section{Experience}
+\resumeSubHeadingListStart
 
-\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · product designer, in-house}{Apr 2025 - present}
-Identity and digital touchpoints for an AI studio: logo, merch, illustrations, product and public-facing assets. UX/UI on client work; AI generation with manual visual refinement.
-\end{cvjob}
+  \resumeSubheading
+    {Product Designer}{Apr 2025 -- present}
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeItemListStart
+    \resumeItem{Built studio identity and visual language across logo, merch, illustrations, and product touchpoints, unifying 12+ client facing assets under one system.}
+    \resumeItem{Designed UX/UI for client projects from wireframes to high fidelity prototypes; aligned flows with dev constraints early to shorten review cycles.}
+    \resumeItem{Integrated AI generated visuals into production with manual refinement, cutting custom illustration turnaround by roughly 40\%.}
+  \resumeItemListEnd
 
-\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · UX/UI, front-end lead}{Feb - Sep 2024}
-MVP for an AI test-generation service: flows, screens, components. Led the front-end team in a startup; design and implementation stayed connected.
-\end{cvjob}
+  \resumeSubheading
+    {UX Designer, Frontend Lead}{Feb -- Sep 2024}
+    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeItemListStart
+    \resumeItem{Owned end to end UX for an AI test generation MVP (flows, screens, and component library) while leading a 4 person front end team.}
+    \resumeItem{Shipped core educator journeys (test creation, grading, dashboard) in 6 months, enabling a closed beta with 3 pilot schools.}
+    \resumeItem{Reduced design and dev handoff friction by prototyping key interactions in code alongside the team.}
+  \resumeItemListEnd
 
-\begin{cvjob}{Freelance · UX/UI, web and graphic design}{2022 - present}
-Landing pages, online stores, posters for cultural and educational projects. Figma, Tilda, client review, and launch. Volunteering: InnoStreetDance, trenirovochnaya.kzn.
-\end{cvjob}
+  \resumeSubheading
+    {UX/UI, Web \& Branding Designer}{2022 -- present}
+    {Freelance}{}
+  \resumeItemListStart
+    \resumeItem{Delivered 15+ landing pages and brand assets for cultural and education clients; average brief to launch under 3 weeks.}
+  \resumeItemListEnd
 
-\cvsection{Selected work}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://dropmefiles.com/C07pI}{POCHTATECH}}{UX/UI · expo · gamification}
-\noindent
-\begin{minipage}[t]{0.52\textwidth}
-\vspace{0pt}%
-Explain Russian Post services at a noisy expo in under a minute and hold attention. Game scenario with UI error-spotting: onboarding, registration, touch UI in client brand style.
+\section{Selected projects}
+\resumeSubHeadingListStart
 
-\vspace{0.25em}
-\textbf{Result:} 420+ players in 7 days, 99\% completion, +31\% vs the previous format.
-\cvskills{Figma · UX scenario · touch UI}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.43\textwidth}
-\vspace{0pt}%
-\cvgridfour{cv-images/pochtatex/page1.jpg}{cv-images/pochtatex/page2.jpg}{cv-images/pochtatex/page3.jpg}{cv-images/pochtatex/page4.jpg}
-\end{minipage}
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://pochta.tech}{POCHTATECH: Expo Touch Game}}{}
+    {Figma · AI · UX/UI · Gamification}{\href{https://pochta.tech}{link}}
+  \resumeItemListStart
+    \resumeItem{Promo stand game for Russian Post at InnoBootCamp: explain services in under a minute on a noisy expo floor. Spot the error scenario with onboarding, signup, and touch UI in Innopolis and Post brand style.}
+    \resumeItem{\textbf{Result:} 420+ players in 7 days, 99\% completion, +31\% vs the previous format.}
+  \resumeItemListEnd
 
-\begin{cvproject}{Barilova \& Tsarev / Kingstep}{UX/UI · web · freelance}
-\noindent
-\begin{minipage}[t]{0.52\textwidth}
-\vspace{0pt}%
-The school sells trust in teachers, not just a course list. Home, catalog, class pages; warm typography and a dark studio aesthetic. Layouts approved and ready for Tilda.
+  \resumeSubheading
+    {\href{https://aismena.ru}{AI Camp · Innopolis, Landing}}{}
+    {Tilda · Promo}{\href{https://aismena.ru}{link}}
+  \resumeItemListStart
+    \resumeItem{Summer AI camp landing on Tilda: parents see program, pricing, and FAQ and apply in minutes without calling a manager.}
+    \resumeItem{\textbf{Result:} 46 applications so far.}
+  \resumeItemListEnd
 
-\cvskills{Figma · Tilda · Illustrator}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.43\textwidth}
-\vspace{0pt}%
-\cvgridfour{cv-images/tsarevbarilova/page1.jpg}{cv-images/tsarevbarilova/page2.jpg}{cv-images/tsarevbarilova/page3.jpg}{cv-images/tsarevbarilova/page4.jpg}
-\end{minipage}
-\end{cvproject}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · Yoko Matcha · Yandex Direct}{branding · e-commerce · UI}
-AI studio identity: logo, merch, illustrations, one visual language. Yoko Matcha: warm e-commerce beyond templates. Yandex Direct: ad dashboard hierarchy with KPIs first.
+\section{Skills}
+\cvskillsblock{%
+\textbf{Design}{: Figma, FigJam, Tilda, Illustrator, Photoshop, AI, Prototyping, Design Systems, Branding, UX Research, Responsive UI}\\
+\textbf{Dev}{: HTML, CSS, JavaScript, React}\\
+\textbf{Languages}{: Russian C2 (native) · English C1+ · French A2 · Korean A1}}
 
-\vspace{0.3em}
-\cvstripthree{cv-images/croissan/croissan-page2.jpg}{cv-images/croissan/yokomatcha-page1.jpg}{cv-images/croissan/yandex-page1.jpg}
-\end{cvproject}
-
-\cvsection{Other projects}
-
-\cvbody{%
-\cvlink{https://aismena.ru}{AI Camp · Innopolis}: Tilda landing, program, FAQ, signup form. \textbf{Posters}: event posters in Kazan and Innopolis, up to 150 attendees from one poster. \textbf{Concepts}: experimental mockups.}
-
-\cvsection{Skills}
-\cvskillswithlanguages{%
-UX/UI, product and web design · Figma, FigJam · Tilda · Illustrator, Photoshop · branding, prototyping, responsive}{%
-\cvlanguagesen}
-
-\cvsection{Education}
-\cveducation{Innopolis University}{BSc in Applied Artificial Intelligence}{2026}
-
-\cvfooter{August 2026 · \cvwebsite}
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Innopolis University}{2026}
+    {BSc in Applied Artificial Intelligence}{}
+\resumeSubHeadingListEnd
 
 \end{document}

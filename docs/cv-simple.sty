@@ -1,0 +1,137 @@
+\ProvidesPackage{cv-simple}[2026/03/21 Simple CV resume template]
+
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{tabularx}
+\RequirePackage{multicol}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage[hidelinks]{hyperref}
+
+\setlength{\tabcolsep}{0in}
+\raggedright
+
+% Section titles: italic + rule (as in template)
+\titleformat{\section}{%
+  \normalfont\itshape\vspace{3pt}%
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1 \vspace{-4pt}}%
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \ifstrempty{#3}{%
+        \ifstrempty{#4}{}{%
+          & \textit{\small #4} \\%
+        }%
+      }{%
+        \textit{\small #3} & \textit{\small #4} \\%
+      }%
+    \end{tabular*}\vspace{-7pt}%
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-3pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+
+\newcommand{\cvname}[2]{%
+  \begin{center}
+    {\LARGE #1} \\ \vspace{2pt}
+    {\large #2}
+  \end{center}
+  \vspace{4pt}%
+}
+
+\newcommand{\cvcontacts}[1]{%
+  \begin{center}
+    #1
+  \end{center}
+  \vspace{6pt}%
+}
+
+\newcommand{\cvsummary}[1]{%
+  \small #1\par\vspace{8pt}%
+}
+
+\newcommand{\cvskillsblock}[1]{%
+  \begin{itemize}[leftmargin=0.15in, label={}]
+    \normalsize\item{#1}
+  \end{itemize}%
+}
+
+\newcommand{\cvpublication}[3]{%
+  \begin{itemize}[leftmargin=0.15in, label={}]
+    \small\item{%
+      \textbf{#1}\\
+      \textit{#2}\\
+      \href{https://doi.org/#3}{doi:#3}%
+    }
+  \end{itemize}%
+}
+
+\newcommand{\cvwebsite}{https://www.natagapova.ru}
+\newcommand{\cvtelegram}{https://t.me/nhefy}
+\newcommand{\cvmail}{agapnatalya004@gmail.com}
+\newcommand{\cvgithub}{https://github.com/natagapova}
+\newcommand{\cvscholar}{https://scholar.google.com/citations?user=FqdPM_gAAAAJ}
+
+\newcommand{\cvcontactsdevru}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Почта} \enspace·\enspace
+  \href{\cvgithub}{GitHub}%
+}
+
+\newcommand{\cvcontactsdeven}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Email} \enspace·\enspace
+  \href{\cvgithub}{GitHub}%
+}
+
+\newcommand{\cvcontactsmlru}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Почта} \enspace·\enspace
+  \href{\cvscholar}{Google Scholar} \enspace·\enspace
+  \href{\cvgithub}{GitHub}%
+}
+
+\newcommand{\cvcontactsmlen}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Email} \enspace·\enspace
+  \href{\cvscholar}{Google Scholar} \enspace·\enspace
+  \href{\cvgithub}{GitHub}%
+}
+
+\newcommand{\cvcontactsdesignerru}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Почта} \enspace·\enspace
+  \href{\cvscholar}{Google Scholar}%
+}
+
+\newcommand{\cvcontactsdesigneren}{%
+  \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvtelegram}{Telegram} \enspace·\enspace
+  \href{mailto:\cvmail}{Email} \enspace·\enspace
+  \href{\cvscholar}{Google Scholar}%
+}
+
+\newcommand{\cvlanguagesru}{%
+  \textbf{Языки}{: Русский C2 (носитель) · Английский C1+ · Французский A2 · Корейский A1}%
+}
+
+\newcommand{\cvlanguagesen}{%
+  \textbf{Languages}{: Russian C2 (native) · English C1+ · French A2 · Korean A1}%
+}

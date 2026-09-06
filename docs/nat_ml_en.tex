@@ -1,70 +1,89 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[a4paper,top=1.45cm,bottom=1.32cm,left=1.8cm,right=1.8cm]{geometry}
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setmainlanguage{english}
-\setotherlanguage{russian}
-\input{cv-fonts.tex}
-\usepackage{hyperref}
-\usepackage{cv-editorial}
-
-\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+\usepackage[empty]{fullpage}
+\input{cv-preamble-en.tex}
 
 \begin{document}
-\cvcompacton
 
-\cvheader{Natalia Agapova}{ML Engineer}{\cvcontactsgitscholar}
+\cvname{Natalia Agapova}{ML Engineer}
+\cvcontacts{\cvcontactsmlen}
 
 \cvsummary{%
 Applied ML: NLP, explainability and debiasing, computer vision, RAG. I ship models with metrics, ablations, and honest trade-off analysis: accurate, explainable, and product-ready. Published research; I connect models to interfaces.}
 
-\cvsection{Experience}
+\section{Experience}
+\resumeSubHeadingListStart
 
-\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · ML Developer}{Apr 2025 - present}
-AI products in a full-cycle studio: models, interfaces, and how results are presented.
-\end{cvjob}
+  \resumeSubheading
+    {ML Software Engineer}{Apr 2025 -- present}
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeItemListStart
+    \resumeItem{AI products in a full-cycle studio: models, interfaces, and how results are presented.}
+  \resumeItemListEnd
 
-\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · ML Software Engineer, Front-end Developer, UX Designer}{Feb - Sep 2024}
-AI test-generation startup; front-end team lead. Full path from data to UI.
-\end{cvjob}
+  \resumeSubheading
+    {Frontend Lead, ML Developer}{Feb -- Sep 2024}
+    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeItemListStart
+    \resumeItem{AI test-generation startup; front-end team lead. Full path from data to UI.}
+  \resumeItemListEnd
 
-\begin{cvjob}{Freelance · ML}{2022 - present}
-Applied ML alongside design and web development.
-\end{cvjob}
+  \resumeSubheading
+    {ML}{2022 -- present}
+    {Freelance}{}
+  \resumeItemListStart
+    \resumeItem{Applied ML alongside design and web development.}
+  \resumeItemListEnd
 
-\cvsection{Selected projects}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/resume-screening}{Fair resume screening}}{NLP · debiasing · paper}
-BERT resume classifier for 9 IT supercategories (HeadHunter). Integrated Gradients (Captum) for bias audit; 39+ debiasing configs. Baseline: 60.9\% accuracy, city-swap flipped predictions in 7.7\% of pairs.
-\end{cvproject}
+\section{Selected projects}
+\resumeSubHeadingListStart
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/emotions-with-audio}{Emotion detection}}{CV · FER2013 · on-device}
-EmotionCNN: 58.7\% accuracy, macro-F1 0.569; up to 60.8\% with ensemble+TTA. INT8 quantization \textrightarrow{} Core ML and ONNX Runtime Web, 1.15\,ms latency.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Debiasing · Paper}
+    {BERT · HeadHunter}{}
+  \resumeItemListStart
+    \resumeItem{BERT resume classifier for 9 IT supercategories (HeadHunter). Integrated Gradients (Captum) for bias audit; 39+ debiasing configs. Baseline: 60.9\% accuracy, city-swap flipped predictions in 7.7\% of pairs.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/gesture-input}{Gesture input}}{CV · MediaPipe · real-time}
-Webcam cursor control via pinch / ready / click gestures; PyAutoGUI, smoothing, ~60 FPS.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/emotions-with-audio}{Emotion Detection}}{CV · FER2013 · On-device}
+    {EmotionCNN}{}
+  \resumeItemListStart
+    \resumeItem{58.7\% accuracy, macro-F1 0.569; up to 60.8\% with ensemble+TTA. INT8 quantization $\rightarrow$ Core ML and ONNX Runtime Web, 1.15\,ms latency.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
-Answers from personal PDFs grounded in context only, with filename+page citations. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/gesture-input}{Gesture Input}}{CV · MediaPipe · Real-time}
+    {Webcam Control}{}
+  \resumeItemListStart
+    \resumeItem{Webcam cursor control via pinch / ready / click gestures; PyAutoGUI, smoothing, ${\sim}$60 FPS.}
+  \resumeItemListEnd
 
-\cvsection{Skills}
-\cvskillswithlanguages{%
-Python, PyTorch · BERT, Captum · debiasing, counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}{%
+  \resumeSubheading
+    {\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
+    {Personal PDFs}{}
+  \resumeItemListStart
+    \resumeItem{Answers from personal PDFs grounded in context only, with filename+page citations. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Skills}
+\cvskillsblock{%
+\textbf{Stack}{: Python, PyTorch · BERT, Captum · Debiasing, Counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}\\
 \cvlanguagesen}
 
-\cvsection{Education}
-\cveducation{Innopolis University}{BSc in Applied Artificial Intelligence}{2026}
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Innopolis University}{2026}
+    {BSc in Applied Artificial Intelligence}{}
+\resumeSubHeadingListEnd
 
-\cvsection{Publications}
-
-\cvpublication{\cvpubresumetitleen}{Agapova N.~A.; Lukmanov R.~A., 2026}{10.66693/mathai.1017}
-
-\cvpublication{\cvpubrsatitleen}{Kholodov Y.~A.; Salloum H.; Agapova N.~A. \textit{Voprosy kiberbezopasnosti}, 2025}{10.21681/2311-3456-2025-4-127-133}
-
-\cvfooter{August 2026 · \cvwebsite}
+\section{Publications}
+\cvpublication{Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System}{Agapova N.~A.; Lukmanov R.~A., 2026}{10.66693/mathai.1017}
+\cvpublication{Quantum Annealing Approaches to Breaking RSA Encryption}{Kholodov Y.~A.; Salloum H.; Agapova N.~A. \textit{Voprosy kiberbezopasnosti}, 2025}{10.21681/2311-3456-2025-4-127-133}
 
 \end{document}

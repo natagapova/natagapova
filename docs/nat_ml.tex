@@ -1,71 +1,96 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[a4paper,top=1.45cm,bottom=1.32cm,left=1.8cm,right=1.8cm]{geometry}
+\usepackage[empty]{fullpage}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
-\input{cv-fonts.tex}
-\usepackage{hyperref}
-\usepackage{cv-editorial}
-\input{cv-russian.tex}
-
-\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+\usepackage{cv-simple}
+\input{cv-fonts-simple.tex}
+\cvfontsru
+\cvpagemargins
 
 \begin{document}
-\cvcompacton
 
-\cvheader{Наталья Агапова}{ML Engineer}{\cvcontactsgitscholar[Почта]}
+\cvname{Наталья Агапова}{ML Engineer}
+\cvcontacts{\cvcontactsmlru}
 
 \cvsummary{%
 Прикладной ML: NLP, explainability и debiasing, computer vision, RAG. Довожу модели до решений с метриками, ablation и честной оценкой trade-off: точных, объяснимых и применимых в продукте. Есть публикации; умею связать модель с интерфейсом.}
 
-\cvsection{Опыт}
+\section{Опыт}
+\resumeSubHeadingListStart
 
-\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · ML Developer}{апр. 2025 - н.в.}
-AI-продукты в студии полного цикла: модели, интерфейс, визуальная подача результата.
-\end{cvjob}
+  \resumeSubheading
+    {ML Software Engineer}{апр. 2025 -- н.в.}
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeItemListStart
+    \resumeItem{AI-продукты в студии полного цикла: модели, интерфейс, визуальная подача результата.}
+  \resumeItemListEnd
 
-\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · ML Software Engineer, Front-end Developer, UX Designer}{фев. - сент. 2024}
-Стартап AI-сервиса генерации тестов; Тимлид фронтенда. Полный цикл от данных до UI.
-\end{cvjob}
+  \resumeSubheading
+    {Frontend Lead, ML Developer}{фев. -- сент. 2024}
+    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeItemListStart
+    \resumeItem{Стартап AI-сервиса генерации тестов; Тимлид фронтенда. Полный цикл от данных до UI.}
+  \resumeItemListEnd
 
-\begin{cvjob}{Фриланс · ML}{2022 - н.в.}
-Прикладные ML-задачи на стыке с дизайном и веб-разработкой.
-\end{cvjob}
+  \resumeSubheading
+    {ML}{2022 -- н.в.}
+    {Фриланс}{}
+  \resumeItemListStart
+    \resumeItem{Прикладные ML-задачи на стыке с дизайном и веб-разработкой.}
+  \resumeItemListEnd
 
-\cvsection{Избранные проекты}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/resume-screening}{Fair resume screening}}{NLP · debiasing · paper}
-BERT-классификатор резюме в 9 IT-суперкатегорий (HeadHunter). Integrated Gradients (Captum) для аудита bias; 39+ конфигураций debiasing. Baseline: 60.9\% accuracy, city-swap менял предсказание в 7.7\% пар.
-\end{cvproject}
+\section{Избранные проекты}
+\resumeSubHeadingListStart
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/emotions-with-audio}{Emotion detection}}{CV · FER2013 · on-device}
-EmotionCNN: 58.7\% accuracy, macro-F1 0.569; до 60.8\% с ensemble+TTA. INT8-квантизация \textrightarrow{} Core ML и ONNX Runtime Web, latency 1.15\,ms.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Debiasing · Paper}
+    {BERT · HeadHunter}{}
+  \resumeItemListStart
+    \resumeItem{BERT-классификатор резюме в 9 IT-суперкатегорий (HeadHunter). Integrated Gradients (Captum) для аудита bias; 39+ конфигураций debiasing. Baseline: 60.9\% accuracy, city-swap менял предсказание в 7.7\% пар.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/gesture-input}{Gesture input}}{CV · MediaPipe · real-time}
-Управление курсором жестами с веб-камеры: pinch / ready / click, PyAutoGUI, сглаживание, ~60 FPS.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/emotions-with-audio}{Emotion Detection}}{CV · FER2013 · On-device}
+    {EmotionCNN}{}
+  \resumeItemListStart
+    \resumeItem{58.7\% accuracy, macro-F1 0.569; до 60.8\% с ensemble+TTA. INT8-квантизация $\rightarrow$ Core ML и ONNX Runtime Web, latency 1.15\,ms.}
+  \resumeItemListEnd
 
-\begin{cvproject}{\cvlink{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
-Ответы по личным PDF только из контекста, с цитатами filename+page. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://github.com/natagapova/gesture-input}{Gesture Input}}{CV · MediaPipe · Real-time}
+    {Webcam Control}{}
+  \resumeItemListStart
+    \resumeItem{Управление курсором жестами с веб-камеры: pinch / ready / click, PyAutoGUI, сглаживание, ${\sim}$60 FPS.}
+  \resumeItemListEnd
 
-\cvsection{Навыки}
-\cvskillswithlanguages{%
-Python, PyTorch · BERT, Captum · debiasing, counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}{%
+  \resumeSubheading
+    {\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
+    {Личные PDF}{}
+  \resumeItemListStart
+    \resumeItem{Ответы по личным PDF только из контекста, с цитатами filename+page. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Навыки}
+\cvskillsblock{%
+\textbf{Стек}{: Python, PyTorch · BERT, Captum · Debiasing, Counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}\\
 \cvlanguagesru}
 
-\cvsection{Образование}
-\cveducation{Университет Иннополис}{Бакалавриат «Прикладной искусственный интеллект»}{2026}
+\section{Образование}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Университет Иннополис}{2026}
+    {Бакалавриат «Прикладной искусственный интеллект»}{}
+\resumeSubHeadingListEnd
 
-\cvsection{Публикации}
-
-\cvpublication{\cvpubresumetitleru}{Агапова Н.~А.; Лукманов Р.~А., 2026}{10.66693/mathai.1017}
-
-\cvpublication{\cvpubrsatitleru}{Холодов Я.~А.; Саллум Х.; Агапова Н.~А. \textit{Вопросы кибербезопасности}, 2025}{10.21681/2311-3456-2025-4-127-133}
-
-\cvfooter{август 2026 · \cvwebsite}
+\section{Публикации}
+\cvpublication{Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System}{Агапова Н.~А.; Лукманов Р.~А., 2026}{10.66693/mathai.1017}
+\cvpublication{Подходы квантового отжига к взлому шифрования RSA}{Холодов Я.~А.; Саллум Х.; Агапова Н.~А. \textit{Вопросы кибербезопасности}, 2025}{10.21681/2311-3456-2025-4-127-133}
 
 \end{document}

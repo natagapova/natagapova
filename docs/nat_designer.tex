@@ -1,90 +1,85 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[a4paper,top=1.6cm,bottom=1.5cm,left=1.85cm,right=1.85cm]{geometry}
+\usepackage[empty]{fullpage}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
-\input{cv-fonts.tex}
-\usepackage{hyperref}
-\usepackage{cv-editorial}
-\input{cv-russian.tex}
-
-\hypersetup{colorlinks=true,urlcolor=cvtext,linkcolor=cvtext}
+\usepackage{cv-simple}
+\input{cv-fonts-simple.tex}
+\cvfontsru
+\cvpagemargins
 
 \begin{document}
 
-\cvheader{Наталья Агапова}{Product / UX/UI Designer}{\cvcontactsbasescholar[Почта]}
+\cvname{Наталья Агапова}{Product Designer}
+\cvcontacts{\cvcontactsdesignerru}
 
 \cvsummary{%
-Проектирую цифровые продукты, в которых сценарий, визуал и структура работают как одна система. За три года: UX/UI, брендинг и промо, от игрового стенда для Почты России до айдентики AI-студии и лендингов с ясным CTA. Довожу идею до макета и живого интерфейса; понимаю ограничения вёрстки при передаче в разработку.}
+Product designer с 3+ годами в UX/UI, брендинге и промо. Специализируюсь на сквозных сценариях, визуальных системах и интерфейсах, которые доходят до продакшена; понимаю ограничения вёрстки при передаче в разработку. Ищу роли product designer в AI, edtech или consumer продуктах, где дизайн и реализация остаются связанными.}
 
-\cvsection{Опыт}
+\section{Опыт}
+\resumeSubHeadingListStart
 
-\begin{cvjob}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · Product Designer, in-house}{апр. 2025 - н.в.}
-Айдентика и digital-носители AI-студии: лого, мерч, иллюстрации, материалы для продуктов и публичной витрины. UX/UI клиентских проектов; AI-генерация с ручной доработкой визуала.
-\end{cvjob}
+  \resumeSubheading
+    {Product Designer}{апр. 2025 -- н.в.}
+    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeItemListStart
+    \resumeItem{Собрала айдентику и визуальный язык студии: лого, мерч, иллюстрации, product touchpoints; 12+ клиентских носителей в единой системе.}
+    \resumeItem{Проектировала UX/UI клиентских проектов от вайрфреймов до high fidelity; согласовывала сценарии с ограничениями разработки на раннем этапе.}
+    \resumeItem{Встроила AI генерацию визуала в продакшен с ручной доработкой, сократила срок кастомной иллюстрации примерно на 40\%.}
+  \resumeItemListEnd
 
-\begin{cvjob}{\cvlink{https://asimovlab.ru}{Asimov Lab} · UX/UI, Тимлид фронтенда}{фев. - сент. 2024}
-MVP AI-сервиса генерации тестов: сценарии, экраны, компоненты. Руководство фронтенд-командой в стартапе, дизайн и реализация без разрыва.
-\end{cvjob}
+  \resumeSubheading
+    {UX Designer, Frontend Lead}{фев. -- сент. 2024}
+    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeItemListStart
+    \resumeItem{Вела end to end UX MVP AI сервиса генерации тестов (сценарии, экраны, библиотека компонентов) и руководила фронтенд командой из 4 человек.}
+    \resumeItem{Запустила ключевые сценарии для преподавателей за 6 месяцев; закрытая бета с 3 пилотными школами.}
+    \resumeItem{Снизила разрыв между дизайном и разработкой, прототипировала ключевые взаимодействия в коде вместе с командой.}
+  \resumeItemListEnd
 
-\begin{cvjob}{Фриланс · UX/UI, веб и графика}{2022 - н.в.}
-Лендинги, интернет-магазины, афиши для культурных и образовательных проектов. Figma, Tilda, согласование и публикация. Волонтёрство: InnoStreetDance, trenirovochnaya.kzn.
-\end{cvjob}
+  \resumeSubheading
+    {UX/UI, веб и брендинг}{2022 -- н.в.}
+    {Фриланс}{}
+  \resumeItemListStart
+    \resumeItem{Сделала 15+ лендингов и бренд материалов для культурных и образовательных проектов; от брифа до запуска, в среднем до 3 недель.}
+  \resumeItemListEnd
 
-\cvsection{Избранные работы}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://dropmefiles.com/C07pI}{ПОЧТАТЕХ}}{UX/UI · выставка · геймификация}
-\noindent
-\begin{minipage}[t]{0.52\textwidth}
-\vspace{0pt}%
-За минуту объяснить сервисы Почты на шумной выставке и удержать прохожего. Игровой сценарий с поиском ошибок в UI: онбординг, регистрация, touch-экран в стилистике заказчиков.
+\section{Избранные проекты}
+\resumeSubHeadingListStart
 
-\vspace{0.25em}
-\textbf{Результат:} 420+ игроков за 7 дней, 99\% completion, +31\% к прошлому формату.
-\cvskillsru{Figma · UX-сценарий · touch UI}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.43\textwidth}
-\vspace{0pt}%
-\cvgridfour{cv-images/pochtatex/page1.jpg}{cv-images/pochtatex/page2.jpg}{cv-images/pochtatex/page3.jpg}{cv-images/pochtatex/page4.jpg}
-\end{minipage}
-\end{cvproject}
+  \resumeSubheading
+    {\href{https://pochta.tech}{ПОЧТАТЕХ: игровой стенд на выставке}}{}
+    {Figma · AI · UX/UI · Геймификация}{\href{https://pochta.tech}{ссылка}}
+  \resumeItemListStart
+    \resumeItem{Игра для стенда Почты России на InnoBootCamp: за минуту объяснить сервисы на шумной выставке. Поиск ошибок в UI, онбординг и touch экран в стилистике Иннополиса и Почты.}
+    \resumeItem{\textbf{Результат:} 420+ игроков за 7 дней, 99\% completion, +31\% к прошлому формату.}
+  \resumeItemListEnd
 
-\begin{cvproject}{Барилова \& Царёв / Kingstep}{UX/UI · веб · фриланс}
-\noindent
-\begin{minipage}[t]{0.52\textwidth}
-\vspace{0pt}%
-Школа продаёт доверие к преподавателям, а не просто список курсов. Главная, каталог, карточки занятий; тёплая типографика и тёмная эстетика. Макеты согласованы и готовы к сборке в Tilda.
+  \resumeSubheading
+    {\href{https://aismena.ru}{AI смена · Иннополис, лендинг}}{}
+    {Tilda · Промо}{\href{https://aismena.ru}{ссылка}}
+  \resumeItemListStart
+    \resumeItem{Лендинг AI смены на Tilda: программа, цена, FAQ и заявка, запись за пару минут без звонка менеджеру.}
+    \resumeItem{\textbf{Результат:} 46 заявок на данный момент.}
+  \resumeItemListEnd
 
-\cvskillsru{Figma · Tilda · Illustrator}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.43\textwidth}
-\vspace{0pt}%
-\cvgridfour{cv-images/tsarevbarilova/page1.jpg}{cv-images/tsarevbarilova/page2.jpg}{cv-images/tsarevbarilova/page3.jpg}{cv-images/tsarevbarilova/page4.jpg}
-\end{minipage}
-\end{cvproject}
+\resumeSubHeadingListEnd
 
-\begin{cvproject}{\cvlink{https://croissanstudio.ru}{Croissan Studio} · Yoko Matcha · Яндекс Директ}{брендинг · e-commerce · интерфейс}
-Айдентика AI-студии: лого, мерч, иллюстрации, единый визуальный язык. Yoko Matcha: тёплый e-commerce без шаблонности. Яндекс Директ: иерархия рекламного кабинета, KPI на первом плане.
-
-\vspace{0.3em}
-\cvstripthree{cv-images/croissan/croissan-page2.jpg}{cv-images/croissan/yokomatcha-page1.jpg}{cv-images/croissan/yandex-page1.jpg}
-\end{cvproject}
-
-\cvsection{Другие проекты}
-
-\cvbody{%
-\cvlink{https://aismena.ru}{AI-смена · Иннополис}: лендинг на Tilda, программа, FAQ, форма заявки. \textbf{Постеры}: афиши для Казани и Иннополиса, до 150 человек с одной афиши. \textbf{Концепты}: экспериментальные макеты.}
-
-\cvsection{Навыки}
-\cvskillswithlanguages{%
-UX/UI, продуктовый и веб-дизайн · Figma, FigJam · Tilda · Illustrator, Photoshop · брендинг, прототипирование, адаптив}{%
+\section{Навыки}
+\cvskillsblock{%
+\textbf{Design}{: Figma, FigJam, Tilda, Illustrator, Photoshop, AI, Прототипирование, Design Systems, Брендинг, UX Research, Адаптивный UI}\\
+\textbf{Dev}{: HTML, CSS, JavaScript, React}\\
 \cvlanguagesru}
 
-\cvsection{Образование}
-\cveducation{Университет Иннополис}{Бакалавриат «Прикладной искусственный интеллект»}{2026}
-
-\cvfooter{август 2026 · \cvwebsite}
+\section{Образование}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Университет Иннополис}{2026}
+    {Бакалавриат «Прикладной искусственный интеллект»}{}
+\resumeSubHeadingListEnd
 
 \end{document}
