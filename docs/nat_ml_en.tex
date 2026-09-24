@@ -1,6 +1,5 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 
-\usepackage[empty]{fullpage}
 \input{cv-preamble-en.tex}
 
 \begin{document}
@@ -9,81 +8,65 @@
 \cvcontacts{\cvcontactsmlen}
 
 \cvsummary{%
-Applied ML: NLP, explainability and debiasing, computer vision, RAG. I ship models with metrics, ablations, and honest trade-off analysis: accurate, explainable, and product-ready. Published research; I connect models to interfaces.}
+ML engineer shipping NLP, computer vision, and retrieval-augmented (RAG) systems end to end, from model design and evaluation (metrics, ablations, honest trade-off analysis) to deployed, user-facing interfaces. Comfortable owning a product's technical execution and communicating trade-offs to cross-functional and non-technical stakeholders. Published researcher in model explainability and debiasing.}
 
 \section{Experience}
 \resumeSubHeadingListStart
-
-  \resumeSubheading
-    {ML Software Engineer}{Apr 2025 -- present}
-    {\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeSubheading{ML Software Engineer}{Apr 2025 to present}{\href{https://croissanstudio.ru}{Croissan Studio}}{}
   \resumeItemListStart
-    \resumeItem{AI products in a full-cycle studio: models, interfaces, and how results are presented.}
+    \resumeItem{Own AI product features end to end at a full-cycle studio, covering model development, interface design, and how results are presented to end users and clients.}
+    \cvletter{https://drive.google.com/file/d/1VtzJ118F98tqOT2DnjbEX7sI2dEZRsJv/view?usp=sharing}{Letter of recommendation from the studio's CEO}
   \resumeItemListEnd
 
-  \resumeSubheading
-    {Frontend Lead, ML Developer}{Feb -- Sep 2024}
-    {\href{https://asimovlab.ru}{Asimov Lab}}{}
+  \resumeSubheading{Frontend Lead, ML Developer}{Feb to Sep 2024}{\href{https://asimovlab.ru}{Asimov Lab}}{}
   \resumeItemListStart
-    \resumeItem{AI test-generation startup; front-end team lead. Full path from data to UI.}
+    \resumeItem{Led the frontend team at an AI test-generation startup while contributing to the ML side, covering the full path from data to shipped UI in close collaboration with the ML and product teams.}
   \resumeItemListEnd
 
-  \resumeSubheading
-    {ML}{2022 -- present}
-    {Freelance}{}
+  \resumeSubheading{ML Engineer}{2022 to present}{Freelance}{}
   \resumeItemListStart
-    \resumeItem{Applied ML alongside design and web development.}
+    \resumeItem{Applied ML work delivered alongside design and web development for independent clients.}
   \resumeItemListEnd
-
 \resumeSubHeadingListEnd
 
-\section{Selected projects}
+\section{Selected AI/ML projects}
 \resumeSubHeadingListStart
-
-  \resumeSubheading
-    {\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Debiasing · Paper}
-    {BERT · HeadHunter}{}
+  \resumeSubheading{\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Explainability · Debiasing · Published}{}{}
   \resumeItemListStart
-    \resumeItem{BERT resume classifier for 9 IT supercategories (HeadHunter). Integrated Gradients (Captum) for bias audit; 39+ debiasing configs. Baseline: 60.9\% accuracy, city-swap flipped predictions in 7.7\% of pairs.}
+    \resumeItem{BERT classifier sorting resumes into 9 IT supercategories (HeadHunter data); used Integrated Gradients (Captum) to audit bias and tested 39+ debiasing configurations.}
+    \resumeItem{Baseline accuracy 60.9\%; identified that swapping only the applicant's city flipped the model's prediction in 7.7\% of pairs, motivating the debiasing work. Published as first author.}
   \resumeItemListEnd
 
-  \resumeSubheading
-    {\href{https://github.com/natagapova/emotions-with-audio}{Emotion Detection}}{CV · FER2013 · On-device}
-    {EmotionCNN}{}
+  \resumeSubheading{\href{https://github.com/natagapova/emotions-with-audio}{Emotion Detection}}{Computer Vision · On-device Deployment}{}{}
   \resumeItemListStart
-    \resumeItem{58.7\% accuracy, macro-F1 0.569; up to 60.8\% with ensemble+TTA. INT8 quantization $\rightarrow$ Core ML and ONNX Runtime Web, 1.15\,ms latency.}
+    \resumeItem{CNN classifier on FER2013 (58.7\% accuracy, macro-F1 0.569; up to 60.8\% with ensembling + TTA), quantized to INT8 and deployed to both Core ML and ONNX Runtime Web at 1.15\,ms latency.}
   \resumeItemListEnd
 
-  \resumeSubheading
-    {\href{https://github.com/natagapova/gesture-input}{Gesture Input}}{CV · MediaPipe · Real-time}
-    {Webcam Control}{}
+  \resumeSubheading{\href{https://github.com/natagapova/gesture-input}{Gesture Input}}{Computer Vision · Real-time Systems}{}{}
   \resumeItemListStart
-    \resumeItem{Webcam cursor control via pinch / ready / click gestures; PyAutoGUI, smoothing, ${\sim}$60 FPS.}
+    \resumeItem{Real-time webcam cursor control from pinch / ready / click hand gestures using MediaPipe, with PyAutoGUI control and motion smoothing at ${\sim}$60 FPS.}
   \resumeItemListEnd
 
-  \resumeSubheading
-    {\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}
-    {Personal PDFs}{}
+  \resumeSubheading{\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}{}{}
   \resumeItemListStart
-    \resumeItem{Answers from personal PDFs grounded in context only, with filename+page citations. Chunking, SentenceTransformer, ChromaDB, Ollama llama3.2.}
+    \resumeItem{Retrieval-augmented assistant that answers strictly from a user's own PDFs, with filename+page citations. Built with chunking, SentenceTransformer embeddings, ChromaDB, and Ollama (Llama 3.2) as the local LLM backend.}
   \resumeItemListEnd
-
 \resumeSubHeadingListEnd
 
 \section{Skills}
 \cvskillsblock{%
-\textbf{Stack}{: Python, PyTorch · BERT, Captum · Debiasing, Counterfactuals · RAG, ChromaDB, Ollama · MediaPipe, OpenCV · Core ML, ONNX}\\
+\textbf{ML / AI:} Python, PyTorch · LLMs via Ollama · RAG (ChromaDB, SentenceTransformer) · BERT, Captum · Debiasing, counterfactual analysis · MediaPipe, OpenCV\\
+\textbf{Deployment \& tooling:} Core ML, ONNX Runtime, model quantization · Git/GitHub\\
+\textbf{Product-facing:} UI/UX design (Figma), front-end development, translating model behavior into usable interfaces\\
 \cvlanguagesen}
 
 \section{Education}
 \resumeSubHeadingListStart
-  \resumeSubheading
-    {Innopolis University}{2026}
-    {BSc in Applied Artificial Intelligence}{}
+  \resumeSubheading{Innopolis University}{2026}{BSc in Applied Artificial Intelligence}{}
 \resumeSubHeadingListEnd
 
 \section{Publications}
-\cvpublication{Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System}{Agapova N.~A.; Lukmanov R.~A., 2026}{10.66693/mathai.1017}
-\cvpublication{Quantum Annealing Approaches to Breaking RSA Encryption}{Kholodov Y.~A.; Salloum H.; Agapova N.~A. \textit{Voprosy kiberbezopasnosti}, 2025}{10.21681/2311-3456-2025-4-127-133}
+\cvpublication{Agapova, N. A.; Lukmanov, R. A. ``Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System'', 2026}{}{10.66693/mathai.1017}
+\cvpublication{Kholodov, Y. A.; Salloum, H.; Agapova, N. A. ``Quantum Annealing Approaches to Breaking RSA Encryption'', \textit{Voprosy kiberbezopasnosti}, 2025}{}{10.21681/2311-3456-2025-4-127-133}
 
 \end{document}

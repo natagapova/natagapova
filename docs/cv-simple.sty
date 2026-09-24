@@ -2,81 +2,68 @@
 
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
-\RequirePackage{tabularx}
-\RequirePackage{multicol}
 \RequirePackage{xcolor}
 \RequirePackage{etoolbox}
+\RequirePackage{microtype}
 \RequirePackage[hidelinks]{hyperref}
 
-\setlength{\tabcolsep}{0in}
+\definecolor{cvaccent}{RGB}{31,78,95}
+\definecolor{cvgray}{RGB}{85,85,85}
+
+\setlength{\parindent}{0pt}
 \raggedright
+\pagestyle{empty}
 
-% Section titles: italic + rule (as in template)
-\titleformat{\section}{%
-  \normalfont\itshape\vspace{3pt}%
-}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+% Section titles: tracked uppercase accent color + thin rule
+\newcommand{\cvsechead}[1]{\textls[140]{\MakeUppercase{#1}}}
+\titleformat{\section}{\color{cvaccent}\bfseries\scriptsize}{}{0em}%
+  {\cvsechead}[\vspace{1pt}{\color{cvaccent}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{11pt}{4pt}
 
-\newcommand{\resumeItem}[1]{%
-  \item\small{#1 \vspace{-4pt}}%
-}
+\newcommand{\cvmeta}[1]{{\color{cvgray}\itshape\small #1}}
 
+\newcommand{\resumeItem}[1]{\item{\small #1}}
+
+% Args: title, right (date/tags), org (gray, after title), extra right tags
 \newcommand{\resumeSubheading}[4]{%
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \ifstrempty{#3}{%
-        \ifstrempty{#4}{}{%
-          & \textit{\small #4} \\%
-        }%
-      }{%
-        \textit{\small #3} & \textit{\small #4} \\%
-      }%
-    \end{tabular*}\vspace{-7pt}%
+  \item[]\vspace{4pt}%
+  \noindent\textbf{#1}%
+  \ifstrempty{#3}{}{\,{\color{cvgray}\enspace·\enspace #3}}%
+  \hfill
+  \ifstrempty{#2}{\cvmeta{#4}}{\ifstrempty{#4}{\cvmeta{#2}}{\cvmeta{#2\,·\,#4}}}%
+  \par\nobreak\vspace{1pt}%
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-3pt}}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
 
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0pt, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=1.6em, label={\raisebox{0.15ex}{\tiny$\bullet$}}, itemsep=1pt, topsep=1pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
 
 \newcommand{\cvname}[2]{%
-  \begin{center}
-    {\LARGE #1} \\ \vspace{2pt}
-    {\large #2}
-  \end{center}
+  {\color{cvaccent}\fontsize{22}{26}\selectfont\bfseries #1}\par
+  \vspace{1pt}{\color{cvgray}\large #2}\par
   \vspace{4pt}%
 }
 
 \newcommand{\cvcontacts}[1]{%
-  \begin{center}
-    #1
-  \end{center}
-  \vspace{6pt}%
+  {\color{cvgray}\footnotesize #1}\par\vspace{7pt}%
 }
 
 \newcommand{\cvsummary}[1]{%
-  \small #1\par\vspace{8pt}%
+  {\small #1}\par\vspace{2pt}%
 }
 
-\newcommand{\cvskillsblock}[1]{%
-  \begin{itemize}[leftmargin=0.15in, label={}]
-    \normalsize\item{#1}
-  \end{itemize}%
-}
+\newcommand{\cvskillsblock}[1]{{\small #1}\par}
 
 \newcommand{\cvpublication}[3]{%
-  \begin{itemize}[leftmargin=0.15in, label={}]
-    \small\item{%
-      \textbf{#1}\\
-      \textit{#2}\\
-      \href{https://doi.org/#3}{doi:#3}%
-    }
-  \end{itemize}%
+  {\small #1. \textit{#2}\enspace{\color{cvgray}\href{https://doi.org/#3}{doi:#3}}}\par\vspace{3pt}%
 }
+
+% Recommendation letter / portfolio links
+\newcommand{\cvlink}[2]{\href{#1}{\textit{#2}}}
+\newcommand{\cvletter}[2]{\resumeItem{\href{#1}{\textcolor{cvaccent}{\textit{#2}}\,$\rightarrow$}}}
 
 \newcommand{\cvwebsite}{https://www.natagapova.ru}
 \newcommand{\cvtelegram}{https://t.me/nhefy}
@@ -114,8 +101,11 @@
   \href{\cvgithub}{GitHub}%
 }
 
+\newcommand{\cvportfolio}{https://drive.google.com/file/d/1Xm6jzH8OvK9zOFtDzKrsijgazZcFhu9t/view?usp=sharing}
+
 \newcommand{\cvcontactsdesignerru}{%
   \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvportfolio}{Портфолио (PDF)} \enspace·\enspace
   \href{\cvtelegram}{Telegram} \enspace·\enspace
   \href{mailto:\cvmail}{Почта} \enspace·\enspace
   \href{\cvscholar}{Google Scholar}%
@@ -123,6 +113,7 @@
 
 \newcommand{\cvcontactsdesigneren}{%
   \href{\cvwebsite}{natagapova.ru} \enspace·\enspace
+  \href{\cvportfolio}{Portfolio (PDF)} \enspace·\enspace
   \href{\cvtelegram}{Telegram} \enspace·\enspace
   \href{mailto:\cvmail}{Email} \enspace·\enspace
   \href{\cvscholar}{Google Scholar}%
