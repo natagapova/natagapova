@@ -12,66 +12,96 @@
 
 \begin{document}
 
-\cvname{Наталья Агапова}{ML Engineer}
-\cvcontacts{\cvcontactsmlru}
+\cvname{Наталья А. Агапова}{ML Engineer}
+\cvcontactsru
 
-\cvsummary{%
-ML-инженер: делаю NLP, computer vision и RAG-системы от начала до конца, от проектирования и оценки моделей (метрики, ablation, честный анализ trade-off) до развёрнутых интерфейсов для пользователей. Умею отвечать за техническую реализацию продукта и объяснять компромиссы кросс-функциональным командам и нетехническим стейкхолдерам. Автор публикаций по объяснимости и debiasing моделей.}
-
-\section{Опыт}
+\section{Образование}
 \resumeSubHeadingListStart
-  \resumeSubheading{ML Software Engineer}{апр. 2025 – н.в.}{\href{https://croissanstudio.ru}{Croissan Studio}}{}
+  \resumeSubheading{Иннополис, Россия}{2022 – 2026}{Университет Иннополис}{}
   \resumeItemListStart
-    \resumeItem{Отвечаю за AI-функции продуктов от начала до конца в студии полного цикла: разработка моделей, дизайн интерфейса и то, как результаты видят пользователи и клиенты.}
-    \cvletter{https://drive.google.com/file/d/1VtzJ118F98tqOT2DnjbEX7sI2dEZRsJv/view?usp=sharing}{Рекомендательное письмо от CEO студии}
-  \resumeItemListEnd
-
-  \resumeSubheading{Frontend Lead, ML Developer}{фев. – сент. 2024}{\href{https://asimovlab.ru}{Asimov Lab}}{}
-  \resumeItemListStart
-    \resumeItem{Руководила фронтенд-командой в стартапе по генерации тестов с помощью AI и участвовала в ML-части: весь путь от данных до готового UI в тесной работе с ML- и продуктовой командами.}
-  \resumeItemListEnd
-
-  \resumeSubheading{ML Engineer}{2022 – н.в.}{Фриланс}{}
-  \resumeItemListStart
-    \resumeItem{Прикладные ML-задачи для независимых клиентов, наряду с дизайном и веб-разработкой.}
+    \resumeItem{\textbf{Специальность:} Бакалавриат «Прикладной искусственный интеллект» (средний балл: 4.02 из 5)}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
-\section{Избранные AI/ML-проекты}
+\section{Опыт}
 \resumeSubHeadingListStart
-  \resumeSubheading{\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Explainability · Debiasing · Публикация}{}{}
+
+  \resumeProject{\href{https://croissanstudio.ru}{Croissan Studio}}{\textbf{апр. 2025 – н.в.}}
+  \resumeRoleListStart
+    \resumeRole{ML Software Engineer}{апр. 2026 – н.в.}
+    \resumeItemListStart
+      \resumeItem{Полностью дообучала языковые модели (fine-tuning) и адаптировала другие через промптинг для клиентских продуктов, сравнивая версии по метрикам задачи.}
+    \resumeItemListEnd
+
+    \resumeRole{ML Engineer \& Product Designer}{июль 2025 – апр. 2026}
+    \resumeItemListStart
+      \resumeItem{Обучала и адаптировала генеративные модели изображений и говорящих аватаров для клиентских проектов, оценивая качество результата по метрикам.}
+      \resumeItem{Проектировала интерфейсы и клиентские сценарии вокруг этих моделей, совмещая обе роли в одних и тех же спринтах.}
+    \resumeItemListEnd
+
+    \resumeRole{Software Engineer Intern}{апр. – июль 2025}
+    \resumeItemListStart
+      \resumeItem{Работала с другими инженерами над встраиванием этих моделей в продакшен-фичи, объясняла результаты и ограничения клиентам и команде.}
+    \resumeItemListEnd
+  \resumeRoleListEnd
   \resumeItemListStart
-    \resumeItem{BERT-классификатор, раскладывающий резюме по 9 IT-суперкатегориям (данные HeadHunter); Integrated Gradients (Captum) для аудита bias, проверено 39+ конфигураций debiasing.}
-    \resumeItem{Baseline accuracy 60,9\%; выяснила, что замена только города кандидата меняла предсказание модели в 7,7\% пар, что и стало мотивацией для debiasing. Опубликовано, первый автор.}
+    \cvtech{Применила знания}{ в Python, PyTorch, Hugging Face Transformers, Diffusers и LoRA fine-tuning.}
+    \cvletter{https://drive.google.com/file/d/1VtzJ118F98tqOT2DnjbEX7sI2dEZRsJv/view?usp=sharing}{Рекомендательное письмо от CEO студии}
   \resumeItemListEnd
 
-  \resumeSubheading{\href{https://github.com/natagapova/emotions-with-audio}{Emotion Detection}}{Computer Vision · On-device}{}{}
+  \resumeProject{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{\textbf{фев. – сент. 2024}}
+  \resumeRoleListStart
+    \resumeRole{Frontend Lead, ML Developer}{}
+    \resumeItemListStart
+      \resumeItem{Руководила фронтенд-командой в AI-стартапе по генерации тестов и участвовала в ML-части продукта -- модели, которая генерирует тесты для преподавателей и студентов, от данных и оценки модели до готового UI, в тесной работе с ML- и продуктовой командами.}
+    \resumeItemListEnd
+  \resumeRoleListEnd
   \resumeItemListStart
-    \resumeItem{CNN-классификатор на FER2013 (accuracy 58,7\%, macro-F1 0,569; до 60,8\% с ансамблированием + TTA), квантизация в INT8 и деплой в Core ML и ONNX Runtime Web с задержкой 1,15\,мс.}
+    \cvtech{Применила знания}{ в React, TypeScript, Python и scikit-learn.}
   \resumeItemListEnd
 
-  \resumeSubheading{\href{https://github.com/natagapova/gesture-input}{Gesture Input}}{Computer Vision · Real-time}{}{}
+  \resumeProject{Фриланс}{\textbf{2022 – н.в.}}
+  \resumeRoleListStart
+    \resumeRole{ML Engineer}{}
+    \resumeItemListStart
+      \resumeItem{Прикладные ML-задачи, включая разработку и оценку моделей, наряду с дизайном и веб-разработкой для независимых клиентов.}
+    \resumeItemListEnd
+  \resumeRoleListEnd
   \resumeItemListStart
-    \resumeItem{Управление курсором в реальном времени жестами pinch / ready / click с веб-камеры на MediaPipe, управление через PyAutoGUI и сглаживание движения, ${\sim}$60 FPS.}
+    \cvtech{Применила знания}{ в Python, PyTorch и scikit-learn.}
   \resumeItemListEnd
 
-  \resumeSubheading{\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Python}{}{}
+\resumeSubHeadingListEnd
+
+\section{ML-проекты}
+\resumeSubHeadingListStart
+
+  \resumeProject{\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Explainability · Debiasing · Публикация, первый автор}
   \resumeItemListStart
-    \resumeItem{RAG-ассистент, отвечающий строго по личным PDF пользователя, с цитатами filename+page. Chunking, эмбеддинги SentenceTransformer, ChromaDB и Ollama (Llama 3.2) как локальный LLM-бэкенд.}
+    \resumeItem{Дообучила BERT для сортировки резюме по 9 IT-категориям (данные HeadHunter), измеряя точность, проверив 39+ конфигураций debiasing с аудитом bias через Integrated Gradients (Captum).}
+    \resumeItem{Baseline accuracy 60,9\%; контрфактический анализ показал, что замена только города кандидата меняла предсказание модели в 7,7\% пар -- это и стало мотивацией для debiasing. Опубликовано, первый автор.}
+    \cvtech{Использовано:}{ Python, PyTorch, BERT, Captum, pandas.}
   \resumeItemListEnd
+
+  \resumeProject{\href{https://github.com/natagapova/emotion-detection}{Emotion Detection}}{Computer Vision · On-device Deployment}
+  \resumeItemListStart
+    \resumeItem{Построила CNN-классификатор изображений на FER2013, измерив accuracy 58,7\% / macro-F1 0,569 (до 60,8\% с ансамблированием и test-time augmentation), квантизовав модель в INT8 и задеплоив в Core ML и ONNX Runtime Web с задержкой 1,15\,мс.}
+    \cvtech{Использовано:}{ Python, PyTorch, Core ML, ONNX Runtime.}
+  \resumeItemListEnd
+
+  \resumeProject{\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Embeddings}
+  \resumeItemListStart
+    \resumeItem{Построила RAG-ассистента, отвечающего строго по личным PDF пользователя, измеряя точность цитат filename+page, собрав pipeline из chunking, эмбеддингов SentenceTransformer в ChromaDB и локального LLM через Ollama (Llama 3.2).}
+    \cvtech{Использовано:}{ Python, SentenceTransformer, ChromaDB, Ollama.}
+  \resumeItemListEnd
+
 \resumeSubHeadingListEnd
 
 \section{Навыки}
 \cvskillsblock{%
-\textbf{ML / AI:} Python, PyTorch · LLM через Ollama · RAG (ChromaDB, SentenceTransformer) · BERT, Captum · Debiasing, контрфактический анализ · MediaPipe, OpenCV\\
-\textbf{Деплой и инструменты:} Core ML, ONNX Runtime, квантизация моделей · Git/GitHub\\
-\textbf{Продуктовые:} UI/UX-дизайн (Figma), фронтенд-разработка, перевод поведения модели в понятные интерфейсы\\
+\textbf{ML / AI:} \textit{(свободно)}: Python, PyTorch, BERT, Captum, оценка и debiasing моделей, RAG (ChromaDB, SentenceTransformer) \quad \textit{(знакома)}: LLM (Ollama), OpenCV, MediaPipe, Core ML, ONNX Runtime\\
+\textbf{Инструменты:} \textit{(знакома)}: Figma, фронтенд-разработка, Git/GitHub\\
 \cvlanguagesru}
-
-\section{Образование}
-\resumeSubHeadingListStart
-  \resumeSubheading{Университет Иннополис}{2026}{Бакалавриат «Прикладной искусственный интеллект»}{}
-\resumeSubHeadingListEnd
 
 \section{Публикации}
 \cvpublication{Agapova, N. A.; Lukmanov, R. A. ``Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System'', 2026}{}{10.66693/mathai.1017}

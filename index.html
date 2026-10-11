@@ -44,8 +44,8 @@
   <link rel="icon" type="image/png" href="images/favicon-48.png?v=8" sizes="48x48">
   <link rel="icon" type="image/png" href="images/apple-touch-icon.png?v=8" sizes="180x180">
   <link rel="icon" type="image/webp" href="images/favicon.webp?v=8">
-  <link rel="stylesheet" href="css/styles.css">
-  <script defer src="js/script.js"></script>
+  <link rel="stylesheet" href="css/styles.css?v=1791063148">
+  <script defer src="js/script.js?v=1791063148"></script>
   <script defer src="js/cursor-trail.js"></script>
   <script defer src="js/mobile-hero.js"></script>
 </head>
@@ -107,7 +107,37 @@
         </div>
       </div>
       <nav class="roles-nav roles-nav--hero" id="hero-roles-nav" aria-label="Roles">
-            <a href="/designer" class="role-card role-card--designer role-card--thought">
+            <a href="/ml" class="role-card role-card--designer role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought1.png"
+                alt=""
+                width="1833"
+                height="1190"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-ml">ml engineer</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="/swe" class="role-card role-card--frontend role-card--thought">
+              <img
+                class="role-card__thought-img"
+                src="images/thought3.png"
+                alt=""
+                width="1742"
+                height="1176"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span class="role-card__thought-body">
+                <span class="role-card__label" id="role-frontend">software engineer</span>
+                <span class="role-card__chip" aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="/designer" class="role-card role-card--ml role-card--thought">
               <img
                 class="role-card__thought-img"
                 src="images/thought2.png"
@@ -119,36 +149,6 @@
               />
               <span class="role-card__thought-body">
                 <span class="role-card__label" id="role-designer">designer</span>
-                <span class="role-card__chip" aria-hidden="true">→</span>
-              </span>
-            </a>
-            <a href="/ml" class="role-card role-card--frontend role-card--thought">
-              <img
-                class="role-card__thought-img"
-                src="images/thought1.png"
-                alt=""
-                width="1833"
-                height="1190"
-                decoding="async"
-                aria-hidden="true"
-              />
-              <span class="role-card__thought-body">
-                <span class="role-card__label" id="role-ml">ml developer</span>
-                <span class="role-card__chip" aria-hidden="true">→</span>
-              </span>
-            </a>
-            <a href="/dev" class="role-card role-card--ml role-card--thought">
-              <img
-                class="role-card__thought-img"
-                src="images/thought3.png"
-                alt=""
-                width="1742"
-                height="1176"
-                decoding="async"
-                aria-hidden="true"
-              />
-              <span class="role-card__thought-body">
-                <span class="role-card__label" id="role-frontend">web &amp; app dev</span>
                 <span class="role-card__chip" aria-hidden="true">→</span>
               </span>
             </a>
@@ -192,9 +192,9 @@
           </span>
         </p>
         <div class="intro-section__ctas">
-          <a class="btn intro-section__cta" id="intro-cta-designer" href="/designer">design cases</a>
-          <a class="btn intro-section__cta" id="intro-cta-dev" href="/dev">dev cases</a>
           <a class="btn intro-section__cta" id="intro-cta-ml" href="/ml">ml cases</a>
+          <a class="btn intro-section__cta" id="intro-cta-dev" href="/swe">swe cases</a>
+          <a class="btn intro-section__cta" id="intro-cta-designer" href="/designer">design cases</a>
         </div>
       </div>
     </div>

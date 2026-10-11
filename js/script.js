@@ -27,11 +27,11 @@ const translations = {
     designerToolCanva: "Canva",
     designerToolAi: "AI",
     roleDesigner: "дизайнер",
-    roleFrontend: "веб/app разработчик",
-    roleML: "ml разработчик",
+    roleFrontend: "software engineer",
+    roleML: "ml инженер",
     rolePerson: "человек",
     personTagline: "вот кто делает вам сайты кстати",
-    devPageTitle: "dev кейсы",
+    devPageTitle: "swe кейсы",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -233,36 +233,95 @@ const translations = {
     experienceBlockTitle: "опыт",
     educationBlockTitle: "образование",
     volunteeringBlockTitle: "волонтёрство",
-    expCroissan: {
-      title: "Croissan Studio",
-      period: "апр 2025 - н.в.",
-      description:
-        "студия полного цикла для ИИ-продуктов. продуктовый дизайнер и ML-разработчик",
+    expCroissanGroup: {
+      company: "Croissan Studio",
+      url: "https://croissanstudio.ru",
+      duration: "1 год 7 мес",
+      roles: [
+        {
+          title: "ML software engineer",
+          type: "неполная занятость",
+          period: "апр 2026 - н.в.",
+          description:
+            "дообучаю языковые модели и адаптирую генеративные модели изображений и аватаров для клиентских продуктов, довожу их до продакшена.",
+        },
+        {
+          title: "ML engineer & product designer",
+          type: "контракт",
+          period: "июл 2025 - апр 2026",
+          description:
+            "разрабатывала клиентские ML-фичи от начала до конца и проектировала интерфейсы вокруг них.",
+        },
+        {
+          title: "software engineer intern",
+          type: "стажировка",
+          period: "апр - июл 2025",
+          description:
+            "разрабатывала сайт студии и клиентские интерфейсы в небольшой инженерной команде.",
+        },
+      ],
     },
-    expAzimov: {
-      title: "Asimov Lab",
-      period: "фев - сен 2024",
-      description:
-        "AI-сервис генерации тестов. тимлид фронтенда, в стартапе также вела ML и UX/UI дизайн",
+    expClearmindGroup: {
+      company: "фриланс",
+      url: "",
+      duration: "3 года 11 мес",
+      roles: [
+        {
+          title: "machine learning engineer",
+          period: "дек 2022 - н.в.",
+          description:
+            "фронтенд- и ML-разработка для независимых клиентов, иногда дизайн афиш и сайтов.",
+        },
+      ],
     },
-    expClearmind: {
-      title: "фриланс",
-      period: "2022 - н.в.",
-      description: "дизайн афиш и сайтов, вёрстка, ML-разработка на заказ",
+    expAzimovGroup: {
+      company: "Asimov Lab",
+      url: "https://asimovlab.ru",
+      duration: "8 мес",
+      roles: [
+        {
+          title: "frontend team lead, ML engineer",
+          type: "самозанятость",
+          period: "фев - сен 2024",
+          description:
+            "руководила фронтенд-командой AI-сервиса генерации тестов и участвовала в ML-части продукта, от данных и оценки модели до готового UI.",
+        },
+      ],
     },
     eduInnopolis:
-      "<strong>Университет Иннополис</strong>, бакалавриат по прикладному искусственному интеллекту (2026).",
-    volTrenirovochnaya: {
-      title: "trenirovochnaya.kzn",
-      period: "мар - авг 2025",
-      description:
-        "организация танцевальных мероприятий в Казани. бренд-дизайнер и маркетолог",
+      "<strong>Университет Иннополис</strong>, бакалавриат по прикладному искусственному интеллекту (2022\u20132026).",
+    volTrenirovochnayaGroup: {
+      company: "trenirovochnaya.kzn",
+      url: "",
+      duration: "6 мес",
+      showDescriptions: true,
+      roles: [
+        {
+          title: "marketing lead & brand designer",
+          period: "мар - авг 2025",
+          description:
+            "сооснователь, отвечала за бренд и маркетинг танцевальных мероприятий в Казани, растила посещаемость.",
+        },
+      ],
     },
-    volInnostreetdance: {
-      title: "InnoStreetDance",
-      period: "дек 2022 - сен 2025",
-      description:
-        "студенческий танцевальный клуб Университета Иннополис. бренд-дизайнер и маркетолог",
+    volInnostreetdanceGroup: {
+      company: "InnoStreetDance",
+      url: "",
+      duration: "2 года 10 мес",
+      showDescriptions: true,
+      roles: [
+        {
+          title: "president",
+          period: "июн 2023 - сен 2025",
+          description:
+            "отвечала за визуальную айдентику клуба и организацию всех мероприятий.",
+        },
+        {
+          title: "brand designer",
+          period: "дек 2022 - июл 2023",
+          description: "формировала визуальную айдентику клуба на раннем этапе.",
+        },
+      ],
     },
     footerSocialLabel: "соцсети",
     footerSocialTelegram: "Telegram",
@@ -275,9 +334,9 @@ const translations = {
     introStatusLabel: "current status:",
     introStatusValue: "открыта к проектам: дизайн, dev, ml и\u00A0не\u00A0только",
     introCtaDesigner: "дизайн кейсы",
-    introCtaDev: "dev кейсы",
+    introCtaDev: "swe кейсы",
     introCtaMl: "ml кейсы",
-    devIntroTitle: "мой опыт в разработке",
+    devIntroTitle: "мой опыт в swe",
     devIntroLead:
       "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, Swift для macOS. в Asimov Lab вела фронтенд от архитектуры до UI и довожу сайты и утилиты до продакшна с чистым кодом и понятным UX.",
     mlIntroTitle: "мой опыт в ml",
@@ -285,9 +344,8 @@ const translations = {
       "делаю прикладной ML: BERT, XAI и debiasing, RAG, computer vision. есть публикации, и я довожу модели до решений, которые точны, объяснимы и на своём месте в продукте.",
     cvPickerTitle: "скачать cv",
     cvPickerClose: "закрыть",
-    cvVariantDesigner: "дизайн",
-    cvVariantDev: "разработка",
-    cvVariantMl: "ml",
+    cvVariantDev: "SWE",
+    cvVariantMl: "AIML",
     introTrustLabel: "мне доверяют",
     introContactPrefix: "напишите, если есть идея. разберёмся без\u00A0сложных\u00A0брифов",
     introSocialLabel: "соцсети",
@@ -322,11 +380,11 @@ const translations = {
     designerToolCanva: "Canva",
     designerToolAi: "AI",
     roleDesigner: "designer",
-    roleFrontend: "web & app dev",
-    roleML: "ml developer",
+    roleFrontend: "software engineer",
+    roleML: "ml engineer",
     rolePerson: "person",
     personTagline: "this is who does your website btw",
-    devPageTitle: "dev cases",
+    devPageTitle: "swe cases",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -528,34 +586,94 @@ const translations = {
     experienceBlockTitle: "experience",
     educationBlockTitle: "education",
     volunteeringBlockTitle: "volunteering",
-    expCroissan: {
-      title: "Croissan Studio",
-      period: "apr 2025 - present",
-      description: "full-cycle AI products studio. product designer and ML engineer",
+    expCroissanGroup: {
+      company: "Croissan Studio",
+      url: "https://croissanstudio.ru",
+      duration: "1 yr 7 mos",
+      roles: [
+        {
+          title: "ML software engineer",
+          type: "part-time",
+          period: "apr 2026 - present",
+          description:
+            "fine-tune language models and adapt generative image and avatar models for client products, and ship them into production.",
+        },
+        {
+          title: "ML engineer & product designer",
+          type: "contract",
+          period: "jul 2025 - apr 2026",
+          description:
+            "built client-facing ML features end to end and designed the interfaces around them.",
+        },
+        {
+          title: "software engineer intern",
+          type: "internship",
+          period: "apr - jul 2025",
+          description: "built the studio site and client-facing interfaces in a small engineering team.",
+        },
+      ],
     },
-    expAzimov: {
-      title: "Asimov Lab",
-      period: "feb - sep 2024",
-      description:
-        "AI test-generation service. frontend team lead, also handled ML and UX/UI design",
+    expClearmindGroup: {
+      company: "freelance",
+      url: "",
+      duration: "3 yrs 11 mos",
+      roles: [
+        {
+          title: "machine learning engineer",
+          period: "dec 2022 - present",
+          description:
+            "front-end and ML engineering for independent clients, alongside poster and web design.",
+        },
+      ],
     },
-    expClearmind: {
-      title: "freelance",
-      period: "2022 - present",
-      description: "poster and web design, front-end builds, ML projects on commission",
+    expAzimovGroup: {
+      company: "Asimov Lab",
+      url: "https://asimovlab.ru",
+      duration: "8 mos",
+      roles: [
+        {
+          title: "frontend team lead, ML engineer",
+          type: "self-employed",
+          period: "feb - sep 2024",
+          description:
+            "led the frontend team on an AI test-generation platform for educators while contributing to the ML side, from data and model evaluation to shipped UI.",
+        },
+      ],
     },
     eduInnopolis:
-      "<strong>Innopolis University</strong>, BSc in applied artificial intelligence (2026).",
-    volTrenirovochnaya: {
-      title: "trenirovochnaya.kzn",
-      period: "mar - aug 2025",
-      description: "dance events in Kazan. brand designer and marketing",
+      "<strong>Innopolis University</strong>, BSc in applied artificial intelligence (2022\u20132026).",
+    volTrenirovochnayaGroup: {
+      company: "trenirovochnaya.kzn",
+      url: "",
+      duration: "6 mos",
+      showDescriptions: true,
+      roles: [
+        {
+          title: "marketing lead & brand designer",
+          period: "mar - aug 2025",
+          description:
+            "co-founded and led brand and marketing for dance events in Kazan, growing attendance.",
+        },
+      ],
     },
-    volInnostreetdance: {
-      title: "InnoStreetDance",
-      period: "dec 2022 - sep 2025",
-      description:
-        "student dance club at Innopolis University. brand designer and marketing",
+    volInnostreetdanceGroup: {
+      company: "InnoStreetDance",
+      url: "",
+      duration: "2 yrs 10 mos",
+      showDescriptions: true,
+      roles: [
+        {
+          title: "president",
+          period: "jun 2023 - sep 2025",
+          description:
+            "directed the club's visual identity and led planning and execution of all events.",
+        },
+        {
+          title: "brand designer",
+          period: "dec 2022 - jul 2023",
+          description: "shaped the club's early visual identity.",
+        },
+      ],
     },
     footerSocialLabel: "social links",
     footerSocialTelegram: "Telegram",
@@ -568,9 +686,9 @@ const translations = {
     introStatusLabel: "current status:",
     introStatusValue: "open to work: design, dev, ml &\u00A0more",
     introCtaDesigner: "design cases",
-    introCtaDev: "dev cases",
+    introCtaDev: "swe cases",
     introCtaMl: "ml cases",
-    devIntroTitle: "my dev experience",
+    devIntroTitle: "my swe experience",
     devIntroLead:
       "i build web and apps: landing pages, front-end in product teams, Swift for macOS. at Asimov Lab i led front-end from architecture to UI and ship production sites and utilities with clean code and clear UX.",
     mlIntroTitle: "my ml experience",
@@ -578,9 +696,8 @@ const translations = {
       "i do applied ML: BERT, XAI and debiasing, RAG, computer vision. i publish my work and ship models that are accurate, explainable, and grounded in real product context.",
     cvPickerTitle: "download cv",
     cvPickerClose: "close",
-    cvVariantDesigner: "design",
-    cvVariantDev: "development",
-    cvVariantMl: "ml",
+    cvVariantDev: "SWE",
+    cvVariantMl: "AIML",
     introTrustLabel: "trusted by",
     introContactPrefix: "got an idea? let's talk it through, no\u00A0heavy\u00A0briefs required",
     introSocialLabel: "social links",
@@ -1101,11 +1218,11 @@ let projectStackLayoutFrame = 0;
 const innerHtmlKeys = new Set(["eduInnopolis", "MlResumeScreeningDesc"]);
 
 const aboutEntryKeyToId = {
-  expCroissan: "exp-croissan",
-  expAzimov: "exp-azimov",
-  expClearmind: "exp-clearmind",
-  volTrenirovochnaya: "vol-trenirovochnaya",
-  volInnostreetdance: "vol-innostreetdance",
+  expCroissanGroup: "exp-croissan",
+  expAzimovGroup: "exp-azimov",
+  expClearmindGroup: "exp-clearmind",
+  volTrenirovochnayaGroup: "vol-trenirovochnaya",
+  volInnostreetdanceGroup: "vol-innostreetdance",
 };
 
 const translationKeyToId = {
@@ -1150,22 +1267,16 @@ const translationKeyToId = {
 
 const CV_VARIANTS = [
   {
-    id: "designer",
-    labelKey: "cvVariantDesigner",
-    ru: { href: "docs/nat_designer.pdf", filename: "Natalia_Agapova_CV_Design_RU.pdf" },
-    en: { href: "docs/nat_designer_en.pdf", filename: "Natalia_Agapova_CV_Design_EN.pdf" },
+    id: "ml",
+    labelKey: "cvVariantMl",
+    ru: { href: "docs/nat_ml.pdf", filename: "Natalia_Agapova_CV_AIML_RU.pdf" },
+    en: { href: "docs/nat_ml_en.pdf", filename: "Natalia_Agapova_CV_AIML_EN.pdf" },
   },
   {
     id: "dev",
     labelKey: "cvVariantDev",
-    ru: { href: "docs/nat_dev.pdf", filename: "Natalia_Agapova_CV_Development_RU.pdf" },
-    en: { href: "docs/nat_dev_en.pdf", filename: "Natalia_Agapova_CV_Development_EN.pdf" },
-  },
-  {
-    id: "ml",
-    labelKey: "cvVariantMl",
-    ru: { href: "docs/nat_ml.pdf", filename: "Natalia_Agapova_CV_ML_RU.pdf" },
-    en: { href: "docs/nat_ml_en.pdf", filename: "Natalia_Agapova_CV_ML_EN.pdf" },
+    ru: { href: "docs/nat_dev.pdf", filename: "Natalia_Agapova_CV_SWE_RU.pdf" },
+    en: { href: "docs/nat_dev_en.pdf", filename: "Natalia_Agapova_CV_SWE_EN.pdf" },
   },
 ];
 
@@ -1563,11 +1674,6 @@ function escapeHtml(text) {
 function fillAltTemplate(template, values) {
   return String(template).replace(/\{\{(\w+)\}\}/g, (_, key) => String(values[key] ?? ""));
 }
-
-const aboutEntryUrls = {
-  expCroissan: "https://croissanstudio.ru",
-  expAzimov: "https://asimovlab.ru",
-};
 
 function renderProjectTitleLink(title, url) {
   const safeTitle = escapeHtml(title);
@@ -3141,25 +3247,25 @@ const PAGE_SEO = {
     },
   },
   frontend: {
-    path: "/dev",
+    path: "/swe",
     ru: {
-      title: "dev · natalia's portfolio",
-      description: "разработка: веб и нативные приложения, проекты Натальи Агаповой.",
+      title: "swe · natalia's portfolio",
+      description: "software engineering: веб и нативные приложения, проекты Натальи Агаповой.",
     },
     en: {
-      title: "dev · natalia's portfolio",
-      description: "development projects by Natalia Agapova: web and native apps.",
+      title: "swe · natalia's portfolio",
+      description: "software engineering projects by Natalia Agapova: web and native apps.",
     },
   },
   dev: {
-    path: "/dev",
+    path: "/swe",
     ru: {
-      title: "dev · natalia's portfolio",
-      description: "разработка: веб и нативные приложения, проекты Натальи Агаповой.",
+      title: "swe · natalia's portfolio",
+      description: "software engineering: веб и нативные приложения, проекты Натальи Агаповой.",
     },
     en: {
-      title: "dev · natalia's portfolio",
-      description: "development projects by Natalia Agapova: web and native apps.",
+      title: "swe · natalia's portfolio",
+      description: "software engineering projects by Natalia Agapova: web and native apps.",
     },
   },
   ml: {
@@ -3191,7 +3297,7 @@ function getCurrentPageSeoKey() {
   const page = path.split("/").pop() || "";
 
   if (page === "designer" || page === "designer.html") return "designer";
-  if (page === "dev" || page === "dev.html" || page === "frontend" || page === "frontend.html") return "dev";
+  if (page === "dev" || page === "dev.html" || page === "frontend" || page === "frontend.html" || page === "swe" || page === "swe.html") return "dev";
   if (page === "ml" || page === "ml.html") return "ml";
   if (page === "person" || page === "person.html") return "person";
   return "index";
@@ -3244,15 +3350,36 @@ function updatePageSeo(lang) {
 function renderAboutEntries(t) {
   for (const [key, id] of Object.entries(aboutEntryKeyToId)) {
     const el = document.getElementById(id);
-    const entry = t[key];
-    if (!el || !entry) continue;
+    const group = t[key];
+    if (!el || !group) continue;
+
+    const rolesHtml = group.roles
+      .map(
+        (role) => `
+      <li class="about-entry__role">
+        <div class="about-entry__role-rail">
+          <span class="about-entry__role-dot"></span>
+          <span class="about-entry__role-line"></span>
+        </div>
+        <div class="about-entry__role-body">
+          <div class="about-entry__role-head">
+            <span class="about-entry__role-title">${escapeHtml(role.title)}</span>
+            <span class="about-entry__period">${escapeHtml(role.period)}</span>
+          </div>
+          ${role.type ? `<p class="about-entry__role-type">${escapeHtml(role.type)}</p>` : ""}
+          ${group.showDescriptions && role.description ? `<p class="about-entry__desc">${escapeHtml(role.description)}</p>` : ""}
+        </div>
+      </li>
+    `
+      )
+      .join("");
 
     el.innerHTML = `
-      <div class="about-entry__head">
-        <span class="about-entry__title">${renderProjectTitleLink(entry.title, aboutEntryUrls[key])}</span>
-        <span class="about-entry__period">${escapeHtml(entry.period)}</span>
+      <div class="about-entry__company-row">
+        <span class="about-entry__company">${renderProjectTitleLink(group.company, group.url)}</span>
+        ${group.duration ? `<span class="about-entry__duration">${escapeHtml(group.duration)}</span>` : ""}
       </div>
-      <p class="about-entry__desc">${escapeHtml(entry.description)}</p>
+      <ul class="about-entry__roles">${rolesHtml}</ul>
     `;
   }
 }
