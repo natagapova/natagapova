@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 \input{cv-preamble-en.tex}
 
@@ -22,18 +22,24 @@
   \resumeRoleListStart
     \resumeRole{ML Software Engineer}{Apr 2026 to present}
     \resumeItemListStart
-      \resumeItem{Fully fine-tuned transformer language models and adapted others through prompting for client products, comparing versions on task metrics.}
+      \resumeItem{Work as the ML engineer in client teams delivering end-to-end AI products, alongside designers and software engineers.}
+      \resumeItem{Fully fine-tuned transformer language models and adapted others through prompting for client products.}
+      \resumeItem{Compared model versions on task metrics to choose what goes into the product.}
+      \resumeItem{Trained and adapted generative image and talking-avatar models for client projects.}
     \resumeItemListEnd
 
     \resumeRole{ML Engineer \& Product Designer}{Jul 2025 to Apr 2026}
     \resumeItemListStart
-      \resumeItem{Trained and adapted generative image and talking-avatar models for client projects, judging output quality with metrics.}
-      \resumeItem{Designed the product interfaces and client-facing flows around those models, covering both roles across the same sprints.}
+      \resumeItem{Reworked the core model behind NeuroArtist, with the freedom to explore and test my own approach.}
+      \resumeItem{Iterated on model outputs against client-facing quality bars, running comparisons to decide what shipped.}
+      \resumeItem{Also led the NeuroArtist rebrand across physical and digital materials, and contributed to the Croissan Studio website redesign.}
     \resumeItemListEnd
 
     \resumeRole{Software Engineer Intern}{Apr 2025 to Jul 2025}
     \resumeItemListStart
-      \resumeItem{Worked with other engineers to ship these models inside production features, and explained results and limitations to clients and teammates.}
+      \resumeItem{Worked on the NeuroArtist website.}
+      \resumeItem{Helped with ML tasks on the team, and was offered an ML Engineer role after the internship.}
+      \resumeItem{Contributed to client projects, for example a tourism website and the Moscow 2030 event, etc.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
@@ -43,9 +49,11 @@
 
   \resumeProject{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{\textbf{Feb to Sep 2024}}
   \resumeRoleListStart
-    \resumeRole{Frontend Lead, ML Developer}{}
+    \resumeRole{Frontend Team Lead \& ML Developer}{}
     \resumeItemListStart
-      \resumeItem{Led the frontend team at an AI test-generation startup while contributing to the ML side of a model that generates tests for teachers and students, from data and model evaluation to shipped UI, in close collaboration with the ML and product teams.}
+      \resumeItem{Led the frontend team to the MVP of an AI platform that generates tests for teachers and students.}
+      \resumeItem{Built the MVP version of the website end to end.}
+      \resumeItem{One of six ML developers behind the core model of the product.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
@@ -56,7 +64,7 @@
   \resumeRoleListStart
     \resumeRole{ML Engineer}{}
     \resumeItemListStart
-      \resumeItem{Applied ML work, including model development and evaluation, delivered alongside design and web development for independent clients.}
+      \resumeItem{Applied ML work for independent clients.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
@@ -65,25 +73,25 @@
 
 \resumeSubHeadingListEnd
 
-\section{Software Projects}
+\section{Personal Projects}
 \resumeSubHeadingListStart
 
   \resumeProject{\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Explainability · Debiasing · Published, first author}
   \resumeItemListStart
-    \resumeItem{Fine-tuned BERT to sort resumes into 9 IT categories (HeadHunter data), measured by accuracy, by evaluating 39+ debiasing configurations with Integrated Gradients (Captum) bias audits.}
-    \resumeItem{Found baseline accuracy of 60.9\%, measured by counterfactual analysis, by swapping only the applicant's city and showing it flipped the model's prediction in 7.7\% of pairs; this motivated the debiasing work. Published as first author.}
+    \resumeItem{Built a BERT model that sorts resumes into 9 IT job categories using real HeadHunter data, then audited it for bias and tested 39+ ways to fix it.}
+    \resumeItem{Found that swapping just the applicant's city flipped the model's decision in 7.7\% of cases (baseline accuracy 60.9\%) -- published this bias finding as first author.}
     \cvtech{Utilized:}{ Python, PyTorch, BERT, Captum, pandas.}
   \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/emotion-detection}{Emotion Detection}}{Computer Vision · On-device Deployment}
   \resumeItemListStart
-    \resumeItem{Built a CNN image classifier on FER2013, measured at 58.7\% accuracy / macro-F1 0.569 (up to 60.8\% with ensembling and test-time augmentation), by quantizing the model to INT8 and deploying it to Core ML and ONNX Runtime Web at 1.15\,ms latency.}
+    \resumeItem{Trained a CNN to recognize emotions from faces, reaching 58.7\% accuracy (up to 60.8\% with ensembling), then shrank it to run on-device with just 1.15\,ms latency (Core ML, ONNX Runtime Web).}
     \cvtech{Utilized:}{ Python, PyTorch, Core ML, ONNX Runtime.}
   \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Embeddings}
   \resumeItemListStart
-    \resumeItem{Built a retrieval-augmented assistant that answers strictly from a user's own PDFs, measured by filename+page citation accuracy, by chunking documents and embedding them with SentenceTransformer into ChromaDB, served through Ollama (Llama 3.2).}
+    \resumeItem{Built a personal AI assistant that answers only from your own PDFs and always cites the exact file and page, powered by a local LLM (Llama 3.2) so nothing leaves your machine.}
     \cvtech{Utilized:}{ Python, SentenceTransformer, ChromaDB, Ollama.}
   \resumeItemListEnd
 
