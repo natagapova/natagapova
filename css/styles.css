@@ -3021,7 +3021,7 @@ body.page-designer .project-overlay__title {
 .about-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
+  gap: 72px;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -3035,7 +3035,7 @@ body.page-designer .project-overlay__title {
 }
 
 .about-block h3 {
-  margin: 0 0 16px;
+  margin: 0 0 28px;
   color: var(--ios-label);
 }
 
@@ -3051,7 +3051,7 @@ body.page-designer .project-overlay__title {
 }
 
 .about-block li {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
   color: var(--ios-label);
   hyphens: none;
   -webkit-hyphens: none;
@@ -3137,14 +3137,14 @@ body.page-designer .project-overlay__title {
 
 .about-block .about-entry__roles {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 12px 0 0;
   padding: 0;
 }
 
 .about-block .about-entry__role {
   display: flex;
   gap: 0 20px;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .about-block .about-entry__role:last-child {
@@ -3178,7 +3178,7 @@ body.page-designer .project-overlay__title {
 .about-entry__role-line {
   flex: 1 1 auto;
   width: 1px;
-  margin: 4px 0 calc(-16px - 0.55em);
+  margin: 4px 0 calc(-12px - 0.55em);
   background: var(--ios-separator);
 }
 
