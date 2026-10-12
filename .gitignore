@@ -4,6 +4,12 @@ node_modules/
 # Archived portfolio assets (kept locally, not published)
 images/_archive/
 
+# Design CV (kept locally, hidden from GitHub for now)
+docs/nat_designer.pdf
+docs/nat_designer.tex
+docs/nat_designer_en.pdf
+docs/nat_designer_en.tex
+
 # LaTeX build artifacts
 docs/*.aux
 docs/*.log
