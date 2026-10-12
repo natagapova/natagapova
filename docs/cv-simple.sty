@@ -19,14 +19,14 @@
 \newcommand{\cvsechead}[1]{\scshape\bfseries #1}
 \titleformat{\section}{\bfseries}{}{0em}%
   {\cvsechead}[\vspace{2pt}{\titlerule[0.8pt]}]
-\titlespacing*{\section}{0pt}{3pt}{5pt}
+\titlespacing*{\section}{0pt}{3pt}{3pt}
 
 \newcommand{\cvmeta}[1]{{\color{cvgray}\itshape\small #1}}
 
 \newcommand{\resumeItem}[1]{\item{\small #1}}
 
-% Three-column job/education header: title (left) -- org (center, bold) -- dates (right)
-% Args: #1 title, #2 dates, #3 org, #4 unused (kept for call-site compatibility)
+% Three-column job/education header: org (left, bold) -- location (center, plain) -- dates (right)
+% Args: #1 org, #2 dates, #3 location, #4 unused (kept for call-site compatibility)
 \newcommand{\resumeSubheading}[4]{%
   \item[]\vspace{1pt}%
   \noindent\begin{tabularx}{\linewidth}{%
@@ -34,7 +34,7 @@
     >{\centering\arraybackslash}X%
     >{\raggedleft\arraybackslash}p{0.26\linewidth}@{}%
   }
-    \textbf{#1} & \textbf{#3} & #2 \\
+    \textbf{#1} & #3 & #2 \\
   \end{tabularx}\par\nobreak\vspace{1pt}%
 }
 
@@ -53,6 +53,33 @@
 \newcommand{\resumeRoleListEnd}{\end{itemize}}
 \newcommand{\resumeRole}[2]{%
   \item[]\noindent{\small\itshape #1}\hfill{\small\itshape #2}\par\nobreak%
+}
+
+% Sub-role row, for a product/context nested under a company: product name
+% (left, italic) -- role title (center, bold) -- dates (right, italic)
+\newcommand{\resumeRoleRow}[3]{%
+  \item[]\vspace{2pt}%
+  \noindent\begin{tabularx}{\linewidth}{%
+    @{}>{\raggedright\arraybackslash}p{0.30\linewidth}%
+    >{\centering\arraybackslash}X%
+    >{\raggedleft\arraybackslash}p{0.26\linewidth}@{}%
+  }
+    {\small\itshape #1} & \textbf{#2} & {\small\itshape #3} \\
+  \end{tabularx}\par\nobreak\vspace{1pt}%
+}
+
+% Company row, for a single-role company collapsed onto one line: company
+% name (left, bold) -- role title (center, bold) -- dates (right, bold) --
+% matches the font size/weight of the \resumeProject company header above.
+\newcommand{\resumeCompanyRow}[3]{%
+  \item[]\vspace{2pt}%
+  \noindent\begin{tabularx}{\linewidth}{%
+    @{}>{\raggedright\arraybackslash}p{0.30\linewidth}%
+    >{\centering\arraybackslash}X%
+    >{\raggedleft\arraybackslash}p{0.26\linewidth}@{}%
+  }
+    \textbf{#1} & \textbf{#2} & {\small\textbf{#3}} \\
+  \end{tabularx}\par\nobreak\vspace{1pt}%
 }
 
 % Bolded, underlined lead-in bullet for the tools/tech line, e.g.
@@ -80,7 +107,27 @@
     {\small #1} & {\small #2} \\
     {\small #3} & {\small #4} \\
   \end{tabularx}
-  \par\vspace{2pt}%
+  \par%
+}
+
+% Single contact row (no second row) -- used below the name for GitHub/LinkedIn + website
+\newcommand{\cvcontactsrow}[2]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}X@{}}
+    {\small #1} & {\small #2} \\
+  \end{tabularx}
+  \par\vspace{1pt}%
+}
+
+% Three-row contact grid: #1/#2 top, #3/#4 middle, #5/#6 bottom (right cells may be blank)
+\newcommand{\cvcontactsgridthree}[6]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}X@{}}
+    {\small #1} & {\small #2} \\
+    {\small #3} & {\small #4} \\
+    {\small #5} & {\small #6} \\
+  \end{tabularx}
+  \par%
 }
 
 \newcommand{\cvcontacts}[1]{%
@@ -110,21 +157,49 @@
 \newcommand{\cvphonenum}{+7 (906) 871 8606}
 \newcommand{\cvphone}{tel:+79068718606}
 
-% Four-corner header contacts for the ML and Software Engineer CVs
-% top-left: website + GitHub · top-right: LinkedIn + Google Scholar
-% bottom-left: Telegram        · bottom-right: email + phone
-\newcommand{\cvcontactsgridenTL}{\href{\cvwebsite}{natagapova.ru}}
-\newcommand{\cvcontactsgridenTR}{\href{\cvlinkedin}{LinkedIn} \enspace·\enspace \href{\cvtelegram}{Telegram}}
-\newcommand{\cvcontactsgridenBL}{\href{mailto:\cvmail}{\cvmail} \enspace·\enspace \href{\cvphone}{\cvphonenum}}
-\newcommand{\cvcontactsgridenBR}{\href{\cvscholar}{Google Scholar} \enspace·\enspace \href{\cvgithub}{GitHub}}
+% Full header for the ML and Software Engineer CVs: name's line -- address
+% (left) / phone + email (right); subtitle's line -- GitHub + LinkedIn
+% (left) / website (right). Args: #1 name, #2 role.
+\newcommand{\cvaddressen}{Innopolis, Tatarstan, Russia}
+\newcommand{\cvaddressru}{Иннополис, Татарстан, Россия}
 
-\newcommand{\cvcontactsgridruTL}{\href{\cvwebsite}{natagapova.ru}}
-\newcommand{\cvcontactsgridruTR}{\href{\cvlinkedin}{LinkedIn} \enspace·\enspace \href{\cvtelegram}{Telegram}}
-\newcommand{\cvcontactsgridruBL}{\href{mailto:\cvmail}{\cvmail} \enspace·\enspace \href{\cvphone}{\cvphonenum}}
-\newcommand{\cvcontactsgridruBR}{\href{\cvscholar}{Google Scholar} \enspace·\enspace \href{\cvgithub}{GitHub}}
+\newcommand{\cvheaderen}[2]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}X@{}}
+    {\small \cvaddressen} & {\small\begin{tabular}[t]{@{}r@{}}\href{mailto:\cvmail}{\cvmail}\\\href{\cvphone}{\cvphonenum}\end{tabular}} \\
+  \end{tabularx}\par
+  \vspace{-10pt}%
+  \noindent\makebox[\linewidth]{\Large\bfseries\scshape #1}\par
+  \vspace{1pt}%
+  \noindent
+  \begin{tabularx}{\linewidth}{%
+    @{}>{\raggedright\arraybackslash}p{0.28\linewidth}
+    >{\centering\arraybackslash}X
+    >{\raggedleft\arraybackslash}p{0.28\linewidth}@{}
+  }
+    {\small \href{\cvgithub}{GitHub} \enspace·\enspace \href{\cvlinkedin}{LinkedIn}} & {\large #2} & {\small \href{\cvwebsite}{natagapova.ru}} \\
+  \end{tabularx}
+  \par\vspace{4pt}%
+}
 
-\newcommand{\cvcontactsen}{\cvcontactsgrid{\cvcontactsgridenTL}{\cvcontactsgridenTR}{\cvcontactsgridenBL}{\cvcontactsgridenBR}}
-\newcommand{\cvcontactsru}{\cvcontactsgrid{\cvcontactsgridruTL}{\cvcontactsgridruTR}{\cvcontactsgridruBL}{\cvcontactsgridruBR}}
+\newcommand{\cvheaderru}[2]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X >{\raggedleft\arraybackslash}X@{}}
+    {\small \cvaddressru} & {\small\begin{tabular}[t]{@{}r@{}}\href{mailto:\cvmail}{\cvmail}\\\href{\cvphone}{\cvphonenum}\end{tabular}} \\
+  \end{tabularx}\par
+  \vspace{-10pt}%
+  \noindent\makebox[\linewidth]{\Large\bfseries\scshape #1}\par
+  \vspace{1pt}%
+  \noindent
+  \begin{tabularx}{\linewidth}{%
+    @{}>{\raggedright\arraybackslash}p{0.28\linewidth}
+    >{\centering\arraybackslash}X
+    >{\raggedleft\arraybackslash}p{0.28\linewidth}@{}
+  }
+    {\small \href{\cvgithub}{GitHub} \enspace·\enspace \href{\cvlinkedin}{LinkedIn}} & {\large #2} & {\small \href{\cvwebsite}{natagapova.ru}} \\
+  \end{tabularx}
+  \par\vspace{4pt}%
+}
 
 \newcommand{\cvcontactsdevru}{%
   \href{\cvwebsite}{natagapova.ru} \enspace·\enspace

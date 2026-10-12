@@ -1,17 +1,19 @@
 \documentclass[a4paper,10pt]{article}
 
 \input{cv-preamble-en.tex}
+\geometry{top=0.35in}
 
 \begin{document}
 
-\cvname{Natalia A. Agapova}{Software Engineer}
-\cvcontactsen
+\cvheaderen{Natalia A. Agapova}{Software Engineer}
 
 \section{Education}
 \resumeSubHeadingListStart
-  \resumeSubheading{Innopolis, Russia}{2022 -- 2026}{Innopolis University}{}
+  \resumeSubheading{Innopolis University}{2022 -- 2026}{Innopolis, Russia}{}
   \resumeItemListStart
-    \resumeItem{\textbf{Major:} BSc in Applied Artificial Intelligence (GPA: 4.02 / 5)}
+    \resumeItem{\textbf{Major:} BSc in Applied Artificial Intelligence}
+    \resumeItem{\textbf{Programming Coursework:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
+    \resumeItem{\textbf{SWE Coursework:} Software Project, Front-End Web Development, Software Systems Analysis and Design, Introduction to Optimization, Architecture of Computing Devices}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -20,56 +22,50 @@
 
   \resumeProject{\href{https://croissanstudio.ru}{Croissan Studio}}{\textbf{Apr 2025 to present}}
   \resumeRoleListStart
-    \resumeRole{ML Software Engineer}{Apr 2026 to present}
+    \resumeRoleRow{Client Work}{ML Software Engineer}{Apr 2026 to present}
     \resumeItemListStart
       \resumeItem{Work as the ML engineer in client teams delivering end-to-end AI products, alongside designers and software engineers.}
       \resumeItem{Fully fine-tuned transformer language models and adapted others through prompting for client products.}
       \resumeItem{Compared model versions on task metrics to choose what goes into the product.}
       \resumeItem{Trained and adapted generative image and talking-avatar models for client projects.}
+      \cvtech{Leveraged knowledge}{ in React, Next.js, and TypeScript for product UI, styled with Tailwind.}
     \resumeItemListEnd
 
-    \resumeRole{ML Engineer \& Product Designer}{Jul 2025 to Apr 2026}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}, \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}}{ML Engineer \& Product Designer}{Jul 2025 to Apr 2026}
     \resumeItemListStart
-      \resumeItem{Reworked the core model behind NeuroArtist, with the freedom to explore and test my own approach.}
-      \resumeItem{Iterated on model outputs against client-facing quality bars, running comparisons to decide what shipped.}
-      \resumeItem{Also led the NeuroArtist rebrand across physical and digital materials, and contributed to the Croissan Studio website redesign.}
+      \resumeItem{Reworked the core model behind \href{https://neuroartist.ru}{NeuroArtist}, with the freedom to explore and test my own approach.}
+      \resumeItem{Improved generated-image quality for \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist} through iterative testing, growing its user numbers by about 5.5\%.}
+      \resumeItem{Restructured the UX of the Croissan Studio website, increasing clicks on the ``Contact us'' button by 13\%.}
+      \resumeItem{Also led the \href{https://neuroartist.ru}{NeuroArtist} rebrand across physical and digital materials.}
+      \cvtech{Leveraged knowledge}{ in React and Next.js to restructure the site's UX, styled with Tailwind.}
     \resumeItemListEnd
 
-    \resumeRole{Software Engineer Intern}{Apr 2025 to Jul 2025}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}}{Software Engineer Intern}{Apr 2025 to Jul 2025}
     \resumeItemListStart
-      \resumeItem{Worked on the NeuroArtist website.}
-      \resumeItem{Helped with ML tasks on the team, and was offered an ML Engineer role after the internship.}
+      \resumeItem{Worked on the \href{https://neuroartist.ru}{NeuroArtist} website.}
+      \resumeItem{Helped with ML tasks on the team -- including tracking down a bug in the image upscaler that had been mistaken for a model issue -- and was offered an ML Engineer role after the internship.}
       \resumeItem{Contributed to client projects, for example a tourism website and the Moscow 2030 event, etc.}
+      \cvtech{Leveraged knowledge}{ in React and TypeScript to build out the website.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in React, Next.js, TypeScript, and Tailwind.}
     \cvletter{https://drive.google.com/file/d/1HO8licJS7dvUQO7PGyyBHSfLX063jpPU/view?usp=sharing}{Letter of recommendation from the studio's CEO}
   \resumeItemListEnd
 
-  \resumeProject{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{\textbf{Feb to Sep 2024}}
-  \resumeRoleListStart
-    \resumeRole{Frontend Team Lead \& ML Developer}{}
-    \resumeItemListStart
-      \resumeItem{Led the frontend team to the MVP of an AI platform that generates tests for teachers and students.}
-      \resumeItem{Built the MVP version of the website end to end.}
-      \resumeItem{One of six ML developers behind the core model of the product.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{Frontend Team Lead \& ML Developer}{Feb to Sep 2024}
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in React and TypeScript.}
+    \resumeItem{Led the frontend team to the MVP of an AI platform that generates tests for teachers and students.}
+    \resumeItem{Built the MVP version of the website end to end.}
+    \resumeItem{One of six ML developers behind the core model of the product.}
+    \cvtech{Leveraged knowledge}{ in React and TypeScript to lead frontend development.}
   \resumeItemListEnd
 
-  \resumeProject{Freelance}{\textbf{2022 to present}}
-  \resumeRoleListStart
-    \resumeRole{Software Engineer}{}
-    \resumeItemListStart
-      \resumeItem{Built landing pages and promo sites in HTML/CSS/JS and Tilda for cultural and educational clients.}
-      \resumeItem{Applied ML work for independent clients.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{Freelance}{Software Engineer}{2022 to present}
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in HTML, CSS, JavaScript, Tilda, and Python.}
+    \resumeItem{Delivered full products end to end for independent clients -- front-end, back-end, and games, as well as landing and promo sites.}
+    \resumeItem{Applied ML work for independent clients.}
+    \resumeItem{Clients included Russian Post, Innopolis City Administration, Innopolis University, Lyceum Innopolis, and others.}
+    \cvtech{Leveraged knowledge}{ in HTML, CSS, JavaScript, React, TypeScript, and Next.js for client sites, Tilda for quick builds, and Python for ML work.}
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -77,7 +73,7 @@
 \section{Personal Projects}
 \resumeSubHeadingListStart
 
-  \resumeProject{\href{https://github.com/natagapova/macos-timer}{elaps}}{Menu Bar App · Swift}
+  \resumeProject{\href{https://github.com/natagapova/macos-timer}{Elaps}}{Menu Bar App · Swift}
   \resumeItemListStart
     \resumeItem{Built a native macOS menu bar app for timers and pomodoro sessions (macOS 13+), in Swift and SwiftUI.}
     \cvtech{Utilized:}{ Swift, SwiftUI.}
@@ -91,15 +87,15 @@
 
 \resumeSubHeadingListEnd
 
-\section{Skills}
-\cvskillsblock{%
-\textbf{Languages \& Frameworks:} \textit{(proficient)}: Python, JavaScript, TypeScript, React, Next.js \quad \textit{(familiar)}: Swift, SwiftUI, Tailwind\\
-\textbf{AI / ML:} \textit{(familiar)}: model fine-tuning and evaluation (PyTorch, BERT), RAG (ChromaDB, SentenceTransformer), LLMs via Ollama -- see Publications\\
-\textbf{Tools \& Deployment:} \textit{(proficient)}: Git/GitHub \quad \textit{(familiar)}: Core ML, ONNX Runtime, model quantization, Figma, Tilda\\
-\cvlanguagesen}
-
 \section{Publications}
 \cvpublication{Agapova, N. A.; Lukmanov, R. A. ``Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System'', 2026}{}{10.66693/mathai.1017}
 \cvpublication{Kholodov, Y. A.; Salloum, H.; Agapova, N. A. ``Quantum Annealing Approaches to Breaking RSA Encryption'', \textit{Voprosy kiberbezopasnosti}, 2025}{}{10.21681/2311-3456-2025-4-127-133}
+
+\section{Skills}
+\cvskillsblock{%
+\textbf{Languages \& Frameworks:} \textit{(proficient)}: Python, JavaScript, TypeScript, HTML, CSS, React, Next.js \quad \textit{(familiar)}: Swift, SwiftUI, Tailwind\\
+\textbf{AI / ML:} \textit{(proficient)}: model fine-tuning and evaluation (PyTorch, BERT), Hugging Face Transformers, Diffusers, generative AI, prompt engineering, RAG (ChromaDB, SentenceTransformer), LLMs via Ollama -- see Publications\\
+\textbf{Tools \& Deployment:} \textit{(proficient)}: Git/GitHub, Figma, Tilda \quad \textit{(familiar)}: Core ML, ONNX Runtime, model quantization\\
+\cvlanguagesen}
 
 \end{document}

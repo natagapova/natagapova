@@ -9,17 +9,19 @@
 \input{cv-fonts-simple.tex}
 \cvfontsru
 \cvpagemargins
+\geometry{left=0.4in,right=0.4in}
 
 \begin{document}
 
-\cvname{Наталья А. Агапова}{ML Engineer}
-\cvcontactsru
+\cvheaderru{Наталья А. Агапова}{ML Engineer}
 
 \section{Образование}
 \resumeSubHeadingListStart
-  \resumeSubheading{Иннополис, Россия}{2022 – 2026}{Университет Иннополис}{}
+  \resumeSubheading{Университет Иннополис}{2022 – 2026}{Иннополис, Россия}{}
   \resumeItemListStart
-    \resumeItem{\textbf{Специальность:} Бакалавриат «Прикладной искусственный интеллект» (средний балл: 4.02 из 5)}
+    \resumeItem{\textbf{Специальность:} Бакалавриат «Прикладной искусственный интеллект»}
+    \resumeItem{\textbf{Курсы по программированию:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
+    \resumeItem{\textbf{Курсы по AI/ML:} Data Structures and Algorithms, Reinforcement Learning, Practical Machine Learning and Deep Learning, Introduction to Computer Vision, Explainable, Interpretable and Fair AI, Generative Artificial Intelligence, Natural Language Processing}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -28,55 +30,49 @@
 
   \resumeProject{\href{https://croissanstudio.ru}{Croissan Studio}}{\textbf{апр. 2025 – н.в.}}
   \resumeRoleListStart
-    \resumeRole{ML Software Engineer}{апр. 2026 – н.в.}
+    \resumeRoleRow{Клиентские проекты}{ML Software Engineer}{апр. 2026 – н.в.}
     \resumeItemListStart
       \resumeItem{Работаю ML-инженером в клиентских командах, которые делают AI-продукты от начала до конца, вместе с дизайнерами и инженерами.}
       \resumeItem{Полностью дообучала языковые модели и адаптировала другие через промптинг для клиентских продуктов.}
       \resumeItem{Сравнивала версии моделей по метрикам задачи, чтобы выбрать, что идёт в продукт.}
       \resumeItem{Обучала и адаптировала генеративные модели изображений и говорящих аватаров для клиентских проектов.}
+      \cvtech{Применила знания}{ в Python и PyTorch, дообучая модели Hugging Face Transformers через LoRA и промптинг для генеративного ИИ в продуктах.}
     \resumeItemListEnd
 
-    \resumeRole{ML Engineer \& Product Designer}{июль 2025 – апр. 2026}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}, \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}}{ML Engineer \& Product Designer}{июль 2025 – апр. 2026}
     \resumeItemListStart
-      \resumeItem{Переработала базовую модель NeuroArtist, свободно выбирая и тестируя собственный подход.}
-      \resumeItem{Сравнивала результаты модели с требованиями клиентов к качеству, выбирая, что идёт в релиз.}
-      \resumeItem{Также руководила ребрендингом NeuroArtist (физические и цифровые материалы) и участвовала в редизайне сайта Croissan Studio.}
+      \resumeItem{Переработала базовую модель \href{https://neuroartist.ru}{NeuroArtist}, свободно выбирая и тестируя собственный подход.}
+      \resumeItem{Улучшила качество генерируемых изображений в \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist} за счёт итеративного тестирования, что увеличило число пользователей примерно на 5,5\%.}
+      \resumeItem{Изменила UX-структуру сайта Croissan Studio, увеличив количество кликов по кнопке «Связаться с нами» на 13\%.}
+      \resumeItem{Также руководила ребрендингом \href{https://neuroartist.ru}{NeuroArtist} (физические и цифровые материалы).}
+      \cvtech{Применила знания}{ в Python и PyTorch, создавая генеративные модели изображений с Diffusers и прототипируя в Figma.}
     \resumeItemListEnd
 
-    \resumeRole{Software Engineer Intern}{апр. – июль 2025}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}}{Software Engineer Intern}{апр. – июль 2025}
     \resumeItemListStart
-      \resumeItem{Работала над сайтом NeuroArtist.}
-      \resumeItem{Помогала с ML-задачами в команде, после стажировки получила предложение на роль ML Engineer.}
+      \resumeItem{Работала над сайтом \href{https://neuroartist.ru}{NeuroArtist}.}
+      \resumeItem{Помогала с ML-задачами в команде -- в том числе нашла баг в апскейлере изображений, который считали проблемой самой модели -- и после стажировки получила предложение на роль ML Engineer.}
       \resumeItem{Участвовала в клиентских проектах, например туристический сайт и мероприятие «Москва 2030» и др.}
+      \cvtech{Применила знания}{ в Python для ML-отладки и JavaScript/React для сайта, с версионированием через Git и GitHub.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
-    \cvtech{Применила знания}{ в Python, PyTorch, Hugging Face Transformers, Diffusers и LoRA fine-tuning.}
     \cvletter{https://drive.google.com/file/d/1VtzJ118F98tqOT2DnjbEX7sI2dEZRsJv/view?usp=sharing}{Рекомендательное письмо от CEO студии}
   \resumeItemListEnd
 
-  \resumeProject{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{\textbf{фев. – сент. 2024}}
-  \resumeRoleListStart
-    \resumeRole{Frontend Team Lead \& ML Developer}{}
-    \resumeItemListStart
-      \resumeItem{Привела фронтенд-команду к MVP AI-платформы, которая генерирует тесты для преподавателей и студентов.}
-      \resumeItem{Собрала MVP-версию сайта от начала до конца.}
-      \resumeItem{Один из шести ML-разработчиков, стоявших за ключевой моделью продукта.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{Frontend Team Lead \& ML Developer}{фев. – сент. 2024}
   \resumeItemListStart
-    \cvtech{Применила знания}{ в React, TypeScript, Python и scikit-learn.}
+    \resumeItem{Привела фронтенд-команду к MVP AI-платформы, которая генерирует тесты для преподавателей и студентов.}
+    \resumeItem{Собрала MVP-версию сайта от начала до конца.}
+    \resumeItem{Один из шести ML-разработчиков, стоявших за ключевой моделью продукта.}
+    \cvtech{Применила знания}{ в React и TypeScript для фронтенда и Python со scikit-learn для модели.}
   \resumeItemListEnd
 
-  \resumeProject{Фриланс}{\textbf{2022 – н.в.}}
-  \resumeRoleListStart
-    \resumeRole{ML Engineer}{}
-    \resumeItemListStart
-      \resumeItem{Прикладные ML-задачи для независимых клиентов.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{Фриланс}{ML Engineer}{2022 – н.в.}
   \resumeItemListStart
-    \cvtech{Применила знания}{ в Python, PyTorch и scikit-learn.}
+    \resumeItem{Прикладные ML-задачи для независимых клиентов.}
+    \resumeItem{Среди клиентов -- Почта России, мэрия Иннополиса, Университет Иннополис, Лицей Иннополис и другие.}
+    \cvtech{Применила знания}{ в Python, PyTorch и scikit-learn для клиентских ML-проектов.}
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -105,14 +101,14 @@
 
 \resumeSubHeadingListEnd
 
-\section{Навыки}
-\cvskillsblock{%
-\textbf{ML / AI:} \textit{(свободно)}: Python, PyTorch, BERT, Captum, оценка и debiasing моделей, RAG (ChromaDB, SentenceTransformer) \quad \textit{(знакома)}: LLM (Ollama), OpenCV, MediaPipe, Core ML, ONNX Runtime\\
-\textbf{Инструменты:} \textit{(знакома)}: Figma, фронтенд-разработка, Git/GitHub\\
-\cvlanguagesru}
-
 \section{Публикации}
 \cvpublication{Agapova, N. A.; Lukmanov, R. A. ``Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System'', 2026}{}{10.66693/mathai.1017}
 \cvpublication{Kholodov, Y. A.; Salloum, H.; Agapova, N. A. ``Quantum Annealing Approaches to Breaking RSA Encryption'', \textit{Voprosy kiberbezopasnosti}, 2025}{}{10.21681/2311-3456-2025-4-127-133}
+
+\section{Навыки}
+\cvskillsblock{%
+\textbf{ML / AI:} \textit{(свободно)}: Python, PyTorch, BERT, Hugging Face Transformers, Diffusers, LoRA fine-tuning, генеративный ИИ, промптинг, LLM (Ollama), Captum, оценка и debiasing моделей, RAG (ChromaDB, SentenceTransformer) \quad \textit{(знакома)}: scikit-learn, pandas, OpenCV, MediaPipe, Core ML, ONNX Runtime\\
+\textbf{Инструменты:} \textit{(свободно)}: Figma, Tilda, Git/GitHub \quad \textit{(знакома)}: React, TypeScript\\
+\cvlanguagesru}
 
 \end{document}

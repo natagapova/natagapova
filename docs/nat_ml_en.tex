@@ -1,17 +1,19 @@
 \documentclass[a4paper,10pt]{article}
 
 \input{cv-preamble-en.tex}
+\geometry{left=0.45in,right=0.45in}
 
 \begin{document}
 
-\cvname{Natalia A. Agapova}{ML Engineer}
-\cvcontactsen
+\cvheaderen{Natalia A. Agapova}{ML Engineer}
 
 \section{Education}
 \resumeSubHeadingListStart
-  \resumeSubheading{Innopolis, Russia}{2022 -- 2026}{Innopolis University}{}
+  \resumeSubheading{Innopolis University}{2022 -- 2026}{Innopolis, Russia}{}
   \resumeItemListStart
-    \resumeItem{\textbf{Major:} BSc in Applied Artificial Intelligence (GPA: 4.02 / 5)}
+    \resumeItem{\textbf{Major:} BSc in Applied Artificial Intelligence}
+    \resumeItem{\textbf{Programming Coursework:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
+    \resumeItem{\textbf{AI/ML Coursework:} Data Structures and Algorithms, Reinforcement Learning, Practical Machine Learning and Deep Learning, Introduction to Computer Vision, Explainable, Interpretable and Fair AI, Generative Artificial Intelligence, Natural Language Processing}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -20,55 +22,49 @@
 
   \resumeProject{\href{https://croissanstudio.ru}{Croissan Studio}}{\textbf{Apr 2025 to present}}
   \resumeRoleListStart
-    \resumeRole{ML Software Engineer}{Apr 2026 to present}
+    \resumeRoleRow{Client Work}{ML Software Engineer}{Apr 2026 to present}
     \resumeItemListStart
       \resumeItem{Work as the ML engineer in client teams delivering end-to-end AI products, alongside designers and software engineers.}
       \resumeItem{Fully fine-tuned transformer language models and adapted others through prompting for client products.}
       \resumeItem{Compared model versions on task metrics to choose what goes into the product.}
       \resumeItem{Trained and adapted generative image and talking-avatar models for client projects.}
+      \cvtech{Leveraged knowledge}{ in Python and PyTorch, fine-tuning Hugging Face Transformers models with LoRA and prompt engineering for generative AI products.}
     \resumeItemListEnd
 
-    \resumeRole{ML Engineer \& Product Designer}{Jul 2025 to Apr 2026}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}, \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}}{ML Engineer \& Product Designer}{Jul 2025 to Apr 2026}
     \resumeItemListStart
-      \resumeItem{Reworked the core model behind NeuroArtist, with the freedom to explore and test my own approach.}
-      \resumeItem{Iterated on model outputs against client-facing quality bars, running comparisons to decide what shipped.}
-      \resumeItem{Also led the NeuroArtist rebrand across physical and digital materials, and contributed to the Croissan Studio website redesign.}
+      \resumeItem{Reworked the core model behind \href{https://neuroartist.ru}{NeuroArtist}, with the freedom to explore and test my own approach.}
+      \resumeItem{Improved generated-image quality for \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist} through iterative testing, growing its user numbers by about 5.5\%.}
+      \resumeItem{Restructured the UX of the Croissan Studio website, increasing clicks on the ``Contact us'' button by 13\%.}
+      \resumeItem{Also led the \href{https://neuroartist.ru}{NeuroArtist} rebrand across physical and digital materials.}
+      \cvtech{Leveraged knowledge}{ in Python and PyTorch, building generative-AI image models with Diffusers and prototyping in Figma.}
     \resumeItemListEnd
 
-    \resumeRole{Software Engineer Intern}{Apr 2025 to Jul 2025}
+    \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}}{Software Engineer Intern}{Apr 2025 to Jul 2025}
     \resumeItemListStart
-      \resumeItem{Worked on the NeuroArtist website.}
-      \resumeItem{Helped with ML tasks on the team, and was offered an ML Engineer role after the internship.}
+      \resumeItem{Worked on the \href{https://neuroartist.ru}{NeuroArtist} website.}
+      \resumeItem{Helped with ML tasks on the team -- including tracking down a bug in the image upscaler that had been mistaken for a model issue -- and was offered an ML Engineer role after the internship.}
       \resumeItem{Contributed to client projects, for example a tourism website and the Moscow 2030 event, etc.}
+      \cvtech{Leveraged knowledge}{ in Python for ML debugging and JavaScript/React for the website, versioned with Git and GitHub.}
     \resumeItemListEnd
   \resumeRoleListEnd
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in Python, PyTorch, Hugging Face Transformers, Diffusers, and LoRA fine-tuning.}
     \cvletter{https://drive.google.com/file/d/1VtzJ118F98tqOT2DnjbEX7sI2dEZRsJv/view?usp=sharing}{Letter of recommendation from the studio's CEO}
   \resumeItemListEnd
 
-  \resumeProject{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{\textbf{Feb to Sep 2024}}
-  \resumeRoleListStart
-    \resumeRole{Frontend Team Lead \& ML Developer}{}
-    \resumeItemListStart
-      \resumeItem{Led the frontend team to the MVP of an AI platform that generates tests for teachers and students.}
-      \resumeItem{Built the MVP version of the website end to end.}
-      \resumeItem{One of six ML developers behind the core model of the product.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{Frontend Team Lead \& ML Developer}{Feb to Sep 2024}
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in React, TypeScript, Python, and scikit-learn.}
+    \resumeItem{Led the frontend team to the MVP of an AI platform that generates tests for teachers and students.}
+    \resumeItem{Built the MVP version of the website end to end.}
+    \resumeItem{One of six ML developers behind the core model of the product.}
+    \cvtech{Leveraged knowledge}{ in React and TypeScript for the frontend, and Python with scikit-learn for the model.}
   \resumeItemListEnd
 
-  \resumeProject{Freelance}{\textbf{2022 to present}}
-  \resumeRoleListStart
-    \resumeRole{ML Engineer}{}
-    \resumeItemListStart
-      \resumeItem{Applied ML work for independent clients.}
-    \resumeItemListEnd
-  \resumeRoleListEnd
+  \resumeCompanyRow{Freelance}{ML Engineer}{2022 to present}
   \resumeItemListStart
-    \cvtech{Leveraged knowledge}{ in Python, PyTorch, and scikit-learn.}
+    \resumeItem{Applied ML work for independent clients.}
+    \resumeItem{Clients included Russian Post, Innopolis City Administration, Innopolis University, Lyceum Innopolis, and others.}
+    \cvtech{Leveraged knowledge}{ in Python, PyTorch, and scikit-learn for client ML projects.}
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -97,14 +93,14 @@
 
 \resumeSubHeadingListEnd
 
-\section{Skills}
-\cvskillsblock{%
-\textbf{ML / AI:} \textit{(proficient)}: Python, PyTorch, BERT, Captum, model evaluation \& debiasing, RAG (ChromaDB, SentenceTransformer) \quad \textit{(familiar)}: LLMs (Ollama), OpenCV, MediaPipe, Core ML, ONNX Runtime\\
-\textbf{Tools:} \textit{(familiar)}: Figma, front-end development, Git/GitHub\\
-\cvlanguagesen}
-
 \section{Publications}
 \cvpublication{Agapova, N. A.; Lukmanov, R. A. ``Improving Fairness in AI-Powered Recruitment: An Interpretable Resume Screening System'', 2026}{}{10.66693/mathai.1017}
 \cvpublication{Kholodov, Y. A.; Salloum, H.; Agapova, N. A. ``Quantum Annealing Approaches to Breaking RSA Encryption'', \textit{Voprosy kiberbezopasnosti}, 2025}{}{10.21681/2311-3456-2025-4-127-133}
+
+\section{Skills}
+\cvskillsblock{%
+\textbf{ML / AI:} \textit{(proficient)}: Python, PyTorch, BERT, Hugging Face Transformers, Diffusers, LoRA fine-tuning, generative AI, prompt engineering, LLMs (Ollama), Captum, model evaluation \& debiasing, RAG (ChromaDB, SentenceTransformer) \quad \textit{(familiar)}: scikit-learn, pandas, OpenCV, MediaPipe, Core ML, ONNX Runtime\\
+\textbf{Tools:} \textit{(proficient)}: Figma, Tilda, Git/GitHub \quad \textit{(familiar)}: React, TypeScript\\
+\cvlanguagesen}
 
 \end{document}
