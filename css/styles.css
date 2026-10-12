@@ -3941,6 +3941,7 @@ body.page-frontend .subpage-main.frontend-page {
 }
 
 .frontend-card__image,
+.frontend-card__video,
 .frontend-card__iframe {
   display: block;
   width: 100%;

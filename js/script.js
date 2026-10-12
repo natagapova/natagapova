@@ -49,6 +49,9 @@ const translations = {
     DevMacosTimerTitle: "таймер для macOS",
     DevMacosTimerDesc:
       "в готовых таймерах не хватало и обычного таймера, и помодоро, плюс хотелось жить в menu bar и не тонуть в лишних кнопках. сделала своё: оба режима, простой интерфейс, всё в menu bar. работает на macOS 13+.",
+    DevWeirdOctoberTitle: "Weird Web October",
+    DevWeirdOctoberDesc:
+      "захотелось каждый день делать что-то маленькое руками, без дедлайнов, просто ради эксперимента. 31 отдельный мини-сайт на чистых HTML/CSS/JS без сборки, у каждого своя тема и настроение, все собраны в одном календаре-хабе.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "сайт AI-студии, который мы собирали командой. настраивала секции, адаптив и визуальную целостность, чтобы кейсы, услуги и экспертиза читались как один продукт, а не как набор блоков.",
@@ -61,9 +64,6 @@ const translations = {
     FrontendAismenaTitle: "AI-смена · Иннополис",
     FrontendAismenaDesc:
       "лендинг летней AI-смены для школьников. родителю за пару минут должно быть понятно, что в программе и как записать ребёнка без звонка менеджеру. собрала на Tilda в сжатые сроки: расписание, команда, цена, FAQ и форма записи.",
-    FrontendKingstepTitle: "Барилова & Царёв",
-    FrontendKingstepDesc:
-      "сайт танцевальной студии Kingstep: главная, каталог курсов и страницы занятий. дизайн и макеты готовы, моя часть завершена, публичной ссылки пока нет.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -402,6 +402,9 @@ const translations = {
     DevMacosTimerTitle: "macOS timer",
     DevMacosTimerDesc:
       "most timers made me choose between a regular timer and pomodoro, and the menu bar experience felt cluttered. i built my own: both modes, a simple UI, lives in the menu bar. works on macOS 13+.",
+    DevWeirdOctoberTitle: "Weird Web October",
+    DevWeirdOctoberDesc:
+      "wanted to make something small by hand every day, no deadlines, just for the fun of it. 31 standalone mini-sites in hand-coded HTML/CSS/JS with no build step, each with its own theme and mood, all linked from one calendar hub.",
     FrontendCroissanTitle: "Croissan Studio",
     FrontendCroissanDesc:
       "the AI studio site we built as a team. i worked on sections, responsive layout, and visual cohesion so cases, services, and expertise read as one product, not a pile of blocks.",
@@ -414,9 +417,6 @@ const translations = {
     FrontendAismenaTitle: "AI Camp · Innopolis",
     FrontendAismenaDesc:
       "a landing page for a summer AI camp for school students. a parent should understand the program and apply in a few minutes without calling a manager. built on Tilda on a tight deadline: schedule, team, pricing, FAQ, and signup form.",
-    FrontendKingstepTitle: "Barilova & Tsarev",
-    FrontendKingstepDesc:
-      "a dance studio site for Kingstep: home, course catalog, and class pages. design and layouts are done, my part is complete, and there is no public link yet.",
     mlToolPython: "Python",
     mlToolPytorch: "PyTorch",
     mlToolBert: "BERT",
@@ -940,9 +940,18 @@ const devProjects = [
     id: "macos-timer",
     url: "https://github.com/natagapova/macos-timer",
     preview: "images/dev/macos-timer.webp",
+    previewVideo: "images/dev/macos-timer.mp4",
     titleKey: "DevMacosTimerTitle",
     descKey: "DevMacosTimerDesc",
     toolKeys: ["devToolSwift", "devToolSwiftUI", "devToolMacos"],
+  },
+  {
+    id: "weird-october",
+    url: "https://natagapova.github.io/weird-october/",
+    preview: "images/dev/weird-october.webp",
+    titleKey: "DevWeirdOctoberTitle",
+    descKey: "DevWeirdOctoberDesc",
+    toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
   },
   {
     id: "aismena",
@@ -959,13 +968,6 @@ const devProjects = [
     titleKey: "FrontendCruelTitle",
     descKey: "FrontendCruelDesc",
     toolKeys: ["frontendToolHtml", "frontendToolCss", "frontendToolJs"],
-  },
-  {
-    id: "kingstep",
-    preview: "images/tsarevbarilova/page1.webp",
-    titleKey: "FrontendKingstepTitle",
-    descKey: "FrontendKingstepDesc",
-    toolKeys: ["frontendToolFigma", "frontendToolTilda", "frontendToolIllustrator"],
   },
 ];
 
@@ -1965,6 +1967,23 @@ function renderFrontendPreview(project, title) {
   const previewAlt = escapeHtml(
     fillAltTemplate(translations[currentLang].projectPreviewAlt, { title })
   );
+
+  if (project.previewVideo) {
+    return `
+      <div class="frontend-card__preview" aria-hidden="true">
+        <video
+          class="frontend-card__video"
+          src="${project.previewVideo}"
+          ${project.preview ? `poster="${project.preview}"` : ""}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </div>
+    `;
+  }
 
   if (project.preview) {
     return `
