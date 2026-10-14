@@ -240,12 +240,14 @@ const translations = {
       roles: [
         {
           title: "frontend developer",
+          type: "неполная занятость",
           period: "май 2026 - н.в.",
           description:
             "поэтапно пересобираю фронтенд для редизайна основного сайта Croissan Studio по мере того, как дизайнеры готовят каждый раздел, выпуская новые функции параллельно; изменила UX-структуру, увеличив клики по кнопке «Связаться с нами» на 13 %; плюс фронтенд-работа для клиентов.",
         },
         {
           title: "ML software engineer",
+          type: "контракт",
           period: "авг 2025 - май 2026",
           description:
             "полностью разрабатывала клиентские ML-фичи от начала до продакшена: дообучала языковые и генеративные модели изображений и аватаров, проектировала интерфейсы вокруг них.",
@@ -591,12 +593,14 @@ const translations = {
       roles: [
         {
           title: "frontend developer",
+          type: "part-time",
           period: "may 2026 - present",
           description:
             "rebuilding the front-end for Croissan Studio's main website redesign in stages as designers finish each section, shipping new features along the way; restructured the UX, increasing clicks on the “Contact us” button by 13%; plus front-end client work.",
         },
         {
           title: "ML software engineer",
+          type: "contract",
           period: "aug 2025 - may 2026",
           description:
             "built client-facing ML features end to end, from fine-tuning language and generative image/avatar models to shipping them into production, and designed the interfaces around them.",
