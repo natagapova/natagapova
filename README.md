@@ -2,7 +2,7 @@
 
 Hello world! This is my GitHub. I'm just having fun with code, you can find some of my projects here.
 
-Recent graduate of [Innopolis University](https://innopolis.university/en/), **Applied Artificial Intelligence**.
+New grad of [Innopolis University](https://innopolis.university/en/), **Applied Artificial Intelligence**.
 
 ## Links
 
