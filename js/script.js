@@ -359,7 +359,7 @@ const translations = {
     langEn: "английский",
     langFr: "французский",
     langKo: "корейский",
-    langEnLevel: "C1+",
+    langEnLevel: "C2",
     langMapDesc: "карта владения языками по шкале от 0 до C2.",
   },
   en: {
@@ -709,7 +709,7 @@ const translations = {
     langEn: "english",
     langFr: "french",
     langKo: "korean",
-    langEnLevel: "C1+",
+    langEnLevel: "C2",
     langMapDesc: "language proficiency map on a scale from 0 to C2.",
   },
 };
@@ -4160,7 +4160,7 @@ function getLangGlowLineMetrics() {
   return {
     minWidth: readMetric("--lang-glow-line-min", 3.4),
     maxWidth: readMetric("--lang-glow-line-max", 34),
-    reachPx: readMetric("--lang-glow-line-reach", 50),
+    reachPx: readMetric("--lang-glow-line-reach", 90),
   };
 }
 
@@ -4168,7 +4168,7 @@ function glowRgba(channel, alpha) {
   return `rgba(${channel}, ${alpha})`;
 }
 
-function smoothPathThroughPoints(points, smoothness = 0.82) {
+function smoothPathThroughPoints(points, smoothness = 0.3) {
   if (points.length < 2) return "";
   if (points.length === 2) {
     const [a, b] = points;
