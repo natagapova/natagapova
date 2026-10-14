@@ -16,10 +16,10 @@ const translations = {
     myName: "кто она?",
     languageSwitch: "eng",
     portfolioTitle: "проекты",
-    designerPageTitle: "дизайн кейсы",
+    designerPageTitle: "дизайн проекты",
     navbarCvLabel: "cv",
     navbarCvAria: "выбрать cv для скачивания",
-    mlPageTitle: "ml кейсы",
+    mlPageTitle: "ml проекты",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -31,7 +31,7 @@ const translations = {
     roleML: "ml инженер",
     rolePerson: "человек",
     personTagline: "вот кто делает вам сайты кстати",
-    devPageTitle: "swe кейсы",
+    devPageTitle: "swe проекты",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -236,26 +236,24 @@ const translations = {
     expCroissanGroup: {
       company: "Croissan Studio",
       url: "https://croissanstudio.ru",
-      duration: "1 год 7 мес",
+      duration: "1 год 5 мес",
       roles: [
         {
-          title: "ML software engineer",
-          type: "неполная занятость",
-          period: "апр 2026 - н.в.",
+          title: "frontend developer",
+          period: "май 2026 - н.в.",
           description:
-            "дообучаю языковые модели и адаптирую генеративные модели изображений и аватаров для клиентских продуктов, довожу их до продакшена.",
+            "поэтапно пересобираю фронтенд для редизайна основного сайта Croissan Studio по мере того, как дизайнеры готовят каждый раздел, выпуская новые функции параллельно; изменила UX-структуру, увеличив клики по кнопке «Связаться с нами» на 13 %; плюс фронтенд-работа для клиентов.",
         },
         {
-          title: "ML engineer & product designer",
-          type: "контракт",
-          period: "июл 2025 - апр 2026",
+          title: "ML software engineer",
+          period: "авг 2025 - май 2026",
           description:
-            "разрабатывала клиентские ML-фичи от начала до конца и проектировала интерфейсы вокруг них.",
+            "полностью разрабатывала клиентские ML-фичи от начала до продакшена: дообучала языковые и генеративные модели изображений и аватаров, проектировала интерфейсы вокруг них.",
         },
         {
           title: "software engineer intern",
           type: "стажировка",
-          period: "апр - июл 2025",
+          period: "июн - авг 2025",
           description:
             "разрабатывала сайт студии и клиентские интерфейсы в небольшой инженерной команде.",
         },
@@ -275,7 +273,7 @@ const translations = {
       ],
     },
     expAzimovGroup: {
-      company: "Asimov Lab",
+      company: "Asimov Lab (startup)",
       url: "https://asimovlab.ru",
       duration: "8 мес",
       roles: [
@@ -333,9 +331,9 @@ const translations = {
       "бережно собираю продукты, которыми правда хочется пользоваться",
     introStatusLabel: "current status:",
     introStatusValue: "открыта к проектам: дизайн, dev, ml и\u00A0не\u00A0только",
-    introCtaDesigner: "дизайн кейсы",
-    introCtaDev: "swe кейсы",
-    introCtaMl: "ml кейсы",
+    introCtaDesigner: "дизайн проекты",
+    introCtaDev: "swe проекты",
+    introCtaMl: "ml проекты",
     devIntroTitle: "мой опыт в swe",
     devIntroLead:
       "собираю веб и приложения: лендинги, фронтенд в продуктовых командах, Swift для macOS. в Asimov Lab вела фронтенд от архитектуры до UI и довожу сайты и утилиты до продакшна с чистым кодом и понятным UX.",
@@ -369,10 +367,10 @@ const translations = {
     myName: "who is she?",
     languageSwitch: "рус",
     portfolioTitle: "projects",
-    designerPageTitle: "design cases",
+    designerPageTitle: "design projects",
     navbarCvLabel: "cv",
     navbarCvAria: "choose a cv to download",
-    mlPageTitle: "ml cases",
+    mlPageTitle: "ml projects",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -384,7 +382,7 @@ const translations = {
     roleML: "ml engineer",
     rolePerson: "person",
     personTagline: "this is who does your website btw",
-    devPageTitle: "swe cases",
+    devPageTitle: "swe projects",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -589,26 +587,24 @@ const translations = {
     expCroissanGroup: {
       company: "Croissan Studio",
       url: "https://croissanstudio.ru",
-      duration: "1 yr 7 mos",
+      duration: "1 yr 5 mos",
       roles: [
         {
-          title: "ML software engineer",
-          type: "part-time",
-          period: "apr 2026 - present",
+          title: "frontend developer",
+          period: "may 2026 - present",
           description:
-            "fine-tune language models and adapt generative image and avatar models for client products, and ship them into production.",
+            "rebuilding the front-end for Croissan Studio's main website redesign in stages as designers finish each section, shipping new features along the way; restructured the UX, increasing clicks on the “Contact us” button by 13%; plus front-end client work.",
         },
         {
-          title: "ML engineer & product designer",
-          type: "contract",
-          period: "jul 2025 - apr 2026",
+          title: "ML software engineer",
+          period: "aug 2025 - may 2026",
           description:
-            "built client-facing ML features end to end and designed the interfaces around them.",
+            "built client-facing ML features end to end, from fine-tuning language and generative image/avatar models to shipping them into production, and designed the interfaces around them.",
         },
         {
           title: "software engineer intern",
           type: "internship",
-          period: "apr - jul 2025",
+          period: "jun - aug 2025",
           description: "built the studio site and client-facing interfaces in a small engineering team.",
         },
       ],
@@ -627,7 +623,7 @@ const translations = {
       ],
     },
     expAzimovGroup: {
-      company: "Asimov Lab",
+      company: "Asimov Lab (startup)",
       url: "https://asimovlab.ru",
       duration: "8 mos",
       roles: [
@@ -685,9 +681,9 @@ const translations = {
       "i carefully build products you'd genuinely want to use",
     introStatusLabel: "current status:",
     introStatusValue: "open to work: design, dev, ml &\u00A0more",
-    introCtaDesigner: "design cases",
-    introCtaDev: "swe cases",
-    introCtaMl: "ml cases",
+    introCtaDesigner: "design projects",
+    introCtaDev: "swe projects",
+    introCtaMl: "ml projects",
     devIntroTitle: "my swe experience",
     devIntroLead:
       "i build web and apps: landing pages, front-end in product teams, Swift for macOS. at Asimov Lab i led front-end from architecture to UI and ship production sites and utilities with clean code and clear UX.",
@@ -1461,10 +1457,10 @@ function initCvPicker(t) {
 
 const SOCIAL_LINKS = [
   {
-    id: "telegram",
-    href: "https://t.me/nhefy",
-    labelKey: "footerSocialTelegram",
-    external: true,
+    id: "email",
+    href: "mailto:agapnatalya004@gmail.com",
+    labelKey: "footerSocialEmail",
+    external: false,
     contact: true,
   },
   {
@@ -1475,10 +1471,10 @@ const SOCIAL_LINKS = [
     contact: true,
   },
   {
-    id: "email",
-    href: "mailto:agapnatalya004@gmail.com",
-    labelKey: "footerSocialEmail",
-    external: false,
+    id: "telegram",
+    href: "https://t.me/nhefy",
+    labelKey: "footerSocialTelegram",
+    external: true,
     contact: true,
   },
   {
@@ -3246,7 +3242,7 @@ const PAGE_SEO = {
     ru: {
       title: "natalia's portfolio",
       description:
-        "Наталья Агапова, product / UX/UI designer. интерфейсы и визуальные системы для продуктов и брендов. кейсы для Innopolis, Почты России, Croissan Studio и др.",
+        "Наталья Агапова, product / UX/UI designer. интерфейсы и визуальные системы для продуктов и брендов. проекты для Innopolis, Почты России, Croissan Studio и др.",
     },
     en: {
       title: "natalia's portfolio",
@@ -3258,11 +3254,11 @@ const PAGE_SEO = {
     path: "/designer",
     ru: {
       title: "дизайнер · natalia's portfolio",
-      description: "UX/UI и продуктовый дизайн, кейсы Натальи Агаповой.",
+      description: "UX/UI и продуктовый дизайн, проекты Натальи Агаповой.",
     },
     en: {
       title: "designer · natalia's portfolio",
-      description: "UX/UI and product design cases by Natalia Agapova.",
+      description: "UX/UI and product design projects by Natalia Agapova.",
     },
   },
   frontend: {

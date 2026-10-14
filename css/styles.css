@@ -3100,8 +3100,6 @@ body.page-designer .project-overlay__title {
 }
 
 .about-entry__period {
-  flex: 0 0 150px;
-  width: 150px;
   color: #8e8e93;
   text-align: right;
   white-space: nowrap;
@@ -3113,9 +3111,9 @@ body.page-designer .project-overlay__title {
 }
 
 .about-entry__company-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
   align-items: baseline;
-  justify-content: space-between;
   gap: 8px 16px;
 }
 
@@ -3129,10 +3127,10 @@ body.page-designer .project-overlay__title {
 }
 
 .about-entry__duration {
-  flex: 0 0 auto;
   font-style: italic;
   color: rgb(var(--lang-glow-rgb));
   white-space: nowrap;
+  text-align: right;
 }
 
 .about-block .about-entry__roles {
@@ -3188,22 +3186,16 @@ body.page-designer .project-overlay__title {
 }
 
 .about-entry__role-head {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
   align-items: baseline;
-  justify-content: space-between;
   gap: 12px 20px;
 }
 
 .about-entry__role-title {
-  flex: 1 1 auto;
   min-width: 0;
   font-weight: 600;
   color: var(--ios-label);
-}
-
-.about-entry__role-head .about-entry__period {
-  flex: 0 0 120px;
-  width: 120px;
 }
 
 .about-entry__role-type {
@@ -3545,8 +3537,10 @@ body.page-designer .project-overlay__title {
   }
 
   .about-entry__period {
-    flex: 0 0 auto;
-    width: auto;
+    white-space: normal;
+  }
+
+  .about-entry__duration {
     white-space: normal;
   }
 
