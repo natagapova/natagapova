@@ -46,6 +46,11 @@ const translations = {
     devToolSwift: "Swift",
     devToolSwiftUI: "SwiftUI",
     devToolMacos: "macOS",
+    devToolChromeExt: "Chrome Extension",
+    devToolTransformersJs: "transformers.js",
+    DevTendTitle: "Tend",
+    DevTendDesc:
+      "хотелось, чтобы вкладки группировались по тому, зачем они вообще открыты, а не просто по факту открытия. сделала расширение для Chrome: понятные случаи ловят keyword-правила, остальное -- локальная embedding-модель MiniLM, которая группирует только когда уверена. Есть опциональный режим с Claude для группировки по содержимому.",
     DevMacosTimerTitle: "таймер для macOS",
     DevMacosTimerDesc:
       "в готовых таймерах не хватало и обычного таймера, и помодоро, плюс хотелось жить в menu bar и не тонуть в лишних кнопках. сделала своё: оба режима, простой интерфейс, всё в menu bar. работает на macOS 13+.",
@@ -78,6 +83,9 @@ const translations = {
     mlToolPyAutoGUI: "PyAutoGUI",
     mlToolCoreML: "Core ML",
     mlToolOnnx: "ONNX",
+    mlToolJs: "JavaScript",
+    mlToolTransformersJs: "transformers.js",
+    mlToolChromeExt: "Chrome Extension",
     mlActionGithub: "GitHub",
     mlActionArticle: "статья",
     mlCardMore: "подробнее",
@@ -136,6 +144,19 @@ const translations = {
       "инкрементальная индексация (skip if DB exists), citation metadata на чанк, поиск по одному файлу и по папке. на CPU ответы Ollama занимают от 5 до 15 секунд на среднем PDF.",
     MlPksHindsight:
       "добавила бы eval-набор вопросов с эталонными цитатами до расширения UI. hybrid search (BM25 + dense) и reranker сделала бы следующим шагом, а не слепой подстройкой chunk size.",
+    MlTendTitle: "tend",
+    MlTendDesc:
+      "расширение для Chrome, которое группирует открытые вкладки по теме и помечает устаревшие, используя локальные embeddings с опциональным режимом на Claude.",
+    MlTendTask:
+      "группировать открытые вкладки браузера по тому, зачем они на самом деле открыты, а не просто по факту открытия -- полностью на устройстве по умолчанию.",
+    MlTendData:
+      "без обучающих данных -- модель работает zero-shot на каждой вкладке, используя title/URL/meta-description на момент классификации. публичного бенчмарка нет, это личный инструмент.",
+    MlTendApproach:
+      "трёхуровневый пайплайн: keyword/hostname-правила детерминированно ловят известные случаи, затем локальная embedding-модель MiniLM (transformers.js) группирует остальное по title, URL и meta-description, отвечая только когда уверенность проходит порог и отрыв от второго места -- иначе молчит. опциональный режим подключает Claude API, чтобы читать содержимое вкладки и группировать по реальной цели; это единственная часть, которая уходит с устройства.",
+    MlTendMetrics:
+      "формального бенчмарка точности пока нет -- это личный инструмент, и основная проверка в том, группирует ли embedding-пайплайн вкладки так же, как я сама. релевантность убывает экспоненциально, уполовиниваясь каждые 6 часов, так что устаревание каждой вкладки измеримо напрямую.",
+    MlTendEngineering:
+      "расширение Chrome Manifest V3, собранное на esbuild; состояние вкладок (title, URL, время открытия/фокуса) хранится в chrome.storage.local; embedding-модель (~23 МБ) скачивается один раз при первом открытии попапа и кешируется для полностью офлайн-работы.",
     MlResumeScreeningTitle: "fair resume screening",
     MlResumeScreeningDesc:
       'интерпретируемый BERT-классификатор резюме для 9 IT-суперкатегорий на данных HeadHunter. аудит прокси-биаса через Integrated Gradients, сравнение шести методов debiasing, city-swap и transfer на английских резюме. развивает <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">раннюю XAI-работу</a> по bias в классификации резюме.',
@@ -399,6 +420,11 @@ const translations = {
     devToolSwift: "Swift",
     devToolSwiftUI: "SwiftUI",
     devToolMacos: "macOS",
+    devToolChromeExt: "Chrome Extension",
+    devToolTransformersJs: "transformers.js",
+    DevTendTitle: "Tend",
+    DevTendDesc:
+      "wanted my tabs grouped by what they're actually for, not just which ones happen to be open. built a Chrome extension that uses keyword rules for the obvious cases and an on-device MiniLM embedding model for the rest, only grouping when it's confident -- plus an opt-in mode that swaps in Claude for full content-based grouping.",
     DevMacosTimerTitle: "macOS timer",
     DevMacosTimerDesc:
       "most timers made me choose between a regular timer and pomodoro, and the menu bar experience felt cluttered. i built my own: both modes, a simple UI, lives in the menu bar. works on macOS 13+.",
@@ -431,6 +457,9 @@ const translations = {
     mlToolPyAutoGUI: "PyAutoGUI",
     mlToolCoreML: "Core ML",
     mlToolOnnx: "ONNX",
+    mlToolJs: "JavaScript",
+    mlToolTransformersJs: "transformers.js",
+    mlToolChromeExt: "Chrome Extension",
     mlActionGithub: "GitHub",
     mlActionArticle: "paper",
     mlCardMore: "more",
@@ -489,6 +518,19 @@ const translations = {
       "incremental indexing (skip if DB exists), citation metadata per chunk, single-file and folder search. on CPU, Ollama responses take 5 to 15 seconds on a medium PDF.",
     MlPksHindsight:
       "i would build a question set with gold citations before expanding the UI. hybrid search (BM25 + dense) and a reranker would be the next step, not blind chunk-size tuning.",
+    MlTendTitle: "tend",
+    MlTendDesc:
+      "a Chrome extension that groups open tabs by topic and flags stale ones, using on-device embeddings with an opt-in Claude-powered mode.",
+    MlTendTask:
+      "group open browser tabs by what they're actually for, not just which happen to be open -- fully on-device by default.",
+    MlTendData:
+      "no training data -- the model runs zero-shot per tab, using live title/URL/meta-description text at classification time. no public benchmark, it's a personal tool.",
+    MlTendApproach:
+      "three-tier pipeline: keyword/hostname rules catch well-known cases deterministically, then an on-device MiniLM embedding model (transformers.js) groups what's left using title, URL, and meta description, only answering when its confidence clears a floor and a margin over the runner-up -- otherwise it stays quiet. an optional, opt-in mode swaps in the Claude API to read each tab's actual content and group by genuine purpose, the only part that leaves the device.",
+    MlTendMetrics:
+      "no formal accuracy benchmark yet -- it's a personal tool, and the main check is whether the embedding pass groups tabs the way I'd group them myself. relevance score decays exponentially, halving every 6 hours, so staleness is directly measurable per tab.",
+    MlTendEngineering:
+      "Chrome Manifest V3 extension built with esbuild; tab state (title, URL, open/focus timestamps) lives in chrome.storage.local; the embedding model (~23 MB) downloads once on first popup open and is cached for fully offline use after that.",
     MlResumeScreeningTitle: "fair resume screening",
     MlResumeScreeningDesc:
       'an interpretable BERT resume classifier for 9 IT supercategories on HeadHunter data. geographic proxy bias audit with Integrated Gradients, six debiasing methods, city-swap stress tests, and English transfer evaluation. builds on earlier <a href="https://github.com/natagapova/xai-resume-bias" class="ml-card__inline-link" target="_blank" rel="noopener noreferrer">XAI work</a> on resume classification bias.',
@@ -937,6 +979,15 @@ const devProjects = [
     ],
   },
   {
+    id: "tend",
+    url: "https://github.com/natagapova/tend",
+    preview: "images/dev/tend.webp?v=4",
+    previewVideo: "images/dev/tend.mp4?v=4",
+    titleKey: "DevTendTitle",
+    descKey: "DevTendDesc",
+    toolKeys: ["frontendToolJs", "devToolChromeExt", "devToolTransformersJs"],
+  },
+  {
     id: "macos-timer",
     url: "https://github.com/natagapova/macos-timer",
     preview: "images/dev/macos-timer.webp",
@@ -1026,6 +1077,23 @@ const mlProjects = [
       hindsightKey: "MlGestureHindsight",
     },
     toolKeys: ["mlToolPython", "mlToolMediaPipe", "mlToolOpenCV", "mlToolPyAutoGUI"],
+  },
+  {
+    id: "tend",
+    url: "https://github.com/natagapova/tend",
+    preview: "images/dev/tend.webp?v=4",
+    previewVideo: "images/dev/tend.mp4?v=4",
+    titleKey: "MlTendTitle",
+    descKey: "MlTendDesc",
+    caseStudy: {
+      taskKey: "MlTendTask",
+      dataKey: "MlTendData",
+      approachKey: "MlTendApproach",
+      metricsKey: "MlTendMetrics",
+      engineeringKey: "MlTendEngineering",
+    },
+    toolKeys: ["mlToolJs", "mlToolTransformersJs", "mlToolChromeExt"],
+    inDevelopment: true,
   },
   {
     id: "personal-knowledge-system",
@@ -1963,6 +2031,17 @@ function renderFrontendCardTools(toolKeys, t) {
   `;
 }
 
+function ensurePreviewVideosPlay(grid) {
+  if (!grid) return;
+  grid.querySelectorAll("video").forEach((video) => {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  });
+}
+
 function renderFrontendPreview(project, title) {
   const previewAlt = escapeHtml(
     fillAltTemplate(translations[currentLang].projectPreviewAlt, { title })
@@ -2144,6 +2223,7 @@ function renderFrontendProjects() {
     .join("");
 
   initFrontendLazyIframes();
+  ensurePreviewVideosPlay(grid);
   scheduleCardGridLayout();
 }
 
@@ -2197,6 +2277,23 @@ function renderMlPreview(project, title) {
   const previewAlt = escapeHtml(
     fillAltTemplate(translations[currentLang].projectPreviewAlt, { title })
   );
+
+  if (project.previewVideo) {
+    return `
+      <div class="ml-card__preview" aria-hidden="true">
+        <video
+          class="ml-card__image"
+          src="${escapeHtml(project.previewVideo)}"
+          ${project.preview ? `poster="${escapeHtml(project.preview)}"` : ""}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </div>
+    `;
+  }
 
   if (project.preview) {
     return `
@@ -2294,6 +2391,7 @@ function renderMlProjects() {
     })
     .join("");
 
+  ensurePreviewVideosPlay(grid);
   scheduleCardGridLayout();
 }
 

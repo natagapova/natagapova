@@ -20,8 +20,8 @@
   \resumeSubheading{Университет Иннополис}{2022 – 2026}{Иннополис, Россия}{}
   \resumeItemListStart
     \resumeItem{\textbf{Специальность:} Бакалавриат «Прикладной искусственный интеллект»}
-    \resumeItem{\textbf{Курсы по программированию:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
-    \resumeItem{\textbf{Курсы по AI/ML:} Data Structures and Algorithms, Reinforcement Learning, Practical Machine Learning and Deep Learning, Introduction to Computer Vision, Explainable, Interpretable and Fair AI, Generative Artificial Intelligence, Natural Language Processing}
+    \resumeItem{\textbf{Курсы по программированию:} Operating Systems, Distributed and Network Programming, Information Retrieval, Industrial C++}
+    \resumeItem{\textbf{Курсы по AI/ML:} Practical Machine Learning and Deep Learning, Introduction to Computer Vision, Explainable, Interpretable and Fair AI, Generative Artificial Intelligence, Natural Language Processing}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -57,8 +57,7 @@
 
   \resumeCompanyRow{\href{https://asimovlab.ru}{Asimov Lab} (startup)}{Frontend Team Lead \& ML Engineer}{фев. – сент. 2024}
   \resumeItemListStart
-    \resumeItem{Привела фронтенд-команду к MVP-версии сайта, собранной от начала до конца, для AI-платформы, которая генерирует тесты для преподавателей и студентов.}
-    \resumeItem{Один из шести ML-разработчиков, стоявших за ключевой моделью продукта.}
+    \resumeItem{Привела фронтенд-команду к MVP-версии сайта, собранной от начала до конца, для AI-платформы, которая генерирует тесты для преподавателей и студентов, и была одной из шести ML-разработчиков, стоявших за её ключевой моделью.}
     \cvtech{Применила знания}{ в React и TypeScript для фронтенда и Python со scikit-learn для модели.}
   \resumeItemListEnd
 
@@ -75,21 +74,26 @@
 
   \resumeProject{\href{https://github.com/natagapova/resume-screening}{Fair Resume Screening}}{NLP · Explainability · Debiasing · Публикация, первый автор}
   \resumeItemListStart
-    \resumeItem{Обучила BERT сортировать резюме по 9 IT-категориям на реальных данных HeadHunter, затем проверила модель на предвзятость и протестировала 39+ способов её снизить.}
-    \resumeItem{Выяснила, что замена только города кандидата меняла решение модели в 7,7\% случаев (baseline accuracy 60,9\%) -- опубликовала эту находку как первый автор.}
+    \resumeItem{Обучила BERT-классификатор резюме (9 IT-категорий, данные HeadHunter), чтобы проверить и снизить предвзятость модели; замена города кандидата меняла решение в 7,7\% случаев (baseline 60,9\%) -- опубликовала этот анализ как первый автор.}
     \cvtech{Использовано:}{ Python, PyTorch, BERT, Captum, pandas.}
   \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/emotion-detection}{Emotion Detection}}{Computer Vision · On-device Deployment}
   \resumeItemListStart
-    \resumeItem{Обучила CNN распознавать эмоции по лицу с accuracy 58,7\% (до 60,8\% с ансамблированием), затем сжала модель для работы на устройстве с задержкой всего 1,15\,мс (Core ML, ONNX Runtime Web).}
+    \resumeItem{Обучила CNN распознавать эмоции по лицу (accuracy 58,7\%, 60,8\% с ансамблированием), сжала до 1,15\,мс на устройстве (Core ML, ONNX Runtime).}
     \cvtech{Использовано:}{ Python, PyTorch, Core ML, ONNX Runtime.}
   \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/personal-knowledge-system}{Personal Knowledge System}}{RAG · NLP · Embeddings}
   \resumeItemListStart
-    \resumeItem{Собрала личного AI-ассистента, который отвечает только по вашим PDF и всегда указывает файл и страницу -- на локальной LLM (Llama 3.2), так что ничего не уходит с вашего устройства.}
+    \resumeItem{Собрала локального RAG-ассистента с точными цитатами файл/страница по вашим PDF, на Llama 3.2 -- ничего не уходит с устройства.}
     \cvtech{Использовано:}{ Python, SentenceTransformer, ChromaDB, Ollama.}
+  \resumeItemListEnd
+
+  \resumeProject{\href{https://github.com/natagapova/tend}{Tend}}{On-device ML · Chrome Extension}
+  \resumeItemListStart
+    \resumeItem{Расширение для Chrome, которое группирует вкладки на устройстве через keyword-правила и embedding-модель MiniLM с порогом уверенности, плюс опциональный режим с Claude.}
+    \cvtech{Использовано:}{ JavaScript, transformers.js (MiniLM), Claude API.}
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -100,7 +104,7 @@
 
 \section{Навыки}
 \cvskillsblock{%
-\textbf{ML / AI:} \textit{(свободно)}: Python, PyTorch, BERT, Hugging Face Transformers, Diffusers, LoRA fine-tuning, генеративный ИИ, промптинг, LLM (Ollama), Captum, оценка и debiasing моделей, RAG (ChromaDB, SentenceTransformer) \quad \textit{(знакома)}: scikit-learn, pandas, OpenCV, MediaPipe, Core ML, ONNX Runtime\\
+\textbf{ML / AI:} \textit{(свободно)}: Python, PyTorch, BERT, Hugging Face Transformers, Diffusers, LoRA fine-tuning, генеративный ИИ, LLM (Ollama), Captum, оценка моделей, RAG (ChromaDB, SentenceTransformer) \quad \textit{(знакома)}: scikit-learn, pandas, Core ML, ONNX Runtime\\
 \textbf{Языки и фреймворки:} \textit{(свободно)}: React \quad \textit{(знакома)}: TypeScript, Next.js, Tailwind\\
 \textbf{Инструменты:} \textit{(свободно)}: Figma, Tilda, Git/GitHub \quad \textit{(знакома)}: Radix UI, Lucide\\
 \cvlanguagesru}

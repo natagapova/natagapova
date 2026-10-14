@@ -9,7 +9,8 @@
 \input{cv-fonts-simple.tex}
 \cvfontsru
 \cvpagemargins
-\geometry{top=0.28in}
+\geometry{top=0.1in,bottom=0.04in,left=0.4in,right=0.4in}
+\renewcommand{\baselinestretch}{0.865}
 
 \begin{document}
 
@@ -20,8 +21,8 @@
   \resumeSubheading{Университет Иннополис}{2022 – 2026}{Иннополис, Россия}{}
   \resumeItemListStart
     \resumeItem{\textbf{Специальность:} Бакалавриат «Прикладной искусственный интеллект»}
-    \resumeItem{\textbf{Курсы по программированию:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
-    \resumeItem{\textbf{Курсы по инженерии ПО:} Software Project, Front-End Web Development, Software Systems Analysis and Design, Introduction to Optimization, Architecture of Computing Devices}
+    \resumeItem{\textbf{Курсы по программированию:} Operating Systems, Distributed and Network Programming, Information Retrieval, Advanced JavaScript}
+    \resumeItem{\textbf{Курсы по инженерии ПО:} Software Project, Front-End Web Development, Software Systems Analysis and Design}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -40,11 +41,9 @@
 
     \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}, \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}}{ML Software Engineer}{авг. 2025 – май 2026}
     \resumeItemListStart
-      \resumeItem{Работала ML-инженером в клиентских командах, включая \href{https://neuroartist.ru}{NeuroArtist} и \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}, делая AI-продукты от начала до конца вместе с дизайнерами и инженерами.}
-      \resumeItem{Переработала базовую модель NeuroArtist и полностью дообучала языковые модели, адаптируя другие через промптинг, для клиентских продуктов.}
+      \resumeItem{Работала ML-инженером в клиентских командах, включая \href{https://neuroartist.ru}{NeuroArtist} и \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}, перерабатывая базовую модель NeuroArtist и полностью дообучая языковые модели, адаптируя другие через промптинг, для клиентских продуктов.}
       \resumeItem{Улучшила качество генерируемых изображений в Pocket NeuroArtist за счёт итеративного тестирования, что увеличило число пользователей примерно на 5,5\%.}
-      \resumeItem{Сравнивала версии моделей по метрикам задачи, обучала и адаптировала генеративные модели изображений и говорящих аватаров для клиентских проектов.}
-      \resumeItem{Также руководила ребрендингом NeuroArtist (физические и цифровые материалы).}
+      \resumeItem{Сравнивала версии моделей по метрикам задачи, обучала и адаптировала генеративные модели изображений и говорящих аватаров для клиентских проектов, а также руководила ребрендингом NeuroArtist (физические и цифровые материалы).}
       \cvtech{Применила знания}{ в React, Next.js и TypeScript для интерфейса продукта.}
     \resumeItemListEnd
 
@@ -80,6 +79,12 @@
 
 \section{Личные проекты}
 \resumeSubHeadingListStart
+
+  \resumeProject{\href{https://github.com/natagapova/tend}{Tend}}{Chrome Extension · On-device ML}
+  \resumeItemListStart
+    \resumeItem{Сделала расширение для Chrome, которое группирует открытые вкладки по теме и помечает устаревшие -- keyword-правила и локальная embedding-модель MiniLM для группировки только при высокой уверенности, плюс опциональный режим с Claude API для группировки по содержимому страниц.}
+    \cvtech{Использовано:}{ JavaScript, Chrome Extension APIs (Manifest V3), esbuild, transformers.js.}
+  \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/macos-timer}{Elaps}}{Menu Bar App · Swift}
   \resumeItemListStart

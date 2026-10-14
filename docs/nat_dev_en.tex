@@ -1,7 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 
 \input{cv-preamble-en.tex}
-\geometry{top=0.35in}
+\geometry{top=0.35in,left=0.45in,right=0.45in}
 
 \begin{document}
 
@@ -12,8 +12,8 @@
   \resumeSubheading{Innopolis University}{2022 -- 2026}{Innopolis, Russia}{}
   \resumeItemListStart
     \resumeItem{\textbf{Major:} BSc in Applied Artificial Intelligence}
-    \resumeItem{\textbf{Programming Coursework:} Operating Systems, Distributed and Network Programming, Networks, Information Retrieval, Advanced JavaScript, Industrial C++}
-    \resumeItem{\textbf{SWE Coursework:} Software Project, Front-End Web Development, Software Systems Analysis and Design, Introduction to Optimization, Architecture of Computing Devices}
+    \resumeItem{\textbf{Programming Coursework:} Operating Systems, Distributed and Network Programming, Information Retrieval, Advanced JavaScript}
+    \resumeItem{\textbf{SWE Coursework:} Software Project, Front-End Web Development, Software Systems Analysis and Design}
   \resumeItemListEnd
 \resumeSubHeadingListEnd
 
@@ -32,11 +32,9 @@
 
     \resumeRoleRow{\href{https://neuroartist.ru}{NeuroArtist}, \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}}{ML Software Engineer}{Aug 2025 to May 2026}
     \resumeItemListStart
-      \resumeItem{Worked as the ML engineer across client product teams, including \href{https://neuroartist.ru}{NeuroArtist} and \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}, delivering end-to-end AI products alongside designers and software engineers.}
-      \resumeItem{Reworked the core model behind NeuroArtist and fully fine-tuned transformer language models, adapting others through prompting, for client products.}
+      \resumeItem{Worked as the ML engineer across client product teams, including \href{https://neuroartist.ru}{NeuroArtist} and \href{https://t.me/neuroartist_pocket_bot}{Pocket NeuroArtist}, reworking NeuroArtist's core model and fully fine-tuning transformer language models, adapting others through prompting, for client products.}
       \resumeItem{Improved generated-image quality for Pocket NeuroArtist through iterative testing, growing its user numbers by about 5.5\%.}
-      \resumeItem{Compared model versions on task metrics, and trained and adapted generative image and talking-avatar models for client projects.}
-      \resumeItem{Also led the NeuroArtist rebrand across physical and digital materials.}
+      \resumeItem{Compared model versions on task metrics, trained and adapted generative image and talking-avatar models for client projects, and led the NeuroArtist rebrand across physical and digital materials.}
       \cvtech{Leveraged knowledge}{ in React, Next.js, and TypeScript for product UI.}
     \resumeItemListEnd
 
@@ -72,6 +70,12 @@
 
 \section{Personal Projects}
 \resumeSubHeadingListStart
+
+  \resumeProject{\href{https://github.com/natagapova/tend}{Tend}}{Chrome Extension · On-device ML}
+  \resumeItemListStart
+    \resumeItem{Built a Chrome extension that groups open tabs by topic and flags stale ones, using keyword rules plus an on-device MiniLM embedding model that only groups when confident, with an opt-in mode that swaps in the Claude API for full content-based grouping.}
+    \cvtech{Utilized:}{ JavaScript, Chrome Extension APIs (Manifest V3), esbuild, transformers.js.}
+  \resumeItemListEnd
 
   \resumeProject{\href{https://github.com/natagapova/macos-timer}{Elaps}}{Menu Bar App · Swift}
   \resumeItemListStart
