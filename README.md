@@ -4,9 +4,9 @@ Hello world! This is my GitHub. I'm just having fun with code, you can find some
 
 New grad of [Innopolis University](https://innopolis.university/en/), **Applied Artificial Intelligence**.
 
-❕ For questions and offers, please email me on [agapnatalya004@gmail.com](mailto:agapnatalya004@gmail.com). This is my preferred way of communication.
-
 ## Links
+
+❕ For questions and offers, please email me on [agapnatalya004@gmail.com](mailto:agapnatalya004@gmail.com). This is my preferred way of communication.
 
 | | |
 | --- | --- |
