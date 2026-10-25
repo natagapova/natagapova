@@ -4398,6 +4398,10 @@ body.page-ml .subpage-main.ml-page {
    NEWSROOM
 ========================================================= */
 
+body.page-newsroom {
+  --color-bg: var(--ios-bg-page);
+}
+
 .newsroom-page {
   width: min(1200px, calc(100% - 64px));
   margin: 20px auto 0;
@@ -4439,10 +4443,6 @@ body.page-ml .subpage-main.ml-page {
 
 .newsroom-entry:first-child {
   padding-top: 0;
-}
-
-.newsroom-entry:last-child {
-  border-bottom: none;
 }
 
 .newsroom-entry__meta {
