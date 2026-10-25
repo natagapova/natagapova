@@ -16,10 +16,9 @@ const translations = {
     myName: "кто она?",
     languageSwitch: "eng",
     portfolioTitle: "проекты",
-    designerPageTitle: "дизайн проекты",
     navbarCvLabel: "cv",
+    navbarNewsroomLabel: "ньюзрум",
     navbarCvAria: "выбрать cv для скачивания",
-    mlPageTitle: "ml проекты",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -31,7 +30,6 @@ const translations = {
     roleML: "ml инженер",
     rolePerson: "человек",
     personTagline: "вот кто делает вам сайты кстати",
-    devPageTitle: "swe проекты",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -384,16 +382,48 @@ const translations = {
     langKo: "корейский",
     langEnLevel: "C2",
     langMapDesc: "карта владения языками по шкале от 0 до C2.",
+    newsroomMastheadTagline: "мои последние профессиональные новости",
+    newsroomEntryWeirdTitle: "Weird Web October уже в эфире!",
+    newsroomEntryWeirdBody: "Делаю по одному странному мини-сайту в день, каждый день октября. Целый месяц маленьких веб-экспериментов.",
+    newsroomEntryWeirdDate: "октябрь 2026",
+    newsroomEntryWeirdTag: "идёт сейчас",
+    newsroomEntryWeirdLink: "смотреть проект",
+    newsroomEntryC2Title: "Сдала C2 по английскому!",
+    newsroomEntryC2Body: "Восемь лет специализированной английской школы и 100 баллов на ЕГЭ наконец получили официальное подтверждение. Сдала экзамен EF SET на уровень C2.",
+    newsroomEntryC2Date: "12 октября 2026",
+    newsroomEntryC2Link: "смотреть сертификат",
+    newsroomEntryGradTitle: "Выпуск!",
+    newsroomEntryGradBody: "Четыре года «Прикладного Искусственного Интеллекта» позади. Теперь у меня официально есть диплом бакалавра Университета Иннополис.",
+    newsroomEntryGradDate: "7 августа 2026",
+    newsroomEntryThesisTitle: "Диплом защищён, оценка A!",
+    newsroomEntryThesisBody: "Под руководством профессора Рустама Лукманова защитила диплом и получила A.",
+    newsroomEntryThesisDate: "8 июля 2026",
+    newsroomEntryFairnessPaperTitle: "Статья о fairness уже в печати",
+    newsroomEntryFairnessPaperBody: "Статья, которую я представляла в Сочи, про fairness в AI-powered recruitment, наконец вышла.",
+    newsroomEntryFairnessPaperDate: "22 мая 2026",
+    newsroomEntryFairnessPaperLink: "читать статью",
+    newsroomEntryCroissanTitle: "Новая роль в Croissan Studio",
+    newsroomEntryCroissanBody: "Новая должность, новая команда. Теперь работаю frontend-разработчиком в Croissan Studio.",
+    newsroomEntryCroissanDate: "1 мая 2026",
+    newsroomEntrySochiTitle: "Защита статьи на MathAI в Сочи",
+    newsroomEntrySochiBody: "Конференция MathAI прошла в Международном центре «Сириус» под Сочи. Именно там я представила и защитила статью о fairness в AI-powered recruitment. Мою работу отметили отдельно и оплатили проживание на время конференции.",
+    newsroomEntrySochiDate: "29 марта — 10 апреля 2026",
+    newsroomEntryFirstPaperTitle: "Первая статья опубликована!",
+    newsroomEntryFirstPaperBody: "Квантовый отжиг и взлом RSA-шифрования стали темой моей самой первой статьи, написанной в соавторстве.",
+    newsroomEntryFirstPaperDate: "сентябрь 2025",
+    newsroomEntryFirstPaperLink: "читать статью",
+    newsroomEntryInternTitle: "Первая стажировка",
+    newsroomEntryInternBody: "Летом проходила стажировку software engineer в NeuroArtist. Это было моё первое знакомство с индустрией.",
+    newsroomEntryInternDate: "июнь – август 2025",
   },
   en: {
     navBrand: "natalia agapova",
     myName: "who is she?",
     languageSwitch: "рус",
     portfolioTitle: "projects",
-    designerPageTitle: "design projects",
     navbarCvLabel: "cv",
+    navbarNewsroomLabel: "newsroom",
     navbarCvAria: "choose a cv to download",
-    mlPageTitle: "ml projects",
     designerToolFigma: "Figma",
     designerToolIllustrator: "Adobe Illustrator",
     designerToolPhotoshop: "Adobe Photoshop",
@@ -405,7 +435,6 @@ const translations = {
     roleML: "ml engineer",
     rolePerson: "person",
     personTagline: "this is who does your website btw",
-    devPageTitle: "swe projects",
     frontendToolHtml: "HTML",
     frontendToolCss: "CSS",
     frontendToolJs: "JavaScript",
@@ -757,6 +786,39 @@ const translations = {
     langKo: "korean",
     langEnLevel: "C2",
     langMapDesc: "language proficiency map on a scale from 0 to C2.",
+    newsroomMastheadTagline: "my latest professional updates",
+    newsroomEntryWeirdTitle: "Weird Web October Is Live!",
+    newsroomEntryWeirdBody: "I'm building one strange little website a day, every day this october. A whole month of tiny, weird web experiments.",
+    newsroomEntryWeirdDate: "October 2026",
+    newsroomEntryWeirdTag: "ongoing",
+    newsroomEntryWeirdLink: "see the project",
+    newsroomEntryC2Title: "I Passed C2 in English!",
+    newsroomEntryC2Body: "Eight years of a specialized English school, and a perfect 100 on the USE/EGE, finally come with a certificate attached. I just scored C2 on the EF SET English exam.",
+    newsroomEntryC2Date: "October 12, 2026",
+    newsroomEntryC2Link: "see certificate",
+    newsroomEntryGradTitle: "Graduation Day, With Honors!",
+    newsroomEntryGradBody: "Four years of Applied Artificial Intelligence, wrapped up with honors. I officially have my BSc from Innopolis University.",
+    newsroomEntryGradDate: "August 7, 2026",
+    newsroomEntryThesisTitle: "Thesis Defended, Grade A!",
+    newsroomEntryThesisBody: "Advised by Professor Rustam Lukmanov, I defended my thesis and walked away with an A.",
+    newsroomEntryThesisDate: "July 8, 2026",
+    newsroomEntryFairnessPaperTitle: "Fairness Paper Now in Print",
+    newsroomEntryFairnessPaperBody: "The paper I presented back in Sochi, on fairness in AI-powered recruitment, is officially out now.",
+    newsroomEntryFairnessPaperDate: "May 22, 2026",
+    newsroomEntryFairnessPaperLink: "read the paper",
+    newsroomEntryCroissanTitle: "New Role at Croissan Studio",
+    newsroomEntryCroissanBody: "New title, new team. I'm now a Frontend Developer at Croissan Studio.",
+    newsroomEntryCroissanDate: "May 1, 2026",
+    newsroomEntrySochiTitle: "Paper Defended at MathAI in Sochi",
+    newsroomEntrySochiBody: "The MathAI conference took place at the Sirius International Center near Sochi, Russia. That's where I presented and defended my paper on fairness in AI-powered recruitment. My paper was selected for extra support, which covered my stay.",
+    newsroomEntrySochiDate: "March 29 – April 10, 2026",
+    newsroomEntryFirstPaperTitle: "First Paper Published!",
+    newsroomEntryFirstPaperBody: "Quantum annealing and RSA encryption were the subject of my very first published paper, written with my co-authors.",
+    newsroomEntryFirstPaperDate: "September 2025",
+    newsroomEntryFirstPaperLink: "read the paper",
+    newsroomEntryInternTitle: "My First Internship",
+    newsroomEntryInternBody: "Over the summer, I interned as a software engineer at NeuroArtist, my first real taste of the industry.",
+    newsroomEntryInternDate: "June – August 2025",
   },
 };
 
@@ -1299,15 +1361,13 @@ const translationKeyToId = {
   navBrand: "nav-brand",
   languageSwitch: "languageSwitch",
   portfolioTitle: "projects-title",
-  designerPageTitle: "designer-page-title",
   navbarCvLabel: "navbar-cv-label",
-  mlPageTitle: "ml-page-title",
+  navbarNewsroomLabel: "navbar-newsroom-label",
   roleDesigner: "role-designer",
   roleFrontend: "role-frontend",
   roleML: "role-ml",
   rolePerson: "role-person",
   personTagline: "person-tagline",
-  devPageTitle: "dev-page-title",
   rolePagePlaceholder: "role-page-placeholder",
   experienceBlockTitle: "experience-block-title",
   educationBlockTitle: "education-block-title",
@@ -1333,6 +1393,7 @@ const translationKeyToId = {
   langFr: "lang-fr-name",
   langKo: "lang-ko-name",
   langMapDesc: "lang-map-desc",
+  newsroomMastheadTagline: "newsroom-masthead-tagline",
 };
 
 const CV_VARIANTS = [
@@ -2431,6 +2492,130 @@ function applyMlPage(t) {
 
   renderMlProjects();
   bindMlProjectCards();
+}
+
+const NEWSROOM_ENTRIES = [
+  {
+    id: "weird-web-october",
+    ongoing: true,
+    dateKey: "newsroomEntryWeirdDate",
+    tagKey: "newsroomEntryWeirdTag",
+    titleKey: "newsroomEntryWeirdTitle",
+    bodyKey: "newsroomEntryWeirdBody",
+    url: "https://natagapova.github.io/weird-october/",
+    linkLabelKey: "newsroomEntryWeirdLink",
+  },
+  {
+    id: "c2-english",
+    dateKey: "newsroomEntryC2Date",
+    titleKey: "newsroomEntryC2Title",
+    bodyKey: "newsroomEntryC2Body",
+    url: "https://cert.efset.org/1j5NGD",
+    linkLabelKey: "newsroomEntryC2Link",
+  },
+  {
+    id: "innopolis-graduation",
+    dateKey: "newsroomEntryGradDate",
+    titleKey: "newsroomEntryGradTitle",
+    bodyKey: "newsroomEntryGradBody",
+    url: null,
+    linkLabelKey: null,
+    image: "images/newsroom/innopolis-graduation.webp",
+  },
+  {
+    id: "thesis-defense",
+    dateKey: "newsroomEntryThesisDate",
+    titleKey: "newsroomEntryThesisTitle",
+    bodyKey: "newsroomEntryThesisBody",
+    url: null,
+    linkLabelKey: null,
+  },
+  {
+    id: "fairness-paper-published",
+    dateKey: "newsroomEntryFairnessPaperDate",
+    titleKey: "newsroomEntryFairnessPaperTitle",
+    bodyKey: "newsroomEntryFairnessPaperBody",
+    url: "https://doi.org/10.66693/mathai.1017",
+    linkLabelKey: "newsroomEntryFairnessPaperLink",
+  },
+  {
+    id: "croissan-frontend",
+    dateKey: "newsroomEntryCroissanDate",
+    titleKey: "newsroomEntryCroissanTitle",
+    bodyKey: "newsroomEntryCroissanBody",
+    url: null,
+    linkLabelKey: null,
+    image: "images/newsroom/croissan-frontend.webp",
+  },
+  {
+    id: "sochi-conference",
+    dateKey: "newsroomEntrySochiDate",
+    titleKey: "newsroomEntrySochiTitle",
+    bodyKey: "newsroomEntrySochiBody",
+    url: null,
+    linkLabelKey: null,
+    image: "images/newsroom/sochi-conference.webp",
+  },
+  {
+    id: "first-paper-published",
+    dateKey: "newsroomEntryFirstPaperDate",
+    titleKey: "newsroomEntryFirstPaperTitle",
+    bodyKey: "newsroomEntryFirstPaperBody",
+    url: "http://dx.doi.org/10.21681/2311-3456-2025-4-127-133",
+    linkLabelKey: "newsroomEntryFirstPaperLink",
+  },
+  {
+    id: "neuroartist-internship",
+    dateKey: "newsroomEntryInternDate",
+    titleKey: "newsroomEntryInternTitle",
+    bodyKey: "newsroomEntryInternBody",
+    url: null,
+    linkLabelKey: null,
+  },
+];
+
+function renderNewsroomEntries() {
+  const list = document.getElementById("newsroom-list");
+  if (!list) return;
+
+  const t = translations[currentLang];
+
+  list.innerHTML = NEWSROOM_ENTRIES.map((entry) => {
+    const date = t[entry.dateKey] ?? "";
+    const title = t[entry.titleKey] ?? "";
+    const body = t[entry.bodyKey] ?? "";
+    const tag = entry.tagKey ? t[entry.tagKey] : "";
+    const linkLabel = entry.linkLabelKey ? t[entry.linkLabelKey] : "";
+
+    const link = entry.url
+      ? `<a class="newsroom-entry__link" href="${escapeHtml(entry.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkLabel)} →</a>`
+      : "";
+
+    const image = entry.image
+      ? `<img class="newsroom-entry__image" src="${escapeHtml(entry.image)}" alt="${escapeHtml(title)}" loading="lazy" decoding="async" />`
+      : "";
+
+    return `
+      <article class="newsroom-entry${entry.image ? " newsroom-entry--with-image" : ""}" role="listitem" aria-label="${escapeHtml(title)}">
+        <div class="newsroom-entry__meta">
+          <span class="newsroom-entry__date">${escapeHtml(date)}</span>
+          ${tag ? `<span class="newsroom-entry__tag">${entry.ongoing ? '<span class="newsroom-entry__tag-dot" aria-hidden="true"></span>' : ""}${escapeHtml(tag)}</span>` : ""}
+        </div>
+        <div class="newsroom-entry__row">
+          <div class="newsroom-entry__text">
+            <h2 class="newsroom-entry__title">${escapeHtml(title)}</h2>
+            <p class="newsroom-entry__body">${escapeHtml(body)}</p>
+            ${link}
+          </div>
+          ${image}
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function applyNewsroomPage() {
+  renderNewsroomEntries();
 }
 
 function applyDesignerPage(t) {
@@ -3592,6 +3777,7 @@ function applyTranslations() {
   applyDesignerPage(t);
   applyFrontendPage(t);
   applyMlPage(t);
+  applyNewsroomPage();
   renderFooterSocials(t);
   renderIntroTrust(t);
   renderIntroSocial(t);
@@ -3888,6 +4074,59 @@ function markHeroLayoutReady() {
   if (getHomeNavigationType() === "back_forward" || getHomeNavigationType() === "reload") {
     restoreHomeScrollPosition(true);
   }
+}
+
+const SCROLL_MEMORY_PREFIX = "portfolioScrollY:";
+
+function scrollMemoryKey() {
+  return SCROLL_MEMORY_PREFIX + window.location.pathname;
+}
+
+function saveScrollPosition() {
+  try {
+    sessionStorage.setItem(scrollMemoryKey(), String(window.scrollY));
+  } catch {
+    /* storage may be blocked */
+  }
+}
+
+function restoreScrollPosition(forceTop = false) {
+  try {
+    const y = parseFloat(sessionStorage.getItem(scrollMemoryKey()));
+    if (Number.isFinite(y) && y > 0) {
+      window.scrollTo(0, y);
+    } else if (forceTop) {
+      window.scrollTo(0, 0);
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+function initScrollMemory() {
+  if (document.getElementById("hero-experience")) return;
+
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  let scrollSaveRaf = 0;
+  const scheduleSaveScrollPosition = () => {
+    cancelAnimationFrame(scrollSaveRaf);
+    scrollSaveRaf = requestAnimationFrame(saveScrollPosition);
+  };
+
+  window.addEventListener("scroll", scheduleSaveScrollPosition, { passive: true });
+  window.addEventListener("pagehide", saveScrollPosition);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) restoreScrollPosition(true);
+  });
+
+  restoreScrollPosition(true);
+
+  window.addEventListener("load", () => {
+    requestAnimationFrame(() => requestAnimationFrame(() => restoreScrollPosition(false)));
+  });
 }
 
 const roleSpawnOffsets = [
@@ -4548,6 +4787,8 @@ function bootPortfolio() {
   if (isDesignerPage || isMlPage) {
     initProjectOverlay();
   }
+
+  initScrollMemory();
 }
 
 window.bootPortfolio = bootPortfolio;

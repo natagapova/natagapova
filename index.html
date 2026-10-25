@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+<script>try{if("scrollRestoration" in history){history.scrollRestoration="manual";}}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Natalia Agapova: design, development, and ML. Portfolio with cases in UX/UI, web apps, and applied machine learning.">
   <title>natalia's portfolio</title>
@@ -44,8 +45,8 @@
   <link rel="icon" type="image/png" href="images/favicon-48.png?v=8" sizes="48x48">
   <link rel="icon" type="image/png" href="images/apple-touch-icon.png?v=8" sizes="180x180">
   <link rel="icon" type="image/webp" href="images/favicon.webp?v=8">
-  <link rel="stylesheet" href="css/styles.css?v=1791063148">
-  <script defer src="js/script.js?v=1791063148"></script>
+  <link rel="stylesheet" href="css/styles.css?v=1792944455">
+  <script defer src="js/script.js?v=1792944455"></script>
   <script defer src="js/cursor-trail.js"></script>
   <script defer src="js/mobile-hero.js"></script>
 </head>
@@ -53,9 +54,15 @@
 
   <section class="hero-experience" id="hero-experience" aria-label="Directions">
     <div class="hero-experience__pin" id="hero-experience-pin">
-      <nav class="top-navbar top-navbar--hero">
+      <nav class="top-navbar top-navbar--hero top-navbar--centered">
         <div class="navbar-left">
-          <span id="nav-brand">natalia agapova</span>
+          <a href="/newsroom" class="btn btn--ghost navbar-newsroom" id="navbar-newsroom-link">
+            <span class="navbar-newsroom__dot" aria-hidden="true"></span>
+            <span class="btn__label" id="navbar-newsroom-label">newsroom</span>
+          </a>
+        </div>
+        <div class="navbar-center">
+          <span id="nav-brand" class="nav-brand-cursive">natalia agapova</span>
         </div>
         <div class="navbar-right">
           <button type="button" id="languageSwitch" aria-label="Переключить интерфейс на русский">рус</button>
